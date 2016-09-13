@@ -359,6 +359,11 @@
   )
 
 
+(defun org-wiki/make-page ()
+  "Creates a new wiki page."
+  (interactive)
+  (find-file (org-wiki/page->file (read-string "Page Name: "))))
+
 
 
 (defun org-wiki/helm ()
