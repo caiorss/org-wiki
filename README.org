@@ -1,0 +1,56 @@
+#+TITLE: org-wiki 
+
+* Org-wiki 
+** Overview 
+
+Org-wiki is a wiki built over org-mode. It provides many functions to
+keep a wiki and several notes.
+
+It provides a custom protocol ~wiki:keyword~ which creates like. When
+clicked this links creates a file in the wiki diretory ~/wiki-directory/keyword.org.
+
+Features:
+
+ - A wiki system for Emacs.
+
+ - Command to export all pages to html without block Emacs.
+
+ - Helm interface to search wiki pages.
+
+ - Almost self-contained and with few dependencies.
+
+ - 
+
+# - Command to paste images (Only works in Linux for now and requires Xclip);
+
+Commands: 
+
+  - =M-x org-wiki/index= - Open the index page. It opens the file
+    index.org that is the first default page of the wiki. If the file
+    doesn't exist it will be created.
+
+  - =M-x org-wiki/index-frame= - Open the wiki index page in a new frame.
+  
+  - =M-x org-wiki/helm= - Open a helm interface to search the wiki
+    page.
+
+  - =M-x org-wiki/helm-frame= - Open a wiki page in a new frame. 
+
+  - =M-x org-wiki/make-page= - Creates a new wiki page asking the user
+    for the page name.
+
+  - =M-x org-wiki/dired= - Open the wiki directory in Emacs
+    dired-mode showing only *.org files.
+
+  - =M-x org-wiki/dired-all= - Open the wiki directory in Emacs
+    showing all files. 
+
+  - =M-x org-wiki/close= - Close all wiki pages.
+
+  - =M-x org-wiki/insert= - Inserts a org-mode link at current point
+    to a Wiki page selected through a helm-menu.
+
+
+
+
+ 
