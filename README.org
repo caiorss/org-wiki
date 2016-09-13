@@ -7,7 +7,30 @@ Org-wiki is a wiki built over org-mode. It provides many functions to
 keep a wiki and several notes.
 
 It provides a custom protocol ~wiki:keyword~ which creates like. When
-clicked this links creates a file in the wiki diretory ~/wiki-directory/keyword.org.
+clicked this links creates a file in the wiki diretory
+~/wiki-directory/keyword.org and
+~wiki-asset-sys:<wiki-page>;<asset-file>~ to open an asset file in the
+wiki page asset directory ~/wiki-directory/<wiki-page-name>/~
+
+Link formats:
+
+ - =wiki:<pagename>=
+
+ - =wiki-asset-sys:<pagename>/<asset file name>=
+
+Example: the link 
+
+#+BEGIN_SRC 
+    wiki-asset-sys:Linux;LearnLinux.pdf
+or 
+     [[wiki-asset-sys:Linux;LearnLinux.pdf]]
+or
+     [[wiki-asset-sys:Linux;LearnLinux.pdf][Book Learn Linux.pdf]]
+#+END_SRC
+
+will open the file ~~/wiki-directory/Linux/LearnLinux.pdf~ with the
+default system application.
+
 
 Features:
 
@@ -23,34 +46,46 @@ Features:
 
 # - Command to paste images (Only works in Linux for now and requires Xclip);
 
-Commands: 
+** Commands
 
   - =M-x org-wiki/index= - Open the index page. It opens the file
     index.org that is the first default page of the wiki. If the file
     doesn't exist it will be created.
 
+
   - =M-x org-wiki/index-frame= - Open the wiki index page in a new frame.
-  
+
+
   - =M-x org-wiki/helm= - Open a helm interface to search the wiki
     page.
 
+  
   - =M-x org-wiki/helm-frame= - Open a wiki page in a new frame. 
+
 
   - =M-x org-wiki/make-page= - Creates a new wiki page asking the user
     for the page name.
 
+
+  - =M-x org-wiki/helm-assets= - Select a wiki page and open its
+    assets directory.
+
+
   - =M-x org-wiki/dired= - Open the wiki directory in Emacs
     dired-mode showing only *.org files.
+
 
   - =M-x org-wiki/dired-all= - Open the wiki directory in Emacs
     showing all files. 
 
+
   - =M-x org-wiki/close= - Close all wiki pages.
+
 
   - =M-x org-wiki/insert= - Inserts a org-mode link at current point
     to a Wiki page selected through a helm-menu.
-
-
-
-
  
+
+  - =M-x org-wiki/export-html-async= - Exports all wiki pages to html
+    asynchronously, it means withoyt block Emacs by starting a new
+    Emacs process in background.
