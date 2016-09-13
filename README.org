@@ -2,23 +2,38 @@
 #+TITLE: org-wiki 
 #+AUTHOR: Caio Rodrigues 
 
+
 * Org-wiki 
 ** Overview 
 
-Org-wiki is a wiki built over org-mode. It provides many functions to
+Org-wiki is a wiki built on top of org-mode. It provides many functions to
 keep a wiki and several notes.
 
 It provides a custom protocol ~wiki:keyword~ which creates like. When
-clicked this links creates the wiki file in the wiki diretory with
+clicked this links creates the wiki file in the wiki directory with
 name ~keyword.org~.
+
+*Warning*: The screenshots aren't showed in this file because github
+unfortunately doesn't render org-mode files with pictures yet. To see
+the documentation with all pictures open the [[https://caiorss.github.io/org-wiki][html documentation]] .
 
 Link formats:
 
  - =wiki:<pagename>=
 
+Example: 
+
+#+BEGIN_SRC org 
+    wiki:Linux 
+or 
+    [[wiki:Linux]]
+or
+    [[wiki:Linux][Linux]]  
+#+END_SRC
+
  - =wiki-asset-sys:<pagename>/<asset file name>=
 
-Example: the link 
+Example: 
 
 #+BEGIN_SRC org
      wiki-asset-sys:Linux;LearnLinux.pdf
@@ -28,13 +43,13 @@ or
      [[wiki-asset-sys:Linux;LearnLinux.pdf][Book Learn Linux.pdf]]
 #+END_SRC
 
-will open the file ~~/wiki-directory/Linux/LearnLinux.pdf~ with the
+It will open the file =~/wiki-directory/Linux/LearnLinux.pdf= with the
 default system application.
 
 
 Features:
 
- - A wiki system for Emacs.
+ - A wiki system for Emacs
 
  - Command to export all pages to html without block Emacs.
 
@@ -42,9 +57,14 @@ Features:
 
  - Almost self-contained and with few dependencies.
 
- - 
 
 # - Command to paste images (Only works in Linux for now and requires Xclip);
+
+** Repository
+
+| Repository         | https://github.com/caiorss/org-wiki |
+| Html documetnation | https://caiorss.github.io/org-wiki/ |
+|                    |                                     |
 
 ** Commands
 
@@ -85,6 +105,8 @@ Features:
   - =M-x org-wiki/insert= - Inserts a org-mode link at current point
     to a Wiki page selected through a helm-menu.
  
+ - =M-x org-wiki/search-pattern= - Search all wiki page that contains
+   a pattern. (string or regex pattern).
 
   - =M-x org-wiki/export-html-async= - Exports all wiki pages to html
     asynchronously, it means withoyt block Emacs by starting a new
@@ -112,8 +134,6 @@ git clone <org-wiki-url>
 
 #+END_SRC
 
-
-
 ** Screenshots 
 
  - 1. Command =M-x org-wiki/index= Open the wiki index page (file index.org) 
@@ -130,5 +150,20 @@ file:images/wiki-helm-command.png
 
 file:images/autocompletion.png 
 
+ - 4. =M-x org-wiki/dired= Open the org-wiki directory showing only
+   the wiki pages (*.org files). 
 
+file:images/wiki-dired.png 
 
+ - 5. =M-x org/wiki-dired-all= Open the org-wiki directory showing all
+   files. 
+
+file:images/wiki-dired-all.png 
+
+ - 6. =M-x org-wiki/search-pattern= Search for all wiki page that contains
+   a pattern. (string or regex pattern). 
+
+Example: The command =M-x org-wiki/search-patern - System.Windows= will search all
+files that contains "System.Windows string".
+
+file:images/wiki-search-pattern.png
