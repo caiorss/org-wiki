@@ -609,6 +609,13 @@
   )
 
 
-
+(defun org-wiki/search-pattern ()
+  "Search all wiki pages that contains a pattern (regexp or name)"
+  (interactive)
+  (rgrep (read-string "Search for: ")
+         "*.org"
+         org-wiki/location
+         nil
+         ))
 
 (provide 'org-wiki)
