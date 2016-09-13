@@ -22,9 +22,31 @@
 
 ;; Defines where the Wiki files is located
 ;;
-(defvar org-wiki/location "~/org/wiki"
-  "Org wiki directory location. Default value ~/org/wiki"
+
+(defgroup org-wiki nil
+  "Org-wiki Settings"
+  :group 'tools   
   )
+
+(defcustom org-wiki/location "~/org/wiki"
+  "Org-wiki directory where all wiki pages files *.org are stored. 
+   Default value ~/org/wiki."
+  :type 'directory
+  :group 'org-wiki 
+  )
+
+;; (defcustom org-wiki/default-apps '()
+;;   "Default applications used to open asset files. 
+;;    This is pair list of file extension and the app used to open it.
+;;    "
+;;   :type 'alist
+;;   :group 'org-wiki
+;;   )
+
+
+;; (defvar org-wiki/location "~/org/wiki"
+;;   "Org wiki directory location. Default value ~/org/wiki"
+;;   )
 
 
 (setq org-wiki/index-file-basename "Index")
@@ -166,8 +188,7 @@
 
 
 
-(defun org-wiki/open-page (pagename)
-  (find-file  (org-wiki/page->file pagename)))
+
 
 (defun org-wiki/page-list ()
   (mapcar #'org-wiki/file->page (org-wiki/page-files)))
@@ -272,8 +293,7 @@
        (message "Wiki exported to html Ok."))))
     ;; End of set-process-sentinel
 
-  (message "Exporting wiki to html")
-  )
+  (message "Exporting wiki to html"))
 
 
 
@@ -281,6 +301,7 @@
 
 
 (defun org-wiki/org-link (path desc backend)
+  "Creates an html org-wiki pages html exporting."
    (cl-case backend
      (html (format
             "<a href='%s.html'>%s</a>"
@@ -292,14 +313,116 @@
   (format "[[wiki:%s][%s]]" org-wiki/page org-wiki/page)  
   )
 
+(defun org-wiki/open-page (pagename)
+  (find-file  (org-wiki/page->file pagename)))
 
- ;;; Custom Protocols
+
+
+(defun org-wiki/assets-make-dir (pagename)
+  "Creates the asset directory if it doesn't exist."
+  (let ((assets-dir (org-wiki/assets-get-dir pagename)))
+
+    (if (not (file-exists-p assets-dir))
+        (make-directory assets-dir t)
+      )))
+
+(defun org-wiki/assets-get-dir (pagename)
+  "Get a path to file in the asset directory"  
+  (org-wiki/concat-path org-wiki/location pagename))
+
+
+(defun org-wiki/helm-assets ()
+  "Open the assets directory of a wiki page"
+  (interactive)
+  (org-wiki/helm-selection (lambda (page)
+                             (org-wiki/assets-make-dir page)
+                             (dired (org-wiki/assets-get-dir page)))))
+
+(defun org-wiki/assets-get-file (pagename filename)
+  "Returns a path to an asset file"
+  (org-wiki/concat-path (org-wiki/assets-get-dir pagename) filename))
+
+(defun org-wiki/assets-open-file-emacs (pagename filename)
+  "Open an asset file with Emacs"
+  (find-file  (org-wiki/assets-get-file pagename filename)))
+
+
+(defun org-wiki/xdg-open (filename)
+  "Opens a file with default system application.
+   This function is operating system independent. 
+  "
+  (cl-case system-type
+
+    (gnu/linux        (let ((process-connection-type  nil))
+
+                       (start-process
+                          "proc"
+                          nil
+                                        ;; Command
+                          "xdg-open" (expand-file-name filename))))
+
+    ;; Mac OSX - Not tested.
+    ;;
+    (darwing        (start-process
+                            "proc"
+                            nil
+                            ;; Command
+                            "open" (expand-file-name filename)))
+    
+    (windows-nt        (start-process
+                            "proc"
+                            nil
+                            ;; Command
+                            "cmd"  "/c"  "start" (expand-file-name filename)))    
+
+    ))
+
+
+
+(defun org-wiki/assets-open-file-system (pagename filename)
+  "Open an asset file with default system applications."  
+  (org-wiki/xdg-open  (org-wiki/assets-get-file pagename filename)))
+
+
+(defun org-wiki/protocol-open-assets-with-sys (link)
+  "Org-mode protocol handler to open an asset with default system app."
+
+  (let* ((a     (split-string link ";"))
+        (page  (car a))
+        (asset (cadr a))
+        )
+    (org-wiki/assets-open-file-system page asset)))
+
+
+
+
+;;  @TODO: Implement html exporting to org-wiki asset files 
+;; 
+;;
+
+;; (defun org-wiki/org-link (path desc backend)
+;;   "Creates an html org-wiki pages html exporting."
+
+;;   (let* ((a     (split-string link ";"))
+;;         (page  (car a))
+;;         (asset (cadr a))
+;;         )
+
+;;    (cl-case backend
+;;      (html (format
+;;             "<a href='%s.html'>%s</a>"
+;;             path
+;;             (or desc path))))))
+
+;;( "Finance;Programming.F.Sharp.pdf")
+
+;;; Custom Protocols
 (add-hook 'org-mode-hook
           (lambda ()    
-            
+
             (org-add-link-type  "wiki"  #'org-wiki/open-page  #'org-wiki/org-link )
+            (org-add-link-type  "wiki-asset-sys"  #'org-wiki/protocol-open-assets-with-sys nil)
             ))
-            
 
 ;; ---------------- User Commands ---------------- ;;
 
@@ -365,20 +488,28 @@
   (find-file (org-wiki/page->file (read-string "Page Name: "))))
 
 
+(defun org-wiki/helm-selection (callback)
+  "Open a helm menu to select the wiki page and invokes the
+   callback function."
+  
+
+  (helm :sources `((
+                      (name . "Wiki Pages")
+
+                      (candidates . ,(org-wiki/unique (org-wiki/page-list)))
+
+                      (action . callback)                    
+                      ))))
+
 
 (defun org-wiki/helm ()
   " Browser the wiki files using helm.
 
   Usage: M-x org-wiki/helm 
   "
-  (interactive)  
-    (helm :sources `((
-                      (name . "Wiki Pages")
+  (interactive)
 
-                      (candidates . ,(org-wiki/unique (org-wiki/page-list)))
-
-                      (action . org-wiki/open-page)                    
-                      ))))
+  (org-wiki/helm-selection #'org-wiki/open-page))
 
 
 (defun org-wiki/helm-frame ()
@@ -388,19 +519,12 @@
   "
   (interactive)
 
-  (helm :sources `((
-                      (name . "Wiki Pages")
+  (org-wiki/helm-selection  (lambda (act)
+                              (with-selected-frame (make-frame)
+                                (org-wiki/open-page act)
+                                ))))
 
-                      (candidates . ,(org-wiki/page-list))
 
-                      (action .
-
-                              (lambda (act)
-                                (with-selected-frame (make-frame)
-                                  (org-wiki/open-page act)
-                                )
-                              )                    
-                              )))))
 
 
 ;;  @TODO: Implement org-wiki/helm-html 
@@ -456,15 +580,8 @@
  
   "
   (interactive)
-  
-    (helm :sources `((
-                      (name       . "Wiki Pages")
+  (org-wiki/helm-selection  (lambda (page) (insert (org-wiki/make-link page)))))
 
-                      (candidates . ,(org-wiki/unique (org-wiki/page-list)))
-
-                      (action     .  (lambda (page) (insert (org-wiki/make-link page))))
-                      
-                      ))))
 
 
 
