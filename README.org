@@ -1,4 +1,6 @@
+#+INCLUDE: theme/style.org
 #+TITLE: org-wiki 
+#+AUTHOR: Caio Rodrigues 
 
 * Org-wiki 
 ** Overview 
@@ -7,10 +9,8 @@ Org-wiki is a wiki built over org-mode. It provides many functions to
 keep a wiki and several notes.
 
 It provides a custom protocol ~wiki:keyword~ which creates like. When
-clicked this links creates a file in the wiki diretory
-~/wiki-directory/keyword.org and
-~wiki-asset-sys:<wiki-page>;<asset-file>~ to open an asset file in the
-wiki page asset directory ~/wiki-directory/<wiki-page-name>/~
+clicked this links creates the wiki file in the wiki diretory with
+name ~keyword.org~.
 
 Link formats:
 
@@ -20,8 +20,8 @@ Link formats:
 
 Example: the link 
 
-#+BEGIN_SRC 
-    wiki-asset-sys:Linux;LearnLinux.pdf
+#+BEGIN_SRC org
+     wiki-asset-sys:Linux;LearnLinux.pdf
 or 
      [[wiki-asset-sys:Linux;LearnLinux.pdf]]
 or
@@ -89,3 +89,28 @@ Features:
   - =M-x org-wiki/export-html-async= - Exports all wiki pages to html
     asynchronously, it means withoyt block Emacs by starting a new
     Emacs process in background.
+** Setup 
+
+1. Install helm 
+
+
+2. Copy the package to the desired location. 
+
+
+#+BEGIN_SRC 
+mkdir -p ~/.emacs.d/packages/ 
+git clone <org-wiki-url>
+#+END_SRC
+
+
+3. Add to init file ~/.emacs.d/init.el or ~/.emacs 
+
+#+BEGIN_SRC elisp 
+(add-to-list 'load-path "~/.emacs.d/packages/org-wiki")
+(require 'org-wiki)
+(setq org-wiki/location "~/org/wiki")
+
+#+END_SRC
+
+
+
