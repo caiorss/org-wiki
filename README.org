@@ -114,3 +114,21 @@ git clone <org-wiki-url>
 
 
 
+** Screenshots 
+
+ - 1. Command =M-x org-wiki/index= Open the wiki index page (file index.org) 
+
+file:images/org-wiki-index.png
+
+ - 2. Command =M-x org-wiki/helm= Open a helm menu to select the wiki
+   page to be opened. 
+
+file:images/wiki-helm-command.png 
+
+ - 3. =M-x org-wiki/ [tab]= provides easy completion and
+   discoverability to org-wiki commands. 
+
+file:images/autocompletion.png 
+
+
+
