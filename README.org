@@ -113,19 +113,21 @@ Features:
     Emacs process in background.
 ** Setup 
 
-1. Install helm 
+1. Copy the package to the desired location. 
 
 
-2. Copy the package to the desired location. 
-
-
-#+BEGIN_SRC 
+#+BEGIN_SRC sh 
 mkdir -p ~/.emacs.d/packages/ 
-git clone <org-wiki-url>
+
+cd ~/.emacs.d/packages/ 
+
+git clone  https://github.com/caiorss/org-wiki
+
+mkdir -p ~/org/wiki    # Make wiki location. 
 #+END_SRC
 
 
-3. Add to init file ~/.emacs.d/init.el or ~/.emacs 
+2. Add to init file ~/.emacs.d/init.el or ~/.emacs 
 
 #+BEGIN_SRC elisp 
 (add-to-list 'load-path "~/.emacs.d/packages/org-wiki")
@@ -167,3 +169,42 @@ Example: The command =M-x org-wiki/search-patern - System.Windows= will search a
 files that contains "System.Windows string".
 
 file:images/wiki-search-pattern.png
+** Demos 
+
+ - (1) Browsing org-wiki 
+
+#+BEGIN_HTML
+<video src="https://zippy.gfycat.com/LimitedValuableJellyfish.webm" controls>
+</video>
+#+END_HTML
+
+
+ - (2) Wiki directory. M-x wiki-dired 
+
+#+BEGIN_HTML
+<video src="https://zippy.gfycat.com/SentimentalSlightAlpineroadguidetigerbeetle.webm" controls>
+</video>
+#+END_HTML
+
+
+ - (3) M-x org-wiki/helm - Select a wiki page by name. 
+
+#+BEGIN_HTML
+<video src="https://zippy.gfycat.com/ImpracticalAnimatedEnglishsetter.webm" controls>
+</video>
+#+END_HTML
+
+ - (4) M-x org-wki/search-pattern 
+
+#+BEGIN_HTML
+<video src="https://zippy.gfycat.com/MeatyBitterBonobo.webm" controls>
+</video>
+#+END_HTML
+
+ - (5) M-x org-wiki/insert  Insert a wiki page link at point. 
+
+#+BEGIN_HTML
+<video src="https://zippy.gfycat.com/DistantGeneralIndianglassfish.webm" controls>
+</video>
+#+END_HTML
+ 
