@@ -2,16 +2,49 @@
 #+TITLE: org-wiki 
 #+AUTHOR: Caio Rodrigues 
 
-
 * Org-wiki 
 ** Overview 
 
-Org-wiki is a wiki built on top of org-mode. It provides many functions to
-keep a wiki and several notes.
+Org-wiki is a org-mode extension that provides tools to manage and
+build a desktop wiki where each wiki page is a org-mode file.  
 
 It provides a custom protocol ~wiki:keyword~ which creates like. When
 clicked this links creates the wiki file in the wiki directory with
 name ~keyword.org~.
+
+Features: 
+
+  - A wiki system for Emacs.
+
+  - Search wiki pages quickily.
+
+  - Create new wiki pages fast.
+
+  - Command to export all pages to html without block Emacs. M-x =M-x
+    org-wiki/export-html-async=
+
+  - Search wiki pages by its content. (grep)
+
+  - org-mode protocol to create and open wiki pages.
+
+  - org-mode protocol to open attachment/asset files with default
+    system application. 
+
+Org-mode has many features that makes it suitable to create a desktop
+wiki and store knowledge like:
+
+ - Render Latex formulas. 
+
+ - Block codes (org-babel).
+
+ - Fast navigation and editing
+
+ - Support for tables 
+
+ - Ability to export to html and other formats. 
+
+ - Links to files, images, system commands and Elisp commands.
+
 
 *Warning*: The screenshots aren't showed in this file because github
 unfortunately doesn't render org-mode files with pictures yet. To see
@@ -45,17 +78,6 @@ or
 
 It will open the file =~/wiki-directory/Linux/LearnLinux.pdf= with the
 default system application.
-
-
-Features:
-
- - A wiki system for Emacs
-
- - Command to export all pages to html without block Emacs.
-
- - Helm interface to search wiki pages.
-
- - Almost self-contained and with few dependencies.
 
 
 # - Command to paste images (Only works in Linux for now and requires Xclip);
@@ -105,12 +127,17 @@ Features:
   - =M-x org-wiki/insert= - Inserts a org-mode link at current point
     to a Wiki page selected through a helm-menu.
  
- - =M-x org-wiki/search-pattern= - Search all wiki page that contains
+  - =M-x org-wiki/insert-asset= - Insert a asset file at point
+    providing a heml menu to select the file. It inserts a link of
+    format ~wiki-asset-sys:CurrentPage;AssetFilename.pdf~.
+
+  - =M-x org-wiki/search-pattern= - Search all wiki page that contains
    a pattern. (string or regex pattern).
 
-  - =M-x org-wiki/export-html-async= - Exports all wiki pages to html
-    asynchronously, it means withoyt block Emacs by starting a new
-    Emacs process in background.
+ - =M-x org-wiki/export-html-async= - Exports all wiki pages to html
+   asynchronously, it means withoyt block Emacs by starting a new
+   Emacs process in background.
+
 ** Setup 
 
 1. Copy the package to the desired location. 
@@ -135,6 +162,37 @@ mkdir -p ~/org/wiki    # Make wiki location.
 (setq org-wiki/location "~/org/wiki")
 
 #+END_SRC
+
+** Suggestions
+
+You might want shortcuts for frequent commands: 
+
+ - Command to switch or open a wiki page quickly. =M-x w-h=
+
+#+BEGIN_SRC elisp 
+(defalias 'w-h #'org-wiki/helm)
+#+END_SRC
+
+ - Insert a link to a wiki page at point. It provides helm
+   completion. =M-x w-i=
+
+#+BEGIN_SRC elisp 
+(defalias 'w-i #'org-wiki/insert)
+#+END_SRC
+
+ - Open the current wiki page assets directory: =M-x ad=
+
+#+BEGIN_SRC elisp
+(defalias 'w-ad #'org-wiki/asset-dired)
+#+END_SRC
+
+ - Export current wiki page to html or any org-mode file. =M-x og2h=
+
+#+BEGIN_SRC elisp 
+(defalias 'og2h #'org-html-export-to-html)
+#+END_SRC
+
+
 
 ** Screenshots 
 
