@@ -14,8 +14,9 @@
 ;;
 ;;   External applications:
 ;;
-;;       - xclip  - Necessary to paste images to Emacs 
-;; 
+;;       - xclip  - Necessary to paste images to Emacs
+;;
+;;=========================================================== 
 
 (require 'cl)
 (require 'ox-html)
@@ -39,19 +40,6 @@
   :group 'org-wiki 
   )
 
-
-;; (defcustom org-wiki/default-apps '()
-;;   "Default applications used to open asset files. 
-;;    This is pair list of file extension and the app used to open it.
-;;    "
-;;   :type 'alist
-;;   :group 'org-wiki
-;;   )
-
-
-;; (defvar org-wiki/location "~/org/wiki"
-;;   "Org wiki directory location. Default value ~/org/wiki"
-;;   )
 
 
 (setq org-wiki/index-file-basename "Index")
@@ -105,9 +93,8 @@
    \"Spanish\"
 
   "
-  (car (split-string filename "\\."))
+  (file-name-base filename))
 
-  )
 
 
 
@@ -140,6 +127,15 @@
           ".org"
           ))
 
+(defun org-wiki/buffer-file-in-wiki-p ()
+  "Returns true if current buffer file name is inside wiki directory."
+  (file-exists-p
+
+   (org-wiki/concat-path
+    org-wiki/location
+    (file-name-nondirectory (buffer-file-name)))))
+
+
 (defun org-wiki/list-pages ()
   
   "Returns a list containing all pages files *.org 
@@ -154,10 +150,6 @@
           pagename
           ".html"
           ))
-
-
-
-
 
 
 (defun org-wiki/page-files (&optional abspath)
@@ -238,7 +230,10 @@
 	    (if (file-exists-p output-file)
             (delete-file output-file))
 	    
-	    (append-to-file  (buffer-substring-no-properties (point-min) (point-max))
+	    (append-to-file  (buffer-substring-no-properties
+                          (point-min)
+                          (point-max))
+
                          nil
                          output-file
 			       )
@@ -267,43 +262,46 @@
     (princ (format "Exported %s to html" filename))
     ))
 
-(defun org-wiki/export-html-sync ()
-  "Export all wiki pages to html"
-  (interactive)
-  (mapc #'org-wiki/export-to-html (org-wiki/page-files t)))
-
-(defun org-wiki/export-html ()
-  (interactive)
-  
-  (mapc #'org-wiki/export-to-html2
-        (org-wiki/page-files t)))   
-
-(defun  org-wiki/export-html-async ()
-   "Export all wiki files to html launching an asynchronous
-    Emacs Process.
-    "
-  (interactive)
-  (set-process-sentinel
-   (start-process "wiki-export"
-                  "*wiki-export*"
-                  "emacs"
-                  "--batch"
-                  "-l"
-                  "~/.emacs.d/init.el"                  
-                  "-f"
-                  "org-wiki/export-html"
-                  "--kill")
-   (lambda (p e)
-     (when (= 0 (process-exit-status p))
-       (message "Wiki exported to html Ok."))))
-    ;; End of set-process-sentinel
-
-  (message "Exporting wiki to html"))
 
 
+(defun org-wiki/assets-get-dir (pagename)
+  "Get a path to file in the asset directory"  
+  (org-wiki/concat-path org-wiki/location pagename))
 
-;;;------ Org-mode custom protocol ------------- ;;
 
+(defun org-wiki/assets-make-dir (pagename)
+  "Creates the asset directory if it doesn't exist.
+
+  Example: (org-wiki/assets-make-dir \"Bash\") 
+
+  will crate the directory ~/wiki-location/Bash/
+  corresponding to the file ~/wiki-location/Bash.org
+  If it doesn't exist yet. 
+  "
+  (let ((assets-dir (org-wiki/assets-get-dir pagename)))
+
+    (if (not (file-exists-p assets-dir))
+        (make-directory assets-dir t)
+      )))
+
+
+(defun org-wiki/assets-buffer-make-dir ()
+  "Creates asset directory of current buffer page if it doesn't exit."
+
+  (if (org-wiki/buffer-file-in-wiki-p)
+
+      (progn 
+        (org-wiki/assets-make-dir
+         (file-name-base (buffer-file-name)))
+        )
+    (message "Error: Not in a wiki page.")
+    ))
+
+
+
+;;=============== Org-mode custom protocol ===============;;
+;;
+;; @SECTION: Protocol 
 
 (defun org-wiki/org-link (path desc backend)
   "Creates an html org-wiki pages html exporting."
@@ -322,26 +320,6 @@
   (find-file  (org-wiki/page->file pagename)))
 
 
-
-(defun org-wiki/assets-make-dir (pagename)
-  "Creates the asset directory if it doesn't exist."
-  (let ((assets-dir (org-wiki/assets-get-dir pagename)))
-
-    (if (not (file-exists-p assets-dir))
-        (make-directory assets-dir t)
-      )))
-
-(defun org-wiki/assets-get-dir (pagename)
-  "Get a path to file in the asset directory"  
-  (org-wiki/concat-path org-wiki/location pagename))
-
-
-(defun org-wiki/helm-assets ()
-  "Open the assets directory of a wiki page"
-  (interactive)
-  (org-wiki/helm-selection (lambda (page)
-                             (org-wiki/assets-make-dir page)
-                             (dired (org-wiki/assets-get-dir page)))))
 
 (defun org-wiki/assets-get-file (pagename filename)
   "Returns a path to an asset file"
@@ -431,12 +409,10 @@
                                 #'org-wiki/asset-link)
             ))
 
-;; ---------------- User Commands ---------------- ;;
+;; ================= User Commands ================= ;;;
+;;  
+;; @SECTION: User commands 
 
-;; (defun org-wiki/dired ()
-;;   "Open wiki directory in dired mode"
-
-;;   (dired org-wiki/location))
 
 
 (defun org-wiki/index ()
@@ -512,6 +488,7 @@
 (defun org-wiki/asset-dired ()
   "Open the asset directory of current wiki page."
   (interactive)
+  
   (let (
         (pagename (file-name-base (buffer-file-name)))
         )
@@ -537,17 +514,20 @@
                       ))))
 
 
-(defun org-wiki/insert-asset ()
+(defun org-wiki/asset-insert ()
   "Insert link to asset file of current page at current point."
   (interactive)
-  (org-wiki/asset-helm-selection  (file-name-base (buffer-file-name))
-                                  (lambda (f)
-                                    (insert (format "[[wiki-asset-sys:%s;%s][%s]]"
-                                                    (file-name-base (buffer-file-name))
-                                                    f
-                                                    (read-string "Description" f)
-                                                    )))
-                                  ))
+  (org-wiki/asset-helm-selection
+
+   (file-name-base (buffer-file-name))
+
+   (lambda (f)
+     (insert (format "[[wiki-asset-sys:%s;%s][%s]]"
+                     (file-name-base (buffer-file-name))
+                     f
+                     (read-string "Description: " f)
+                     )))
+   ))
 
 
 (defun org-wiki/helm ()
@@ -602,8 +582,9 @@
 
             (when (and (buffer-file-name b) ;; test if is a buffer associated with file 
 
-                     (org-wiki/path-equal  org-wiki/location
-                                           (file-name-directory (buffer-file-name b)))
+                       (org-wiki/path-equal
+                        org-wiki/location
+                        (file-name-directory (buffer-file-name b)))
                 )
 
                 (save-buffer b)
@@ -612,12 +593,10 @@
               ))
 
 
-          (buffer-list)
+          (buffer-list))
+  
+  (message "All wiki files closed. Ok."))
 
-          )
-
-  (message "All wiki files closed. Ok.")
-  )
 
 
 (defun org-wiki/insert ()
@@ -667,17 +646,64 @@
          ))
 
 
-(defun org-wiki/open-fmanager ()
+(defun org-wiki/open ()
   "Opens the wiki repository with system's default file manager."
   (interactive)
   (org-wiki/xdg-open org-wiki/location))
 
 
-(defun org-wiki/asset-open ()
-  "Open asset directory with system's default file manager."
+(defun org-wiki/assets-open ()
+  "Open asset directory of current page with system's 
+   default file manager."
+  
   (interactive)
+  
+  (org-wiki/assets-buffer-make-dir)
+  (org-wiki/xdg-open (file-name-base (buffer-file-name))))
 
-  (org-wiki/xdg-open (buffer-file-name))
-  )
+
+(defun org-wiki/assets-helm ()
+  "Open the assets directory of a wiki page"
+  (interactive)
+  (org-wiki/helm-selection
+   (lambda (page)
+     (org-wiki/assets-make-dir page)
+     (dired (org-wiki/assets-get-dir page)))))
+
+
+
+(defun org-wiki/export-html-sync ()
+  "Export all wiki pages to html"
+  (interactive)
+  (mapc #'org-wiki/export-to-html (org-wiki/page-files t)))
+
+(defun org-wiki/export-html ()
+  (interactive)
+  
+  (mapc #'org-wiki/export-to-html2
+        (org-wiki/page-files t)))   
+
+(defun org-wiki/export-html-async ()
+   "Export all wiki files to html launching an asynchronous
+    Emacs Process.
+    "
+  (interactive)
+  (set-process-sentinel
+   (start-process "wiki-export"
+                  "*wiki-export*"
+                  "emacs"
+                  "--batch"
+                  "-l"
+                  "~/.emacs.d/init.el"                  
+                  "-f"
+                  "org-wiki/export-html"
+                  "--kill")
+   (lambda (p e)
+     (when (= 0 (process-exit-status p))
+       (message "Wiki exported to html Ok."))))
+    ;; End of set-process-sentinel
+
+  (message "Exporting wiki to html"))
+
 
 (provide 'org-wiki)
