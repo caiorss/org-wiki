@@ -1,7 +1,10 @@
 ;;
-;;  Org-mode Wiki 
+;; Org-mode Wiki 
 ;;
+;;    - Author:      Caio Rodrigues 
+;;    - Repository:  https://caiorss.github.io/org-wiki/  
 ;;
+;;  
 ;; Dependencies:
 ;; -------------------------------------------
 ;;
@@ -16,6 +19,7 @@
 
 (require 'cl)
 (require 'ox-html)
+(require 'helm-config)
 (require 'helm)
 
 ; (require 'cl-lib)
@@ -34,6 +38,7 @@
   :type 'directory
   :group 'org-wiki 
   )
+
 
 ;; (defcustom org-wiki/default-apps '()
 ;;   "Default applications used to open asset files. 
@@ -80,14 +85,11 @@
 
 (defun org-wiki/normalize-path (path)
 
-                   (replace-regexp-in-string
-                    "//"
-                    "/"   
-                    (replace-regexp-in-string "/$" "" (expand-file-name path))
-                    )
-
-
-                   )
+  (replace-regexp-in-string
+   "//"
+   "/"   
+   (replace-regexp-in-string "/$" "" (expand-file-name path))
+   ))
        
 (defun  org-wiki/path-equal (p1 p2)
   (equal (org-wiki/normalize-path p1) (org-wiki/normalize-path p2))
@@ -106,6 +108,8 @@
   (car (split-string filename "\\."))
 
   )
+
+
 
 (defun org-wiki/replace-extension (filename extension)
   " Replaces a file name by its extension 
@@ -150,6 +154,9 @@
           pagename
           ".html"
           ))
+
+
+
 
 
 
@@ -205,8 +212,6 @@
 
 (defun org-wiki/export-to-html (filename)
   "Export org-mode file to html without open a buffer"
- 
-
   (with-temp-buffer 
 
 
@@ -396,32 +401,34 @@
 
 
 
-;;  @TODO: Implement html exporting to org-wiki asset files 
+;;  @DONE: Implement html exporting to org-wiki asset files 
 ;; 
-;;
+(defun org-wiki/asset-link (path desc backend)
+  "Creates an html org-wiki pages html exporting."
 
-;; (defun org-wiki/org-link (path desc backend)
-;;   "Creates an html org-wiki pages html exporting."
+  (let* ((a    (split-string path ";"))
+        (page  (car a))
+        (asset (cadr a))
+        (file-path (concat page "/"  asset))
+        )
 
-;;   (let* ((a     (split-string link ";"))
-;;         (page  (car a))
-;;         (asset (cadr a))
-;;         )
-
-;;    (cl-case backend
-;;      (html (format
-;;             "<a href='%s.html'>%s</a>"
-;;             path
-;;             (or desc path))))))
-
-;;( "Finance;Programming.F.Sharp.pdf")
+   (cl-case backend
+     (html (format
+            "<a href='%s'>%s</a>"
+            file-path
+            (or desc asset))))))
 
 ;;; Custom Protocols
 (add-hook 'org-mode-hook
           (lambda ()    
 
-            (org-add-link-type  "wiki"  #'org-wiki/open-page  #'org-wiki/org-link )
-            (org-add-link-type  "wiki-asset-sys"  #'org-wiki/protocol-open-assets-with-sys nil)
+            (org-add-link-type  "wiki"
+                                #'org-wiki/open-page
+                                #'org-wiki/org-link )
+            
+            (org-add-link-type  "wiki-asset-sys"
+                                #'org-wiki/protocol-open-assets-with-sys
+                                #'org-wiki/asset-link)
             ))
 
 ;; ---------------- User Commands ---------------- ;;
@@ -500,6 +507,47 @@
 
                       (action . callback)                    
                       ))))
+
+
+(defun org-wiki/asset-dired ()
+  "Open the asset directory of current wiki page."
+  (interactive)
+  (let (
+        (pagename (file-name-base (buffer-file-name)))
+        )
+
+    (org-wiki/assets-make-dir pagename)
+
+    (dired (org-wiki/assets-get-dir pagename))
+
+    ))
+
+(defun org-wiki/asset-page-files (pagename)
+  "Get all asset files from a given page"
+  (org-wiki/assets-make-dir pagename)
+  (directory-files (org-wiki/assets-get-dir pagename)))
+
+(defun org-wiki/asset-helm-selection (pagename callback)
+  (helm :sources `((
+                      (name . "Wiki Pages")
+
+                      (candidates . ,(org-wiki/asset-page-files pagename))
+
+                      (action . callback)                    
+                      ))))
+
+
+(defun org-wiki/insert-asset ()
+  "Insert link to asset file of current page at current point."
+  (interactive)
+  (org-wiki/asset-helm-selection  (file-name-base (buffer-file-name))
+                                  (lambda (f)
+                                    (insert (format "[[wiki-asset-sys:%s;%s][%s]]"
+                                                    (file-name-base (buffer-file-name))
+                                                    f
+                                                    (read-string "Description" f)
+                                                    )))
+                                  ))
 
 
 (defun org-wiki/helm ()
@@ -617,5 +665,19 @@
          org-wiki/location
          nil
          ))
+
+
+(defun org-wiki/open-fmanager ()
+  "Opens the wiki repository with system's default file manager."
+  (interactive)
+  (org-wiki/xdg-open org-wiki/location))
+
+
+(defun org-wiki/asset-open ()
+  "Open asset directory with system's default file manager."
+  (interactive)
+
+  (org-wiki/xdg-open (buffer-file-name))
+  )
 
 (provide 'org-wiki)
