@@ -16,7 +16,7 @@ Features:
 
   - A wiki system for Emacs.
 
-  - Search wiki pages quickily.
+  - Search wiki pages quickly.
 
   - Create new wiki pages fast.
 
@@ -30,7 +30,7 @@ Features:
   - org-mode protocol to open attachment/asset files with default
     system application. 
 
-Org-mode has many features that makes it suitable to create a desktop
+Org-mode already has many features that makes it suitable to create a desktop
 wiki and store knowledge like:
 
  - Render Latex formulas. 
@@ -46,11 +46,9 @@ wiki and store knowledge like:
  - Links to files, images, system commands and Elisp commands.
 
 
-*Warning*: The screenshots aren't showed in this file because github
-unfortunately doesn't render org-mode files with pictures yet. To see
-the documentation with all pictures open the [[https://caiorss.github.io/org-wiki][html documentation]] .
+*Note* It is only possible to show the video demonstrations in [[https://caiorss.github.io/org-wiki][html version.]]
 
-Link formats:
+*Link formats*
 
  - =wiki:<pagename>=
 
@@ -79,8 +77,78 @@ or
 It will open the file =~/wiki-directory/Linux/LearnLinux.pdf= with the
 default system application.
 
+** Demos 
 
-# - Command to paste images (Only works in Linux for now and requires Xclip);
+ - (1) Browsing org-wiki 
+
+#+BEGIN_HTML
+<video src="https://zippy.gfycat.com/LimitedValuableJellyfish.webm" controls>
+</video>
+#+END_HTML
+
+
+ - (2) Wiki directory. M-x wiki-dired 
+
+#+BEGIN_HTML
+<video src="https://zippy.gfycat.com/SentimentalSlightAlpineroadguidetigerbeetle.webm" controls>
+</video>
+#+END_HTML
+
+
+ - (3) M-x org-wiki/helm - Select a wiki page by name. 
+
+#+BEGIN_HTML
+<video src="https://zippy.gfycat.com/ImpracticalAnimatedEnglishsetter.webm" controls>
+</video>
+#+END_HTML
+
+ - (4) M-x org-wki/search-pattern 
+
+#+BEGIN_HTML
+<video src="https://zippy.gfycat.com/MeatyBitterBonobo.webm" controls>
+</video>
+#+END_HTML
+
+ - (5) M-x org-wiki/insert  Insert a wiki page link at point. 
+
+#+BEGIN_HTML
+<video src="https://zippy.gfycat.com/DistantGeneralIndianglassfish.webm" controls>
+</video>
+#+END_HTML
+
+** Screenshots 
+
+ - 1. Command =M-x org-wiki/index= Open the wiki index page (file index.org) 
+
+[[file:images/org-wiki-index.png][file:images/org-wiki-index.png]]
+
+ - 2. Command =M-x org-wiki/helm= Open a helm menu to select the wiki
+   page to be opened. 
+
+[[file:images/wiki-helm-command.png][file:images/wiki-helm-command.png]]
+
+ - 3. =M-x org-wiki/ [tab]= provides easy completion and
+   discoverability to org-wiki commands. 
+
+[[file:images/autocompletion.png][file:images/autocompletion.png]]
+
+ - 4. =M-x org-wiki/dired= Open the org-wiki directory showing only
+   the wiki pages (*.org files). 
+
+[[file:images/wiki-dired.png][file:images/wiki-dired.png]]
+
+ - 5. =M-x org/wiki-dired-all= Open the org-wiki directory showing all
+   files. 
+
+[[file:images/wiki-dired-all.png][file:images/wiki-dired-all.png]]
+
+ - 6. =M-x org-wiki/search-pattern= Search for all wiki page that contains
+   a pattern. (string or regex pattern). 
+
+Example: The command =M-x org-wiki/search-patern - System.Windows= will search all
+files that contains "System.Windows string".
+
+[[file:images/wiki-search-pattern.png][file:images/wiki-search-pattern.png]]
 
 ** Repository
 
@@ -89,29 +157,51 @@ default system application.
 |                    |                                     |
 
 ** Commands
+*** Open the index page
 
   - =M-x org-wiki/index= - Open the index page. It opens the file
     index.org that is the first default page of the wiki. If the file
     doesn't exist it will be created.
 
-
   - =M-x org-wiki/index-frame= - Open the wiki index page in a new frame.
 
+*** Switch or open a page
 
-  - =M-x org-wiki/helm= - Open a helm interface to search the wiki
-    page.
-
+  - =M-x org-wiki/helm= - Open a helm menu to switch or open a wiki page.
   
   - =M-x org-wiki/helm-frame= - Open a wiki page in a new frame. 
-
 
   - =M-x org-wiki/make-page= - Creates a new wiki page asking the user
     for the page name.
 
+*** Close all wiki pages 
 
-  - =M-x org-wiki/helm-assets= - Select a wiki page and open its
-    assets directory.
+  - =M-x org-wiki/close= - Close all wiki pages, kill all *.or buffers
+    belonging to wiki directory.
 
+*** Insertion
+
+Set of commands to insert reference to attachment or page. 
+
+  - =M-x org-wiki/insert= - Inserts a org-mode link at current point
+    to a Wiki page selected through a helm-menu.
+
+  - =M-x org-wiki/asset-insert= - Insert a asset file at point
+    providing a heml menu to select the file. It inserts a link of
+    format ~wiki-asset-sys:CurrentPage;AssetFilename.pdf~.
+
+*** Asset files / Attachments
+
+  - =M-x org-wiki/assets-helm= - Select a wiki page and open its
+    assets directory. 
+
+  - =M-x org-wiki/asset-insert= - Insert link to asset file of current
+    page at current cursor position.
+ 
+  - =M-x org-wiki/assets-open= - Open asset directory of current page
+    with system's default file manager. 
+
+*** Commands to open wiki directory
 
   - =M-x org-wiki/dired= - Open the wiki directory in Emacs
     dired-mode showing only *.org files.
@@ -120,19 +210,12 @@ default system application.
   - =M-x org-wiki/dired-all= - Open the wiki directory in Emacs
     showing all files. 
 
+*** Commands to search
 
-  - =M-x org-wiki/close= - Close all wiki pages.
-
-
-  - =M-x org-wiki/insert= - Inserts a org-mode link at current point
-    to a Wiki page selected through a helm-menu.
- 
-  - =M-x org-wiki/insert-asset= - Insert a asset file at point
-    providing a heml menu to select the file. It inserts a link of
-    format ~wiki-asset-sys:CurrentPage;AssetFilename.pdf~.
-
-  - =M-x org-wiki/search-pattern= - Search all wiki page that contains
+ - =M-x org-wiki/search-pattern= - Search all wiki page that contains
    a pattern. (string or regex pattern).
+
+*** Command to export all pages to html
 
  - =M-x org-wiki/export-html-async= - Exports all wiki pages to html
    asynchronously, it means withoyt block Emacs by starting a new
@@ -173,11 +256,17 @@ You might want shortcuts for frequent commands:
 (defalias 'w-h #'org-wiki/helm)
 #+END_SRC
 
- - Insert a link to a wiki page at point. It provides helm
-   completion. =M-x w-i=
+ - Go to the index page 
 
 #+BEGIN_SRC elisp 
-(defalias 'w-i #'org-wiki/insert)
+(defalias 'w-i #'org-wiki/index)
+#+END_SRC
+
+ - Insert a link to a wiki page at point. It provides helm
+   completion. =M-x w-in=
+
+#+BEGIN_SRC elisp 
+(defalias 'w-in #'org-wiki/index)
 #+END_SRC
 
  - Open the current wiki page assets directory: =M-x ad=
@@ -191,78 +280,4 @@ You might want shortcuts for frequent commands:
 #+BEGIN_SRC elisp 
 (defalias 'og2h #'org-html-export-to-html)
 #+END_SRC
-
-
-
-** Screenshots 
-
- - 1. Command =M-x org-wiki/index= Open the wiki index page (file index.org) 
-
-file:images/org-wiki-index.png
-
- - 2. Command =M-x org-wiki/helm= Open a helm menu to select the wiki
-   page to be opened. 
-
-file:images/wiki-helm-command.png 
-
- - 3. =M-x org-wiki/ [tab]= provides easy completion and
-   discoverability to org-wiki commands. 
-
-file:images/autocompletion.png 
-
- - 4. =M-x org-wiki/dired= Open the org-wiki directory showing only
-   the wiki pages (*.org files). 
-
-file:images/wiki-dired.png 
-
- - 5. =M-x org/wiki-dired-all= Open the org-wiki directory showing all
-   files. 
-
-file:images/wiki-dired-all.png 
-
- - 6. =M-x org-wiki/search-pattern= Search for all wiki page that contains
-   a pattern. (string or regex pattern). 
-
-Example: The command =M-x org-wiki/search-patern - System.Windows= will search all
-files that contains "System.Windows string".
-
-file:images/wiki-search-pattern.png
-** Demos 
-
- - (1) Browsing org-wiki 
-
-#+BEGIN_HTML
-<video src="https://zippy.gfycat.com/LimitedValuableJellyfish.webm" controls>
-</video>
-#+END_HTML
-
-
- - (2) Wiki directory. M-x wiki-dired 
-
-#+BEGIN_HTML
-<video src="https://zippy.gfycat.com/SentimentalSlightAlpineroadguidetigerbeetle.webm" controls>
-</video>
-#+END_HTML
-
-
- - (3) M-x org-wiki/helm - Select a wiki page by name. 
-
-#+BEGIN_HTML
-<video src="https://zippy.gfycat.com/ImpracticalAnimatedEnglishsetter.webm" controls>
-</video>
-#+END_HTML
-
- - (4) M-x org-wki/search-pattern 
-
-#+BEGIN_HTML
-<video src="https://zippy.gfycat.com/MeatyBitterBonobo.webm" controls>
-</video>
-#+END_HTML
-
- - (5) M-x org-wiki/insert  Insert a wiki page link at point. 
-
-#+BEGIN_HTML
-<video src="https://zippy.gfycat.com/DistantGeneralIndianglassfish.webm" controls>
-</video>
-#+END_HTML
  
