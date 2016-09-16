@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>org-wiki</title>
-<!-- 2016-09-14 Wed 00:45 -->
+<!-- 2016-09-16 Fri 01:06 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Caio Rodrigues" />
@@ -218,17 +218,28 @@ for the JavaScript code in this tag.
 <li><a href="#sec-1">1. Org-wiki</a>
 <ul>
 <li><a href="#sec-1-1">1.1. Overview</a></li>
-<li><a href="#sec-1-2">1.2. Repository</a></li>
-<li><a href="#sec-1-3">1.3. Commands</a></li>
-<li><a href="#sec-1-4">1.4. Setup</a></li>
-<li><a href="#sec-1-5">1.5. Screenshots</a></li>
-<li><a href="#sec-1-6">1.6. Demos</a></li>
+<li><a href="#sec-1-2">1.2. Demos</a></li>
+<li><a href="#sec-1-3">1.3. Screenshots</a></li>
+<li><a href="#sec-1-4">1.4. Repository</a></li>
+<li><a href="#sec-1-5">1.5. Commands</a>
+<ul>
+<li><a href="#sec-1-5-1">1.5.1. Open the index page</a></li>
+<li><a href="#sec-1-5-2">1.5.2. Switch or open a page</a></li>
+<li><a href="#sec-1-5-3">1.5.3. Close all wiki pages</a></li>
+<li><a href="#sec-1-5-4">1.5.4. Insertion</a></li>
+<li><a href="#sec-1-5-5">1.5.5. Asset files / Attachments</a></li>
+<li><a href="#sec-1-5-6">1.5.6. Commands to open wiki directory</a></li>
+<li><a href="#sec-1-5-7">1.5.7. Commands to search</a></li>
+<li><a href="#sec-1-5-8">1.5.8. Command to export all pages to html</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-6">1.6. Setup</a></li>
+<li><a href="#sec-1-7">1.7. Suggestions</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-
 
 <div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1"><span class="section-number-2">1</span> Org-wiki</h2>
@@ -237,8 +248,8 @@ for the JavaScript code in this tag.
 <h3 id="sec-1-1"><span class="section-number-3">1.1</span> Overview</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
-Org-wiki is a wiki built on top of org-mode. It provides many functions to
-keep a wiki and several notes.
+Org-wiki is a org-mode extension that provides tools to manage and
+build a desktop wiki where each wiki page is a org-mode file.  
 </p>
 
 <p>
@@ -248,13 +259,66 @@ name <code>keyword.org</code>.
 </p>
 
 <p>
-<b>Warning</b>: The screenshots aren't showed in this file because github
-unfortunately doesn't render org-mode files with pictures yet. To see
-the documentation with all pictures open the <a href="https://caiorss.github.io/org-wiki">html documentation</a> .
+Features: 
+</p>
+
+<ul class="org-ul">
+<li>A wiki system for Emacs.
+</li>
+
+<li>Search wiki pages quickly.
+</li>
+
+<li>Create new wiki pages fast.
+</li>
+
+<li>Command to export all pages to html without block Emacs. M-x <code>M-x
+    org-wiki/export-html-async</code>
+</li>
+
+<li>Search wiki pages by its content. (grep)
+</li>
+
+<li>org-mode protocol to create and open wiki pages.
+</li>
+
+<li>org-mode protocol to open attachment/asset files with default
+system application. 
+</li>
+</ul>
+
+<p>
+Org-mode already has many features that makes it suitable to create a desktop
+wiki and store knowledge like:
+</p>
+
+<ul class="org-ul">
+<li>Render Latex formulas. 
+</li>
+
+<li>Block codes (org-babel).
+</li>
+
+<li>Fast navigation and editing
+</li>
+
+<li>Support for tables 
+</li>
+
+<li>Ability to export to html and other formats. 
+</li>
+
+<li>Links to files, images, system commands and Elisp commands.
+</li>
+</ul>
+
+
+<p>
+<b>Note</b> It is only possible to show the video demonstrations in <a href="https://caiorss.github.io/org-wiki">html version.</a>
 </p>
 
 <p>
-Link formats:
+<b>Link formats</b>
 </p>
 
 <ul class="org-ul">
@@ -299,261 +363,12 @@ or
 It will open the file <code>~/wiki-directory/Linux/LearnLinux.pdf</code> with the
 default system application.
 </p>
-
-
-<p>
-Features:
-</p>
-
-<ul class="org-ul">
-<li>A wiki system for Emacs
-</li>
-
-<li>Command to export all pages to html without block Emacs.
-</li>
-
-<li>Helm interface to search wiki pages.
-</li>
-
-<li>Almost self-contained and with few dependencies.
-</li>
-</ul>
 </div>
 </div>
 
 <div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Repository</h3>
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Demos</h3>
 <div class="outline-text-3" id="text-1-2">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<tbody>
-<tr>
-<td class="left">Repository</td>
-<td class="left"><a href="https://github.com/caiorss/org-wiki">https://github.com/caiorss/org-wiki</a></td>
-</tr>
-
-<tr>
-<td class="left">Html documetnation</td>
-<td class="left"><a href="https://caiorss.github.io/org-wiki/">https://caiorss.github.io/org-wiki/</a></td>
-</tr>
-
-<tr>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Commands</h3>
-<div class="outline-text-3" id="text-1-3">
-<ul class="org-ul">
-<li><code>M-x org-wiki/index</code> - Open the index page. It opens the file
-index.org that is the first default page of the wiki. If the file
-doesn't exist it will be created.
-</li>
-</ul>
-
-
-<ul class="org-ul">
-<li><code>M-x org-wiki/index-frame</code> - Open the wiki index page in a new frame.
-</li>
-</ul>
-
-
-<ul class="org-ul">
-<li><code>M-x org-wiki/helm</code> - Open a helm interface to search the wiki
-page.
-</li>
-</ul>
-
-
-<ul class="org-ul">
-<li><code>M-x org-wiki/helm-frame</code> - Open a wiki page in a new frame. 
-</li>
-</ul>
-
-
-<ul class="org-ul">
-<li><code>M-x org-wiki/make-page</code> - Creates a new wiki page asking the user
-for the page name.
-</li>
-</ul>
-
-
-<ul class="org-ul">
-<li><code>M-x org-wiki/helm-assets</code> - Select a wiki page and open its
-assets directory.
-</li>
-</ul>
-
-
-<ul class="org-ul">
-<li><code>M-x org-wiki/dired</code> - Open the wiki directory in Emacs
-dired-mode showing only *.org files.
-</li>
-</ul>
-
-
-<ul class="org-ul">
-<li><code>M-x org-wiki/dired-all</code> - Open the wiki directory in Emacs
-showing all files. 
-</li>
-</ul>
-
-
-<ul class="org-ul">
-<li><code>M-x org-wiki/close</code> - Close all wiki pages.
-</li>
-</ul>
-
-
-<ul class="org-ul">
-<li><code>M-x org-wiki/insert</code> - Inserts a org-mode link at current point
-to a Wiki page selected through a helm-menu.
-</li>
-
-<li><code>M-x org-wiki/search-pattern</code> - Search all wiki page that contains
-a pattern. (string or regex pattern).
-
-<ul class="org-ul">
-<li><code>M-x org-wiki/export-html-async</code> - Exports all wiki pages to html
-asynchronously, it means withoyt block Emacs by starting a new
-Emacs process in background.
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-sec-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Setup</h3>
-<div class="outline-text-3" id="text-1-4">
-<ol class="org-ol">
-<li>Copy the package to the desired location. 
-</li>
-</ol>
-
-
-<div class="org-src-container">
-
-<pre class="src src-sh">mkdir -p ~/.emacs.d/packages/ 
-
-<span class="org-builtin">cd</span> ~/.emacs.d/packages/ 
-
-git clone  https://github.com/caiorss/org-wiki
-
-mkdir -p ~/org/wiki    <span class="org-comment-delimiter"># </span><span class="org-comment">Make wiki location.</span>
-</pre>
-</div>
-
-
-<ol class="org-ol">
-<li>Add to init file ~/.emacs.d/init.el or ~/.emacs 
-</li>
-</ol>
-
-<div class="org-src-container">
-
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'load-path <span class="org-string">"~/.emacs.d/packages/org-wiki"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">require</span> '<span class="org-constant">org-wiki</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>setq org-wiki/location <span class="org-string">"~/org/wiki"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Screenshots</h3>
-<div class="outline-text-3" id="text-1-5">
-<ul class="org-ul">
-<li>1. Command <code>M-x org-wiki/index</code> Open the wiki index page (file index.org) 
-</li>
-</ul>
-
-
-<div class="figure">
-<p><img src="images/org-wiki-index.png" alt="org-wiki-index.png" />
-</p>
-</div>
-
-<ul class="org-ul">
-<li>2. Command <code>M-x org-wiki/helm</code> Open a helm menu to select the wiki
-page to be opened. 
-</li>
-</ul>
-
-
-<div class="figure">
-<p><img src="images/wiki-helm-command.png" alt="wiki-helm-command.png" /> 
-</p>
-</div>
-
-<ul class="org-ul">
-<li>3. <code>M-x org-wiki/ [tab]</code> provides easy completion and
-discoverability to org-wiki commands. 
-</li>
-</ul>
-
-
-<div class="figure">
-<p><img src="images/autocompletion.png" alt="autocompletion.png" /> 
-</p>
-</div>
-
-<ul class="org-ul">
-<li>4. <code>M-x org-wiki/dired</code> Open the org-wiki directory showing only
-the wiki pages (*.org files). 
-</li>
-</ul>
-
-
-<div class="figure">
-<p><img src="images/wiki-dired.png" alt="wiki-dired.png" /> 
-</p>
-</div>
-
-<ul class="org-ul">
-<li>5. <code>M-x org/wiki-dired-all</code> Open the org-wiki directory showing all
-files. 
-</li>
-</ul>
-
-
-<div class="figure">
-<p><img src="images/wiki-dired-all.png" alt="wiki-dired-all.png" /> 
-</p>
-</div>
-
-<ul class="org-ul">
-<li>6. <code>M-x org-wiki/search-pattern</code> Search for all wiki page that contains
-a pattern. (string or regex pattern). 
-</li>
-</ul>
-
-<p>
-Example: The command <code>M-x org-wiki/search-patern - System.Windows</code> will search all
-files that contains "System.Windows string".
-</p>
-
-
-<div class="figure">
-<p><img src="images/wiki-search-pattern.png" alt="wiki-search-pattern.png" />
-</p>
-</div>
-</div>
-</div>
-<div id="outline-container-sec-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Demos</h3>
-<div class="outline-text-3" id="text-1-6">
 <ul class="org-ul">
 <li>(1) Browsing org-wiki 
 </li>
@@ -597,11 +412,352 @@ files that contains "System.Windows string".
 </video>
 </div>
 </div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Screenshots</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>1. Command <code>M-x org-wiki/index</code> Open the wiki index page (file index.org) 
+</li>
+</ul>
+
+
+<div class="figure">
+<p><a href="images/org-wiki-index.png"><img src="images/org-wiki-index.png" alt="org-wiki-index.png" /></a>
+</p>
+</div>
+
+<ul class="org-ul">
+<li>2. Command <code>M-x org-wiki/helm</code> Open a helm menu to select the wiki
+page to be opened. 
+</li>
+</ul>
+
+
+<div class="figure">
+<p><a href="images/wiki-helm-command.png"><img src="images/wiki-helm-command.png" alt="wiki-helm-command.png" /></a>
+</p>
+</div>
+
+<ul class="org-ul">
+<li>3. <code>M-x org-wiki/ [tab]</code> provides easy completion and
+discoverability to org-wiki commands. 
+</li>
+</ul>
+
+
+<div class="figure">
+<p><a href="images/autocompletion.png"><img src="images/autocompletion.png" alt="autocompletion.png" /></a>
+</p>
+</div>
+
+<ul class="org-ul">
+<li>4. <code>M-x org-wiki/dired</code> Open the org-wiki directory showing only
+the wiki pages (*.org files). 
+</li>
+</ul>
+
+
+<div class="figure">
+<p><a href="images/wiki-dired.png"><img src="images/wiki-dired.png" alt="wiki-dired.png" /></a>
+</p>
+</div>
+
+<ul class="org-ul">
+<li>5. <code>M-x org/wiki-dired-all</code> Open the org-wiki directory showing all
+files. 
+</li>
+</ul>
+
+
+<div class="figure">
+<p><a href="images/wiki-dired-all.png"><img src="images/wiki-dired-all.png" alt="wiki-dired-all.png" /></a>
+</p>
+</div>
+
+<ul class="org-ul">
+<li>6. <code>M-x org-wiki/search-pattern</code> Search for all wiki page that contains
+a pattern. (string or regex pattern). 
+</li>
+</ul>
+
+<p>
+Example: The command <code>M-x org-wiki/search-patern - System.Windows</code> will search all
+files that contains "System.Windows string".
+</p>
+
+
+<div class="figure">
+<p><a href="images/wiki-search-pattern.png"><img src="images/wiki-search-pattern.png" alt="wiki-search-pattern.png" /></a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Repository</h3>
+<div class="outline-text-3" id="text-1-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">Repository</td>
+<td class="left"><a href="https://github.com/caiorss/org-wiki">https://github.com/caiorss/org-wiki</a></td>
+</tr>
+
+<tr>
+<td class="left">Html documetnation</td>
+<td class="left"><a href="https://caiorss.github.io/org-wiki/">https://caiorss.github.io/org-wiki/</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Commands</h3>
+<div class="outline-text-3" id="text-1-5">
+</div><div id="outline-container-sec-1-5-1" class="outline-4">
+<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> Open the index page</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<ul class="org-ul">
+<li><code>M-x org-wiki/index</code> - Open the index page. It opens the file
+index.org that is the first default page of the wiki. If the file
+doesn't exist it will be created.
+</li>
+
+<li><code>M-x org-wiki/index-frame</code> - Open the wiki index page in a new frame.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-2" class="outline-4">
+<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> Switch or open a page</h4>
+<div class="outline-text-4" id="text-1-5-2">
+<ul class="org-ul">
+<li><code>M-x org-wiki/helm</code> - Open a helm menu to switch or open a wiki page.
+</li>
+
+<li><code>M-x org-wiki/helm-frame</code> - Open a wiki page in a new frame. 
+</li>
+
+<li><code>M-x org-wiki/make-page</code> - Creates a new wiki page asking the user
+for the page name.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-3" class="outline-4">
+<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> Close all wiki pages</h4>
+<div class="outline-text-4" id="text-1-5-3">
+<ul class="org-ul">
+<li><code>M-x org-wiki/close</code> - Close all wiki pages, kill all *.or buffers
+belonging to wiki directory.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-4" class="outline-4">
+<h4 id="sec-1-5-4"><span class="section-number-4">1.5.4</span> Insertion</h4>
+<div class="outline-text-4" id="text-1-5-4">
+<p>
+Set of commands to insert reference to attachment or page. 
+</p>
+
+<ul class="org-ul">
+<li><code>M-x org-wiki/insert</code> - Inserts a org-mode link at current point
+to a Wiki page selected through a helm-menu.
+</li>
+
+<li><code>M-x org-wiki/asset-insert</code> - Insert a asset file at point
+providing a heml menu to select the file. It inserts a link of
+format <code>wiki-asset-sys:CurrentPage;AssetFilename.pdf</code>.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-5" class="outline-4">
+<h4 id="sec-1-5-5"><span class="section-number-4">1.5.5</span> Asset files / Attachments</h4>
+<div class="outline-text-4" id="text-1-5-5">
+<ul class="org-ul">
+<li><code>M-x org-wiki/assets-helm</code> - Select a wiki page and open its
+assets directory. 
+</li>
+
+<li><code>M-x org-wiki/asset-insert</code> - Insert link to asset file of current
+page at current cursor position.
+</li>
+
+<li><code>M-x org-wiki/assets-open</code> - Open asset directory of current page
+with system's default file manager. 
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-6" class="outline-4">
+<h4 id="sec-1-5-6"><span class="section-number-4">1.5.6</span> Commands to open wiki directory</h4>
+<div class="outline-text-4" id="text-1-5-6">
+<ul class="org-ul">
+<li><code>M-x org-wiki/dired</code> - Open the wiki directory in Emacs
+dired-mode showing only *.org files.
+</li>
+</ul>
+
+
+<ul class="org-ul">
+<li><code>M-x org-wiki/dired-all</code> - Open the wiki directory in Emacs
+showing all files. 
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-7" class="outline-4">
+<h4 id="sec-1-5-7"><span class="section-number-4">1.5.7</span> Commands to search</h4>
+<div class="outline-text-4" id="text-1-5-7">
+<ul class="org-ul">
+<li><code>M-x org-wiki/search-pattern</code> - Search all wiki page that contains
+a pattern. (string or regex pattern).
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-8" class="outline-4">
+<h4 id="sec-1-5-8"><span class="section-number-4">1.5.8</span> Command to export all pages to html</h4>
+<div class="outline-text-4" id="text-1-5-8">
+<ul class="org-ul">
+<li><code>M-x org-wiki/export-html-async</code> - Exports all wiki pages to html
+asynchronously, it means withoyt block Emacs by starting a new
+Emacs process in background.
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Setup</h3>
+<div class="outline-text-3" id="text-1-6">
+<ol class="org-ol">
+<li>Copy the package to the desired location. 
+</li>
+</ol>
+
+
+<div class="org-src-container">
+
+<pre class="src src-sh">mkdir -p ~/.emacs.d/packages/ 
+
+<span class="org-builtin">cd</span> ~/.emacs.d/packages/ 
+
+git clone  https://github.com/caiorss/org-wiki
+
+mkdir -p ~/org/wiki    <span class="org-comment-delimiter"># </span><span class="org-comment">Make wiki location.</span>
+</pre>
+</div>
+
+
+<ol class="org-ol">
+<li>Add to init file ~/.emacs.d/init.el or ~/.emacs 
+</li>
+</ol>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'load-path <span class="org-string">"~/.emacs.d/packages/org-wiki"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">require</span> '<span class="org-constant">org-wiki</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>setq org-wiki/location <span class="org-string">"~/org/wiki"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7" class="outline-3">
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Suggestions</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+You might want shortcuts for frequent commands: 
+</p>
+
+<ul class="org-ul">
+<li>Command to switch or open a wiki page quickly. <code>M-x w-h</code>
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-h</span> #'org-wiki/helm<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Go to the index page 
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-i</span> #'org-wiki/index<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Insert a link to a wiki page at point. It provides helm
+completion. <code>M-x w-in</code>
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-in</span> #'org-wiki/index<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Open the current wiki page assets directory: <code>M-x ad</code>
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-ad</span> #'org-wiki/asset-dired<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Export current wiki page to html or any org-mode file. <code>M-x og2h</code>
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">og2h</span> #'org-html-export-to-html<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Caio Rodrigues</p>
-<p class="date">Created: 2016-09-14 Wed 00:45</p>
+<p class="date">Created: 2016-09-16 Fri 01:06</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
