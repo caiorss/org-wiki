@@ -1,22 +1,23 @@
+;;; org-wiki.el --- Org-mode desktop wiki   
+
+;; Copyright (C) 2016 Caio Rodrigues 
 ;;
-;; Org-mode Wiki 
+;; Author: Caio Rodrigues       <caiorss DOT rodrigues AT gmail DOT com>
+;; Maintainer: Caio Rordrigues  <caiorss DOT rodrigues AT gmail DOT com>
+;; Version: 0.1
+;; URL: https://www.github.com/caiorss/org-wiki 
+;; Package-Requisites: ((helm) (org-mode) (cl))
+
+;; Keywords: wiki, org-mode, links 
+;; Homepage: https://www.github.com/caiorss/org-wiki 
+
+;;; Commentary:
 ;;
-;;    - Author:      Caio Rodrigues 
-;;    - Repository:  https://caiorss.github.io/org-wiki/  
+;; Org-wiki is a org-mode extension that provides tools to manage and
+;; build a desktop wiki where each wiki page is a org-mode file.
 ;;
-;;  
-;; Dependencies:
-;; -------------------------------------------
 ;;
-;;   Emacs packages:
-;;
-;;       - helm 
-;;
-;;   External applications:
-;;
-;;       - xclip  - Necessary to paste images to Emacs
-;;
-;;=========================================================== 
+;;; Code:
 
 (require 'cl)
 (require 'ox-html)
@@ -707,3 +708,4 @@
 
 
 (provide 'org-wiki)
+;;; org-wiki.el ends here
