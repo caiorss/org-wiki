@@ -266,10 +266,10 @@ You might want shortcuts for frequent commands:
    completion. =M-x w-in=
 
 #+BEGIN_SRC elisp 
-(defalias 'w-in #'org-wiki/index)
+(defalias 'w-in #'org-wiki/insert)
 #+END_SRC
 
- - Open the current wiki page assets directory: =M-x ad=
+ - Open the current wiki page assets directory: =M-x w-ad=
 
 #+BEGIN_SRC elisp
 (defalias 'w-ad #'org-wiki/asset-dired)
@@ -281,3 +281,5 @@ You might want shortcuts for frequent commands:
 (defalias 'og2h #'org-html-export-to-html)
 #+END_SRC
  
+
+
