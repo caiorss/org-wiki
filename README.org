@@ -79,42 +79,29 @@ default system application.
 
 ** Demos 
 
- - (1) Browsing org-wiki 
+ - (1) Browsing Index: M-x org-wiki/index
+
+[[file:images/org-wiki-index.gif][file:images/org-wiki-index.gif]]
+
+
+ - (2) M-x org-wiki/helm - Select a wiki page by name. 
+
+[[file:images/org-wiki-helm.gif][file:images/org-wiki-helm.gif]]
+
+ - (3) M-x org-wiki/insert  Insert a link to wiki page at cursor position.
+
+[[file:images/org-wiki-insert.gif][file:images/org-wiki-insert.gif]]
+
+
+ - (4) - M-x org-wiki/asset-insert Insert a link to a asset file that
+   when clicked opens it with default system application.
+
+See video: [[http://i.imgur.com/KqqC7sY.mp4][M-x org-wiki/asset-insert]]
 
 #+BEGIN_HTML
-<video src="https://zippy.gfycat.com/LimitedValuableJellyfish.webm" controls>
+<video src="http://i.imgur.com/KqqC7sY.mp4" controls>
 </video>
-#+END_HTML
-
-
- - (2) Wiki directory. M-x wiki-dired 
-
-#+BEGIN_HTML
-<video src="https://zippy.gfycat.com/SentimentalSlightAlpineroadguidetigerbeetle.webm" controls>
-</video>
-#+END_HTML
-
-
- - (3) M-x org-wiki/helm - Select a wiki page by name. 
-
-#+BEGIN_HTML
-<video src="https://zippy.gfycat.com/ImpracticalAnimatedEnglishsetter.webm" controls>
-</video>
-#+END_HTML
-
- - (4) M-x org-wki/search-pattern 
-
-#+BEGIN_HTML
-<video src="https://zippy.gfycat.com/MeatyBitterBonobo.webm" controls>
-</video>
-#+END_HTML
-
- - (5) M-x org-wiki/insert  Insert a wiki page link at point. 
-
-#+BEGIN_HTML
-<video src="https://zippy.gfycat.com/DistantGeneralIndianglassfish.webm" controls>
-</video>
-#+END_HTML
+#+END_HTML 
 
 ** Screenshots 
 
@@ -212,7 +199,7 @@ Set of commands to insert reference to attachment or page.
 
 *** Commands to search
 
- - =M-x org-wiki/search-pattern= - Search all wiki page that contains
+ - =M-x org-wiki/search= - Search all wiki page that contains
    a pattern. (string or regex pattern).
 
 *** Command to export all pages to html
