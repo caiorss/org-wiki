@@ -46,7 +46,8 @@
 (setq org-wiki/index-file-basename "Index")
 
 ;; ------- Internal functions ------------ ;; 
-
+;; @SECTION: Internal functions
+;;
 (defun org-wiki/concat-path (base relpath)
   
   "Concat directory path and a relative path"
@@ -434,6 +435,10 @@
 ;; @SECTION: User commands 
 
 
+(defun org-wiki/commands ()
+  "Show org-wiki commands"
+  (interactive)
+  (command-apropos "org-wiki/"))
 
 (defun org-wiki/index ()
   "Open the index page: <org-wiki/location>/index.org. 
@@ -524,7 +529,22 @@
   (org-wiki/assets-make-dir pagename)
   (directory-files (org-wiki/assets-get-dir pagename)))
 
+
 (defun org-wiki/asset-helm-selection (pagename callback)
+  "Higher order function to deal with page assets. 
+   
+  org-wiki/asset-helm-selection (pagename callback)
+
+  This function opens a helm menu to select a wiki page and then 
+  passes the result of selection to a callback function that takes
+  a asset file as argument. 
+  
+  Example: If the user selects the file freebsdref1.pdf it inserts the 
+           file name at current point.
+
+  > (org-wiki/asset-helm-selection \"Linux\" (lambda (file) (insert file))) 
+    freebsdref1.pdf  
+  "
   (helm :sources `((
                       (name . "Wiki Pages")
 
@@ -537,6 +557,7 @@
 (defun org-wiki/asset-insert ()
   "Insert link to asset file of current page at current point."
   (interactive)
+  
   (org-wiki/asset-helm-selection
 
    (file-name-base (buffer-file-name))
@@ -679,7 +700,7 @@
 (defun org-wiki/search ()
   "Search all wiki pages that contains a pattern (regexp or name)"
   (interactive)
-  (rgrep (read-string "Search for: ")
+  (rgrep (read-string "org-wiki - Search for: ")
          "*.org"
          org-wiki/location
          nil
