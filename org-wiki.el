@@ -351,15 +351,21 @@
                             "proc"
                             nil
                             ;; Command
-                            "open" (expand-file-name filename)))
+                            "open" (concat  (expand-file-name filename))))
     
-    (windows-nt        (start-process
+    (windows-nt
+
+     (start-process
                             "proc"
                             nil
                             ;; Command
-                            "cmd"  "/c"  "start" (expand-file-name filename)))    
-
-    ))
+                            "cmd"  "/C"  "start" "" (expand-file-name filename)
+		     	    )
+     
+       ))) ;; End of org-wiki/xdg-open 
+		     
+       
+    
 
 
 
@@ -588,11 +594,11 @@
                         (file-name-directory (buffer-file-name b)))
                 )
 
-
+	      
 	      (with-current-buffer b
-		(save-buffer)
+		(save-buffer)		
 		(kill-this-buffer)
-		)
+		) 
 
               ))
 
