@@ -318,8 +318,13 @@
   )
 
 (defun org-wiki/open-page (pagename)
+  "Opens a org-wiki page by name.
+    
+   Example:  (org-wiki/open-page \"Linux\")
+   Will open the the wiki file Linux.org in 
+   org-wiki/location
+   "
   (find-file  (org-wiki/page->file pagename)))
-
 
 
 (defun org-wiki/assets-get-file (pagename filename)
@@ -554,6 +559,23 @@
 
   (org-wiki/helm-selection #'org-wiki/open-page))
 
+(defun org-wiki/helm ()
+  " Browser the wiki files using helm.
+
+  Usage: M-x org-wiki/helm 
+  "
+  (interactive)
+
+  (org-wiki/helm-selection #'org-wiki/open-page))
+
+(defun org-wiki/helm-read-only ()
+  " Open wiki page in read-only mode."
+  (interactive)
+  (org-wiki/helm-selection (lambda (pagename)
+                             (find-file-read-only
+                              (org-wiki/page->file pagename)                              
+                              ))))
+
 
 (defun org-wiki/helm-frame ()
   " Browser the wiki files using helm and opens it in a new frame 
@@ -600,13 +622,13 @@
                        (org-wiki/path-equal
                         org-wiki/location
                         (file-name-directory (buffer-file-name b)))
-                )
+                       )
 
 	      
-	      (with-current-buffer b
-		(save-buffer)		
-		(kill-this-buffer)
-		) 
+              (with-current-buffer b
+                (save-buffer)		
+                (kill-this-buffer)
+                ) 
 
               ))
 
@@ -614,6 +636,8 @@
           (buffer-list))
   
   (message "All wiki files closed. Ok."))
+  ;;
+  ;; End of org-wiki/close 
 
 
 
