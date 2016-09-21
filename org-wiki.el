@@ -588,8 +588,11 @@
                         (file-name-directory (buffer-file-name b)))
                 )
 
-                (save-buffer b)
-                (kill-buffer b)
+
+	      (with-current-buffer b
+		(save-buffer)
+		(kill-this-buffer)
+		)
 
               ))
 
