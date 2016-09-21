@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>org-wiki</title>
-<!-- 2016-09-19 Mon 09:56 -->
+<!-- 2016-09-21 Wed 03:46 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Caio Rodrigues" />
@@ -334,9 +334,9 @@ Example:
 
 <pre class="src src-org">    <span class="org-org-link"><a href="wiki:Linux">wiki:Linux</a></span> 
 or 
-    <span class="org-org-link"><a href="wiki:Linux">wiki:Linux</a></span>
+    <span class="org-org-link"><a href="wiki:Linux">[[</a><a href="wiki:Linux">wiki:Linux</a><a href="wiki:Linux">]]</a></span>
 or
-    <span class="org-org-link"><a href="wiki:Linux">Linux</a></span>
+    <span class="org-org-link"><a href="wiki:Linux">[[wiki:Linux][</a><a href="wiki:Linux">Linux</a><a href="wiki:Linux">]]</a></span>
 </pre>
 </div>
 
@@ -353,9 +353,9 @@ Example:
 
 <pre class="src src-org">     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">wiki-asset-sys:Linux;LearnLinux.pdf</a></span>
 or 
-     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">wiki-asset-sys:Linux;LearnLinux.pdf</a></span>
+     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">[[</a><a href="wiki-asset-sys:Linux;LearnLinux.pdf">wiki-asset-sys:Linux;LearnLinux.pdf</a><a href="wiki-asset-sys:Linux;LearnLinux.pdf">]]</a></span>
 or
-     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">Book Learn Linux.pdf</a></span>
+     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">[[wiki-asset-sys:Linux;LearnLinux.pdf][</a><a href="wiki-asset-sys:Linux;LearnLinux.pdf">Book Learn Linux.pdf</a><a href="wiki-asset-sys:Linux;LearnLinux.pdf">]]</a></span>
 </pre>
 </div>
 
@@ -370,45 +370,51 @@ default system application.
 <h3 id="sec-1-2"><span class="section-number-3">1.2</span> Demos</h3>
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
-<li>(1) Browsing org-wiki 
+<li>(1) Browsing Index: M-x org-wiki/index
 </li>
 </ul>
 
-<video src="https://zippy.gfycat.com/LimitedValuableJellyfish.webm" controls>
-</video>
+
+<div class="figure">
+<p><a href="images/org-wiki-index.gif"><img src="images/org-wiki-index.gif" alt="org-wiki-index.gif" /></a>
+</p>
+</div>
 
 
 <ul class="org-ul">
-<li>(2) Wiki directory. M-x wiki-dired 
+<li>(2) M-x org-wiki/helm - Select a wiki page by name. 
 </li>
 </ul>
 
-<video src="https://zippy.gfycat.com/SentimentalSlightAlpineroadguidetigerbeetle.webm" controls>
-</video>
+
+<div class="figure">
+<p><a href="images/org-wiki-helm.gif"><img src="images/org-wiki-helm.gif" alt="org-wiki-helm.gif" /></a>
+</p>
+</div>
+
+<ul class="org-ul">
+<li>(3) M-x org-wiki/insert  Insert a link to wiki page at cursor position.
+</li>
+</ul>
+
+
+<div class="figure">
+<p><a href="images/org-wiki-insert.gif"><img src="images/org-wiki-insert.gif" alt="org-wiki-insert.gif" /></a>
+</p>
+</div>
 
 
 <ul class="org-ul">
-<li>(3) M-x org-wiki/helm - Select a wiki page by name. 
+<li>(4) - M-x org-wiki/asset-insert Insert a link to a asset file that
+when clicked opens it with default system application.
 </li>
 </ul>
 
-<video src="https://zippy.gfycat.com/ImpracticalAnimatedEnglishsetter.webm" controls>
-</video>
+<p>
+See video: <a href="http://i.imgur.com/KqqC7sY.mp4">M-x org-wiki/asset-insert</a>
+</p>
 
-<ul class="org-ul">
-<li>(4) M-x org-wki/search-pattern 
-</li>
-</ul>
-
-<video src="https://zippy.gfycat.com/MeatyBitterBonobo.webm" controls>
-</video>
-
-<ul class="org-ul">
-<li>(5) M-x org-wiki/insert  Insert a wiki page link at point. 
-</li>
-</ul>
-
-<video src="https://zippy.gfycat.com/DistantGeneralIndianglassfish.webm" controls>
+<video src="http://i.imgur.com/KqqC7sY.mp4" controls>
 </video>
 </div>
 </div>
@@ -632,7 +638,7 @@ showing all files.
 <h4 id="sec-1-5-7"><span class="section-number-4">1.5.7</span> Commands to search</h4>
 <div class="outline-text-4" id="text-1-5-7">
 <ul class="org-ul">
-<li><code>M-x org-wiki/search-pattern</code> - Search all wiki page that contains
+<li><code>M-x org-wiki/search</code> - Search all wiki page that contains
 a pattern. (string or regex pattern).
 </li>
 </ul>
@@ -757,7 +763,7 @@ completion. <code>M-x w-in</code>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Caio Rodrigues</p>
-<p class="date">Created: 2016-09-19 Mon 09:56</p>
+<p class="date">Created: 2016-09-21 Wed 03:46</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
