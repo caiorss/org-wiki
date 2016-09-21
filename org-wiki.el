@@ -337,29 +337,37 @@
   "
   (cl-case system-type
 
-    (gnu/linux        (let ((process-connection-type  nil))
+    ;;; Linux 
+    (gnu/linux      (let ((process-connection-type  nil))
 
-                       (start-process
+                      (start-process
                           "proc"
                           nil
                                         ;; Command
                           "xdg-open" (expand-file-name filename))))
 
-    ;; Mac OSX - Not tested.
-    ;;
-    (darwing        (start-process
-                            "proc"
-                            nil
-                            ;; Command
-                            "open" (concat  (expand-file-name filename))))
-    
-    (windows-nt
+    ;;; Free BSD OS
+    (gnu/kfreebsd    (let ((process-connection-type  nil))
 
-     (start-process
-                            "proc"
-                            nil
-                            ;; Command
-                            "cmd"  "/C"  "start" "" (expand-file-name filename)
+                      (start-process
+                          "proc"
+                          nil
+                                        ;; Command
+                          "xdg-open" (expand-file-name filename))))
+        
+    ;; Mac OSX - (Not tested )
+    (darwing        (start-process
+                     "proc"
+                     nil
+                     ;; Command
+                     "open" (concat  (expand-file-name filename))))
+
+    ;; Windows 7, 8, 10 - Kernel NT 
+    (windows-nt   (start-process
+                   "proc"
+                   nil
+                   ;; Command
+                   "cmd"  "/C"  "start" "" (expand-file-name filename)
 		     	    )
      
        ))) ;; End of org-wiki/xdg-open 
@@ -618,8 +626,6 @@
   "
   (interactive)
   (org-wiki/helm-selection  (lambda (page) (insert (org-wiki/make-link page)))))
-
-
 
 
 (defun org-wiki/html-page ()
