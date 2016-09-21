@@ -158,6 +158,9 @@ files that contains "System.Windows string".
   
   - =M-x org-wiki/helm-frame= - Open a wiki page in a new frame. 
 
+  - =M-x org-wiki/helm-read-only= - Open a wiki page in read-only
+    mode. 
+
   - =M-x org-wiki/make-page= - Creates a new wiki page asking the user
     for the page name.
 
@@ -208,6 +211,10 @@ Set of commands to insert reference to attachment or page.
    asynchronously, it means withoyt block Emacs by starting a new
    Emacs process in background.
 
+*** Help 
+
+ - =M-x org-wiki/commands= Show all package commands and its description.
+ 
 ** Setup 
 
 1. Copy the package to the desired location. 
