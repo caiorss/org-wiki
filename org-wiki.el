@@ -637,7 +637,7 @@
   )
 
 
-(defun org-wiki/search-pattern ()
+(defun org-wiki/search ()
   "Search all wiki pages that contains a pattern (regexp or name)"
   (interactive)
   (rgrep (read-string "Search for: ")
