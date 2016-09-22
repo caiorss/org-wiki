@@ -575,6 +575,31 @@
                      )))
    ))
 
+(defun org-wiki/asset-insert-file ()
+  "Insert link file:<page>/<file> to asset file of current page at point using Helm.
+
+  Insert an asset file of current page at point providing a Helm completion.
+
+  Example: Linux/LinuxManual.pdf
+
+  "
+  (interactive)
+
+  (let ((pagename (file-name-base (buffer-file-name))))
+
+   (org-wiki/asset-helm-selection
+
+    pagename
+
+    (lambda (file)
+      (insert (format "file:%s/%s"
+                      pagename
+                      file
+                      )))
+    )))
+
+
+
 
 (defun org-wiki/helm ()
   " Browser the wiki files using helm.
