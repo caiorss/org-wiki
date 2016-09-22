@@ -185,11 +185,31 @@ Set of commands to insert reference to attachment or page.
   - =M-x org-wiki/assets-helm= - Select a wiki page and open its
     assets directory. 
 
-  - =M-x org-wiki/asset-insert= - Insert link to asset file of current
-    page at current cursor position.
- 
   - =M-x org-wiki/assets-open= - Open asset directory of current page
     with system's default file manager. 
+
+  - =M-x org-wiki/asset-insert= - Insert a link to asset file of current
+    page at current cursor position. This link when clicked opens with
+    default system application. 
+
+Example: Inserts a a link such as the code below. User is in the page
+Linux and with this command selects in the Helm menu the file
+Manual.pdf.
+
+#+BEGIN_SRC 
+[[wiki-asset-sys:Linux;Manual.pdf][Manual.pdf]]
+#+END_SRC
+
+  - =M-x org-wiki/asset-insert-file= - Insert a link to asset file of
+    current page at current cursor position. This is an ordinary
+    org-mode link.
+
+Example: Inserts a link such as:
+
+#+BEGIN_SRC 
+file:Linux/Manual.pdf 
+#+END_SRC
+
 
 *** Commands to open wiki directory
 
