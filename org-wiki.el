@@ -41,9 +41,7 @@
   :group 'org-wiki 
   )
 
-
-
-(setq org-wiki/index-file-basename "Index")
+(setq org-wiki/index-file-basename "index")
 
 ;; ------- Internal functions ------------ ;; 
 ;; @SECTION: Internal functions
