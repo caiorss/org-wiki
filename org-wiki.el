@@ -553,7 +553,14 @@
 
 
 (defun org-wiki/asset-insert ()
-  "Insert link to asset file of current page at current point."
+  "Insert link wiki-asset-sys:<page>;<file> to an asset file of current page at point using Helm.
+
+   This command provides a Helm completion interface.
+
+   It inserts a link of type wiki-asset-sys:<Wiki-page>;<Asset-File>
+
+   Example:  [[wiki-asset-sys:Linux;LinuxManual.pdf]]
+   "
   (interactive)
   
   (org-wiki/asset-helm-selection
