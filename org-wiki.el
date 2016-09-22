@@ -759,7 +759,10 @@
                   "--kill")
    (lambda (p e)
      (when (= 0 (process-exit-status p))
-       (message "Wiki exported to html Ok."))))
+
+       (message "Wiki exported to html Ok.")
+       (message-box "Wiki export to html Ok.")
+       )))
     ;; End of set-process-sentinel
 
   (message "Exporting wiki to html"))
