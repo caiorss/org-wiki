@@ -7,7 +7,7 @@
 ;; Keywords: org-mode, wiki, notes, notebook
 ;; Version: 1.0
 ;; URL: https://www.github.com/caiorss/org-wiki 
-;; Package-Requisites: ((helm) (org-mode) (cl))
+;; Package-Requires: ((helm "2.0") (org "8") (cl-lib "0.5"))
 
 ;;; Commentary:
 
@@ -17,12 +17,9 @@
 
 ;;; Code:
 
-
-(require 'cl)
 (require 'ox-html)
 (require 'helm)
-
-; (require 'cl-lib)
+(require 'cl-lib)
 
 ;; Defines where the Wiki files is located
 ;;
@@ -165,7 +162,7 @@
 
   "
 
-  (remove-if-not
+  (cl-remove-if-not
    
    (lambda (s)
 
