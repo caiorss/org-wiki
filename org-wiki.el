@@ -135,8 +135,7 @@
   
   "Returns a list containing all pages files *.org 
   "
-  
-  (directory-list org-wiki/location))
+  (directory-files org-wiki/location))
 
 
 (defun org-wiki/page->html-file (pagename)
