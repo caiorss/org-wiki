@@ -364,7 +364,7 @@
 ;; @SECTION: User commands 
 
 
-(defun org-wiki-commands ()
+(defun org-wiki-help ()
   "Show org-wiki commands"
   (interactive)
   (command-apropos "org-wiki-"))
