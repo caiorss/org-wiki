@@ -105,31 +105,31 @@ See video: [[http://i.imgur.com/KqqC7sY.mp4][M-x org-wiki/asset-insert]]
 
 ** Screenshots 
 
- - 1. Command =M-x org-wiki/index= Open the wiki index page (file index.org) 
+ - 1. Command =M-x org-wiki-index= Open the wiki index page (file index.org) 
 
 [[file:images/org-wiki-index.png][file:images/org-wiki-index.png]]
 
- - 2. Command =M-x org-wiki/helm= Open a helm menu to select the wiki
+ - 2. Command =M-x org-wiki-helm= Open a helm menu to select the wiki
    page to be opened. 
 
 [[file:images/wiki-helm-command.png][file:images/wiki-helm-command.png]]
 
- - 3. =M-x org-wiki/ [tab]= provides easy completion and
+ - 3. =M-x org-wiki- [tab]= provides easy completion and
    discoverability to org-wiki commands. 
 
 [[file:images/autocompletion.png][file:images/autocompletion.png]]
 
- - 4. =M-x org-wiki/dired= Open the org-wiki directory showing only
+ - 4. =M-x org-wiki-dired= Open the org-wiki directory showing only
    the wiki pages (*.org files). 
 
 [[file:images/wiki-dired.png][file:images/wiki-dired.png]]
 
- - 5. =M-x org/wiki-dired-all= Open the org-wiki directory showing all
+ - 5. =M-x org-wiki-dired-all= Open the org-wiki directory showing all
    files. 
 
 [[file:images/wiki-dired-all.png][file:images/wiki-dired-all.png]]
 
- - 6. =M-x org-wiki/search-pattern= Search for all wiki page that contains
+ - 6. =M-x org-wiki-search-pattern= Search for all wiki page that contains
    a pattern. (string or regex pattern). 
 
 Example: The command =M-x org-wiki/search-patern - System.Windows= will search all
@@ -137,58 +137,52 @@ files that contains "System.Windows string".
 
 [[file:images/wiki-search-pattern.png][file:images/wiki-search-pattern.png]]
 
-** Repository
-
-| Repository         | https://github.com/caiorss/org-wiki |
-| Html documetnation | https://caiorss.github.io/org-wiki/ |
-|                    |                                     |
-
 ** Commands
 *** Open the index page
 
-  - =M-x org-wiki/index= - Open the index page. It opens the file
+  - =M-x org-wiki-index= - Open the index page. It opens the file
     index.org that is the first default page of the wiki. If the file
     doesn't exist it will be created.
 
-  - =M-x org-wiki/index-frame= - Open the wiki index page in a new frame.
+  - =M-x org-wiki-index-frame= - Open the wiki index page in a new frame.
 
 *** Switch or open a page
 
-  - =M-x org-wiki/helm= - Open a helm menu to switch or open a wiki page.
+  - =M-x org-wiki-helm= - Open a helm menu to switch or open a wiki page.
   
-  - =M-x org-wiki/helm-frame= - Open a wiki page in a new frame. 
+  - =M-x org-wiki-helm-frame= - Open a wiki page in a new frame. 
 
-  - =M-x org-wiki/helm-read-only= - Open a wiki page in read-only
+  - =M-x org-wiki-helm-read-only= - Open a wiki page in read-only
     mode. 
 
-  - =M-x org-wiki/make-page= - Creates a new wiki page asking the user
+  - =M-x org-wiki-make-page= - Creates a new wiki page asking the user
     for the page name.
 
 *** Close all wiki pages 
 
-  - =M-x org-wiki/close= - Close all wiki pages, kill all *.or buffers
+  - =M-x org-wiki-close= - Close all wiki pages, kill all *.or buffers
     belonging to wiki directory.
 
 *** Insertion
 
 Set of commands to insert reference to attachment or page. 
 
-  - =M-x org-wiki/insert= - Inserts a org-mode link at current point
+  - =M-x org-wiki-insert= - Inserts a org-mode link at current point
     to a Wiki page selected through a helm-menu.
 
-  - =M-x org-wiki/asset-insert= - Insert a asset file at point
+  - =M-x org-wiki-asset-insert= - Insert a asset file at point
     providing a heml menu to select the file. It inserts a link of
     format ~wiki-asset-sys:CurrentPage;AssetFilename.pdf~.
 
 *** Asset files / Attachments
 
-  - =M-x org-wiki/assets-helm= - Select a wiki page and open its
+  - =M-x org-wiki-assets-helm= - Select a wiki page and open its
     assets directory. 
 
-  - =M-x org-wiki/assets-open= - Open asset directory of current page
+  - =M-x org-wiki-assets-open= - Open asset directory of current page
     with system's default file manager. 
 
-  - =M-x org-wiki/asset-insert= - Insert a link to asset file of current
+  - =M-x org-wiki-asset-insert= - Insert a link to asset file of current
     page at current cursor position. This link when clicked opens with
     default system application. 
 
@@ -200,7 +194,7 @@ Manual.pdf.
 [[wiki-asset-sys:Linux;Manual.pdf][Manual.pdf]]
 #+END_SRC
 
-  - =M-x org-wiki/asset-insert-file= - Insert a link to asset file of
+  - =M-x org-wiki-asset-insert-file= - Insert a link to asset file of
     current page at current cursor position. This is an ordinary
     org-mode link.
 
@@ -209,32 +203,29 @@ Example: Inserts a link such as:
 #+BEGIN_SRC 
 file:Linux/Manual.pdf 
 #+END_SRC
-
-
 *** Commands to open wiki directory
 
-  - =M-x org-wiki/dired= - Open the wiki directory in Emacs
+  - =M-x org-wiki-dired= - Open the wiki directory in Emacs
     dired-mode showing only *.org files.
 
 
-  - =M-x org-wiki/dired-all= - Open the wiki directory in Emacs
+  - =M-x org-wiki-dired-all= - Open the wiki directory in Emacs
     showing all files. 
 
 *** Commands to search
 
- - =M-x org-wiki/search= - Search all wiki page that contains
+ - =M-x org-wiki-search= - Search all wiki page that contains
    a pattern. (string or regex pattern).
 
 *** Command to export all pages to html
 
- - =M-x org-wiki/export-html-async= - Exports all wiki pages to html
+ - =M-x org-wiki-export-html-async= - Exports all wiki pages to html
    asynchronously, it means withoyt block Emacs by starting a new
    Emacs process in background.
 
 *** Help 
 
- - =M-x org-wiki/commands= Show all package commands and its description.
- 
+ - =M-x org-wiki-help= Show all package commands and its description. 
 ** Setup 
 
 1. Copy the package to the desired location. 
@@ -294,6 +285,12 @@ You might want shortcuts for frequent commands:
 #+BEGIN_SRC elisp 
 (defalias 'og2h #'org-html-export-to-html)
 #+END_SRC
+
+** Repository
+
+| Repository         | https://github.com/caiorss/org-wiki |
+| Html documetnation | https://caiorss.github.io/org-wiki/ |
+|                    |                                     |
  
 
 
