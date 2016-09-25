@@ -258,26 +258,26 @@ You might want shortcuts for frequent commands:
  - Command to switch or open a wiki page quickly. =M-x w-h=
 
 #+BEGIN_SRC elisp 
-(defalias 'w-h #'org-wiki/helm)
+(defalias 'w-h #'org-wiki-helm)
 #+END_SRC
 
  - Go to the index page 
 
 #+BEGIN_SRC elisp 
-(defalias 'w-i #'org-wiki/index)
+(defalias 'w-i #'org-wiki-index)
 #+END_SRC
 
  - Insert a link to a wiki page at point. It provides helm
    completion. =M-x w-in=
 
 #+BEGIN_SRC elisp 
-(defalias 'w-in #'org-wiki/insert)
+(defalias 'w-in #'org-wiki-insert)
 #+END_SRC
 
  - Open the current wiki page assets directory: =M-x w-ad=
 
 #+BEGIN_SRC elisp
-(defalias 'w-ad #'org-wiki/asset-dired)
+(defalias 'w-ad #'org-wiki-asset-dired)
 #+END_SRC
 
  - Export current wiki page to html or any org-mode file. =M-x og2h=
