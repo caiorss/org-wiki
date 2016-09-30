@@ -18,7 +18,7 @@
 ;;; Code:
 
 (require 'ox-html)
-(require 'helm)
+(require 'helm-core)
 (require 'cl-lib)
 
 ;; Defines where the Wiki files is located
