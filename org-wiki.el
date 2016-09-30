@@ -6,7 +6,7 @@
 ;; Maintainer: Caio Rordrigues  <caiorss DOT rodrigues AT gmail DOT com>
 ;; Keywords: org-mode, wiki, notes, notebook
 ;; Version: 2.0
-;; URL: https://www.github.com/caiorss/org-wiki
+;; URL: https://www.github.com/caiorss/org-wiki'
 ;; Package-Requires: ((helm "2.0") (org "8") (cl-lib "0.5"))
 
 ;;; Commentary:
@@ -20,8 +20,6 @@
 (require 'helm)
 (require 'cl-lib)
 
-;; Defines where the Wiki files is located
-;;
 
 (defgroup org-wiki nil
   "Org-wiki Settings"
@@ -38,7 +36,7 @@ Default value ~/org/wiki."
 (setq org-wiki-index-file-basename "index")
 
 ;; ------- Internal functions ------------ ;;
-;; @SECTION: Internal functions
+;; @SECTION: Internal functionsq
 ;;
 (defun org-wiki--concat-path (base relpath)
   "Concat directory path (BASE) and a relative path (RELPATH)."
@@ -161,11 +159,12 @@ Example: '(\"Linux\" \"BSD\" \"Bash\"  \"Binary_Files\")"
 
 
 ;; @REVIEW: Function for future use.
-(defun org-wiki--get-page (wikipage)
-  (org-wiki--concat-path org-wiki-location
-                    (replace-regexp-in-string "\s" "_"
-                    (replace-regexp-in-string "%20" "_"
-                     (concat wikipage ".org")))))
+;;
+;; (defun org-wiki--get-page (wikipage)
+;;   (org-wiki--concat-path org-wiki-location
+;;                     (replace-regexp-in-string "\s" "_"
+;;                     (replace-regexp-in-string "%20" "_"
+;;                      (concat wikipage ".org")))))
 
 
 (defun org-wiki--assets-get-dir (pagename)
@@ -292,7 +291,9 @@ Parameters:
 
 
 (defun org-wiki--protocol-open-assets-with-sys (link)
-  "Org-mode protocol handler to open an asset with default system app."
+  "Org-mode protocol handler to open an asset with default system app.
+Example: it will turn a hyperlink LINK of syntax Blueprint;box1.dwg that
+points to the file <org wiki location>/Blueprint/box1.dwg."
 
   (let* ((a     (split-string link ";"))
         (page  (car a))
@@ -410,7 +411,7 @@ Parameters:
 (defun org-wiki--asset-helm-selection (pagename callback)
   "Higher order function to deal with page assets.
 
-org-wiki-asset-helm-selection (pagename callback)
+org-wiki-asset-helm-selection (PAGENAME CALLBACK)
 
 This function opens a helm menu to select a wiki page and then
 passes the result of selection to a callback function that takes
