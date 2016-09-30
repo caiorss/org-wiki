@@ -57,8 +57,7 @@ Example:
       (if (not (member x result))
           (push x result)
         ))
-    (reverse result)
-    ))
+    (reverse result)))
 
 
 (defun org-wiki--normalize-path (path)
@@ -66,13 +65,11 @@ Example:
   (replace-regexp-in-string
    "//"
    "/"
-   (replace-regexp-in-string "/$" "" (expand-file-name path))
-   ))
+   (replace-regexp-in-string "/$" "" (expand-file-name path))))
        
 (defun  org-wiki--path-equal (p1 p2)
   "Test if paths P1 and P2 are equal."
-  (equal (org-wiki--normalize-path p1) (org-wiki--normalize-path p2))
-)
+  (equal (org-wiki--normalize-path p1) (org-wiki--normalize-path p2)))
 
 
 (defun org-wiki--file->page (filename)
@@ -206,8 +203,7 @@ if it doesn't exist yet."
         (org-wiki--assets-make-dir
          (file-name-base (buffer-file-name)))
         )
-    (message "Error: Not in a wiki page.")
-    ))
+    (message "Error: Not in a wiki page.")))
 
 
 ;;=============== Org-mode custom protocol ===============;;
@@ -227,8 +223,8 @@ will be exported to <a href='Linux.html'>Dealing with Linux</a>"
 (defun org-wiki--make-link (pagename)
   "Return a string containing a wiki link [[wiki:PAGENAME][PAGENAME]].
 Example: if PAGENAME is Linux it will return [[wiki:Linux][Linux]]"
-  (format "[[wiki:%s][%s]]" org-wiki--page org-wiki--page)
-  )
+  
+  (format "[[wiki:%s][%s]]" org-wiki--page org-wiki--page))
 
 (defun org-wiki--open-page (pagename)
   "Opens a org-wiki page (PAGENAME) by name.
@@ -338,8 +334,7 @@ Parameters:
             
             (org-add-link-type  "wiki-asset-sys"
                                 #'org-wiki--protocol-open-assets-with-sys
-                                #'org-wiki--asset-link)
-            ))
+                                #'org-wiki--asset-link)))
 
 ;; ================= User Commands ================= ;;;
 ;;  
@@ -356,24 +351,22 @@ Parameters:
 
    The file index.org is created if it doesn't exist."
   (interactive)
-  (org-wiki--open-page org-wiki-index-file-basename)
-
-  )
+  (org-wiki--open-page org-wiki-index-file-basename))
 
 (defun org-wiki-html ()
   "Open the Wiki (Index) in the default web browser."
 
   (interactive)
-  (browse-url (concat "file://" (org-wiki--page->html-file org-wiki-index-file-basename)))
-)
+  (browse-url (concat "file://"
+                      (org-wiki--page->html-file
+                       org-wiki-index-file-basename))))
 
 (defun org-wiki-index-frame ()
   "Open the index page in a new frame."
   (interactive)
   
   (with-selected-frame (make-frame)
-    (org-wiki-index)
-    ))
+    (org-wiki-index)))
 
 
 (defun org-wiki-dired-all ()
@@ -381,16 +374,14 @@ Parameters:
 
   (interactive)
   (dired org-wiki-location)
-  (dired-hide-details-mode)
-  )
+  (dired-hide-details-mode))
 
 (defun org-wiki-dired ()
   "Open the wiki directory showing only the wiki pages."
   
   (interactive)
   (dired (org-wiki--concat-path org-wiki-location "*.org"))
-  (dired-hide-details-mode)
-  )
+  (dired-hide-details-mode))
 
 
 (defun org-wiki-make-page ()
@@ -400,14 +391,10 @@ Parameters:
 
 
 (defun org-wiki--helm-selection (callback)
-  "Open a helm menu to select the wiki page and invokes the CALLBACK function."
-  
-
+  "Open a helm menu to select the wiki page and invokes the CALLBACK function."  
   (helm :sources `((
                       (name . "Wiki Pages")
-
                       (candidates . ,(org-wiki--unique (org-wiki--page-list)))
-
                       (action . ,callback)
                       ))))
 
@@ -416,15 +403,9 @@ Parameters:
   "Open the asset directory of current wiki page."
   (interactive)
   
-  (let (
-        (pagename (file-name-base (buffer-file-name)))
-        )
-
+  (let ((pagename (file-name-base (buffer-file-name))))
     (org-wiki--assets-make-dir pagename)
-
-    (dired (org-wiki--assets-get-dir pagename))
-
-    ))
+    (dired (org-wiki--assets-get-dir pagename))))
 
 (defun org-wiki--asset-page-files (pagename)
   "Get all asset files from a given PAGENAME."
@@ -473,8 +454,7 @@ Example:  [[wiki-asset-sys:Linux;LinuxManual.pdf]]"
                      (file-name-base (buffer-file-name))
                      f
                      (read-string "Description: " f)
-                     )))
-   ))
+                     )))))
 
 (defun org-wiki-asset-insert-file ()
   "Insert link file:<page>/<file> to asset file of current page at point..
@@ -494,8 +474,7 @@ Example:  [[wiki-asset-sys:Linux;LinuxManual.pdf]]"
       (insert (format "file:%s/%s"
                       pagename
                       file
-                      )))
-    )))
+                      ))))))
 
 
 
@@ -523,8 +502,6 @@ Example:  [[wiki-asset-sys:Linux;LinuxManual.pdf]]"
                               (with-selected-frame (make-frame)
                                 (org-wiki--open-page act)
                                 ))))
-
-
 
 
 ;;  @TODO: Implement org-wiki/helm-html
@@ -556,9 +533,7 @@ Example:  [[wiki-asset-sys:Linux;LinuxManual.pdf]]"
               (with-current-buffer b
                 (save-buffer)
                 (kill-this-buffer)
-                )
-
-              ))
+                )))
 
 
           (buffer-list))
@@ -572,7 +547,8 @@ Example:  [[wiki-asset-sys:Linux;LinuxManual.pdf]]"
 (defun org-wiki-insert ()
   "Insert a Wiki Page link at point."
   (interactive)
-  (org-wiki--helm-selection  (lambda (page) (insert (org-wiki--make-link page)))))
+  (org-wiki--helm-selection
+   (lambda (page) (insert (org-wiki--make-link page)))))
 
 
 (defun org-wiki-html-page ()
@@ -582,18 +558,15 @@ Example:  [[wiki-asset-sys:Linux;LinuxManual.pdf]]"
   (let ((html-file   (org-wiki--replace-extension (buffer-file-name) "html")))
 
     (if (not (file-exists-p html-file))
-        (org-html-export-to-html)
-        )
+        (org-html-export-to-html))
 
-  (browse-url html-file)
-  ))
+  (browse-url html-file)))
 
 (defun org-wiki-html-page2 ()
   "Exports the current wiki page to html and opens it in the browser."
   (interactive)
   (org-html-export-to-html)
-  (browse-url (org-wiki--replace-extension (buffer-file-name) "html"))
-  )
+  (browse-url (org-wiki--replace-extension (buffer-file-name) "html")))
 
 
 (defun org-wiki-search ()
@@ -602,8 +575,7 @@ Example:  [[wiki-asset-sys:Linux;LinuxManual.pdf]]"
   (rgrep (read-string "org-wiki - Search for: ")
          "*.org"
          org-wiki-location
-         nil
-         ))
+         nil))
 
 
 (defun org-wiki-open ()
