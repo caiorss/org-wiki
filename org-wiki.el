@@ -281,25 +281,17 @@ This function is operating system independent."
        ))) ;; End of org-wiki/xdg-open
 
 
-(defun org-wiki--assets-open-file-system (pagename filename)
-  "Open an asset file with default system applications.
-
-Parameters:
- - PAGENAME: Page that which the asset file FILENAME belongs.
- - FILENAME: File name located at <wiki path>/PAGENAME/FILENAME"
-  (org-wiki-xdg-open  (org-wiki--assets-get-file pagename filename)))
-
-
 (defun org-wiki--protocol-open-assets-with-sys (link)
   "Org-mode protocol handler to open an asset with default system app.
 Example: it will turn a hyperlink LINK of syntax Blueprint;box1.dwg that
 points to the file <org wiki location>/Blueprint/box1.dwg."
 
   (let* ((a     (split-string link ";"))
-        (page  (car a))
-        (asset (cadr a))
+        (pagename  (car a))
+        (filename  (cadr a))
         )
-    (org-wiki--assets-open-file-system page asset)))
+    (org-wiki-xdg-open
+     (org-wiki--assets-get-file pagename filename))))
 
 
 ;;  @DONE: Implement html exporting to org-wiki asset files
