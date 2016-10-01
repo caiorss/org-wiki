@@ -217,7 +217,7 @@ will be exported to <a href='Linux.html'>Dealing with Linux</a>"
   "Return a string containing a wiki link [[wiki:PAGENAME][PAGENAME]].
 Example: if PAGENAME is Linux it will return [[wiki:Linux][Linux]]"
 
-  (format "[[wiki:%s][%s]]" org-wiki--page org-wiki--page))
+  (format "[[wiki:%s][%s]]" pagename pagename))
 
 (defun org-wiki--open-page (pagename)
   "Opens a org-wiki page (PAGENAME) by name.
