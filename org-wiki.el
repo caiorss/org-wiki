@@ -7,7 +7,7 @@
 ;; Keywords: org-mode, wiki, notes, notebook
 ;; Version: 2.0
 ;; URL: https://www.github.com/caiorss/org-wiki'
-;; Package-Requires: ((helm "2.0") (org "8") (cl-lib "0.5"))
+;; Package-Requires: ((helm-core "2.0") (org "8") (cl-lib "0.5"))
 
 ;;; Commentary:
 
