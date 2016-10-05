@@ -227,8 +227,33 @@ file:Linux/Manual.pdf
 
  - =M-x org-wiki-help= Show all package commands and its description. 
 ** Setup 
+*** Method 1 - Bootstrap installer 
 
-1. Copy the package to the desired location. 
+ - 1. Just evaluate this code in the scratch buffer that will install
+   all dependencies and this package.
+
+#+BEGIN_SRC elisp 
+(let ((url "https://raw.githubusercontent.com/caiorss/org-wiki/master/org-wiki.el"))     
+      (with-current-buffer (url-retrieve-synchronously url)
+	(goto-char (point-min))
+	(re-search-forward "^$")
+	(delete-region (point) (point-min))
+	(kill-whole-line)
+	(package-install-from-buffer)))
+#+END_SRC
+
+ - 2. =M-x make-directory= ~/org/wiki and create the wiki location if it doesn't exist yet.
+
+ - 3. Add this lines to ~/emacs.d/init.el 
+
+#+BEGIN_SRC elisp 
+(require 'org-wiki)
+(setq org-wiki/location "~/org/wiki") ;; Or M-x customize-group org-wiki
+#+END_SRC
+
+*** Method 2 - Manual installation 
+
+ - 1. Copy the package to the desired location. 
 
 
 #+BEGIN_SRC sh 
@@ -242,7 +267,7 @@ mkdir -p ~/org/wiki    # Make wiki location.
 #+END_SRC
 
 
-2. Add to init file ~/.emacs.d/init.el or ~/.emacs 
+ - 2. Add to init file ~/.emacs.d/init.el or ~/.emacs 
 
 #+BEGIN_SRC elisp 
 (add-to-list 'load-path "~/.emacs.d/packages/org-wiki")
@@ -251,6 +276,7 @@ mkdir -p ~/org/wiki    # Make wiki location.
 
 #+END_SRC
 
+*** Method 3 - El-get 
 ** Suggestions
 
 You might want shortcuts for frequent commands: 
