@@ -71,10 +71,8 @@ Example:
 
 (defun org-wiki--file->page (filename)
   "Get a wiki page name from a FILENAME.
-
-  Example:
-
-   ELISP> (file->org-wiki--page  \"Spanish.org\")
+Example:
+ELISP> (file->org-wiki--page  \"Spanish.org\")
    \"Spanish\""
   (file-name-base filename))
 
@@ -134,21 +132,14 @@ ELISP> (remove-if-not #'file->org-wiki/page (org-wiki/page-files))
   (\"Abreviations_Slangs.wiki.org\" \"Android.wiki.org\" \"Bash_Script.wiki.org\")"
 
   (cl-remove-if-not
-
    (lambda (s)
-
-     (let (
-           (b (file-name-base s))
-           )
-
-     (not (or
-           (string-prefix-p ".#" b)
-           (string-suffix-p "~"  b )
-           (string-prefix-p "#" b)
-           (string-suffix-p "#" b)
-
+     (let ((b (file-name-base s)))
+       (not (or
+             (string-prefix-p ".#" b)
+             (string-suffix-p "~"  b )
+             (string-prefix-p "#" b)
+             (string-suffix-p "#" b)
            ))))
-
    (directory-files org-wiki-location abspath ".org")))
 
 
@@ -216,7 +207,6 @@ will be exported to <a href='Linux.html'>Dealing with Linux</a>"
 (defun org-wiki--make-link (pagename)
   "Return a string containing a wiki link [[wiki:PAGENAME][PAGENAME]].
 Example: if PAGENAME is Linux it will return [[wiki:Linux][Linux]]"
-
   (format "[[wiki:%s][%s]]" pagename pagename))
 
 (defun org-wiki--open-page (pagename)
@@ -251,16 +241,15 @@ This function is operating system independent."
                       (start-process
                           "proc"
                           nil
-                                        ;; Command
+                         ;; Command
                           "xdg-open" (expand-file-name filename))))
-
     ;;; Free BSD OS
     (gnu/kfreebsd    (let ((process-connection-type  nil))
 
-                      (start-process
+                       (start-process
                           "proc"
                           nil
-                                        ;; Command
+                           ;; Command
                           "xdg-open" (expand-file-name filename))))
 
     ;; Mac OSX - (Not tested )
@@ -298,13 +287,11 @@ points to the file <org wiki location>/Blueprint/box1.dwg."
 ;;
 (defun org-wiki--asset-link (path desc backend)
   "Creates an html org-wiki pages html exporting."
-
   (let* ((a    (split-string path ";"))
         (page  (car a))
         (asset (cadr a))
         (file-path (concat page "/"  asset))
         )
-
    (cl-case backend
      (html (format
             "<a href='%s'>%s</a>"
@@ -314,68 +301,12 @@ points to the file <org wiki location>/Blueprint/box1.dwg."
 ;;; Custom Protocols
 (add-hook 'org-mode-hook
           (lambda ()
-
             (org-add-link-type  "wiki"
                                 #'org-wiki--open-page
                                 #'org-wiki--org-link )
-
             (org-add-link-type  "wiki-asset-sys"
                                 #'org-wiki--protocol-open-assets-with-sys
                                 #'org-wiki--asset-link)))
-
-;; ================= User Commands ================= ;;;
-;;
-;; @SECTION: User commands
-
-
-(defun org-wiki-help ()
-  "Show org-wiki commands."
-  (interactive)
-  (command-apropos "org-wiki-"))
-
-(defun org-wiki-index ()
-  "Open the index page: <org-wiki-location>/index.org.
-
-   The file index.org is created if it doesn't exist."
-  (interactive)
-  (org-wiki--open-page org-wiki-index-file-basename))
-
-(defun org-wiki-html ()
-  "Open the Wiki (Index) in the default web browser."
-
-  (interactive)
-  (browse-url (concat "file://"
-                      (org-wiki--page->html-file
-                       org-wiki-index-file-basename))))
-
-(defun org-wiki-index-frame ()
-  "Open the index page in a new frame."
-  (interactive)
-
-  (with-selected-frame (make-frame)
-    (org-wiki-index)))
-
-
-(defun org-wiki-dired-all ()
-  "Open the wiki directory in ‘dired-mode’ showing all files."
-
-  (interactive)
-  (dired org-wiki-location)
-  (dired-hide-details-mode))
-
-(defun org-wiki-dired ()
-  "Open the wiki directory showing only the wiki pages."
-
-  (interactive)
-  (dired (org-wiki--concat-path org-wiki-location "*.org"))
-  (dired-hide-details-mode))
-
-
-(defun org-wiki-make-page ()
-  "Create a new wiki page."
-  (interactive)
-  (find-file (org-wiki--page->file (read-string "Page Name: "))))
-
 
 (defun org-wiki--helm-selection (callback)
   "Open a helm menu to select the wiki page and invokes the CALLBACK function."
@@ -385,14 +316,6 @@ points to the file <org wiki location>/Blueprint/box1.dwg."
                       (action . ,callback)
                       ))))
 
-
-(defun org-wiki-asset-dired ()
-  "Open the asset directory of current wiki page."
-  (interactive)
-
-  (let ((pagename (file-name-base (buffer-file-name))))
-    (org-wiki--assets-make-dir pagename)
-    (dired (org-wiki--assets-get-dir pagename))))
 
 (defun org-wiki--asset-page-files (pagename)
   "Get all asset files from a given PAGENAME."
@@ -423,11 +346,63 @@ file name at current point.
                       (action . ,callback)
                       ))))
 
+;; ================= User Commands ================= ;;;
+;;
+;; @SECTION: User commands
 
+(defun org-wiki-help ()
+  "Show org-wiki commands."
+  (interactive)
+  (command-apropos "org-wiki-"))
+
+
+(defun org-wiki-index ()
+  "Open the index page: <org-wiki-location>/index.org.
+
+   The file index.org is created if it doesn't exist."
+  (interactive)
+  (org-wiki--open-page org-wiki-index-file-basename))
+
+
+(defun org-wiki-html ()
+  "Open the Wiki (Index) in the default web browser."
+  (interactive)
+  (browse-url (concat "file://"
+                      (org-wiki--page->html-file
+                       org-wiki-index-file-basename))))
+
+(defun org-wiki-index-frame ()
+  "Open the index page in a new frame."
+  (interactive)
+  (with-selected-frame (make-frame)
+    (org-wiki-index)))
+
+(defun org-wiki-dired-all ()
+  "Open the wiki directory in ‘dired-mode’ showing all files."
+  (interactive)
+  (dired org-wiki-location)
+  (dired-hide-details-mode))
+
+(defun org-wiki-dired ()
+  "Open the wiki directory showing only the wiki pages."
+  (interactive)
+  (dired (org-wiki--concat-path org-wiki-location "*.org"))
+  (dired-hide-details-mode))
+
+(defun org-wiki-make-page ()
+  "Create a new wiki page."
+  (interactive)
+  (find-file (org-wiki--page->file (read-string "Page Name: "))))
+
+(defun org-wiki-asset-dired ()
+  "Open the asset directory of current wiki page."
+  (interactive)
+  (let ((pagename (file-name-base (buffer-file-name))))
+    (org-wiki--assets-make-dir pagename)
+    (dired (org-wiki--assets-get-dir pagename))))
 
 (defun org-wiki-asset-insert ()
   "Insert link wiki-asset-sys:<page>;<file> to an asset file of current page..
-
 It inserts a link of type wiki-asset-sys:<Wiki-page>;<Asset-File>
 Example:  [[wiki-asset-sys:Linux;LinuxManual.pdf]]"
   (interactive)
@@ -445,7 +420,6 @@ Example:  [[wiki-asset-sys:Linux;LinuxManual.pdf]]"
 
 (defun org-wiki-asset-insert-file ()
   "Insert link file:<page>/<file> to asset file of current page at point.
-
 Insert an asset file of current page at point providing a Helm completion.
 Example: Linux/LinuxManual.pdf"
   (interactive)
@@ -459,8 +433,26 @@ Example: Linux/LinuxManual.pdf"
                       file
                       ))))))
 
-
-
+(defun org-wiki-asset-download ()
+  "Download a file from a URL in the clibpoard."
+  (interactive)  
+  (let*
+      ((pagename (file-name-base (buffer-file-name)))
+      ;; Get the URL suggestion from clibpoard
+       (text (with-temp-buffer
+              (clipboard-yank)
+              (buffer-substring-no-properties (point-min)
+                                              (point-max))))
+       (url (read-string "Url: " text))
+       (default-directory (org-wiki--assets-get-dir pagename))
+       
+       (output-file  (read-string "File name: "
+                                  (car  (last (split-string url "/")))))
+       )
+      
+    (org-wiki--assets-make-dir pagename)      
+    (url-copy-file url output-file)    
+    (insert (format "[[wiki-asset-sys:%s;%s][%s]]" pagename output-file output-file))))
 
 (defun org-wiki-helm ()
   "Browser the wiki files using helm."
@@ -504,21 +496,16 @@ Example: Linux/LinuxManual.pdf"
   (interactive)
 
   (mapc (lambda (b)
-
-            (when (and (buffer-file-name b) ;; test if is a buffer associated with file
-                       (org-wiki--path-equal
-                        org-wiki-location
-                        (file-name-directory (buffer-file-name b)))
+          (when (and (buffer-file-name b) ;; test if is a buffer associated with file
+                     (org-wiki--path-equal
+                      org-wiki-location
+                      (file-name-directory (buffer-file-name b)))
                        )
-
               (with-current-buffer b
                 (save-buffer)
                 (kill-this-buffer)
                 )))
-
-
           (buffer-list))
-
   (message "All wiki files closed. Ok."))
   ;;
   ;; End of org-wiki/close
@@ -529,15 +516,13 @@ Example: Linux/LinuxManual.pdf"
   (org-wiki--helm-selection
    (lambda (page) (insert (org-wiki--make-link page)))))
 
+
 (defun org-wiki-html-page ()
   "Open the current wiki page in the browser.  It is created if it doesn't exist yet."
   (interactive)
-
   (let ((html-file   (org-wiki--replace-extension (buffer-file-name) "html")))
-
     (if (not (file-exists-p html-file))
         (org-html-export-to-html))
-
   (browse-url html-file)))
 
 (defun org-wiki-html-page2 ()
@@ -593,7 +578,6 @@ Example: Linux/LinuxManual.pdf"
        (message-box "Wiki export to html Ok.")
        )))
     ;; End of set-process-sentinel
-
   (message "Exporting wiki to html"))
 
 (provide 'org-wiki)
