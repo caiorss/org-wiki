@@ -644,21 +644,24 @@ Note: This function doesn't freeze Emacs since it starts another Emacs process."
 
 (defun org-wiki-make-menu ()
   "Optional command to build an utility menu."
-  (easy-menu-define org-wik-menu global-map "Utils"
+  (interactive)
+  (easy-menu-define org-wik-menu global-map "Org-wiki"
     
     `("org-wiki"
       ("Main"
-       ["Go to Index page / M-x org-wiki-index" (org-wiki-index)]      
-       ["Browse page / M-x org-wiki-helm" (org-wiki-helm)]
-       ["Browse page in other frame / M-x org-wiki-helm-frame" (org-wiki-helm-frame)]
-       ["Browse pages in read-only mode / M-x org-wiki-helm-read-only" (org-wiki-helm-read-only)]
-       ["Open org-wiki directory / M-x org-wiki-dired" (org-wiki-dired)]
-       ["Close all pages / M-x org-wiki-close" (org-wiki-close)]
+       ["Go to Index page \nM-x org-wiki-index" (org-wiki-index)]      
+       ["Browse page \nM-x org-wiki-helm" (org-wiki-helm)]
+       ["Browse page in other frame \nM-x org-wiki-helm-frame" (org-wiki-helm-frame)]
+       ["Browse pages in read-only mode \nM-x org-wiki-helm-read-only" (org-wiki-helm-read-only)]
+       ["Open org-wiki directory \nM-x org-wiki-dired" (org-wiki-dired)]
+       ["Close all pages \nM-x org-wiki-close" (org-wiki-close)]
+       ["Open index page (html) in the browser \nM-x org-wiki-index-html" (org-wiki-index-html)]
+       ["Export all pages to html \nM-x org-wiki-export-html" (org-wiki-export-html)]
        )
       ["---"  nil]
       ("Page Commands"
         ["Browse current page asset directory.\nM-x org-wiki-asset-dired" (org-wiki-asset-dired)]
-        ["Insert a link to a wiki pagenM-x org-wiki-insert" (org-wiki-insert)]
+        ["Insert a link to a wiki page \nM-x org-wiki-insert" (org-wiki-insert)]
         ["Insert a link of type wiki-asset-sys at point.\nM-x org-wiki-asset-insert"
         (org-wiki-asset-insert)]
         ["Insert a link of type file:<page>/<asset> at point.\nM-x org-wiki-asset-insert-file"
@@ -674,11 +677,11 @@ Note: This function doesn't freeze Emacs since it starts another Emacs process."
         )             
        ["---"  nil]
        ("Org-mode"
-       ["Filter headings     / M-x helm-org-in-buffer-headings" (helm-org-in-buffer-headings)]
-       ["Hem occur           / M-x helm-occur"                   (helm-occur)]
-       ["Toggle Read only    / M-x read-only-mode"               (read-only-mode 'toggle)]
-       ["Toggle Images       / M-x org-toggle-inline-images"     (org-toggle-inline-images)]
-       ["Toggle Link display / M-x org-toggle-link-display"      (org-toggle-link-display)]
+       ["Filter headings     \nM-x helm-org-in-buffer-headings" (helm-org-in-buffer-headings)]
+       ["Hem occur           \nM-x helm-occur"                   (helm-occur)]
+       ["Toggle Read only    \nM-x read-only-mode"               (read-only-mode 'toggle)]
+       ["Toggle Images       \nM-x org-toggle-inline-images"     (org-toggle-inline-images)]
+       ["Toggle Link display \nM-x org-toggle-link-display"      (org-toggle-link-display)]
       ))))
 
 
