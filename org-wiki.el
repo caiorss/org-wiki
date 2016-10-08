@@ -390,7 +390,7 @@ file name at current point.
   (org-wiki--open-page org-wiki-index-file-basename))
 
 
-(defun org-wiki-html ()
+(defun org-wiki-index-html ()
   "Open the Wiki (Index) in the default web browser."
   (interactive)
   (browse-url (concat "file://"
