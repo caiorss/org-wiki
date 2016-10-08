@@ -19,7 +19,7 @@
 (require 'ox-html)
 (require 'helm)
 (require 'cl-lib)
-
+(require 'easymenu)
 
 (defgroup org-wiki nil
   "Org-wiki Settings"
@@ -607,6 +607,47 @@ type C-g to cancel the download."
        )))
     ;; End of set-process-sentinel
   (message "Exporting wiki to html"))
+
+
+(defun org-wiki-make-menu ()
+  "Optional command to build an utility menu."
+  (easy-menu-define org-wik-menu global-map "Utils"
+    
+    `("org-wiki"
+      ("Main"
+       ["Go to Index page / M-x org-wiki-index" (org-wiki-index)]      
+       ["Browse page / M-x org-wiki-helm" (org-wiki-helm)]
+       ["Browse page in other frame / M-x org-wiki-helm-frame" (org-wiki-helm-frame)]
+       ["Browse pages in read-only mode / M-x org-wiki-helm-read-only" (org-wiki-helm-read-only)]
+       ["Open org-wiki directory / M-x org-wiki-dired" (org-wiki-dired)]
+       ["Close all pages / M-x org-wiki-close" (org-wiki-close)]
+       )
+      ["---"  nil]
+      ("Page Commands"
+        ["Browse current page asset directory.\nM-x org-wiki-asset-dired" (org-wiki-asset-dired)]
+        ["Insert a link to a wiki pagenM-x org-wiki-insert" (org-wiki-insert)]
+        ["Insert a link of type wiki-asset-sys at point.\nM-x org-wiki-asset-insert"
+        (org-wiki-asset-insert)]
+        ["Insert a link of type file:<page>/<asset> at point.\nM-x org-wiki-asset-insert-file"
+         (org-wiki-asset-insert-file)
+         ]
+        ["Download an asset file and insert a wiki-asset-sys link at point.\nM-x org-wiki-asset-download-insert1"
+         (org-wiki-asset-download-insert1)
+         ]
+        ["Download an asset file and insert a link at point of type file:<page>/<file.pdf>.\nM-x org-wiki-asset-download-insert2"
+         (org-wiki-asset-download-insert2)
+         ]        
+        
+        )             
+       ["---"  nil]
+       ("Org-mode"
+       ["Filter headings     / M-x helm-org-in-buffer-headings" (helm-org-in-buffer-headings)]
+       ["Hem occur           / M-x helm-occur"                   (helm-occur)]
+       ["Toggle Read only    / M-x read-only-mode"               (read-only-mode 'toggle)]
+       ["Toggle Images       / M-x org-toggle-inline-images"     (org-toggle-inline-images)]
+       ["Toggle Link display / M-x org-toggle-link-display"      (org-toggle-link-display)]
+      ))))
+
 
 (provide 'org-wiki)
 ;;; org-wiki.el ends here
