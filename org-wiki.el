@@ -612,27 +612,21 @@ type C-g to cancel the download."
      (org-wiki--assets-make-dir page)
      (dired (org-wiki--assets-get-dir page)))))
 
-(defun org-wiki-export-html-async ()
-   "Export all wiki files to html launching a new Emacs process."
+(defun org-wiki-export-html-sync ()
+  "Export all pages to html in synchronous mode."
   (interactive)
-  (set-process-sentinel
-   (start-process "wiki-export"
-                  "*wiki-export*"
-                  "emacs"
-                  "--batch"
-                  "-l"
-                  "~/.emacs.d/init.el"
-                  "-f"
-                  "org-wiki-export-html"
-                  "--kill")
-   (lambda (p e)
-     (when (= 0 (process-exit-status p))
-
-       (message "Wiki exported to html Ok.")
-       (message-box "Wiki export to html Ok.")
-       )))
-    ;; End of set-process-sentinel
-  (message "Exporting wiki to html"))
+  (let ((org-html-htmlize-output-type 'css)
+        (org-html-htmlize-font-prefix "org-")
+        )
+    (org-publish
+     `("html"
+       :base-directory       ,org-wiki-location
+       :base-extension        "org"
+       :publishing-directory  ,org-wiki-location
+       :publishing-function    org-html-publish-to-html
+       )
+     t
+     )))
 
 
 (defun org-wiki-make-menu ()
