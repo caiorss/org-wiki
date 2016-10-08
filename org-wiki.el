@@ -657,6 +657,7 @@ Note: This function doesn't freeze Emacs since it starts another Emacs process."
        ["Close all pages \nM-x org-wiki-close" (org-wiki-close)]
        ["Open index page (html) in the browser \nM-x org-wiki-index-html" (org-wiki-index-html)]
        ["Export all pages to html \nM-x org-wiki-export-html" (org-wiki-export-html)]
+       ["Help - Show all org-wiki commands \nM-x org-wiki-help" (org-wiki-help)]
        )
       ["---"  nil]
       ("Page Commands"
