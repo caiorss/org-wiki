@@ -299,10 +299,9 @@ file:Linux/htop_1.jpg
  - =M-x org-wiki-make-menu= Shows a menu with org-wiki functions and
    command reminders.
 
-file:images/org-wiki-menu1.png 
+[[file:images/org-wiki-menu1.png][file:images/org-wiki-menu1.png]] 
 
-file:images/org-wiki-menu2.png
-
+[[file:images/org-wiki-menu2.png][file:images/org-wiki-menu2.png]]
 
 *** Commands to search
 
