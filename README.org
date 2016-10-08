@@ -273,7 +273,7 @@ Example:
 file:Linux/htop_1.jpg
 #+END_SRC
 
-*** Commands to open wiki directory
+*** Open wiki directory
 **** M-x org-wiki-dired 
 
   - =M-x org-wiki-dired= - Open the wiki directory in Emacs
@@ -283,26 +283,40 @@ file:Linux/htop_1.jpg
 
   - =M-x org-wiki-dired-all= - Open the wiki directory in Emacs
     showing all files. 
+*** Export all pages to html
+**** M-x org-wiki-export-html 
+
+ - =M-x org-wiki-export-html= - Exports all wiki pages to html
+   asynchronously, it means withoyt block Emacs by starting a new
+   Emacs process in background.
+
+**** M-x org-wiki-index-html 
+
+ - =M-x org-wiki-index-html= - Open the index page exported to html in
+   the web browser.  
+*** Menu 
+
+ - =M-x org-wiki-make-menu= Shows a menu with org-wiki functions and
+   command reminders.
+
+file:images/org-wiki-menu1.png 
+
+file:images/org-wiki-menu2.png
+
 
 *** Commands to search
 
  - =M-x org-wiki-search= - Search all wiki page that contains
    a pattern. (string or regex pattern).
 
-*** Command to export all pages to html
-
- - =M-x org-wiki-export-html-async= - Exports all wiki pages to html
-   asynchronously, it means withoyt block Emacs by starting a new
-   Emacs process in background.
-
 *** Help 
 
  - =M-x org-wiki-help= Show all package commands and its description. 
 ** Setup 
-*** Method 1 - Bootstrap installer 
+*** Install 
+**** Method 1 - Bootstrap installer 
 
- - 1. Just evaluate this code in the scratch buffer that will install
-   all dependencies and this package.
+Just evaluate this code in the scratch buffer that will install all dependencies and this package.
 
 #+BEGIN_SRC elisp 
 (let ((url "https://raw.githubusercontent.com/caiorss/org-wiki/master/org-wiki.el"))     
@@ -314,18 +328,9 @@ file:Linux/htop_1.jpg
 	(package-install-from-buffer)))
 #+END_SRC
 
- - 2. =M-x make-directory= ~/org/wiki and create the wiki location if it doesn't exist yet.
+**** Method 2 - Manual installation 
 
- - 3. Add this lines to ~/emacs.d/init.el 
-
-#+BEGIN_SRC elisp 
-(require 'org-wiki)
-(setq org-wiki/location "~/org/wiki") ;; Or M-x customize-group org-wiki
-#+END_SRC
-
-*** Method 2 - Manual installation 
-
- - 1. Copy the package to the desired location. 
+Copy the package to the desired location. 
 
 
 #+BEGIN_SRC sh 
@@ -338,17 +343,27 @@ git clone  https://github.com/caiorss/org-wiki
 mkdir -p ~/org/wiki    # Make wiki location. 
 #+END_SRC
 
+**** Method 3 - El-get 
+*** Configuration
 
- - 2. Add to init file ~/.emacs.d/init.el or ~/.emacs 
+Add to init file ~/.emacs.d/init.el or ~/.emacs 
 
 #+BEGIN_SRC elisp 
 (add-to-list 'load-path "~/.emacs.d/packages/org-wiki")
 (require 'org-wiki)
 (setq org-wiki/location "~/org/wiki")
-
 #+END_SRC
 
-*** Method 3 - El-get 
+
+Optional: This package provides the command =M-x org-wiki-make-menu=
+that installs a menu on the menu bar. 
+
+The menu can be installed permanently by adding the init file: 
+
+#+BEGIN_SRC elisp 
+(org-wiki-make-menu)
+#+END_SRC
+
 ** Suggestions
 
 You might want shortcuts for frequent commands: 
