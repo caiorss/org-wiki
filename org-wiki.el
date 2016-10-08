@@ -433,8 +433,10 @@ Example: Linux/LinuxManual.pdf"
                       file
                       ))))))
 
-(defun org-wiki-asset-download ()
-  "Download a file from a URL in the clibpoard."
+(defun org-wiki-asset-download-insert1 ()
+  "Download a file from a URL in the clibpoard and inserts a link wiki-asset-sys:.
+Note: This function is synchronous and blocks Emacs. If Emacs is stuck 
+type C-g to cancel the download."
   (interactive)  
   (let*
       ((pagename (file-name-base (buffer-file-name)))
@@ -447,12 +449,38 @@ Example: Linux/LinuxManual.pdf"
        (default-directory (org-wiki--assets-get-dir pagename))
        
        (output-file  (read-string "File name: "
-                                  (car  (last (split-string url "/")))))
-       )
+                                  (car  (last (split-string url "/"))))))
       
     (org-wiki--assets-make-dir pagename)      
     (url-copy-file url output-file)    
     (insert (format "[[wiki-asset-sys:%s;%s][%s]]" pagename output-file output-file))))
+
+
+
+(defun org-wiki-asset-download-insert2 ()
+  "Download a file from a URL in the clibpoard and inserts a link file:<page>/<asset-file>.
+Note: This function is synchronous and blocks Emacs. If Emacs is stuck 
+type C-g to cancel the download."
+  (interactive)  
+  (let*
+      ((pagename (file-name-base (buffer-file-name)))
+      ;; Get the URL suggestion from clibpoard
+       (text (with-temp-buffer
+              (clipboard-yank)
+              (buffer-substring-no-properties (point-min)
+                                              (point-max))))
+       (url (read-string "Url: " text))
+       (default-directory (org-wiki--assets-get-dir pagename))
+       
+       (output-file  (read-string "File name: "
+                                  (car  (last (split-string url "/"))))))
+    
+    (org-wiki--assets-make-dir pagename)      
+    (url-copy-file url output-file)    
+    (insert (format "file:%s/%s" pagename output-file ))))
+
+
+
 
 (defun org-wiki-helm ()
   "Browser the wiki files using helm."
