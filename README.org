@@ -6,7 +6,7 @@
 ** Overview 
 
 Org-wiki is a org-mode extension that provides tools to manage and
-build a desktop wiki where each wiki page is a org-mode file.  
+build a _desktop wiki_ where each wiki page is a org-mode file.  
 
 It provides a custom protocol ~wiki:keyword~ which creates like. When
 clicked this links creates the wiki file in the wiki directory with
@@ -139,48 +139,64 @@ files that contains "System.Windows string".
 
 ** Commands
 *** Open the index page
+**** M-x org-wiki-index
 
   - =M-x org-wiki-index= - Open the index page. It opens the file
     index.org that is the first default page of the wiki. If the file
     doesn't exist it will be created.
 
+**** M-x org-wiki-index-frame
+
   - =M-x org-wiki-index-frame= - Open the wiki index page in a new frame.
 
-*** Switch or open a page
+*** Browse pages
+**** M-x org-wiki-helm
 
-  - =M-x org-wiki-helm= - Open a helm menu to switch or open a wiki page.
-  
-  - =M-x org-wiki-helm-frame= - Open a wiki page in a new frame. 
+   - =M-x org-wiki-helm= - Open a helm menu to switch or open a wiki page.
 
-  - =M-x org-wiki-helm-read-only= - Open a wiki page in read-only
-    mode. 
+**** M-x org-wiki-helm-frame
+   
+   - =M-x org-wiki-helm-frame= - Open a wiki page in a new frame. 
 
-  - =M-x org-wiki-make-page= - Creates a new wiki page asking the user
-    for the page name.
+**** M-x org-wiki-helm-read-only
 
-*** Close all wiki pages 
+   - =M-x org-wiki-helm-read-only= - Open a wiki page in read-only
+     mode. 
 
-  - =M-x org-wiki-close= - Close all wiki pages, kill all *.or buffers
-    belonging to wiki directory.
+**** M-x org-wiki-make-page
 
-*** Insertion
+   - =M-x org-wiki-make-page= - Creates a new wiki page asking the user
+     for the page name.
 
-Set of commands to insert reference to attachment or page. 
+**** M-x org-wiki-close 
+
+   - =M-x org-wiki-close= - Close all wiki pages, kill all *.or buffers
+     belonging to wiki directory.
+
+*** Insert Hyperlink to wiki pages or asset files
+**** M-x org-wiki-insert 
 
   - =M-x org-wiki-insert= - Inserts a org-mode link at current point
     to a Wiki page selected through a helm-menu.
+
+**** M-x org-wiki-asset-insert 
 
   - =M-x org-wiki-asset-insert= - Insert a asset file at point
     providing a heml menu to select the file. It inserts a link of
     format ~wiki-asset-sys:CurrentPage;AssetFilename.pdf~.
 
 *** Asset files / Attachments
+**** M-x org-wiki-assets-helm
 
   - =M-x org-wiki-assets-helm= - Select a wiki page and open its
-    assets directory. 
+    assets directory.
+
+**** M-x org-wiki-assets-open  
 
   - =M-x org-wiki-assets-open= - Open asset directory of current page
     with system's default file manager. 
+
+**** M-x org-wiki-asset-insert 
 
   - =M-x org-wiki-asset-insert= - Insert a link to asset file of current
     page at current cursor position. This link when clicked opens with
@@ -194,7 +210,9 @@ Manual.pdf.
 [[wiki-asset-sys:Linux;Manual.pdf][Manual.pdf]]
 #+END_SRC
 
-  - =M-x org-wiki-asset-insert-file= - Insert a link to asset file of
+**** M-x org-wiki-asset-insert-file
+
+  - =M-x org-wiki-asset-insert-file= - Insert a link to an asset file of
     current page at current cursor position. This is an ordinary
     org-mode link.
 
@@ -203,11 +221,65 @@ Example: Inserts a link such as:
 #+BEGIN_SRC 
 file:Linux/Manual.pdf 
 #+END_SRC
+
+**** M-x org-wiki-asset-download-insert1
+  
+  - =M-x org-wiki-asset-download-insert1= - Ask the user the url to
+    download a file suggesting the url stored in the clipboard and
+    then asks the file name. After download it inserts a hyperlink at
+    point to open the file with systems' default application. 
+
+Example: 
+ 
+ 1. User is in the page Linux that corresponds to the file <org-wiki-location>/Linux.org
+
+ 2. User copy the url
+    <https://inst.eecs.berkeley.edu/~cs61b/fa13/ta-materials/unix-concise-ref.pdf>
+
+ 3. User enter M-x org-wiki-asset-download-insert1
+    1. Confirm the first prompt asking for the url. The suggested url is the copied url.
+    2. Confirm the second prompt asking the file name. The suggested
+       name is unix-concise-ref.pdf
+
+ 4. It will insert at current point the hyperlink bellow. That points to the
+    file <org-wiki-location>/Linux/unix-concise-ref.pdf.
+
+#+BEGIN_SRC 
+[[wiki-asset-sys:Linux;unix-concise-ref.pdf][unix-concise-ref.pdf]] 
+#+END_SRC
+
+
+Note: This command is synchronous and it can hang Emacs, therefore
+downloading heavy files can freeze Emacs. If it happesn type C-g to
+cancel the current download.
+
+**** M-x org-wiki-asset-download-insert2
+ 
+ - =M-x org-wiki-asset-download-insert2= - Similar to =M-x
+   org-wiki-asset-download-insert1=, however it inserts a hyperlink of
+   type ~file:<org-wiki-page>/<file-name>~. 
+
+Example: 
+
+  1. User is in the page Linux and copies the url:
+     ~http://i1-linux.softpedia-static.com/screenshots/htop_1.jpg~
+
+  2. User enter the command M-x org-wiki-asset-download-insert1 and
+     answers all prompts.
+
+  3. It will insert the hyperlink bellow at point. 
+
+#+BEGIN_SRC 
+file:Linux/htop_1.jpg
+#+END_SRC
+
 *** Commands to open wiki directory
+**** M-x org-wiki-dired 
 
   - =M-x org-wiki-dired= - Open the wiki directory in Emacs
     dired-mode showing only *.org files.
 
+**** M-x org-wiki-dired-all
 
   - =M-x org-wiki-dired-all= - Open the wiki directory in Emacs
     showing all files. 
