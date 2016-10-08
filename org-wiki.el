@@ -628,6 +628,19 @@ type C-g to cancel the download."
      t
      )))
 
+(defun org-wiki-export-html ()
+  "Export all pages to html.
+Note: This function doesn't freeze Emacs since it starts another Emacs process."
+  (interactive)
+  (compile (mapconcat 'identity
+                      `("emacs"
+                        "--batch"
+                        "-l" ,user-init-file
+                        "-f" "org-wiki-export-html-sync"
+                        "--kill"
+                        )
+                      " "
+                      )))
 
 (defun org-wiki-make-menu ()
   "Optional command to build an utility menu."
