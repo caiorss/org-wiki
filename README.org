@@ -364,6 +364,7 @@ The menu can be installed permanently by adding the init file:
 #+END_SRC
 
 ** Suggestions
+*** Shortcuts 
 
 You might want shortcuts for frequent commands: 
 
@@ -397,6 +398,59 @@ You might want shortcuts for frequent commands:
 #+BEGIN_SRC elisp 
 (defalias 'og2h #'org-html-export-to-html)
 #+END_SRC
+
+*** Helm commands
+
+Some Helm commands are very handy to navigate and search org-mode
+files.
+
+ - M-x helm-org-in-buffer-headings - To filter the headings of
+   org-files.
+
+ - M-x helm-occur - Occur-like command with helm interface.
+
+*** Bookmarklets 
+
+If you don't kwnow what is a bookmarklet see: [[https://www.youtube.com/watch?v=K_A3Y3eqnzE][Creating a Simple Bookmarklet - YouTube]]
+
+Note: The hyperlink of bookmarklet is only visible on the  [[https://caiorss.github.io/org-wiki][html documentation.]] 
+
+This bookmarklet when executed opens a prompt and creates an org-mode
+hyperlink code for the current web page. 
+
+ - To test the bookmarklet just click on it and copy the generated hyperlink. 
+
+ - To install the bookmarklet drag and drop the hyperlink to browser
+   bookmark toolbar. 
+
+Bookmarklet:
+
+#+BEGIN_HTML
+<a href='javascript:(function(){var md = "[[" + document.URL + "][" + document.title + "]]" ;prompt("org-mode :", md);})()'>Org-mode Url</a>
+#+END_HTML
+
+Javascript code:
+
+#+BEGIN_SRC js 
+var md = "[[" + document.URL + "][" + document.title + "]]" ;
+prompt("org-mode :", md);
+#+END_SRC
+
+Compressed JavaScript code:
+
+#+BEGIN_SRC js 
+javascript:(function(){var md = "[[" + document.URL + "][" + document.title + "]]" ;prompt("org-mode :", md);})()
+#+END_SRC
+
+*** Tweak it.
+
+You can change the commands or explore it using the command. 
+=M-x find-function <command-name>= to open the file at the point where
+the function is defined and edit the file org-wiki.el. 
+
+Example: 
+ 
+ - M-x find-function =org-wiki-helm=. 
 
 ** Repository
 
