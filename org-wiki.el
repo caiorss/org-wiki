@@ -649,19 +649,31 @@ Note: This function doesn't freeze Emacs since it starts another Emacs process."
     
     `("org-wiki"
       ("Main"
-       ["Go to Index page \nM-x org-wiki-index" (org-wiki-index)]      
+       ["Go to Index page \nM-x org-wiki-index" (org-wiki-index)]       
+       
+       ["---" nil]
+       ["Browsing" nil]             
        ["Browse page \nM-x org-wiki-helm" (org-wiki-helm)]
        ["Browse page in other frame \nM-x org-wiki-helm-frame" (org-wiki-helm-frame)]
        ["Browse pages in read-only mode \nM-x org-wiki-helm-read-only" (org-wiki-helm-read-only)]
+       ["---" nil]
+       ["Wiki Directory" nil]        
        ["Open org-wiki directory \nM-x org-wiki-dired" (org-wiki-dired)]
-       ["Close all pages \nM-x org-wiki-close" (org-wiki-close)]
+       ["Open org-wiki directory with system's file manager.\nM-x org-wiki-open" (org-wiki-open)]  ["Close all pages \nM-x org-wiki-close" (org-wiki-close)]
+             
+       ["---" nil]
+       ["Html export" nil]       
        ["Open index page (html) in the browser \nM-x org-wiki-index-html" (org-wiki-index-html)]
        ["Export all pages to html \nM-x org-wiki-export-html" (org-wiki-export-html)]
        ["Help - Show all org-wiki commands \nM-x org-wiki-help" (org-wiki-help)]
        )
       ["---"  nil]
       ("Page Commands"
-        ["Browse current page asset directory.\nM-x org-wiki-asset-dired" (org-wiki-asset-dired)]
+       ["Browse current page asset directory.\nM-x org-wiki-asset-dired"
+        (org-wiki-asset-dired)]
+       ["Browse current page asset directory with system's file manager.\nM-x org-wiki-asset-open"
+        (org-wiki-asset-open)]
+       
         ["Insert a link to a wiki page \nM-x org-wiki-insert" (org-wiki-insert)]
         ["Insert a link of type wiki-asset-sys at point.\nM-x org-wiki-asset-insert"
         (org-wiki-asset-insert)]
@@ -671,9 +683,9 @@ Note: This function doesn't freeze Emacs since it starts another Emacs process."
         ["Download an asset file and insert a wiki-asset-sys link at point.\nM-x org-wiki-asset-download-insert1"
          (org-wiki-asset-download-insert1)
          ]
+        
         ["Download an asset file and insert a link at point of type file:<page>/<file.pdf>.\nM-x org-wiki-asset-download-insert2"
-         (org-wiki-asset-download-insert2)
-         ]        
+         (org-wiki-asset-download-insert2)]        
         
         )             
        ["---"  nil]
