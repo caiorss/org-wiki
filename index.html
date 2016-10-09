@@ -1,1 +1,1207 @@
-first page
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>org-wiki</title>
+<!-- 2016-10-08 sáb 20:28 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Caio Rodrigues" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link href="theme/style.css" rel="stylesheet">
+
+<script type="text/javascript" src="theme/org-info.js">
+/**
+ *
+ * @source: theme/org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in theme/org-info.js.
+ *
+ * Copyright (C) 2012-2013 Free Software Foundation, Inc.
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in theme/org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "4");
+org_html_manager.set("LINK_HOME", "");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "showall");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">org-wiki</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Org-wiki</a>
+<ul>
+<li><a href="#sec-1-1">1.1. Overview</a></li>
+<li><a href="#sec-1-2">1.2. Demos</a></li>
+<li><a href="#sec-1-3">1.3. Screenshots</a></li>
+<li><a href="#sec-1-4">1.4. Commands</a>
+<ul>
+<li><a href="#sec-1-4-1">1.4.1. Open the index page</a>
+<ul>
+<li><a href="#sec-1-4-1-1">1.4.1.1. M-x org-wiki-index</a></li>
+<li><a href="#sec-1-4-1-2">1.4.1.2. M-x org-wiki-index-frame</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-4-2">1.4.2. Browse pages</a>
+<ul>
+<li><a href="#sec-1-4-2-1">1.4.2.1. M-x org-wiki-helm</a></li>
+<li><a href="#sec-1-4-2-2">1.4.2.2. M-x org-wiki-helm-frame</a></li>
+<li><a href="#sec-1-4-2-3">1.4.2.3. M-x org-wiki-helm-read-only</a></li>
+<li><a href="#sec-1-4-2-4">1.4.2.4. M-x org-wiki-make-page</a></li>
+<li><a href="#sec-1-4-2-5">1.4.2.5. M-x org-wiki-close</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-4-3">1.4.3. Insert Hyperlink to wiki pages or asset files</a>
+<ul>
+<li><a href="#sec-1-4-3-1">1.4.3.1. M-x org-wiki-insert</a></li>
+<li><a href="#sec-1-4-3-2">1.4.3.2. M-x org-wiki-asset-insert</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-4-4">1.4.4. Asset files / Attachments</a>
+<ul>
+<li><a href="#sec-1-4-4-1">1.4.4.1. M-x org-wiki-assets-helm</a></li>
+<li><a href="#sec-1-4-4-2">1.4.4.2. M-x org-wiki-assets-open</a></li>
+<li><a href="#sec-1-4-4-3">1.4.4.3. M-x org-wiki-asset-insert</a></li>
+<li><a href="#sec-1-4-4-4">1.4.4.4. M-x org-wiki-asset-insert-file</a></li>
+<li><a href="#sec-1-4-4-5">1.4.4.5. M-x org-wiki-asset-download-insert1</a></li>
+<li><a href="#sec-1-4-4-6">1.4.4.6. M-x org-wiki-asset-download-insert2</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-4-5">1.4.5. Open wiki directory</a>
+<ul>
+<li><a href="#sec-1-4-5-1">1.4.5.1. M-x org-wiki-dired</a></li>
+<li><a href="#sec-1-4-5-2">1.4.5.2. M-x org-wiki-dired-all</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-4-6">1.4.6. Export all pages to html</a>
+<ul>
+<li><a href="#sec-1-4-6-1">1.4.6.1. M-x org-wiki-export-html</a></li>
+<li><a href="#sec-1-4-6-2">1.4.6.2. M-x org-wiki-index-html</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-4-7">1.4.7. Menu</a></li>
+<li><a href="#sec-1-4-8">1.4.8. Commands to search</a></li>
+<li><a href="#sec-1-4-9">1.4.9. Help</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-5">1.5. Setup</a>
+<ul>
+<li><a href="#sec-1-5-1">1.5.1. Install</a>
+<ul>
+<li><a href="#sec-1-5-1-1">1.5.1.1. Method 1 - Bootstrap installer</a></li>
+<li><a href="#sec-1-5-1-2">1.5.1.2. Method 2 - Manual installation</a></li>
+<li><a href="#sec-1-5-1-3">1.5.1.3. Method 3 - El-get</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-5-2">1.5.2. Configuration</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-6">1.6. Suggestions</a>
+<ul>
+<li><a href="#sec-1-6-1">1.6.1. Shortcuts</a></li>
+<li><a href="#sec-1-6-2">1.6.2. Helm commands</a></li>
+<li><a href="#sec-1-6-3">1.6.3. Bookmarklets</a></li>
+<li><a href="#sec-1-6-4">1.6.4. Tweak it.</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-7">1.7. Repository</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Org-wiki</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Overview</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Org-wiki is a org-mode extension that provides tools to manage and
+build a <span class="underline">desktop wiki</span> where each wiki page is a org-mode file.  
+</p>
+
+<p>
+It provides a custom protocol <code>wiki:keyword</code> which creates like. When
+clicked this links creates the wiki file in the wiki directory with
+name <code>keyword.org</code>.
+</p>
+
+<p>
+Features: 
+</p>
+
+<ul class="org-ul">
+<li>A wiki system for Emacs.
+</li>
+
+<li>Search wiki pages quickly.
+</li>
+
+<li>Create new wiki pages fast.
+</li>
+
+<li>Command to export all pages to html without block Emacs. M-x <code>M-x
+    org-wiki/export-html-async</code>
+</li>
+
+<li>Search wiki pages by its content. (grep)
+</li>
+
+<li>org-mode protocol to create and open wiki pages.
+</li>
+
+<li>org-mode protocol to open attachment/asset files with default
+system application. 
+</li>
+</ul>
+
+<p>
+Org-mode already has many features that makes it suitable to create a desktop
+wiki and store knowledge like:
+</p>
+
+<ul class="org-ul">
+<li>Render Latex formulas. 
+</li>
+
+<li>Block codes (org-babel).
+</li>
+
+<li>Fast navigation and editing
+</li>
+
+<li>Support for tables 
+</li>
+
+<li>Ability to export to html and other formats. 
+</li>
+
+<li>Links to files, images, system commands and Elisp commands.
+</li>
+</ul>
+
+
+<p>
+<b>Note</b> It is only possible to show the video demonstrations in <a href="https://caiorss.github.io/org-wiki">html version.</a>
+</p>
+
+<p>
+<b>Link formats</b>
+</p>
+
+<ul class="org-ul">
+<li><code>wiki:&lt;pagename&gt;</code>
+</li>
+</ul>
+
+<p>
+Example: 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org">    <span class="org-org-link"><a href="wiki:Linux">wiki:Linux</a></span> 
+or 
+    <span class="org-org-link"><a href="wiki:Linux">wiki:Linux</a></span>
+or
+    <span class="org-org-link"><a href="wiki:Linux">Linux</a></span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><code>wiki-asset-sys:&lt;pagename&gt;/&lt;asset file name&gt;</code>
+</li>
+</ul>
+
+<p>
+Example: 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org">     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">wiki-asset-sys:Linux;LearnLinux.pdf</a></span>
+or 
+     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">wiki-asset-sys:Linux;LearnLinux.pdf</a></span>
+or
+     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">Book Learn Linux.pdf</a></span>
+</pre>
+</div>
+
+<p>
+It will open the file <code>~/wiki-directory/Linux/LearnLinux.pdf</code> with the
+default system application.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Demos</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>(1) Browsing Index: M-x org-wiki/index
+</li>
+</ul>
+
+
+<div class="figure">
+<p><a href="images/org-wiki-index.gif"><img src="images/org-wiki-index.gif" alt="org-wiki-index.gif" /></a>
+</p>
+</div>
+
+
+<ul class="org-ul">
+<li>(2) M-x org-wiki/helm - Select a wiki page by name. 
+</li>
+</ul>
+
+
+<div class="figure">
+<p><a href="images/org-wiki-helm.gif"><img src="images/org-wiki-helm.gif" alt="org-wiki-helm.gif" /></a>
+</p>
+</div>
+
+<ul class="org-ul">
+<li>(3) M-x org-wiki/insert  Insert a link to wiki page at cursor position.
+</li>
+</ul>
+
+
+<div class="figure">
+<p><a href="images/org-wiki-insert.gif"><img src="images/org-wiki-insert.gif" alt="org-wiki-insert.gif" /></a>
+</p>
+</div>
+
+
+<ul class="org-ul">
+<li>(4) - M-x org-wiki/asset-insert Insert a link to a asset file that
+when clicked opens it with default system application.
+</li>
+</ul>
+
+<p>
+See video: <a href="http://i.imgur.com/KqqC7sY.mp4">M-x org-wiki/asset-insert</a>
+</p>
+
+<video src="http://i.imgur.com/KqqC7sY.mp4" controls>
+</video>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Screenshots</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>1. Command <code>M-x org-wiki-index</code> Open the wiki index page (file index.org) 
+</li>
+</ul>
+
+
+<div class="figure">
+<p><a href="images/org-wiki-index.png"><img src="images/org-wiki-index.png" alt="org-wiki-index.png" /></a>
+</p>
+</div>
+
+<ul class="org-ul">
+<li>2. Command <code>M-x org-wiki-helm</code> Open a helm menu to select the wiki
+page to be opened. 
+</li>
+</ul>
+
+
+<div class="figure">
+<p><a href="images/wiki-helm-command.png"><img src="images/wiki-helm-command.png" alt="wiki-helm-command.png" /></a>
+</p>
+</div>
+
+<ul class="org-ul">
+<li>3. <code>M-x org-wiki- [tab]</code> provides easy completion and
+discoverability to org-wiki commands. 
+</li>
+</ul>
+
+
+<div class="figure">
+<p><a href="images/autocompletion.png"><img src="images/autocompletion.png" alt="autocompletion.png" /></a>
+</p>
+</div>
+
+<ul class="org-ul">
+<li>4. <code>M-x org-wiki-dired</code> Open the org-wiki directory showing only
+the wiki pages (*.org files). 
+</li>
+</ul>
+
+
+<div class="figure">
+<p><a href="images/wiki-dired.png"><img src="images/wiki-dired.png" alt="wiki-dired.png" /></a>
+</p>
+</div>
+
+<ul class="org-ul">
+<li>5. <code>M-x org-wiki-dired-all</code> Open the org-wiki directory showing all
+files. 
+</li>
+</ul>
+
+
+<div class="figure">
+<p><a href="images/wiki-dired-all.png"><img src="images/wiki-dired-all.png" alt="wiki-dired-all.png" /></a>
+</p>
+</div>
+
+<ul class="org-ul">
+<li>6. <code>M-x org-wiki-search-pattern</code> Search for all wiki page that contains
+a pattern. (string or regex pattern). 
+</li>
+</ul>
+
+<p>
+Example: The command <code>M-x org-wiki/search-patern - System.Windows</code> will search all
+files that contains "System.Windows string".
+</p>
+
+
+<div class="figure">
+<p><a href="images/wiki-search-pattern.png"><img src="images/wiki-search-pattern.png" alt="wiki-search-pattern.png" /></a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Commands</h3>
+<div class="outline-text-3" id="text-1-4">
+</div><div id="outline-container-sec-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> Open the index page</h4>
+<div class="outline-text-4" id="text-1-4-1">
+</div><div id="outline-container-sec-1-4-1-1" class="outline-5">
+<h5 id="sec-1-4-1-1"><span class="section-number-5">1.4.1.1</span> M-x org-wiki-index</h5>
+<div class="outline-text-5" id="text-1-4-1-1">
+<ul class="org-ul">
+<li><code>M-x org-wiki-index</code> - Open the index page. It opens the file
+index.org that is the first default page of the wiki. If the file
+doesn't exist it will be created.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-1-2" class="outline-5">
+<h5 id="sec-1-4-1-2"><span class="section-number-5">1.4.1.2</span> M-x org-wiki-index-frame</h5>
+<div class="outline-text-5" id="text-1-4-1-2">
+<ul class="org-ul">
+<li><code>M-x org-wiki-index-frame</code> - Open the wiki index page in a new frame.
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-2" class="outline-4">
+<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> Browse pages</h4>
+<div class="outline-text-4" id="text-1-4-2">
+</div><div id="outline-container-sec-1-4-2-1" class="outline-5">
+<h5 id="sec-1-4-2-1"><span class="section-number-5">1.4.2.1</span> M-x org-wiki-helm</h5>
+<div class="outline-text-5" id="text-1-4-2-1">
+<ul class="org-ul">
+<li><code>M-x org-wiki-helm</code> - Open a helm menu to switch or open a wiki page.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-2-2" class="outline-5">
+<h5 id="sec-1-4-2-2"><span class="section-number-5">1.4.2.2</span> M-x org-wiki-helm-frame</h5>
+<div class="outline-text-5" id="text-1-4-2-2">
+<ul class="org-ul">
+<li><code>M-x org-wiki-helm-frame</code> - Open a wiki page in a new frame. 
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-2-3" class="outline-5">
+<h5 id="sec-1-4-2-3"><span class="section-number-5">1.4.2.3</span> M-x org-wiki-helm-read-only</h5>
+<div class="outline-text-5" id="text-1-4-2-3">
+<ul class="org-ul">
+<li><code>M-x org-wiki-helm-read-only</code> - Open a wiki page in read-only
+mode. 
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-2-4" class="outline-5">
+<h5 id="sec-1-4-2-4"><span class="section-number-5">1.4.2.4</span> M-x org-wiki-make-page</h5>
+<div class="outline-text-5" id="text-1-4-2-4">
+<ul class="org-ul">
+<li><code>M-x org-wiki-make-page</code> - Creates a new wiki page asking the user
+for the page name.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-2-5" class="outline-5">
+<h5 id="sec-1-4-2-5"><span class="section-number-5">1.4.2.5</span> M-x org-wiki-close</h5>
+<div class="outline-text-5" id="text-1-4-2-5">
+<ul class="org-ul">
+<li><code>M-x org-wiki-close</code> - Close all wiki pages, kill all *.or buffers
+belonging to wiki directory.
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-3" class="outline-4">
+<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> Insert Hyperlink to wiki pages or asset files</h4>
+<div class="outline-text-4" id="text-1-4-3">
+</div><div id="outline-container-sec-1-4-3-1" class="outline-5">
+<h5 id="sec-1-4-3-1"><span class="section-number-5">1.4.3.1</span> M-x org-wiki-insert</h5>
+<div class="outline-text-5" id="text-1-4-3-1">
+<ul class="org-ul">
+<li><code>M-x org-wiki-insert</code> - Inserts a org-mode link at current point
+to a Wiki page selected through a helm-menu.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-3-2" class="outline-5">
+<h5 id="sec-1-4-3-2"><span class="section-number-5">1.4.3.2</span> M-x org-wiki-asset-insert</h5>
+<div class="outline-text-5" id="text-1-4-3-2">
+<ul class="org-ul">
+<li><code>M-x org-wiki-asset-insert</code> - Insert a asset file at point
+providing a heml menu to select the file. It inserts a link of
+format <code>wiki-asset-sys:CurrentPage;AssetFilename.pdf</code>.
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-4" class="outline-4">
+<h4 id="sec-1-4-4"><span class="section-number-4">1.4.4</span> Asset files / Attachments</h4>
+<div class="outline-text-4" id="text-1-4-4">
+</div><div id="outline-container-sec-1-4-4-1" class="outline-5">
+<h5 id="sec-1-4-4-1"><span class="section-number-5">1.4.4.1</span> M-x org-wiki-assets-helm</h5>
+<div class="outline-text-5" id="text-1-4-4-1">
+<ul class="org-ul">
+<li><code>M-x org-wiki-assets-helm</code> - Select a wiki page and open its
+assets directory.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-4-2" class="outline-5">
+<h5 id="sec-1-4-4-2"><span class="section-number-5">1.4.4.2</span> M-x org-wiki-assets-open</h5>
+<div class="outline-text-5" id="text-1-4-4-2">
+<ul class="org-ul">
+<li><code>M-x org-wiki-assets-open</code> - Open asset directory of current page
+with system's default file manager. 
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-4-3" class="outline-5">
+<h5 id="sec-1-4-4-3"><span class="section-number-5">1.4.4.3</span> M-x org-wiki-asset-insert</h5>
+<div class="outline-text-5" id="text-1-4-4-3">
+<ul class="org-ul">
+<li><code>M-x org-wiki-asset-insert</code> - Insert a link to asset file of current
+page at current cursor position. This link when clicked opens with
+default system application. 
+</li>
+</ul>
+
+<p>
+Example: Inserts a a link such as the code below. User is in the page
+Linux and with this command selects in the Helm menu the file
+Manual.pdf.
+</p>
+
+<pre class="example">
+[[wiki-asset-sys:Linux;Manual.pdf][Manual.pdf]]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-4-4" class="outline-5">
+<h5 id="sec-1-4-4-4"><span class="section-number-5">1.4.4.4</span> M-x org-wiki-asset-insert-file</h5>
+<div class="outline-text-5" id="text-1-4-4-4">
+<ul class="org-ul">
+<li><code>M-x org-wiki-asset-insert-file</code> - Insert a link to an asset file of
+current page at current cursor position. This is an ordinary
+org-mode link.
+</li>
+</ul>
+
+<p>
+Example: Inserts a link such as:
+</p>
+
+<pre class="example">
+file:Linux/Manual.pdf
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-4-5" class="outline-5">
+<h5 id="sec-1-4-4-5"><span class="section-number-5">1.4.4.5</span> M-x org-wiki-asset-download-insert1</h5>
+<div class="outline-text-5" id="text-1-4-4-5">
+<ul class="org-ul">
+<li><code>M-x org-wiki-asset-download-insert1</code> - Ask the user the url to
+download a file suggesting the url stored in the clipboard and
+then asks the file name. After download it inserts a hyperlink at
+point to open the file with systems' default application. 
+</li>
+</ul>
+
+<p>
+Example: 
+</p>
+
+<ol class="org-ol">
+<li>User is in the page Linux that corresponds to the file &lt;org-wiki-location&gt;/Linux.org
+</li>
+
+<li>User copy the url
+<a href="https://inst.eecs.berkeley.edu/~cs61b/fa13/ta-materials/unix-concise-ref.pdf">https://inst.eecs.berkeley.edu/~cs61b/fa13/ta-materials/unix-concise-ref.pdf</a>
+</li>
+
+<li>User enter M-x org-wiki-asset-download-insert1
+<ol class="org-ol">
+<li>Confirm the first prompt asking for the url. The suggested url is the copied url.
+</li>
+<li>Confirm the second prompt asking the file name. The suggested
+name is unix-concise-ref.pdf
+</li>
+</ol>
+</li>
+
+<li>It will insert at current point the hyperlink bellow. That points to the
+file &lt;org-wiki-location&gt;/Linux/unix-concise-ref.pdf.
+</li>
+</ol>
+
+<pre class="example">
+[[wiki-asset-sys:Linux;unix-concise-ref.pdf][unix-concise-ref.pdf]]
+</pre>
+
+
+<p>
+Note: This command is synchronous and it can hang Emacs, therefore
+downloading heavy files can freeze Emacs. If it happesn type C-g to
+cancel the current download.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-4-6" class="outline-5">
+<h5 id="sec-1-4-4-6"><span class="section-number-5">1.4.4.6</span> M-x org-wiki-asset-download-insert2</h5>
+<div class="outline-text-5" id="text-1-4-4-6">
+<ul class="org-ul">
+<li><code>M-x org-wiki-asset-download-insert2</code> - Similar to <code>M-x
+   org-wiki-asset-download-insert1</code>, however it inserts a hyperlink of
+type <code>file:&lt;org-wiki-page&gt;/&lt;file-name&gt;</code>. 
+</li>
+</ul>
+
+<p>
+Example: 
+</p>
+
+<ol class="org-ol">
+<li>User is in the page Linux and copies the url:
+<code>http://i1-linux.softpedia-static.com/screenshots/htop_1.jpg</code>
+</li>
+
+<li>User enter the command M-x org-wiki-asset-download-insert1 and
+answers all prompts.
+</li>
+
+<li>It will insert the hyperlink bellow at point. 
+</li>
+</ol>
+
+<pre class="example">
+file:Linux/htop_1.jpg
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-5" class="outline-4">
+<h4 id="sec-1-4-5"><span class="section-number-4">1.4.5</span> Open wiki directory</h4>
+<div class="outline-text-4" id="text-1-4-5">
+</div><div id="outline-container-sec-1-4-5-1" class="outline-5">
+<h5 id="sec-1-4-5-1"><span class="section-number-5">1.4.5.1</span> M-x org-wiki-dired</h5>
+<div class="outline-text-5" id="text-1-4-5-1">
+<ul class="org-ul">
+<li><code>M-x org-wiki-dired</code> - Open the wiki directory in Emacs
+dired-mode showing only *.org files.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-5-2" class="outline-5">
+<h5 id="sec-1-4-5-2"><span class="section-number-5">1.4.5.2</span> M-x org-wiki-dired-all</h5>
+<div class="outline-text-5" id="text-1-4-5-2">
+<ul class="org-ul">
+<li><code>M-x org-wiki-dired-all</code> - Open the wiki directory in Emacs
+showing all files. 
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-4-6" class="outline-4">
+<h4 id="sec-1-4-6"><span class="section-number-4">1.4.6</span> Export all pages to html</h4>
+<div class="outline-text-4" id="text-1-4-6">
+</div><div id="outline-container-sec-1-4-6-1" class="outline-5">
+<h5 id="sec-1-4-6-1"><span class="section-number-5">1.4.6.1</span> M-x org-wiki-export-html</h5>
+<div class="outline-text-5" id="text-1-4-6-1">
+<ul class="org-ul">
+<li><code>M-x org-wiki-export-html</code> - Exports all wiki pages to html
+asynchronously, it means withoyt block Emacs by starting a new
+Emacs process in background.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-6-2" class="outline-5">
+<h5 id="sec-1-4-6-2"><span class="section-number-5">1.4.6.2</span> M-x org-wiki-index-html</h5>
+<div class="outline-text-5" id="text-1-4-6-2">
+<ul class="org-ul">
+<li><code>M-x org-wiki-index-html</code> - Open the index page exported to html in
+the web browser.  
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-4-7" class="outline-4">
+<h4 id="sec-1-4-7"><span class="section-number-4">1.4.7</span> Menu</h4>
+<div class="outline-text-4" id="text-1-4-7">
+<ul class="org-ul">
+<li><code>M-x org-wiki-make-menu</code> Shows a menu with org-wiki functions and
+command reminders.
+</li>
+</ul>
+
+
+<div class="figure">
+<p><a href="images/org-wiki-menu1.png"><img src="images/org-wiki-menu1.png" alt="org-wiki-menu1.png" /></a> 
+</p>
+</div>
+
+
+<div class="figure">
+<p><a href="images/org-wiki-menu2.png"><img src="images/org-wiki-menu2.png" alt="org-wiki-menu2.png" /></a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-8" class="outline-4">
+<h4 id="sec-1-4-8"><span class="section-number-4">1.4.8</span> Commands to search</h4>
+<div class="outline-text-4" id="text-1-4-8">
+<ul class="org-ul">
+<li><code>M-x org-wiki-search</code> - Search all wiki page that contains
+a pattern. (string or regex pattern).
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-9" class="outline-4">
+<h4 id="sec-1-4-9"><span class="section-number-4">1.4.9</span> Help</h4>
+<div class="outline-text-4" id="text-1-4-9">
+<ul class="org-ul">
+<li><code>M-x org-wiki-help</code> Show all package commands and its description. 
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Setup</h3>
+<div class="outline-text-3" id="text-1-5">
+</div><div id="outline-container-sec-1-5-1" class="outline-4">
+<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> Install</h4>
+<div class="outline-text-4" id="text-1-5-1">
+</div><div id="outline-container-sec-1-5-1-1" class="outline-5">
+<h5 id="sec-1-5-1-1"><span class="section-number-5">1.5.1.1</span> Method 1 - Bootstrap installer</h5>
+<div class="outline-text-5" id="text-1-5-1-1">
+<p>
+Just evaluate this code in the scratch buffer that will install all dependencies and this package.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">let</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>url <span class="org-string">"https://raw.githubusercontent.com/caiorss/org-wiki/master/org-wiki.el"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>     
+      <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">with-current-buffer</span> <span class="org-rainbow-delimiters-depth-3">(</span>url-retrieve-synchronously url<span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>goto-char <span class="org-rainbow-delimiters-depth-4">(</span>point-min<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>re-search-forward <span class="org-string">"^$"</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>delete-region <span class="org-rainbow-delimiters-depth-4">(</span>point<span class="org-rainbow-delimiters-depth-4">)</span> <span class="org-rainbow-delimiters-depth-4">(</span>point-min<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>kill-whole-line<span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>package-install-from-buffer<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-1-2" class="outline-5">
+<h5 id="sec-1-5-1-2"><span class="section-number-5">1.5.1.2</span> Method 2 - Manual installation</h5>
+<div class="outline-text-5" id="text-1-5-1-2">
+<p>
+Copy the package to the desired location. 
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-sh">mkdir -p ~/.emacs.d/packages/ 
+
+<span class="org-builtin">cd</span> ~/.emacs.d/packages/ 
+
+git clone  https://github.com/caiorss/org-wiki
+
+mkdir -p ~/org/wiki    <span class="org-comment-delimiter"># </span><span class="org-comment">Make wiki location.</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-1-3" class="outline-5">
+<h5 id="sec-1-5-1-3"><span class="section-number-5">1.5.1.3</span> Method 3 - El-get</h5>
+</div>
+</div>
+<div id="outline-container-sec-1-5-2" class="outline-4">
+<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> Configuration</h4>
+<div class="outline-text-4" id="text-1-5-2">
+<p>
+Add to init file ~/.emacs.d/init.el or ~/.emacs 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'load-path <span class="org-string">"~/.emacs.d/packages/org-wiki"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">require</span> '<span class="org-constant">org-wiki</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-wiki/location <span class="org-string">"~/org/wiki"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+
+<p>
+Optional: This package provides the command <code>M-x org-wiki-make-menu</code>
+that installs a menu on the menu bar. 
+</p>
+
+<p>
+The menu can be installed permanently by adding the init file: 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>org-wiki-make-menu<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Suggestions</h3>
+<div class="outline-text-3" id="text-1-6">
+</div><div id="outline-container-sec-1-6-1" class="outline-4">
+<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> Shortcuts</h4>
+<div class="outline-text-4" id="text-1-6-1">
+<p>
+You might want shortcuts for frequent commands: 
+</p>
+
+<ul class="org-ul">
+<li>Command to switch or open a wiki page quickly. <code>M-x w-h</code>
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-h</span> #'org-wiki-helm<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Go to the index page 
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-i</span> #'org-wiki-index<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Insert a link to a wiki page at point. It provides helm
+completion. <code>M-x w-in</code>
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-in</span> #'org-wiki-insert<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Open the current wiki page assets directory: <code>M-x w-ad</code>
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-ad</span> #'org-wiki-asset-dired<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Export current wiki page to html or any org-mode file. <code>M-x og2h</code>
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">og2h</span> #'org-html-export-to-html<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-6-2" class="outline-4">
+<h4 id="sec-1-6-2"><span class="section-number-4">1.6.2</span> Helm commands</h4>
+<div class="outline-text-4" id="text-1-6-2">
+<p>
+Some Helm commands are very handy to navigate and search org-mode
+files.
+</p>
+
+<ul class="org-ul">
+<li>M-x helm-org-in-buffer-headings - To filter the headings of
+org-files.
+</li>
+
+<li>M-x helm-occur - Occur-like command with helm interface.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-6-3" class="outline-4">
+<h4 id="sec-1-6-3"><span class="section-number-4">1.6.3</span> Bookmarklets</h4>
+<div class="outline-text-4" id="text-1-6-3">
+<p>
+If you don't kwnow what is a bookmarklet see: <a href="https://www.youtube.com/watch?v=K_A3Y3eqnzE">Creating a Simple Bookmarklet - YouTube</a>
+</p>
+
+<p>
+Note: The hyperlink of bookmarklet is only visible on the  <a href="https://caiorss.github.io/org-wiki">html documentation.</a> 
+</p>
+
+<p>
+This bookmarklet when executed opens a prompt and creates an org-mode
+hyperlink code for the current web page. 
+</p>
+
+<ul class="org-ul">
+<li>To test the bookmarklet just click on it and copy the generated hyperlink. 
+</li>
+
+<li>To install the bookmarklet drag and drop the hyperlink to browser
+bookmark toolbar. 
+</li>
+</ul>
+
+<p>
+Bookmarklet:
+</p>
+
+<a href='javascript:(function(){var md = "[[" + document.URL + "][" + document.title + "]]" ;prompt("org-mode :", md);})()'>Org-mode Url</a>
+
+<p>
+Javascript code:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js"><span class="org-keyword">var</span> <span class="org-variable-name">md</span> = <span class="org-string">"[["</span> + document.URL + <span class="org-string">"]["</span> + document.title + <span class="org-string">"]]"</span> ;
+prompt(<span class="org-string">"org-mode :"</span>, md);
+</pre>
+</div>
+
+<p>
+Compressed JavaScript code:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js"><span class="org-function-name">javascript</span>:(<span class="org-keyword">function</span>(){<span class="org-keyword">var</span> <span class="org-variable-name">md</span> = <span class="org-string">"[["</span> + document.URL + <span class="org-string">"]["</span> + document.title + <span class="org-string">"]]"</span> ;prompt(<span class="org-string">"org-mode :"</span>, md);})()
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-6-4" class="outline-4">
+<h4 id="sec-1-6-4"><span class="section-number-4">1.6.4</span> Tweak it.</h4>
+<div class="outline-text-4" id="text-1-6-4">
+<p>
+You can change the commands or explore it using the command. 
+<code>M-x find-function &lt;command-name&gt;</code> to open the file at the point where
+the function is defined and edit the file org-wiki.el. 
+</p>
+
+<p>
+Example: 
+</p>
+
+<ul class="org-ul">
+<li>M-x find-function <code>org-wiki-helm</code>. 
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7" class="outline-3">
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Repository</h3>
+<div class="outline-text-3" id="text-1-7">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">Repository</td>
+<td class="left"><a href="https://github.com/caiorss/org-wiki">https://github.com/caiorss/org-wiki</a></td>
+</tr>
+
+<tr>
+<td class="left">Html documetnation</td>
+<td class="left"><a href="https://caiorss.github.io/org-wiki/">https://caiorss.github.io/org-wiki/</a></td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Caio Rodrigues</p>
+<p class="date">Created: 2016-10-08 sáb 20:28</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
