@@ -66,6 +66,19 @@ Default value ~/org/wiki."
   )
 
 
+(defcustom org-wiki-server-port "8000"
+  "Default port to server org-wiki static files server."
+  :type  'string
+  :group 'org-wiki
+  )
+
+(defcustom org-wiki-server-host "0.0.0.0"
+  "Default address that the server listens."
+  :type  'string
+  :group 'org-wiki
+  )
+
+
 (setq org-wiki-index-file-basename "index")
 
 ;; ------- Internal functions ------------ ;;
@@ -468,9 +481,9 @@ Example: Linux/LinuxManual.pdf"
 
 (defun org-wiki-asset-download-insert1 ()
   "Download a file from a URL in the clibpoard and inserts a link wiki-asset-sys:.
-Note: This function is synchronous and blocks Emacs. If Emacs is stuck 
+Note: This function is synchronous and blocks Emacs. If Emacs is stuck
 type C-g to cancel the download."
-  (interactive)  
+  (interactive)
   (let*
       ((pagename (file-name-base (buffer-file-name)))
       ;; Get the URL suggestion from clibpoard
@@ -480,21 +493,21 @@ type C-g to cancel the download."
                                               (point-max))))
        (url (read-string "Url: " text))
        (default-directory (org-wiki--assets-get-dir pagename))
-       
+
        (output-file  (read-string "File name: "
                                   (car  (last (split-string url "/"))))))
-      
-    (org-wiki--assets-make-dir pagename)      
-    (url-copy-file url output-file)    
+
+    (org-wiki--assets-make-dir pagename)
+    (url-copy-file url output-file)
     (insert (format "[[wiki-asset-sys:%s;%s][%s]]" pagename output-file output-file))))
 
 
 
 (defun org-wiki-asset-download-insert2 ()
   "Download a file from a URL in the clibpoard and inserts a link file:<page>/<asset-file>.
-Note: This function is synchronous and blocks Emacs. If Emacs is stuck 
+Note: This function is synchronous and blocks Emacs. If Emacs is stuck
 type C-g to cancel the download."
-  (interactive)  
+  (interactive)
   (let*
       ((pagename (file-name-base (buffer-file-name)))
       ;; Get the URL suggestion from clibpoard
@@ -504,12 +517,12 @@ type C-g to cancel the download."
                                               (point-max))))
        (url (read-string "Url: " text))
        (default-directory (org-wiki--assets-get-dir pagename))
-       
+
        (output-file  (read-string "File name: "
                                   (car  (last (split-string url "/"))))))
-    
-    (org-wiki--assets-make-dir pagename)      
-    (url-copy-file url output-file)    
+
+    (org-wiki--assets-make-dir pagename)
+    (url-copy-file url output-file)
     (insert (format "file:%s/%s" pagename output-file ))))
 
 
@@ -653,23 +666,23 @@ Note: This function doesn't freeze Emacs since it starts another Emacs process."
   "Optional command to build an utility menu."
   (interactive)
   (easy-menu-define org-wik-menu global-map "Org-wiki"
-    
+
     `("org-wiki"
       ("Main"
-       ["Go to Index page \nM-x org-wiki-index" (org-wiki-index)]       
-       
+       ["Go to Index page \nM-x org-wiki-index" (org-wiki-index)]
+
        ["---" nil]
-       ["Browsing" nil]             
+       ["Browsing" nil]
        ["Browse page \nM-x org-wiki-helm" (org-wiki-helm)]
        ["Browse page in other frame \nM-x org-wiki-helm-frame" (org-wiki-helm-frame)]
        ["Browse pages in read-only mode \nM-x org-wiki-helm-read-only" (org-wiki-helm-read-only)]
        ["---" nil]
-       ["Wiki Directory" nil]        
+       ["Wiki Directory" nil]
        ["Open org-wiki directory \nM-x org-wiki-dired" (org-wiki-dired)]
        ["Open org-wiki directory with system's file manager.\nM-x org-wiki-open" (org-wiki-open)]  ["Close all pages \nM-x org-wiki-close" (org-wiki-close)]
-             
+
        ["---" nil]
-       ["Html export" nil]       
+       ["Html export" nil]
        ["Open index page (html) in the browser \nM-x org-wiki-index-html" (org-wiki-index-html)]
        ["Export all pages to html \nM-x org-wiki-export-html" (org-wiki-export-html)]
        ["Help - Show all org-wiki commands \nM-x org-wiki-help" (org-wiki-help)]
@@ -680,7 +693,7 @@ Note: This function doesn't freeze Emacs since it starts another Emacs process."
         (org-wiki-asset-dired)]
        ["Browse current page asset directory with system's file manager.\nM-x org-wiki-asset-open"
         (org-wiki-asset-open)]
-       
+
         ["Insert a link to a wiki page \nM-x org-wiki-insert" (org-wiki-insert)]
         ["Insert a link of type wiki-asset-sys at point.\nM-x org-wiki-asset-insert"
         (org-wiki-asset-insert)]
@@ -690,11 +703,11 @@ Note: This function doesn't freeze Emacs since it starts another Emacs process."
         ["Download an asset file and insert a wiki-asset-sys link at point.\nM-x org-wiki-asset-download-insert1"
          (org-wiki-asset-download-insert1)
          ]
-        
+
         ["Download an asset file and insert a link at point of type file:<page>/<file.pdf>.\nM-x org-wiki-asset-download-insert2"
-         (org-wiki-asset-download-insert2)]        
-        
-        )             
+         (org-wiki-asset-download-insert2)]
+
+        )
        ["---"  nil]
        ("Org-mode"
        ["Filter headings     \nM-x helm-org-in-buffer-headings" (helm-org-in-buffer-headings)]
@@ -704,6 +717,29 @@ Note: This function doesn't freeze Emacs since it starts another Emacs process."
        ["Toggle Link display \nM-x org-toggle-link-display"      (org-toggle-link-display)]
       ))))
 
+(defun org-wiki-server-toggle ()
+  "Start/stop org-wiki http server. It requires Python3.
+Note: This command requires Python3 installed."
+  (interactive)
+  (let ((pname  "org-wiki-server")
+        (bname   "*org-wiki-server*")
+        (default-directory org-wiki-location))
+    (if (not (get-buffer bname))
+        (progn  (start-process pname
+                               bname
+                               "python3"
+                               "-m"
+                               "http.server"
+                               "--bind"
+                               org-wiki-server-host
+                               org-wiki-server-port)
+                (message "Server started")
+                (switch-to-buffer "*org-wiki-server*")
+                (when (y-or-n-p "Open server in browser ?")
+                      (browse-url (format "http://localhost:%s" org-wiki-server-port))))
+        (progn  (switch-to-buffer bname)
+                (kill-process (get-process pname))
+                (message "Server stopped.")))))
 
 (provide 'org-wiki)
 ;;; org-wiki.el ends here
