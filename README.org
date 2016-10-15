@@ -28,7 +28,12 @@ Features:
   - org-mode protocol to create and open wiki pages.
 
   - org-mode protocol to open attachment/asset files with default
-    system application. 
+    system application.
+
+  - Automatic download of attachment files with:
+    - =M-xorg-wiki-asset-download-insert1= 
+    - =M-xorg-wiki-asset-download-insert2= 
+
 
 Org-mode already has many features that makes it suitable to create a desktop
 wiki and store knowledge like:
@@ -136,6 +141,93 @@ Example: The command =M-x org-wiki/search-patern - System.Windows= will search a
 files that contains "System.Windows string".
 
 [[file:images/wiki-search-pattern.png][file:images/wiki-search-pattern.png]]
+** Setup 
+*** Install 
+**** Method 1 - Bootstrap installer 
+
+Evaluate this code in the scratch buffer that will install all
+dependencies and this package. The scratch buffer can be evaluated
+with =M-x eval-buffer=.
+
+#+BEGIN_SRC elisp 
+(let ((url "https://raw.githubusercontent.com/caiorss/org-wiki/master/org-wiki.el"))     
+      (with-current-buffer (url-retrieve-synchronously url)
+	(goto-char (point-min))
+	(re-search-forward "^$")
+	(delete-region (point) (point-min))
+	(kill-whole-line)
+	(package-install-from-buffer)))
+#+END_SRC
+
+**** Method 2 - El-get 
+
+Just copy this piece of code to scratch buffer and eveluate the buffer
+with =M-x eval-buffer=. It is assumed that [[https://github.com/dimitri/el-get][el-get]] is already installed. 
+
+#+BEGIN_SRC elisp
+(el-get-bundle org-wiki
+  :url "https://raw.githubusercontent.com/caiorss/org-wiki/master/org-wiki.el"
+  :description "Emacs' desktop wiki built with org-mode"
+  :features org-wiki
+  )
+#+END_SRC
+
+**** Method 3 - Manual installation 
+
+Copy the package to the desired location. 
+
+
+#+BEGIN_SRC sh 
+mkdir -p ~/.emacs.d/packages/ 
+
+cd ~/.emacs.d/packages/ 
+
+git clone  https://github.com/caiorss/org-wiki
+
+mkdir -p ~/org/wiki    # Make wiki location. 
+#+END_SRC
+*** Make org-wiki directory 
+
+ - =M-x make-directory ~/org-wiki=
+
+*** Configuration
+
+Add to init file ~/.emacs.d/init.el or ~/.emacs 
+
+#+BEGIN_SRC elisp 
+(require 'org-wiki)
+#+END_SRC
+
+Path to wiki location 
+
+#+BEGIN_SRC elisp 
+(setq org-wiki-location "~/org/wiki")
+#+END_SRC
+
+or in Windows it could be: 
+
+#+BEGIN_SRC elisp 
+(setq org-wiki-location "e:/projects/org-wiki-test.emacs")
+#+END_SRC
+
+In order to the html export work the path to emacs executable
+directory must be in the $PATH variable. In some OS like Windows where
+this path is not in $PATH variable it is necessary to set the variable
+=org-wiki-emacs-path= like:
+
+#+BEGIN_SRC elisp 
+(setq org-wiki-emacs-path "c:/Users/arch/opt/emacs/bin/runemacs.exe")
+#+END_SRC
+
+
+Optional: This package provides the command =M-x org-wiki-make-menu=
+that installs a menu on the menu bar. 
+
+The menu can be installed permanently by adding the init file: 
+
+#+BEGIN_SRC elisp 
+(org-wiki-make-menu)
+#+END_SRC
 
 ** Commands
 *** Open the index page
@@ -311,82 +403,6 @@ file:Linux/htop_1.jpg
 *** Help 
 
  - =M-x org-wiki-help= Show all package commands and its description. 
-** Setup 
-*** Install 
-**** Method 1 - Bootstrap installer 
-
-Just evaluate this code in the scratch buffer that will install all
-dependencies and this package.
-
-#+BEGIN_SRC elisp 
-(let ((url "https://raw.githubusercontent.com/caiorss/org-wiki/master/org-wiki.el"))     
-      (with-current-buffer (url-retrieve-synchronously url)
-	(goto-char (point-min))
-	(re-search-forward "^$")
-	(delete-region (point) (point-min))
-	(kill-whole-line)
-	(package-install-from-buffer)))
-#+END_SRC
-
-**** Method 2 - Manual installation 
-
-Copy the package to the desired location. 
-
-
-#+BEGIN_SRC sh 
-mkdir -p ~/.emacs.d/packages/ 
-
-cd ~/.emacs.d/packages/ 
-
-git clone  https://github.com/caiorss/org-wiki
-
-mkdir -p ~/org/wiki    # Make wiki location. 
-#+END_SRC
-
-**** Method 3 - El-get 
-*** Make org-wiki directory 
-
- - =M-x make-directory ~/org-wiki=
-
-*** Configuration
-
-Add to init file ~/.emacs.d/init.el or ~/.emacs 
-
-#+BEGIN_SRC elisp 
-(require 'org-wiki)
-#+END_SRC
-
-Path to wiki location 
-
-#+BEGIN_SRC elisp 
-(setq org-wiki-location "~/org/wiki")
-#+END_SRC
-
-or in Windows it could be: 
-
-#+BEGIN_SRC elisp 
-(setq org-wiki-location "e:/projects/org-wiki-test.emacs")
-#+END_SRC
-
-In order to the html export work the path to emacs executable
-directory must be in the $PATH variable. In some OS like Windows where
-this path is not in $PATH variable it is necessary to set the variable
-=org-wiki-emacs-path= like:
-
-#+BEGIN_SRC elisp 
-(setq org-wiki-emacs-path "c:/Users/arch/opt/emacs/bin/runemacs.exe")
-#+END_SRC
-
-
-Optional: This package provides the command =M-x org-wiki-make-menu=
-that installs a menu on the menu bar. 
-
-The menu can be installed permanently by adding the init file: 
-
-#+BEGIN_SRC elisp 
-(org-wiki-make-menu)
-#+END_SRC
-
 ** Suggestions
 *** Shortcuts 
 
