@@ -59,6 +59,13 @@ Default value ~/org/wiki."
   :group 'org-wiki
   )
 
+(defcustom org-wiki-emacs-path "emacs"
+  "Path to Emacs executable. Default value 'emacs'."
+  :type 'file
+  :group 'org-wiki
+  )
+
+
 (setq org-wiki-index-file-basename "index")
 
 ;; ------- Internal functions ------------ ;;
@@ -633,7 +640,7 @@ type C-g to cancel the download."
 Note: This function doesn't freeze Emacs since it starts another Emacs process."
   (interactive)
   (compile (mapconcat 'identity
-                      `("emacs"
+                      `(,org-wiki-emacs-path
                         "--batch"
                         "-l" ,user-init-file
                         "-f" "org-wiki-export-html-sync"
