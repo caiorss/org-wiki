@@ -315,7 +315,8 @@ file:Linux/htop_1.jpg
 *** Install 
 **** Method 1 - Bootstrap installer 
 
-Just evaluate this code in the scratch buffer that will install all dependencies and this package.
+Just evaluate this code in the scratch buffer that will install all
+dependencies and this package.
 
 #+BEGIN_SRC elisp 
 (let ((url "https://raw.githubusercontent.com/caiorss/org-wiki/master/org-wiki.el"))     
@@ -343,14 +344,37 @@ mkdir -p ~/org/wiki    # Make wiki location.
 #+END_SRC
 
 **** Method 3 - El-get 
+*** Make org-wiki directory 
+
+ - =M-x make-directory ~/org-wiki=
+
 *** Configuration
 
 Add to init file ~/.emacs.d/init.el or ~/.emacs 
 
 #+BEGIN_SRC elisp 
-(add-to-list 'load-path "~/.emacs.d/packages/org-wiki")
 (require 'org-wiki)
-(setq org-wiki/location "~/org/wiki")
+#+END_SRC
+
+Path to wiki location 
+
+#+BEGIN_SRC elisp 
+(setq org-wiki-location "~/org/wiki")
+#+END_SRC
+
+or in Windows it could be: 
+
+#+BEGIN_SRC elisp 
+(setq org-wiki-location "e:/projects/org-wiki-test.emacs")
+#+END_SRC
+
+In order to the html export work the path to emacs executable
+directory must be in the $PATH variable. In some OS like Windows where
+this path is not in $PATH variable it is necessary to set the variable
+=org-wiki-emacs-path= like:
+
+#+BEGIN_SRC elisp 
+(setq org-wiki-emacs-path "c:/Users/arch/opt/emacs/bin/runemacs.exe")
 #+END_SRC
 
 
@@ -415,8 +439,8 @@ If you don't kwnow what is a bookmarklet see: [[https://www.youtube.com/watch?v=
 
 Note: The hyperlink of bookmarklet is only visible on the  [[https://caiorss.github.io/org-wiki][html documentation.]] 
 
-This bookmarklet when executed opens a prompt and creates an org-mode
-hyperlink code for the current web page. 
+This bookmarklet opens a prompt and creates an org-mode hyperlink code
+for the current web page.
 
  - To test the bookmarklet just click on it and copy the generated hyperlink. 
 
@@ -442,7 +466,7 @@ Compressed JavaScript code:
 javascript:(function(){var md = "[[" + document.URL + "][" + document.title + "]]" ;prompt("org-mode :", md);})()
 #+END_SRC
 
-*** Tweak it.
+*** Modify it
 
 You can change the commands or explore it using the command. 
 =M-x find-function <command-name>= to open the file at the point where
@@ -450,12 +474,14 @@ the function is defined and edit the file org-wiki.el.
 
 Example: 
  
- - M-x find-function =org-wiki-helm=. 
+ - M-x find-function =org-wiki-helm=
+
+ - M-x find-library org-wiki
 
 ** Repository
 
 | Repository         | https://github.com/caiorss/org-wiki |
-| Html documetnation | https://caiorss.github.io/org-wiki/ |
+| Html documentation | https://caiorss.github.io/org-wiki/ |
 |                    |                                     |
  
 
