@@ -1,6 +1,7 @@
 #+INCLUDE: theme/style.org
 #+TITLE: org-wiki 
 #+AUTHOR: Caio Rodrigues 
+#+KEYWORKDS: org-mode, emacs, wiki, desktop, wiki, tools, notes, notebook
 
 * Org-wiki 
 ** Overview 
@@ -395,7 +396,21 @@ file:Linux/htop_1.jpg
 
 [[file:images/org-wiki-menu2.png][file:images/org-wiki-menu2.png]]
 
-*** Commands to search
+*** Server 
+
+ - =M-x org-wiki-server-toggle=  Start/stop static http server at
+   org-wiki directory. 
+
+This command actually runs =python -m  http.server --bind <host> <port>= 
+at the org-wiki directory. So it requires Python installed and
+available in the $PATH variable. 
+
+Default value: 
+
+ - host: 0.0.0.0 
+ - port: 8000 
+
+*** Search
 
  - =M-x org-wiki-search= - Search all wiki page that contains
    a pattern. (string or regex pattern).
@@ -493,6 +508,14 @@ Example:
  - M-x find-function =org-wiki-helm=
 
  - M-x find-library org-wiki
+
+** TODOLIST 
+
+ - [] - Add command to copy and paste images from clipboard.
+ - [] - Add this package to some Emacs repository.
+ - [] - Add a runnable test.
+ - [] - Add org-wiki example pages and generated html files.
+ - [] - Improve command names. 
 
 ** Repository
 
