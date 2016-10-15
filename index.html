@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>org-wiki</title>
-<!-- 2016-10-08 sáb 20:28 -->
+<!-- 2016-10-15 sáb 14:30 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Caio Rodrigues" />
@@ -279,7 +279,8 @@ for the JavaScript code in this tag.
 <li><a href="#sec-1-5-1-3">1.5.1.3. Method 3 - El-get</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-5-2">1.5.2. Configuration</a></li>
+<li><a href="#sec-1-5-2">1.5.2. Make org-wiki directory</a></li>
+<li><a href="#sec-1-5-3">1.5.3. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#sec-1-6">1.6. Suggestions</a>
@@ -287,7 +288,7 @@ for the JavaScript code in this tag.
 <li><a href="#sec-1-6-1">1.6.1. Shortcuts</a></li>
 <li><a href="#sec-1-6-2">1.6.2. Helm commands</a></li>
 <li><a href="#sec-1-6-3">1.6.3. Bookmarklets</a></li>
-<li><a href="#sec-1-6-4">1.6.4. Tweak it.</a></li>
+<li><a href="#sec-1-6-4">1.6.4. Modify it</a></li>
 </ul>
 </li>
 <li><a href="#sec-1-7">1.7. Repository</a></li>
@@ -388,11 +389,11 @@ Example:
 
 <div class="org-src-container">
 
-<pre class="src src-org">    <span class="org-org-link"><a href="wiki:Linux">wiki:Linux</a></span> 
+<pre class="src src-org">    wiki:Linux 
 or 
-    <span class="org-org-link"><a href="wiki:Linux">wiki:Linux</a></span>
+    [[wiki:Linux]]
 or
-    <span class="org-org-link"><a href="wiki:Linux">Linux</a></span>
+    [[wiki:Linux][Linux]]
 </pre>
 </div>
 
@@ -407,11 +408,11 @@ Example:
 
 <div class="org-src-container">
 
-<pre class="src src-org">     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">wiki-asset-sys:Linux;LearnLinux.pdf</a></span>
+<pre class="src src-org">     wiki-asset-sys:Linux;LearnLinux.pdf
 or 
-     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">wiki-asset-sys:Linux;LearnLinux.pdf</a></span>
+     [[wiki-asset-sys:Linux;LearnLinux.pdf]]
 or
-     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">Book Learn Linux.pdf</a></span>
+     [[wiki-asset-sys:Linux;LearnLinux.pdf][Book Learn Linux.pdf]]
 </pre>
 </div>
 
@@ -926,18 +927,19 @@ a pattern. (string or regex pattern).
 <h5 id="sec-1-5-1-1"><span class="section-number-5">1.5.1.1</span> Method 1 - Bootstrap installer</h5>
 <div class="outline-text-5" id="text-1-5-1-1">
 <p>
-Just evaluate this code in the scratch buffer that will install all dependencies and this package.
+Just evaluate this code in the scratch buffer that will install all
+dependencies and this package.
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">let</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>url <span class="org-string">"https://raw.githubusercontent.com/caiorss/org-wiki/master/org-wiki.el"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>     
-      <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">with-current-buffer</span> <span class="org-rainbow-delimiters-depth-3">(</span>url-retrieve-synchronously url<span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>goto-char <span class="org-rainbow-delimiters-depth-4">(</span>point-min<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>re-search-forward <span class="org-string">"^$"</span><span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>delete-region <span class="org-rainbow-delimiters-depth-4">(</span>point<span class="org-rainbow-delimiters-depth-4">)</span> <span class="org-rainbow-delimiters-depth-4">(</span>point-min<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>kill-whole-line<span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>package-install-from-buffer<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(let ((url "https://raw.githubusercontent.com/caiorss/org-wiki/master/org-wiki.el"))     
+      (with-current-buffer (url-retrieve-synchronously url)
+	(goto-char (point-min))
+	(re-search-forward "^$")
+	(delete-region (point) (point-min))
+	(kill-whole-line)
+	(package-install-from-buffer)))
 </pre>
 </div>
 </div>
@@ -955,11 +957,11 @@ Copy the package to the desired location.
 
 <pre class="src src-sh">mkdir -p ~/.emacs.d/packages/ 
 
-<span class="org-builtin">cd</span> ~/.emacs.d/packages/ 
+cd ~/.emacs.d/packages/ 
 
 git clone  https://github.com/caiorss/org-wiki
 
-mkdir -p ~/org/wiki    <span class="org-comment-delimiter"># </span><span class="org-comment">Make wiki location.</span>
+mkdir -p ~/org/wiki    # Make wiki location.
 </pre>
 </div>
 </div>
@@ -970,17 +972,58 @@ mkdir -p ~/org/wiki    <span class="org-comment-delimiter"># </span><span class=
 </div>
 </div>
 <div id="outline-container-sec-1-5-2" class="outline-4">
-<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> Configuration</h4>
+<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> Make org-wiki directory</h4>
 <div class="outline-text-4" id="text-1-5-2">
+<ul class="org-ul">
+<li><code>M-x make-directory ~/org-wiki</code>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-3" class="outline-4">
+<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> Configuration</h4>
+<div class="outline-text-4" id="text-1-5-3">
 <p>
 Add to init file ~/.emacs.d/init.el or ~/.emacs 
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'load-path <span class="org-string">"~/.emacs.d/packages/org-wiki"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">require</span> '<span class="org-constant">org-wiki</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-wiki/location <span class="org-string">"~/org/wiki"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(require 'org-wiki)
+</pre>
+</div>
+
+<p>
+Path to wiki location 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp">(setq org-wiki-location "~/org/wiki")
+</pre>
+</div>
+
+<p>
+or in Windows it could be: 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp">(setq org-wiki-location "e:/projects/org-wiki-test.emacs")
+</pre>
+</div>
+
+<p>
+In order to the html export work the path to emacs executable
+directory must be in the $PATH variable. In some OS like Windows where
+this path is not in $PATH variable it is necessary to set the variable
+<code>org-wiki-emacs-path</code> like:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp">(setq org-wiki-emacs-path "c:/Users/arch/opt/emacs/bin/runemacs.exe")
 </pre>
 </div>
 
@@ -996,7 +1039,7 @@ The menu can be installed permanently by adding the init file:
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>org-wiki-make-menu<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(org-wiki-make-menu)
 </pre>
 </div>
 </div>
@@ -1020,7 +1063,7 @@ You might want shortcuts for frequent commands:
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-h</span> #'org-wiki-helm<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(defalias 'w-h #'org-wiki-helm)
 </pre>
 </div>
 
@@ -1031,7 +1074,7 @@ You might want shortcuts for frequent commands:
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-i</span> #'org-wiki-index<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(defalias 'w-i #'org-wiki-index)
 </pre>
 </div>
 
@@ -1043,7 +1086,7 @@ completion. <code>M-x w-in</code>
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-in</span> #'org-wiki-insert<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(defalias 'w-in #'org-wiki-insert)
 </pre>
 </div>
 
@@ -1054,7 +1097,7 @@ completion. <code>M-x w-in</code>
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-ad</span> #'org-wiki-asset-dired<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(defalias 'w-ad #'org-wiki-asset-dired)
 </pre>
 </div>
 
@@ -1065,7 +1108,7 @@ completion. <code>M-x w-in</code>
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">og2h</span> #'org-html-export-to-html<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(defalias 'og2h #'org-html-export-to-html)
 </pre>
 </div>
 </div>
@@ -1102,8 +1145,8 @@ Note: The hyperlink of bookmarklet is only visible on the  <a href="https://caio
 </p>
 
 <p>
-This bookmarklet when executed opens a prompt and creates an org-mode
-hyperlink code for the current web page. 
+This bookmarklet opens a prompt and creates an org-mode hyperlink code
+for the current web page.
 </p>
 
 <ul class="org-ul">
@@ -1127,8 +1170,8 @@ Javascript code:
 
 <div class="org-src-container">
 
-<pre class="src src-js"><span class="org-keyword">var</span> <span class="org-variable-name">md</span> = <span class="org-string">"[["</span> + document.URL + <span class="org-string">"]["</span> + document.title + <span class="org-string">"]]"</span> ;
-prompt(<span class="org-string">"org-mode :"</span>, md);
+<pre class="src src-js">var md = "[[" + document.URL + "][" + document.title + "]]" ;
+prompt("org-mode :", md);
 </pre>
 </div>
 
@@ -1138,14 +1181,14 @@ Compressed JavaScript code:
 
 <div class="org-src-container">
 
-<pre class="src src-js"><span class="org-function-name">javascript</span>:(<span class="org-keyword">function</span>(){<span class="org-keyword">var</span> <span class="org-variable-name">md</span> = <span class="org-string">"[["</span> + document.URL + <span class="org-string">"]["</span> + document.title + <span class="org-string">"]]"</span> ;prompt(<span class="org-string">"org-mode :"</span>, md);})()
+<pre class="src src-js">javascript:(function(){var md = "[[" + document.URL + "][" + document.title + "]]" ;prompt("org-mode :", md);})()
 </pre>
 </div>
 </div>
 </div>
 
 <div id="outline-container-sec-1-6-4" class="outline-4">
-<h4 id="sec-1-6-4"><span class="section-number-4">1.6.4</span> Tweak it.</h4>
+<h4 id="sec-1-6-4"><span class="section-number-4">1.6.4</span> Modify it</h4>
 <div class="outline-text-4" id="text-1-6-4">
 <p>
 You can change the commands or explore it using the command. 
@@ -1158,7 +1201,10 @@ Example:
 </p>
 
 <ul class="org-ul">
-<li>M-x find-function <code>org-wiki-helm</code>. 
+<li>M-x find-function <code>org-wiki-helm</code>
+</li>
+
+<li>M-x find-library org-wiki
 </li>
 </ul>
 </div>
@@ -1183,7 +1229,7 @@ Example:
 </tr>
 
 <tr>
-<td class="left">Html documetnation</td>
+<td class="left">Html documentation</td>
 <td class="left"><a href="https://caiorss.github.io/org-wiki/">https://caiorss.github.io/org-wiki/</a></td>
 </tr>
 
@@ -1199,7 +1245,7 @@ Example:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Caio Rodrigues</p>
-<p class="date">Created: 2016-10-08 sáb 20:28</p>
+<p class="date">Created: 2016-10-15 sáb 14:30</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
