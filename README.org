@@ -396,7 +396,7 @@ file:Linux/htop_1.jpg
 
 [[file:images/org-wiki-menu2.png][file:images/org-wiki-menu2.png]]
 
-*** Server 
+*** Web Server 
 
  - =M-x org-wiki-server-toggle=  Start/stop static http server at
    org-wiki directory. 
@@ -409,6 +409,14 @@ Default value:
 
  - host: 0.0.0.0 
  - port: 8000 
+
+To see your current local IP address type =M-x ifconfig=. You can
+access the static web site by entering the URL:
+
+ - ~http://<your local ip address>:8000~
+
+
+ - For instance:  http://192.168.1.10:8000.
 
 *** Search
 
@@ -464,6 +472,18 @@ files.
 
  - M-x helm-occur - Occur-like command with helm interface.
 
+*** Screenshot tools 
+
+*Linux* 
+
+ - [[http://shutter-project.org/][Shutter - Feature-rich Screenshot Tool]] 
+
+ - [[https://www.youtube.com/watch?v=Z7gci0qKCPo][Shutter - Advanced screenshot tool for Ubuntu ! - YouTube]]
+
+*Windows*
+
+ - [[http://www.bleepingcomputer.com/tutorials/how-to-use-the-windows-snipping-tool/][How to use the Windows Snipping Tool]]
+
 *** Bookmarklets 
 
 If you don't kwnow what is a bookmarklet see: [[https://www.youtube.com/watch?v=K_A3Y3eqnzE][Creating a Simple Bookmarklet - YouTube]]
@@ -515,7 +535,8 @@ Example:
  - [] - Add this package to some Emacs repository.
  - [] - Add a runnable test.
  - [] - Add org-wiki example pages and generated html files.
- - [] - Improve command names. 
+ - [] - Improve command names.
+ - [] - Update gifs 
 
 ** Repository
 
