@@ -8,3 +8,4 @@
 *.bin
 *.html
 /dist/
+/#org-wiki.el#
