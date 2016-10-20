@@ -392,6 +392,44 @@ file name at current point.
                       (action . ,callback)
                       ))))
 
+
+(defun org-wiki--asset-download-hof (callback)
+  "Higher order function to download a file.
+Callback is a function with this signature: 
+ (callback <pagename> <filename>)
+
+How this function works: 
+1. Ask the user for the URL suggesting the URL extracted from the clipboard.
+2. Ask the user for the file name to be downloaded suggesting the filename extracted from 
+the URL. 
+3. Calls the callback function passing the current page name and the file name. 
+
+If the URL is: http://www.myurl.com/Manual1.pdf, the current page is Unix and 
+the callback function is: 
+  
+  (lambda (p f) (insert (format \"%s/%s\" p f)))
+
+if the user doesn't change the suggested file name It will insert at current 
+point: 'Unix/Manual.pdf'."
+  (let*
+      ((pagename (file-name-base (buffer-file-name)))
+
+       ;; Get the URL suggestion from clibpoard
+       (text (with-temp-buffer
+              (clipboard-yank)
+              (buffer-substring-no-properties (point-min)
+                                              (point-max))))
+       (url (read-string "Url: " text))
+       (default-directory (org-wiki--assets-get-dir pagename))
+
+       (output-file  (read-string "File name: "
+                                  (car  (last (split-string url "/"))))))
+
+    (org-wiki--assets-make-dir pagename)
+    (url-copy-file url output-file)
+    (funcall callback pagename output-file)))
+
+
 ;; ================= User Commands ================= ;;;
 ;;
 ;; @SECTION: User commands
@@ -484,49 +522,19 @@ Example: Linux/LinuxManual.pdf"
 Note: This function is synchronous and blocks Emacs. If Emacs is stuck
 type C-g to cancel the download."
   (interactive)
-  (let*
-      ((pagename (file-name-base (buffer-file-name)))
-      ;; Get the URL suggestion from clibpoard
-       (text (with-temp-buffer
-              (clipboard-yank)
-              (buffer-substring-no-properties (point-min)
-                                              (point-max))))
-       (url (read-string "Url: " text))
-       (default-directory (org-wiki--assets-get-dir pagename))
-
-       (output-file  (read-string "File name: "
-                                  (car  (last (split-string url "/"))))))
-
-    (org-wiki--assets-make-dir pagename)
-    (url-copy-file url output-file)
-    (insert (format "[[wiki-asset-sys:%s;%s][%s]]" pagename output-file output-file))))
-
-
+  (org-wiki--asset-download-hof
+   (lambda (pagename output-file)
+     (insert (format "[[wiki-asset-sys:%s;%s][%s]]"
+                     pagename output-file output-file)))))
 
 (defun org-wiki-asset-download-insert2 ()
   "Download a file from a URL in the clibpoard and inserts a link file:<page>/<asset-file>.
-Note: This function is synchronous and blocks Emacs. If Emacs is stuck
-type C-g to cancel the download."
+Note: This function is synchronous and blocks Emacs. If Emacs is frozen type C-g 
+to cancel the download."
   (interactive)
-  (let*
-      ((pagename (file-name-base (buffer-file-name)))
-      ;; Get the URL suggestion from clibpoard
-       (text (with-temp-buffer
-              (clipboard-yank)
-              (buffer-substring-no-properties (point-min)
-                                              (point-max))))
-       (url (read-string "Url: " text))
-       (default-directory (org-wiki--assets-get-dir pagename))
-
-       (output-file  (read-string "File name: "
-                                  (car  (last (split-string url "/"))))))
-
-    (org-wiki--assets-make-dir pagename)
-    (url-copy-file url output-file)
-    (insert (format "file:%s/%s" pagename output-file ))))
-
-
-
+  (org-wiki--asset-download-hof
+   (lambda (pagename output-file)
+     (insert (format "file:%s/%s" pagename output-file )))))
 
 (defun org-wiki-helm ()
   "Browser the wiki files using helm."
@@ -740,6 +748,7 @@ Note: This command requires Python3 installed."
         (progn  (switch-to-buffer bname)
                 (kill-process (get-process pname))
                 (message "Server stopped.")))))
+
 
 (provide 'org-wiki)
 ;;; org-wiki.el ends here
