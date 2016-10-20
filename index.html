@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>org-wiki</title>
-<!-- 2016-10-15 sáb 19:04 -->
+<!-- 2016-10-20 qui 19:56 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Caio Rodrigues" />
@@ -278,18 +278,26 @@ for the JavaScript code in this tag.
 <li><a href="#sec-1-5-6-2">1.5.6.2. M-x org-wiki-index-html</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-5-7">1.5.7. Menu</a></li>
-<li><a href="#sec-1-5-8">1.5.8. Server</a></li>
+<li><a href="#sec-1-5-7">1.5.7. Web Server</a></li>
+<li><a href="#sec-1-5-8">1.5.8. Menu</a></li>
 <li><a href="#sec-1-5-9">1.5.9. Search</a></li>
-<li><a href="#sec-1-5-10">1.5.10. Help</a></li>
+<li><a href="#sec-1-5-10">1.5.10. Paste Image</a>
+<ul>
+<li><a href="#sec-1-5-10-1">1.5.10.1. Overview</a></li>
+<li><a href="#sec-1-5-10-2">1.5.10.2. M-x org-wiki-paste-image</a></li>
+<li><a href="#sec-1-5-10-3">1.5.10.3. M-x org-wiki-paste-image-uuid</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-5-11">1.5.11. Help</a></li>
 </ul>
 </li>
 <li><a href="#sec-1-6">1.6. Suggestions</a>
 <ul>
 <li><a href="#sec-1-6-1">1.6.1. Shortcuts</a></li>
 <li><a href="#sec-1-6-2">1.6.2. Helm commands</a></li>
-<li><a href="#sec-1-6-3">1.6.3. Bookmarklets</a></li>
-<li><a href="#sec-1-6-4">1.6.4. Modify it</a></li>
+<li><a href="#sec-1-6-3">1.6.3. Screenshot tools</a></li>
+<li><a href="#sec-1-6-4">1.6.4. Bookmarklets</a></li>
+<li><a href="#sec-1-6-5">1.6.5. Modify it</a></li>
 </ul>
 </li>
 <li><a href="#sec-1-7">1.7. TODOLIST</a></li>
@@ -1031,31 +1039,8 @@ the web browser.
 </div>
 </div>
 <div id="outline-container-sec-1-5-7" class="outline-4">
-<h4 id="sec-1-5-7"><span class="section-number-4">1.5.7</span> Menu</h4>
+<h4 id="sec-1-5-7"><span class="section-number-4">1.5.7</span> Web Server</h4>
 <div class="outline-text-4" id="text-1-5-7">
-<ul class="org-ul">
-<li><code>M-x org-wiki-make-menu</code> Shows a menu with org-wiki functions and
-command reminders.
-</li>
-</ul>
-
-
-<div class="figure">
-<p><a href="images/org-wiki-menu1.png"><img src="images/org-wiki-menu1.png" alt="org-wiki-menu1.png" /></a> 
-</p>
-</div>
-
-
-<div class="figure">
-<p><a href="images/org-wiki-menu2.png"><img src="images/org-wiki-menu2.png" alt="org-wiki-menu2.png" /></a>
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-1-5-8" class="outline-4">
-<h4 id="sec-1-5-8"><span class="section-number-4">1.5.8</span> Server</h4>
-<div class="outline-text-4" id="text-1-5-8">
 <ul class="org-ul">
 <li><code>M-x org-wiki-server-toggle</code>  Start/stop static http server at
 org-wiki directory. 
@@ -1078,6 +1063,44 @@ Default value:
 <li>port: 8000 
 </li>
 </ul>
+
+<p>
+To see your current local IP address type <code>M-x ifconfig</code>. You can
+access the static web site by entering the URL:
+</p>
+
+<ul class="org-ul">
+<li><code>http://&lt;your local ip address&gt;:8000</code>
+</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>For instance:  <a href="http://192.168.1.10:8000">http://192.168.1.10:8000</a>.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-5-8" class="outline-4">
+<h4 id="sec-1-5-8"><span class="section-number-4">1.5.8</span> Menu</h4>
+<div class="outline-text-4" id="text-1-5-8">
+<ul class="org-ul">
+<li><code>M-x org-wiki-make-menu</code> Shows a menu with org-wiki functions and
+command reminders.
+</li>
+</ul>
+
+
+<div class="figure">
+<p><a href="images/org-wiki-menu1.png"><img src="images/org-wiki-menu1.png" alt="org-wiki-menu1.png" /></a> 
+</p>
+</div>
+
+
+<div class="figure">
+<p><a href="images/org-wiki-menu2.png"><img src="images/org-wiki-menu2.png" alt="org-wiki-menu2.png" /></a>
+</p>
+</div>
 </div>
 </div>
 
@@ -1093,8 +1116,108 @@ a pattern. (string or regex pattern).
 </div>
 
 <div id="outline-container-sec-1-5-10" class="outline-4">
-<h4 id="sec-1-5-10"><span class="section-number-4">1.5.10</span> Help</h4>
+<h4 id="sec-1-5-10"><span class="section-number-4">1.5.10</span> Paste Image</h4>
 <div class="outline-text-4" id="text-1-5-10">
+</div><div id="outline-container-sec-1-5-10-1" class="outline-5">
+<h5 id="sec-1-5-10-1"><span class="section-number-5">1.5.10.1</span> Overview</h5>
+<div class="outline-text-5" id="text-1-5-10-1">
+<p>
+This command requires the utility  <a href="https://github.com/caiorss/clip.jar">clip.jar</a> and Java runtime to be available
+at the $PATH variable.  
+</p>
+
+<p>
+The custom variable <code>org-wiki-clip-jar-path</code>  holds the path to
+clip.jar utility has the default value: <code>~/bin/Clip.jar</code>. 
+</p>
+
+<p>
+If you wish to install in Clip.jar in a different path set the
+variable org-wiki-clip-jar-path like this in the init file:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-wiki-clip-jar-path <span class="org-string">"~/bin/opt/Clip.jar"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+You can download a binary release with: 
+</p>
+
+<pre class="example">
+mkdir  ~/bin &amp;&amp; cd ~/bin 
+curl -O -L https://github.com/caiorss/clip.jar/blob/build/Clip.jar
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-10-2" class="outline-5">
+<h5 id="sec-1-5-10-2"><span class="section-number-5">1.5.10.2</span> M-x org-wiki-paste-image</h5>
+<div class="outline-text-5" id="text-1-5-10-2">
+<ul class="org-ul">
+<li><code>M-x org-wiki-paste-image</code> Ask the user for the image file name and
+writes the image from clipboard to the file. 
+</li>
+</ul>
+
+<p>
+Example: 
+</p>
+
+<ul class="org-ul">
+<li>User copies an image with mouse right click to clipboard.
+</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>User type the command M-x org-wiki-paste-image and choses the name
+Unix.png and he is on the page Linux (Linux.org). It will write
+the image to the file ./Linux/Unix.png and will insert a
+this block at current cursor position:
+</li>
+</ul>
+
+<pre class="example">
+#+CAPTION: 
+file:Linux/Unix.png
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-10-3" class="outline-5">
+<h5 id="sec-1-5-10-3"><span class="section-number-5">1.5.10.3</span> M-x org-wiki-paste-image-uuid</h5>
+<div class="outline-text-5" id="text-1-5-10-3">
+<ul class="org-ul">
+<li><code>M-x org-wiki-paste-image-uuid</code> Paste an image from clipboard with
+automatically generated name (uuid). 
+</li>
+</ul>
+
+<p>
+Example: 
+</p>
+
+<ul class="org-ul">
+<li>User copies an image from clipboard and type the command 
+<code>M-x org-wiki-paste-image-uuid</code>. It will insert at point this block
+containing a hyperlink to the image like:
+</li>
+</ul>
+
+<pre class="example">
+#+CAPTION: 
+file:Linux/fba53c12-3f23-4728-9f52-a26a3d285d7c.png
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-11" class="outline-4">
+<h4 id="sec-1-5-11"><span class="section-number-4">1.5.11</span> Help</h4>
+<div class="outline-text-4" id="text-1-5-11">
 <ul class="org-ul">
 <li><code>M-x org-wiki-help</code> Show all package commands and its description. 
 </li>
@@ -1190,8 +1313,34 @@ org-files.
 </div>
 
 <div id="outline-container-sec-1-6-3" class="outline-4">
-<h4 id="sec-1-6-3"><span class="section-number-4">1.6.3</span> Bookmarklets</h4>
+<h4 id="sec-1-6-3"><span class="section-number-4">1.6.3</span> Screenshot tools</h4>
 <div class="outline-text-4" id="text-1-6-3">
+<p>
+<b>Linux</b> 
+</p>
+
+<ul class="org-ul">
+<li><a href="http://shutter-project.org/">Shutter - Feature-rich Screenshot Tool</a> 
+</li>
+
+<li><a href="https://www.youtube.com/watch?v=Z7gci0qKCPo">Shutter - Advanced screenshot tool for Ubuntu ! - YouTube</a>
+</li>
+</ul>
+
+<p>
+<b>Windows</b>
+</p>
+
+<ul class="org-ul">
+<li><a href="http://www.bleepingcomputer.com/tutorials/how-to-use-the-windows-snipping-tool/">How to use the Windows Snipping Tool</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-6-4" class="outline-4">
+<h4 id="sec-1-6-4"><span class="section-number-4">1.6.4</span> Bookmarklets</h4>
+<div class="outline-text-4" id="text-1-6-4">
 <p>
 If you don't kwnow what is a bookmarklet see: <a href="https://www.youtube.com/watch?v=K_A3Y3eqnzE">Creating a Simple Bookmarklet - YouTube</a>
 </p>
@@ -1243,9 +1392,9 @@ Compressed JavaScript code:
 </div>
 </div>
 
-<div id="outline-container-sec-1-6-4" class="outline-4">
-<h4 id="sec-1-6-4"><span class="section-number-4">1.6.4</span> Modify it</h4>
-<div class="outline-text-4" id="text-1-6-4">
+<div id="outline-container-sec-1-6-5" class="outline-4">
+<h4 id="sec-1-6-5"><span class="section-number-4">1.6.5</span> Modify it</h4>
+<div class="outline-text-4" id="text-1-6-5">
 <p>
 You can change the commands or explore it using the command. 
 <code>M-x find-function &lt;command-name&gt;</code> to open the file at the point where
@@ -1271,7 +1420,7 @@ Example:
 <h3 id="sec-1-7"><span class="section-number-3">1.7</span> TODOLIST</h3>
 <div class="outline-text-3" id="text-1-7">
 <ul class="org-ul">
-<li>[] - Add command to copy and paste images from clipboard.
+<li>- Add command to copy and paste images from clipboard.
 </li>
 <li>[] - Add this package to some Emacs repository.
 </li>
@@ -1279,7 +1428,9 @@ Example:
 </li>
 <li>[] - Add org-wiki example pages and generated html files.
 </li>
-<li>[] - Improve command names. 
+<li>[] - Improve command names.
+</li>
+<li>[] - Update gifs 
 </li>
 </ul>
 </div>
@@ -1319,7 +1470,7 @@ Example:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Caio Rodrigues</p>
-<p class="date">Created: 2016-10-15 sáb 19:04</p>
+<p class="date">Created: 2016-10-20 qui 19:56</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
