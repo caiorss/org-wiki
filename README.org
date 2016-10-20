@@ -387,15 +387,6 @@ file:Linux/htop_1.jpg
 
  - =M-x org-wiki-index-html= - Open the index page exported to html in
    the web browser.  
-*** Menu 
-
- - =M-x org-wiki-make-menu= Shows a menu with org-wiki functions and
-   command reminders.
-
-[[file:images/org-wiki-menu1.png][file:images/org-wiki-menu1.png]] 
-
-[[file:images/org-wiki-menu2.png][file:images/org-wiki-menu2.png]]
-
 *** Web Server 
 
  - =M-x org-wiki-server-toggle=  Start/stop static http server at
@@ -417,11 +408,78 @@ access the static web site by entering the URL:
 
 
  - For instance:  http://192.168.1.10:8000.
+*** Menu 
+
+ - =M-x org-wiki-make-menu= Shows a menu with org-wiki functions and
+   command reminders.
+
+[[file:images/org-wiki-menu1.png][file:images/org-wiki-menu1.png]] 
+
+[[file:images/org-wiki-menu2.png][file:images/org-wiki-menu2.png]]
 
 *** Search
 
  - =M-x org-wiki-search= - Search all wiki page that contains
    a pattern. (string or regex pattern).
+
+*** Paste Image
+**** Overview 
+
+This command requires the utility  [[https://github.com/caiorss/clip.jar][clip.jar]] and Java runtime to be available
+at the $PATH variable.  
+
+The custom variable =org-wiki-clip-jar-path=  holds the path to
+clip.jar utility has the default value: =~/bin/Clip.jar=. 
+
+If you wish to install in Clip.jar in a different path set the
+variable org-wiki-clip-jar-path like this in the init file:
+
+#+BEGIN_SRC elisp 
+(setq org-wiki-clip-jar-path "~/bin/opt/Clip.jar")
+#+END_SRC
+
+You can download a binary release with: 
+
+#+BEGIN_SRC 
+mkdir  ~/bin && cd ~/bin 
+curl -O -L https://github.com/caiorss/clip.jar/blob/build/Clip.jar
+#+END_SRC
+
+**** M-x org-wiki-paste-image 
+
+ - =M-x org-wiki-paste-image= Ask the user for the image file name and
+   writes the image from clipboard to the file. 
+
+Example: 
+
+ + User copies an image with mouse right click to clipboard.
+
+
+ + User type the command M-x org-wiki-paste-image and choses the name
+   Unix.png and he is on the page Linux (Linux.org). It will write
+   the image to the file ./Linux/Unix.png and will insert a
+   this block at current cursor position:
+
+#+BEGIN_SRC 
+#+CAPTION: 
+file:Linux/Unix.png
+#+END_SRC  
+
+**** M-x org-wiki-paste-image-uuid 
+
+ - =M-x org-wiki-paste-image-uuid= Paste an image from clipboard with
+   automatically generated name (uuid). 
+
+Example: 
+
+ + User copies an image from clipboard and type the command 
+   =M-x org-wiki-paste-image-uuid=. It will insert at point this block
+   containing a hyperlink to the image like:
+
+#+BEGIN_SRC 
+#+CAPTION: 
+file:Linux/fba53c12-3f23-4728-9f52-a26a3d285d7c.png
+#+END_SRC  
 
 *** Help 
 
@@ -531,7 +589,7 @@ Example:
 
 ** TODOLIST 
 
- - [] - Add command to copy and paste images from clipboard.
+ - [x] - Add command to copy and paste images from clipboard.
  - [] - Add this package to some Emacs repository.
  - [] - Add a runnable test.
  - [] - Add org-wiki example pages and generated html files.
