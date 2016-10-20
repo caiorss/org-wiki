@@ -73,9 +73,16 @@ Default value ~/org/wiki."
   )
 
 (defcustom org-wiki-server-host "0.0.0.0"
-  "Default address that the server listens."
+  "Default address that the server listens to."
   :type  'string
   :group 'org-wiki
+  )
+
+
+(defcustom org-wiki-clip-jar-path "~/bin/Clip.jar"
+  "Path to Clip.jar utility to paste images from clipboard."
+  :type 'file
+  :group 'org-wiki 
   )
 
 
@@ -395,21 +402,21 @@ file name at current point.
 
 (defun org-wiki--asset-download-hof (callback)
   "Higher order function to download a file.
-Callback is a function with this signature: 
+Callback is a function with this signature:
  (callback <pagename> <filename>)
 
-How this function works: 
+How this function works:
 1. Ask the user for the URL suggesting the URL extracted from the clipboard.
-2. Ask the user for the file name to be downloaded suggesting the filename extracted from 
-the URL. 
-3. Calls the callback function passing the current page name and the file name. 
+2. Ask the user for the file name to be downloaded suggesting the filename extracted from
+the URL.
+3. Calls the callback function passing the current page name and the file name.
 
-If the URL is: http://www.myurl.com/Manual1.pdf, the current page is Unix and 
-the callback function is: 
-  
+If the URL is: http://www.myurl.com/Manual1.pdf, the current page is Unix and
+the callback function is:
+
   (lambda (p f) (insert (format \"%s/%s\" p f)))
 
-if the user doesn't change the suggested file name It will insert at current 
+if the user doesn't change the suggested file name It will insert at current
 point: 'Unix/Manual.pdf'."
   (let*
       ((pagename (file-name-base (buffer-file-name)))
@@ -529,7 +536,7 @@ type C-g to cancel the download."
 
 (defun org-wiki-asset-download-insert2 ()
   "Download a file from a URL in the clibpoard and inserts a link file:<page>/<asset-file>.
-Note: This function is synchronous and blocks Emacs. If Emacs is frozen type C-g 
+Note: This function is synchronous and blocks Emacs. If Emacs is frozen type C-g
 to cancel the download."
   (interactive)
   (org-wiki--asset-download-hof
@@ -748,6 +755,49 @@ Note: This command requires Python3 installed."
         (progn  (switch-to-buffer bname)
                 (kill-process (get-process pname))
                 (message "Server stopped.")))))
+
+
+
+(defun org-wiki-paste-image ()  
+  "Paste a image asking the user for the file name."
+  (interactive)
+  (insert "#+CAPTION: ")
+  (save-excursion
+    (insert "\n")
+    (let* ((dir   (file-name-as-directory
+                   (file-name-base
+                    (buffer-file-name))))
+           (file (read-file-name "Image: " dir)))
+      (insert
+       (shell-command-to-string
+         (mapconcat #'identity
+                    `("java"
+                      "-jar"
+                      ;;,(expand-file-name "~/bin/Clip.jar")
+                      ,(expand-file-name  org-wiki-clip-jar-path)
+                      "-file"
+                      ,(file-relative-name file default-directory)
+                      )
+                    " "
+                    ))))))
+
+(defun org-wiki-paste-image-uuid ()
+  "Paste a image with automatic generated name (uuid)."
+  (interactive)
+  (insert "#+CAPTION: ")
+  (save-excursion
+    (insert "\n")
+    (insert
+     (shell-command-to-string
+      (mapconcat #'identity
+                 `("java"
+                   "-jar"
+                   ;;,(expand-file-name "~/bin/Clip.jar")
+                   ,(expand-file-name  org-wiki-clip-jar-path)
+                   "-uuid"
+                   ,(format "\"%s\"" (file-name-base (buffer-file-name))))
+                 " "
+                 )))))
 
 
 (provide 'org-wiki)
