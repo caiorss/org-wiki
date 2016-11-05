@@ -2,6 +2,7 @@
 #+TITLE: org-wiki 
 #+AUTHOR: Caio Rodrigues 
 #+KEYWORKDS: org-mode, emacs, wiki, desktop, wiki, tools, notes, notebook
+#+STARTUP: overview
 
 * Org-wiki 
 ** Overview 

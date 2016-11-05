@@ -531,17 +531,17 @@ type C-g to cancel the download."
   (interactive)
   (org-wiki--asset-download-hof
    (lambda (pagename output-file)
-     (insert (format "[[wiki-asset-sys:%s;%s][%s]]"
-                     pagename output-file output-file)))))
+     (save-excursion (insert (format "[[wiki-asset-sys:%s;%s][%s]]"
+                                     pagename output-file output-file))))))
 
 (defun org-wiki-asset-download-insert2 ()
   "Download a file from a URL in the clibpoard and inserts a link file:<page>/<asset-file>.
-Note: This function is synchronous and blocks Emacs. If Emacs is frozen type C-g
+Note: This function is synchronous and blocks Emacs. If Emacs gets frozen type C-g
 to cancel the download."
   (interactive)
   (org-wiki--asset-download-hof
    (lambda (pagename output-file)
-     (insert (format "file:%s/%s" pagename output-file )))))
+     (save-excursion (insert (format "file:%s/%s" pagename output-file ))))))
 
 (defun org-wiki-helm ()
   "Browser the wiki files using helm."
@@ -694,7 +694,8 @@ Note: This function doesn't freeze Emacs since it starts another Emacs process."
        ["---" nil]
        ["Wiki Directory" nil]
        ["Open org-wiki directory \nM-x org-wiki-dired" (org-wiki-dired)]
-       ["Open org-wiki directory with system's file manager.\nM-x org-wiki-open" (org-wiki-open)]  ["Close all pages \nM-x org-wiki-close" (org-wiki-close)]
+       ["Open org-wiki directory with system's file manager.\nM-x org-wiki-open" (org-wiki-open)]
+       ["Close all pages \nM-x org-wiki-close" (org-wiki-close)]
 
        ["---" nil]
        ["Html export" nil]
@@ -768,6 +769,9 @@ Note: This command requires Python3 installed."
                    (file-name-base
                     (buffer-file-name))))
            (file (read-file-name "Image: " dir)))
+      
+      (org-wiki--assets-make-dir dir)
+
       (insert
        (shell-command-to-string
          (mapconcat #'identity
@@ -784,20 +788,26 @@ Note: This command requires Python3 installed."
 (defun org-wiki-paste-image-uuid ()
   "Paste a image with automatic generated name (uuid)."
   (interactive)
-  (insert "#+CAPTION: ")
-  (save-excursion
-    (insert "\n")
-    (insert
-     (shell-command-to-string
-      (mapconcat #'identity
-                 `("java"
-                   "-jar"
-                   ;;,(expand-file-name "~/bin/Clip.jar")
-                   ,(expand-file-name  org-wiki-clip-jar-path)
-                   "-uuid"
-                   ,(format "\"%s\"" (file-name-base (buffer-file-name))))
-                 " "
-                 )))))
+  (let* ((dir   (file-name-as-directory
+                   (file-name-base
+                    (buffer-file-name)))))
+    
+    (org-wiki--assets-make-dir dir)
+
+    (insert "#+CAPTION: ")
+    (save-excursion
+      (insert "\n")
+      (insert
+       (shell-command-to-string
+        (mapconcat #'identity
+                   `("java"
+                     "-jar"
+                     ;;,(expand-file-name "~/bin/Clip.jar")
+                     ,(expand-file-name  org-wiki-clip-jar-path)
+                     "-uuid"
+                     ,(format "\"%s\"" (file-name-base (buffer-file-name))))
+                   " "
+                   ))))))
 
 
 (provide 'org-wiki)
