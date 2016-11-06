@@ -810,5 +810,66 @@ Note: This command requires Python3 installed."
                    ))))))
 
 
+;; Custom Minor Mode
+(define-minor-mode org-wiki-panel-minor-mode
+  "Ishell multi line mode"
+  ;; The initial value - Set to 1 to enable by default
+  nil
+  ;; The indicator for the mode line.
+  nil 
+  ;; The minor mode keymap
+  `(
+    (,(kbd "bh")        .  org-wiki-helm )
+    (,(kbd "br")        .  org-wiki-helm-read-only)
+    (,(kbd "bf")        .  org-wiki-helm-frame)
+    (,(kbd "bi")        .  org-wiki-index)
+    (,(kbd "dw")        .  org-wiki-dired )
+    
+    (,(kbd "mm")        .  org-wiki-make-menu)
+
+    (,(kbd "hi")        .  org-wiki-index-html)
+    (,(kbd "he")        .  org-wiki-export-html)
+    
+    (,(kbd "do")        .  org-wiki-open)
+    (,(kbd "kk")        .  org-wiki-close)    
+    (,(kbd "q")         . (lambda () (interactive) (kill-buffer)))
+    )
+   ;; Make mode local to buffer rather than global 
+   ;; :global t
+)
+  
+
+;; COMMENT: create the pacman-mode buffer
+(defun org-wiki-panel ()
+  "Create a command panel for org-wiki."
+  (interactive)
+  (let ((buf (get-buffer-create "*org-wiki-panel*")))
+
+    (switch-to-buffer buf)
+    (kill-region (point-min) (point-max))
+    (org-wiki-panel-minor-mode)
+    (insert
+     "Org-wiki command panel.\n\n"
+     "\tbi - Go to index.                         - M-x org-wiki-index\n"
+     "\n"
+     "\tbh  - Open a page.                        - M-x org-wiki-helm\n"
+     "\tbr - Open a page in read-only mode.       - M-x org-wiki-helm-read-only\n"
+     "\tbf - Open a page in a new frame.          - M-x org-wiki-helm-frame\n"     
+     "\tdw - Open wiki directory in dired buffer  - M-x org-wiki-index\n"
+     "\tdo - Open wiki directory in file manager  - M-x org-wiki-open\n"
+     "\tm  - Install org-wiki menu.               - M-x org-wiki-make-menu\n"
+
+     "\n"
+
+     "\thi - Open index page in browser           - M-x org-wiki-index-html\n"
+     "\the - Export to all pages to html          - M-x org-wiki-export-html\n"
+    
+     "\n"
+     "\tkk - Close all wiki buffers               - M-x org-wiki-close\n"     
+     "\tq  - Quit.\n"
+     ))
+  (read-only-mode))
+
+
 (provide 'org-wiki)
 ;;; org-wiki.el ends here
