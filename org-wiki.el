@@ -86,7 +86,7 @@ Default value ~/org/wiki."
   )
 
 
-(setq org-wiki-index-file-basename "index")
+(defvar org-wiki-index-file-basename "index")
 
 ;; ------- Internal functions ------------ ;;
 ;; @SECTION: Internal functionsq
@@ -109,6 +109,20 @@ Example:
         ))
     (reverse result)))
 
+(defun org-wiki--get-buffers ()
+  "Return all org-wiki page buffers (.org) files in `org-wiki-location`."
+ (remove-if-not (lambda (p)
+                 (let* ((fp (buffer-file-name p))
+                        (fpath (if fp (expand-file-name fp) nil))
+                        )
+                         ;; path test if file exists (if fpath not nil)
+                   (and  fpath
+                         ;; test if buffer file is in wiki location 
+                         (string-prefix-p (expand-file-name org-wiki-location) fpath)
+                         ;; test if buffer file has extension .org 
+                         (string-suffix-p ".org" fpath)
+                    )))
+               (buffer-list)))
 
 (defun org-wiki--normalize-path (path)
   "Replace double slashes for a single slash and remove slash at the end of a PATH."
@@ -549,6 +563,7 @@ to cancel the download."
   (interactive)
   (org-wiki--helm-selection #'org-wiki--open-page))
 
+
 (defun org-wiki-helm-read-only ()
   "Open wiki page in read-only mode."
   (interactive)
@@ -567,6 +582,19 @@ to cancel the download."
                                 ))))
 
 
+(defun org-wiki-switch ()
+  "Switch between org-wiki page buffers."
+  (interactive)
+  (helm :sources `((
+                   (name . "Wiki Pages")
+                   (candidates . ,(mapcar (lambda (b)
+                                            (cons (org-wiki--file->page (buffer-file-name b))
+                                                  b
+                                                  ))
+                                          (org-wiki--get-buffers)))
+                   (action . switch-to-buffer)
+                   ))))
+
 ;;  @TODO: Implement org-wiki/helm-html
 ;;
 (defun org-wiki-helm-html ()
@@ -584,21 +612,14 @@ to cancel the download."
 (defun org-wiki-close ()
   "Close all opened wiki pages buffer and save them."
   (interactive)
-
   (mapc (lambda (b)
-          (when (and (buffer-file-name b) ;; test if is a buffer associated with file
-                     (org-wiki--path-equal
-                      org-wiki-location
-                      (file-name-directory (buffer-file-name b)))
-                       )
-              (with-current-buffer b
+          (with-current-buffer b
                 (save-buffer)
                 (kill-this-buffer)
-                )))
-          (buffer-list))
+                ))
+          (org-wiki--get-buffers))
   (message "All wiki files closed. Ok."))
-  ;;
-  ;; End of org-wiki/close
+
 
 (defun org-wiki-insert ()
   "Insert a Wiki Page link at point."
