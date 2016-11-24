@@ -1,7 +1,7 @@
 #+INCLUDE: theme/style.org
 #+TITLE: org-wiki 
 #+AUTHOR: Caio Rodrigues 
-#+KEYWORKDS: org-mode, emacs, wiki, desktop, wiki, tools, notes, notebook
+#+KEYWORKDS: org-mode, orgmode, emacs, wiki, desktop, wiki, tools, notes, notebook
 #+STARTUP: overview
 
 * Org-wiki 
@@ -33,8 +33,8 @@ Features:
     system application.
 
   - Automatic download of attachment files with:
-    - =M-xorg-wiki-asset-download-insert1= 
-    - =M-xorg-wiki-asset-download-insert2= 
+    - =M-x org-wiki-asset-download-insert1= 
+    - =M-x org-wiki-asset-download-insert2= 
 
 
 Org-mode already has many features that makes it suitable to create a desktop
@@ -247,6 +247,11 @@ The menu can be installed permanently by adding the init file:
 **** M-x org-wiki-helm
 
    - =M-x org-wiki-helm= - Open a helm menu to switch or open a wiki page.
+
+**** M-x org-wiki-switch 
+
+  - =M-x org-wiki-switch= - Switch between org-wiki buffers (*.org
+    files in org-wiki-location directory) already opened. 
 
 **** M-x org-wiki-helm-frame
    
@@ -490,13 +495,19 @@ file:Linux/fba53c12-3f23-4728-9f52-a26a3d285d7c.png
 
 You might want shortcuts for frequent commands: 
 
- - Command to switch or open a wiki page quickly. =M-x w-h=
+ - Open a wiki page quickly. =M-x w-h=
 
 #+BEGIN_SRC elisp 
 (defalias 'w-h #'org-wiki-helm)
 #+END_SRC
 
- - Switch to a wiki page in a new frame quickly. 
+ - Switch between org-wiki buffers, wiki pages already opened. 
+
+#+BEGIN_SRC elisp 
+(defalias 'w-s #'org-wiki-switch)
+#+END_SRC
+
+ - Open a wiki page in a new frame quickly. 
 
 #+BEGIN_SRC elisp
 (defalias 'w-hf  #'org-wiki-helm-frame)
