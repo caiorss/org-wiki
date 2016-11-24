@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>org-wiki</title>
-<!-- 2016-10-20 qui 19:56 -->
+<!-- 2016-11-24 qui 04:51 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Caio Rodrigues" />
@@ -244,10 +244,11 @@ for the JavaScript code in this tag.
 <li><a href="#sec-1-5-2">1.5.2. Browse pages</a>
 <ul>
 <li><a href="#sec-1-5-2-1">1.5.2.1. M-x org-wiki-helm</a></li>
-<li><a href="#sec-1-5-2-2">1.5.2.2. M-x org-wiki-helm-frame</a></li>
-<li><a href="#sec-1-5-2-3">1.5.2.3. M-x org-wiki-helm-read-only</a></li>
-<li><a href="#sec-1-5-2-4">1.5.2.4. M-x org-wiki-make-page</a></li>
-<li><a href="#sec-1-5-2-5">1.5.2.5. M-x org-wiki-close</a></li>
+<li><a href="#sec-1-5-2-2">1.5.2.2. M-x org-wiki-switch</a></li>
+<li><a href="#sec-1-5-2-3">1.5.2.3. M-x org-wiki-helm-frame</a></li>
+<li><a href="#sec-1-5-2-4">1.5.2.4. M-x org-wiki-helm-read-only</a></li>
+<li><a href="#sec-1-5-2-5">1.5.2.5. M-x org-wiki-make-page</a></li>
+<li><a href="#sec-1-5-2-6">1.5.2.6. M-x org-wiki-close</a></li>
 </ul>
 </li>
 <li><a href="#sec-1-5-3">1.5.3. Insert Hyperlink to wiki pages or asset files</a>
@@ -355,9 +356,9 @@ system application.
 
 <li>Automatic download of attachment files with:
 <ul class="org-ul">
-<li><code>M-xorg-wiki-asset-download-insert1</code> 
+<li><code>M-x org-wiki-asset-download-insert1</code> 
 </li>
-<li><code>M-xorg-wiki-asset-download-insert2</code> 
+<li><code>M-x org-wiki-asset-download-insert2</code> 
 </li>
 </ul>
 </li>
@@ -765,8 +766,19 @@ doesn't exist it will be created.
 </div>
 
 <div id="outline-container-sec-1-5-2-2" class="outline-5">
-<h5 id="sec-1-5-2-2"><span class="section-number-5">1.5.2.2</span> M-x org-wiki-helm-frame</h5>
+<h5 id="sec-1-5-2-2"><span class="section-number-5">1.5.2.2</span> M-x org-wiki-switch</h5>
 <div class="outline-text-5" id="text-1-5-2-2">
+<ul class="org-ul">
+<li><code>M-x org-wiki-switch</code> - Switch between org-wiki buffers (*.org
+files in org-wiki-location directory) already opened. 
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-2-3" class="outline-5">
+<h5 id="sec-1-5-2-3"><span class="section-number-5">1.5.2.3</span> M-x org-wiki-helm-frame</h5>
+<div class="outline-text-5" id="text-1-5-2-3">
 <ul class="org-ul">
 <li><code>M-x org-wiki-helm-frame</code> - Open a wiki page in a new frame. 
 </li>
@@ -774,9 +786,9 @@ doesn't exist it will be created.
 </div>
 </div>
 
-<div id="outline-container-sec-1-5-2-3" class="outline-5">
-<h5 id="sec-1-5-2-3"><span class="section-number-5">1.5.2.3</span> M-x org-wiki-helm-read-only</h5>
-<div class="outline-text-5" id="text-1-5-2-3">
+<div id="outline-container-sec-1-5-2-4" class="outline-5">
+<h5 id="sec-1-5-2-4"><span class="section-number-5">1.5.2.4</span> M-x org-wiki-helm-read-only</h5>
+<div class="outline-text-5" id="text-1-5-2-4">
 <ul class="org-ul">
 <li><code>M-x org-wiki-helm-read-only</code> - Open a wiki page in read-only
 mode. 
@@ -785,9 +797,9 @@ mode.
 </div>
 </div>
 
-<div id="outline-container-sec-1-5-2-4" class="outline-5">
-<h5 id="sec-1-5-2-4"><span class="section-number-5">1.5.2.4</span> M-x org-wiki-make-page</h5>
-<div class="outline-text-5" id="text-1-5-2-4">
+<div id="outline-container-sec-1-5-2-5" class="outline-5">
+<h5 id="sec-1-5-2-5"><span class="section-number-5">1.5.2.5</span> M-x org-wiki-make-page</h5>
+<div class="outline-text-5" id="text-1-5-2-5">
 <ul class="org-ul">
 <li><code>M-x org-wiki-make-page</code> - Creates a new wiki page asking the user
 for the page name.
@@ -796,9 +808,9 @@ for the page name.
 </div>
 </div>
 
-<div id="outline-container-sec-1-5-2-5" class="outline-5">
-<h5 id="sec-1-5-2-5"><span class="section-number-5">1.5.2.5</span> M-x org-wiki-close</h5>
-<div class="outline-text-5" id="text-1-5-2-5">
+<div id="outline-container-sec-1-5-2-6" class="outline-5">
+<h5 id="sec-1-5-2-6"><span class="section-number-5">1.5.2.6</span> M-x org-wiki-close</h5>
+<div class="outline-text-5" id="text-1-5-2-6">
 <ul class="org-ul">
 <li><code>M-x org-wiki-close</code> - Close all wiki pages, kill all *.or buffers
 belonging to wiki directory.
@@ -1236,13 +1248,46 @@ You might want shortcuts for frequent commands:
 </p>
 
 <ul class="org-ul">
-<li>Command to switch or open a wiki page quickly. <code>M-x w-h</code>
+<li>Open a wiki page quickly. <code>M-x w-h</code>
 </li>
 </ul>
 
 <div class="org-src-container">
 
 <pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-h</span> #'org-wiki-helm<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Switch between org-wiki buffers, wiki pages already opened. 
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-s</span> #'org-wiki-switch<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Open a wiki page in a new frame quickly. 
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-hf</span>  #'org-wiki-helm-frame<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Switch to wiki page in read-only mode. 
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-hr</span> #'org-wiki-helm-read-only<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1288,6 +1333,17 @@ completion. <code>M-x w-in</code>
 <div class="org-src-container">
 
 <pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">og2h</span> #'org-html-export-to-html<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Close all wiki pages 
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-close</span> #'org-wiki-close<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -1470,7 +1526,7 @@ Example:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Caio Rodrigues</p>
-<p class="date">Created: 2016-10-20 qui 19:56</p>
+<p class="date">Created: 2016-11-24 qui 04:51</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
