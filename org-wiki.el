@@ -268,7 +268,8 @@ Example: if PAGENAME is Linux it will return [[wiki:Linux][Linux]]"
 Example:  (org-wiki/open-page \"Linux\")
 Will open the the wiki file Linux.org in
 `org-wiki-location`"
-  (find-file  (org-wiki--page->file pagename)))
+  (find-file  (org-wiki--page->file pagename))
+  (org-wiki--assets-make-dir pagename))
 
 
 (defun org-wiki--assets-get-file (pagename filename)
