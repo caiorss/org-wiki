@@ -496,6 +496,18 @@ You might want shortcuts for frequent commands:
 (defalias 'w-h #'org-wiki-helm)
 #+END_SRC
 
+ - Switch to a wiki page in a new frame quickly. 
+
+#+BEGIN_SRC elisp
+(defalias 'w-hf  #'org-wiki-helm-frame)
+#+END_SRC
+
+ - Switch to wiki page in read-only mode. 
+
+#+BEGIN_SRC elisp 
+(defalias 'w-hr #'org-wiki-helm-read-only)
+#+END_SRC
+ 
  - Go to the index page 
 
 #+BEGIN_SRC elisp 
@@ -519,6 +531,12 @@ You might want shortcuts for frequent commands:
 
 #+BEGIN_SRC elisp 
 (defalias 'og2h #'org-html-export-to-html)
+#+END_SRC
+
+ - Close all wiki pages 
+
+#+BEGIN_SRC elisp 
+(defalias 'w-close #'org-wiki-close)
 #+END_SRC
 
 *** Helm commands
