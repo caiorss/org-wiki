@@ -627,7 +627,7 @@ to cancel the download."
 
 
 (defun org-wiki-insert ()
-  "Insert a Wiki Page link at point."
+  "Insert a Wiki link at point for a existing page."
   (interactive)
   (org-wiki--helm-selection
    (lambda (page) (insert (org-wiki--make-link page)))))
