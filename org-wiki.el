@@ -831,16 +831,20 @@ Note: This command requires Python3 installed."
     (save-excursion
       (insert "\n")
       (insert
-       (shell-command-to-string
-        (mapconcat #'identity
-                   `("java"
-                     "-jar"
-                     ;;,(expand-file-name "~/bin/Clip.jar")
-                     ,(expand-file-name  org-wiki-clip-jar-path)
-                     "-uuid"
-                     ,(format "\"%s\"" (file-name-base (buffer-file-name))))
-                   " "
-                   ))))))
+       (org-make-link-string
+        (concat "file:"
+                  (string-trim
+                   (shell-command-to-string
+                    (mapconcat #'identity
+                               `("java"
+                                 "-jar"
+                                        ;;,(expand-file-name "~/bin/Clip.jar")
+                                 ,(expand-file-name  org-wiki-clip-jar-path)
+                                 "--uuid"
+                                 ,(concat "\"" dir "\""))
+
+                               " "
+                               )))))))))
 
 
 ;; Custom Minor Mode
