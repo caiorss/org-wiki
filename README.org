@@ -84,6 +84,12 @@ or
 It will open the file =~/wiki-directory/Linux/LearnLinux.pdf= with the
 default system application.
 
+** Repository 
+
+| Repository         | https://github.com/caiorss/org-wiki |
+| Html documentation | https://caiorss.github.io/org-wiki/ |
+|                    |                                     |
+ 
 ** Demos 
 
  - (1) Browsing Index: M-x org-wiki/index
@@ -461,7 +467,7 @@ access the static web site by entering the URL:
    can execute actions just typing few keys like magit or dired
    buffer.
 
-file:images/7d1dba05-89ff-4f0f-9406-087e65a304e7.png
+[[file:images/7d1dba05-89ff-4f0f-9406-087e65a304e7.png][file:images/7d1dba05-89ff-4f0f-9406-087e65a304e7.png]]
 
 *** Menu 
 
@@ -670,16 +676,10 @@ Example:
 
  - [x] - Add command to copy and paste images from clipboard.
  - [] - Add this package to some Emacs repository.
- - [] - Add a runnable test.
- - [] - Add org-wiki example pages and generated html files.
- - [] - Improve command names.
+ - [x] - Add a runnable test.
+ - [x] - Add org-wiki example pages and generated html files.
  - [] - Update gifs 
 
-** Repository
 
-| Repository         | https://github.com/caiorss/org-wiki |
-| Html documentation | https://caiorss.github.io/org-wiki/ |
-|                    |                                     |
- 
 
 
