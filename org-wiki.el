@@ -789,28 +789,35 @@ Note: This command requires Python3 installed."
 (defun org-wiki-paste-image ()  
   "Paste a image asking the user for the file name."
   (interactive)
-  (insert "#+CAPTION: ")
-  (save-excursion
-    (insert "\n")
-    (let* ((dir   (file-name-as-directory
+
+
+  (let* ((dir   (file-name-as-directory
                    (file-name-base
                     (buffer-file-name))))
-           (file (read-file-name "Image: " dir)))
+           (image-name (read-string "Image name: " )))
       
-      (org-wiki--assets-make-dir dir)
+    (org-wiki--assets-make-dir dir)
 
+    (insert "#+CAPTION: ")
+    (save-excursion
+      (insert image-name)
+      (insert "\n")
       (insert
-       (shell-command-to-string
-         (mapconcat #'identity
-                    `("java"
-                      "-jar"
-                      ;;,(expand-file-name "~/bin/Clip.jar")
-                      ,(expand-file-name  org-wiki-clip-jar-path)
-                      "-file"
-                      ,(file-relative-name file default-directory)
-                      )
-                    " "
-                    ))))))
+       (org-make-link-string
+	(concat "file:"
+		(string-trim
+		 (shell-command-to-string
+		   (mapconcat #'identity
+			      `("java"
+				"-jar"
+				;;,(expand-file-name "~/bin/Clip.jar")
+				,(expand-file-name  org-wiki-clip-jar-path)
+				"--name"
+				,(concat "\"" image-name "\"")
+				,(concat "\"" dir "\"")
+				)
+			      " "
+			      )))))))))
 
 (defun org-wiki-paste-image-uuid ()
   "Paste a image with automatic generated name (uuid)."
