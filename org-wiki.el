@@ -804,27 +804,26 @@ Note: This command requires Python3 installed."
       (insert "\n")
       (insert
        (org-make-link-string
-	(concat "file:"
-		(string-trim
-		 (shell-command-to-string
-		   (mapconcat #'identity
-			      `("java"
-				"-jar"
-				;;,(expand-file-name "~/bin/Clip.jar")
-				,(expand-file-name  org-wiki-clip-jar-path)
-				"--name"
-				,(concat "\"" image-name "\"")
-				,(concat "\"" dir "\"")
-				)
-			      " "
-			      )))))))))
+        (concat "file:"
+                (string-trim
+                 (shell-command-to-string
+                  (mapconcat #'identity
+                             `("java"
+                               "-jar"
+                               ;;,(expand-file-name "~/bin/Clip.jar")
+                               ,(expand-file-name  org-wiki-clip-jar-path)
+                               "--name"
+                               ,(concat "\"" image-name "\"")
+                               ,(concat "\"" dir "\"")
+                               )
+                             " "
+                             )))))))))
 
 (defun org-wiki-paste-image-uuid ()
   "Paste a image with automatic generated name (uuid)."
   (interactive)
-  (let* ((dir   (file-name-as-directory
-                   (file-name-base
-                    (buffer-file-name)))))
+  (let* ((dir   (file-name-base
+                    (buffer-file-name))))
     
     (org-wiki--assets-make-dir dir)
 
