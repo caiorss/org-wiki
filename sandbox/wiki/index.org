@@ -1,0 +1,29 @@
+#+INCLUDE: theme/style.org
+#+TITLE: This is the index 
+
+#+CAPTION: scala logo
+[[file:index/scala%20logo.png]]
+
+* Index 
+** Programming 
+
+ - [[wiki:Elisp][Elisp]]
+
+ - [[wiki:Python][Python]]
+
+ - [[wiki:Bash%20-%20Shell%20-%20Unix][Bash - Shell - Unix]]
+
+ - [[wiki:Linux][Linux]]
+
+ - [[wiki:The%20Art%20of%20Unix%20Programming][The Art of Unix Programming]]
+
+ - [[wiki:Lisp%20Machines][Lisp Machines]]
+
+ - [[wiki:Avionics][Avionics]]
+
+ - [[wiki:Circuit%20Boards][Circuit Boards]]
+
+ - [[wiki:Math%20-%20Calculus][Math - Calculus]]
+
+ - 
+ 
