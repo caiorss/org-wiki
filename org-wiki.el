@@ -904,7 +904,27 @@ Note: This command requires Python3 installed."
    ;; Make mode local to buffer rather than global 
    ;; :global t
 )
-  
+
+
+(defun org-wiki-header ()
+  "Insert a header at the top of the file."
+  (interactive)
+  (insert
+   (save-excursion
+     (goto-char (point-min))
+     (insert (format
+              (string-trim "
+#+TITLE: %s
+#+DESCRIPTION:
+#+KEYWORDS:
+#+STARTUP:  overview
+
+Related:
+
+[[wiki:index][Index]]")
+            (file-name-base (buffer-file-name))
+                     )))))
+
 
 (defun org-wiki-panel ()
   "Create a command panel for org-wiki."
