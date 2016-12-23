@@ -883,7 +883,6 @@ Note: This command requires Python3 installed."
 )
   
 
-;; COMMENT: create the pacman-mode buffer
 (defun org-wiki-panel ()
   "Create a command panel for org-wiki."
   (interactive)
@@ -893,24 +892,47 @@ Note: This command requires Python3 installed."
     (kill-region (point-min) (point-max))
     (org-wiki-panel-minor-mode)
     (insert
-     "Org-wiki command panel.\n\n"
-     "\tbi - Go to index.                         - M-x org-wiki-index\n"
-     "\n"
-     "\tbh  - Open a page.                        - M-x org-wiki-helm\n"
-     "\tbr - Open a page in read-only mode.       - M-x org-wiki-helm-read-only\n"
-     "\tbf - Open a page in a new frame.          - M-x org-wiki-helm-frame\n"     
-     "\tdw - Open wiki directory in dired buffer  - M-x org-wiki-index\n"
-     "\tdo - Open wiki directory in file manager  - M-x org-wiki-open\n"
-     "\tm  - Install org-wiki menu.               - M-x org-wiki-make-menu\n"
+     "                       Org-wiki command panel
+Open Index Page
 
-     "\n"
+  [bii] - Go to index.                           - M-x org-wiki-index
+  [bfi] - Go to index in a new frame.            - M-x org-wiki-index-frame
+  [bbi] - Open index page in browser             - M-x org-wiki-index-html
 
-     "\thi - Open index page in browser           - M-x org-wiki-index-html\n"
-     "\the - Export to all pages to html          - M-x org-wiki-export-html\n"
-    
-     "\n"
-     "\tkk - Close all wiki buffers               - M-x org-wiki-close\n"     
-     "\tq  - Quit.\n"
+Browse Pages
+
+  [kk]  - Close all wiki buffers                 - M-x org-wiki-close
+  [hh]  - Open a page.                           - M-x org-wiki-helm
+  [hj]  - Switch between org-wiki buffers        - M-x org-wiki-switch
+  [hr]  - Open a page in read-only mode.         - M-x org-wiki-helm-read-only
+  [hf]  - Open a page in a new frame.            - M-x org-wiki-helm-frame
+
+
+Open Directory
+
+  [dw]  - Open wiki directory in dired buffer    - M-x org-wiki-index
+  [do]  - Open wiki directory in file manager    - M-x org-wiki-open
+
+Special Commands
+
+  [q ]  - Quit.
+  [sec] - Customize org-wiki                      - M-x customize-group org-wiki
+  [see] - Export to all pages to html             - M-x org-wiki-export-html
+  [smm] - Install org-wiki menu.                  - M-x org-wiki-make-menu
+  [seg] - Go to org-wiki web site
+
+Toggle
+
+  [tts] - Toggle org-wiki-server                  - M-x org-wiki-server-toggle
+
+  [tty] - Toggle Emacs toolbar and menu
+  [ttb] - Toggle Emacs toolbar
+  [ttm] - Toggle Emacs menu bar
+
+  [ttl] - Toggle org-mode Toggle link display     - M-x org-toggle-link-display
+  [tti] - Toggle org-mode inline Images display   - M-x org-toggle-inline-images
+
+"
      ))
   (read-only-mode))
 
