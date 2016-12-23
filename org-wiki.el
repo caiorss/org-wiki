@@ -42,10 +42,15 @@
 ;;
 
 ;;; Code:
+
+;; external libraries
 (require 'ox-html)
 (require 'helm)
-(require 'cl-lib)
+
+;; built-in Emacs lib
+(require 'cl-lib)     ;; Common-lisp emulation library
 (require 'easymenu)
+(require 'subr-x)     ;; Provides string trim functions.
 
 (defgroup org-wiki nil
   "Org-wiki Settings"
