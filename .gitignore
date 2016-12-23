@@ -8,4 +8,9 @@
 *.bin
 *.html
 /dist/
+*.exe
+*.so
+*.tgz
+*.zip
 /#org-wiki.el#
+*~
