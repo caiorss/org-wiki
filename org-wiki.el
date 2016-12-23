@@ -841,19 +841,41 @@ Note: This command requires Python3 installed."
   nil 
   ;; The minor mode keymap
   `(
-    (,(kbd "bh")        .  org-wiki-helm )
-    (,(kbd "br")        .  org-wiki-helm-read-only)
-    (,(kbd "bf")        .  org-wiki-helm-frame)
-    (,(kbd "bi")        .  org-wiki-index)
-    (,(kbd "dw")        .  org-wiki-dired )
-    
-    (,(kbd "mm")        .  org-wiki-make-menu)
+    ;; Commands to Open Index page:
+    (,(kbd "bii")        .  org-wiki-index)
+    (,(kbd "bfi")        .  org-wiki-index-frame)
+    (,(kbd "bbi")        .  org-wiki-index-html)
 
-    (,(kbd "hi")        .  org-wiki-index-html)
-    (,(kbd "he")        .  org-wiki-export-html)
+    ;; ==== Commands to browse pages ==========
+    (,(kbd "hh")        .  org-wiki-helm )
+    (,(kbd "hj")        .  org-wiki-switch )
+    (,(kbd "hr")        .  org-wiki-helm-read-only)
+    (,(kbd "hf")        .  org-wiki-helm-frame)
+    (,(kbd "kk")        .  org-wiki-close)
     
+    ;; ==== Commands to browse directories =====
+    (,(kbd "dw")        .  org-wiki-dired )
     (,(kbd "do")        .  org-wiki-open)
-    (,(kbd "kk")        .  org-wiki-close)    
+
+    ;; ==== Install Menu =======================
+    (,(kbd "smm")        .  org-wiki-make-menu)
+    (,(kbd "see")        .  org-wiki-export-html)
+    (,(kbd "sec")        . (lambda () (interactive) (customize-group "org-wiki")))
+    (,(kbd "seg")        . (lambda () (interactive) (browse-url "http://www.github.com/caiorss/org-wiki")))
+
+    ;; === Toggle commands =====================
+    (,(kbd "tts")        .  org-wiki-server-toggle)
+    (,(kbd "ttl")        .  org-toggle-link-display)
+    (,(kbd "tti")        .  org-toggle-inline-images)
+
+    (,(kbd "tty")        . (lambda () (interactive)
+                             (tool-bar-mode 'toggle)
+                             (menu-bar-mode 'toggle)
+                             ))
+
+    (,(kbd "ttb")        . (lambda () (interactive) (tool-bar-mode 'toggle)))
+    (,(kbd "ttm")        . (lambda () (interactive) (menu-bar-mode 'toggle)))
+    
     (,(kbd "q")         . (lambda () (interactive) (kill-buffer)))
     )
    ;; Make mode local to buffer rather than global 
