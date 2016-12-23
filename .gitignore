@@ -6,7 +6,6 @@
 *.elc
 *.pyc
 *.bin
-*.html
 /dist/
 *.exe
 *.so
