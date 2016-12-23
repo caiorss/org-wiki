@@ -951,10 +951,6 @@ Toggle
   [tty] - Toggle Emacs toolbar and menu
   [ttb] - Toggle Emacs toolbar
   [ttm] - Toggle Emacs menu bar
-
-  [ttl] - Toggle org-mode Toggle link display     - M-x org-toggle-link-display
-  [tti] - Toggle org-mode inline Images display   - M-x org-toggle-inline-images
-
 "
      ))
   (read-only-mode))
