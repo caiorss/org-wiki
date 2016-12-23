@@ -909,8 +909,7 @@ Note: This command requires Python3 installed."
 (defun org-wiki-header ()
   "Insert a header at the top of the file."
   (interactive)
-  (insert
-   (save-excursion
+  (save-excursion
      (goto-char (point-min))
      (insert (format
               (string-trim "
@@ -922,8 +921,8 @@ Note: This command requires Python3 installed."
 Related:
 
 [[wiki:index][Index]]")
-            (file-name-base (buffer-file-name))
-                     )))))
+               (file-name-base (buffer-file-name))
+                     ))))
 
 
 (defun org-wiki-panel ()
