@@ -14,3 +14,6 @@
 *.zip
 /#org-wiki.el#
 *~
+elpa
+tmp
+/sandbox/network-security.data
