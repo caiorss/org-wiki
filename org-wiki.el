@@ -888,8 +888,8 @@ Note: This command requires Python3 installed."
 
     ;; === Toggle commands =====================
     (,(kbd "tts")        .  org-wiki-server-toggle)
-    (,(kbd "ttl")        .  org-toggle-link-display)
-    (,(kbd "tti")        .  org-toggle-inline-images)
+    ;; (,(kbd "ttl")        .  org-toggle-link-display)
+    ;; (,(kbd "tti")        .  org-toggle-inline-images)
 
     (,(kbd "tty")        . (lambda () (interactive)
                              (tool-bar-mode 'toggle)
