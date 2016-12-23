@@ -1,6 +1,14 @@
-#+INFOJS_OPT: view:showall toc:t ltoc:t ftoc:nil mouse:underline button:nil path:theme/org-info.js
+#+INFOJS_OPT: view:t toc:t ltoc:t ftoc:nil mouse:underline button:t path:theme/org-info.js
 #+HTML_HEAD: <link href="theme/style.css" rel="stylesheet"> 
-#+AUTHOR: Caio Rodrigues
-#+EMAIL:  <caiorss.rodrigues@gmail.com>
+#+AUTHOR: 
+#+EMAIL:  
+#+LINK_HOME: /index.html
+#+LINK_UO:   /index.html
 #+LANGUAGE: en
 #+OPTIONS:   H:4
+
+#+BEGIN_HTML
+<lu> 
+  <li><a class="index-button" href="index.html">Index</a></li>
+</lu>
+#+END_HTML
