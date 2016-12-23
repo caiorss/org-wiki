@@ -15,7 +15,9 @@
 	("org"       . "http://orgmode.org/elpa/")
 	("gnu"       . "http://elpa.gnu.org/packages/")
 
-	("marmalade" .  "http://marmalade-repo.org/packages/")))
+	;; ("marmalade" .  "http://marmalade-repo.org/packages/")
+
+    ))
 
 (package-initialize)
 
@@ -30,11 +32,11 @@ installs it automaticaly."
          packs        
          ))
 
-(unless (file-exists-p "sandbox/elpa")
+(unless (file-exists-p "elpa")
   (package-refresh-contents))
 
 (unless (package-installed-p 'org-wiki)
-  (package-install-file "org-wiki.el"))
+  (package-install-file "../org-wiki.el"))
 
 (setq org-wiki-location (getenv "ORG_WIKI_LOCATION"))
 
