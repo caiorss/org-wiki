@@ -231,6 +231,15 @@ The menu can be installed permanently by adding the init file:
 (org-wiki-make-menu)
 #+END_SRC
 
+*** Start the wiki 
+
+ - M-x org-wiki-index to go to index.org
+
+ - New pages can be created with =M-x org-wiki-link= that asks for
+   wiki word and inserts at point a hyperlink to the wiki page.
+
+ - References to existing pages can be inserted with =M-x org-wiki-insert=.
+
 ** Commands
 *** Open the index page
 **** M-x org-wiki-index
@@ -273,10 +282,42 @@ The menu can be installed permanently by adding the init file:
      belonging to wiki directory.
 
 *** Insert Hyperlink to wiki pages or asset files
+**** M-x org-wiki-link 
+
+ - M-x org-wiki-link - Asks the user for the wiki page name and
+   inserts the hyperlink at point. It is useful to create new pages
+   fast without write the full syntax like ~[[wiki:page title] [page title]~
+ 
+Example: 
+
+ - 1. User enter M-x org-wiki-link and enter "The Art of Unix Programming"
+ - 2. It will insert at point (current cursor position):
+
+#+BEGIN_SRC txt
+[[wiki:The%20Art%20of%20Unix%20Programming][The Art of Unix Programming]]
+#+END_SRC
+
+And will create the hyperlink to this page.
+
 **** M-x org-wiki-insert 
 
   - =M-x org-wiki-insert= - Inserts a org-mode link at current point
     to a Wiki page selected through a helm-menu.
+
+**** M-x org-wiki-header 
+
+ - =M-x org-wiki-header. It inserts at top of the wiki page the template:
+
+#+BEGIN_SRC txt
+#+TITLE: <PAGE TITLE>
+#+DESCRIPTION:
+#+KEYWORDS:
+#+STARTUP:  overview
+
+Related:
+
+[[wiki:index][Index]]\n\n
+#+END_SRC
 
 **** M-x org-wiki-asset-insert 
 
@@ -414,6 +455,14 @@ access the static web site by entering the URL:
 
 
  - For instance:  http://192.168.1.10:8000.
+*** Panel - org-wiki-panel
+
+ - =M-x org-wiki-panel= - This command provides a command panel that
+   can execute actions just typing few keys like magit or dired
+   buffer.
+
+file:images/7d1dba05-89ff-4f0f-9406-087e65a304e7.png
+
 *** Menu 
 
  - =M-x org-wiki-make-menu= Shows a menu with org-wiki functions and
