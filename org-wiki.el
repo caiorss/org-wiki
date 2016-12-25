@@ -116,7 +116,7 @@ Example:
 
 (defun org-wiki--get-buffers ()
   "Return all org-wiki page buffers (.org) files in `org-wiki-location`."
- (remove-if-not (lambda (p)
+ (cl-remove-if-not (lambda (p)
                  (let* ((fp (buffer-file-name p))
                         (fpath (if fp (expand-file-name fp) nil))
                         )
