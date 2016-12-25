@@ -1,10 +1,27 @@
 #+INCLUDE: theme/style.org
 #+TITLE: This is the index 
+#+STARTUP: showall
 
 #+CAPTION: scala logo
+
 [[file:index/scala%20logo.png]]
 
 * Index 
+** Org-mode helpful command 
+
+| Description                  | Command                       |   |
+|------------------------------+-------------------------------+---|
+| Toggle inline images         | M-x org-toggle-inline-images  |   |
+| Toggle inline Latex Formulas | M-x org-toggle-latex-fragment |   |
+| Toggle hyperlinks            | M-x org-toggle-link-display   |   |
+
+
+
+#+CAPTION: Org-mode Logo
+[[file:index/fc0e0018-5a55-4f71-9c84-3d01a1cd46e4.png]]
+
+
+
 ** Programming 
 
  - [[wiki:Elisp][Elisp]]

@@ -4,9 +4,6 @@
 
 Related:   
 
-[[wiki:index][Index]]#+INCLUDE: theme/style.org
-#+TITLE:   Math Calculus 
-
 [[wiki:index][index]]
 
 * Math Calculus 

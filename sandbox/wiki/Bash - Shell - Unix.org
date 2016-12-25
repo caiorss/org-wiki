@@ -3,7 +3,7 @@
 
 [[wiki:index][index]]
 
-Related: [[wiki:Linux][Linux]] [[wiki:Python][Python]] 
+Related: [[wiki:Linux][Linux]] [[wiki:Python][Python]] [[wiki:The Art of Unix Programming][The Art of Unix Programming]]
 
 * Bash script 
 ** For loops
