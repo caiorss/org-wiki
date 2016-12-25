@@ -1,6 +1,0 @@
-#+INFOJS_OPT: view:showall toc:t ltoc:t ftoc:nil mouse:underline button:nil path:theme/org-info.js
-#+HTML_HEAD: <link href="theme/style.css" rel="stylesheet"> 
-#+AUTHOR: Caio Rodrigues
-#+EMAIL:  <caiorss.rodrigues@gmail.com>
-#+LANGUAGE: en
-#+OPTIONS:   H:4
