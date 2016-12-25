@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>org-wiki</title>
-<!-- 2016-12-23 sex 05:37 -->
+<!-- 2016-12-25 dom 17:39 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -413,11 +413,11 @@ Example:
 
 <div class="org-src-container">
 
-<pre class="src src-org">    <span class="org-org-link"><a href="wiki:Linux">wiki:Linux</a></span> 
+<pre class="src src-org">    wiki:Linux 
 or 
-    <span class="org-org-link"><a href="wiki:Linux">wiki:Linux</a></span>
+    [[wiki:Linux]]
 or
-    <span class="org-org-link"><a href="wiki:Linux">Linux</a></span>
+    [[wiki:Linux][Linux]]
 </pre>
 </div>
 
@@ -432,11 +432,11 @@ Example:
 
 <div class="org-src-container">
 
-<pre class="src src-org">     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">wiki-asset-sys:Linux;LearnLinux.pdf</a></span>
+<pre class="src src-org">     wiki-asset-sys:Linux;LearnLinux.pdf
 or 
-     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">wiki-asset-sys:Linux;LearnLinux.pdf</a></span>
+     [[wiki-asset-sys:Linux;LearnLinux.pdf]]
 or
-     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">Book Learn Linux.pdf</a></span>
+     [[wiki-asset-sys:Linux;LearnLinux.pdf][Book Learn Linux.pdf]]
 </pre>
 </div>
 
@@ -628,13 +628,13 @@ with <code>M-x eval-buffer</code>.
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">let</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>url <span class="org-string">"https://raw.githubusercontent.com/caiorss/org-wiki/master/org-wiki.el"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>     
-      <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">with-current-buffer</span> <span class="org-rainbow-delimiters-depth-3">(</span>url-retrieve-synchronously url<span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>goto-char <span class="org-rainbow-delimiters-depth-4">(</span>point-min<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>re-search-forward <span class="org-string">"^$"</span><span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>delete-region <span class="org-rainbow-delimiters-depth-4">(</span>point<span class="org-rainbow-delimiters-depth-4">)</span> <span class="org-rainbow-delimiters-depth-4">(</span>point-min<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>kill-whole-line<span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>package-install-from-buffer<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(let ((url "https://raw.githubusercontent.com/caiorss/org-wiki/master/org-wiki.el"))     
+      (with-current-buffer (url-retrieve-synchronously url)
+	(goto-char (point-min))
+	(re-search-forward "^$")
+	(delete-region (point) (point-min))
+	(kill-whole-line)
+	(package-install-from-buffer)))
 </pre>
 </div>
 </div>
@@ -650,11 +650,11 @@ with <code>M-x eval-buffer</code>. It is assumed that <a href="https://github.co
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>el-get-bundle org-wiki
-  <span class="org-builtin">:url</span> <span class="org-string">"https://raw.githubusercontent.com/caiorss/org-wiki/master/org-wiki.el"</span>
-  <span class="org-builtin">:description</span> <span class="org-string">"Emacs' desktop wiki built with org-mode"</span>
-  <span class="org-builtin">:features</span> org-wiki
-  <span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(el-get-bundle org-wiki
+  :url "https://raw.githubusercontent.com/caiorss/org-wiki/master/org-wiki.el"
+  :description "Emacs' desktop wiki built with org-mode"
+  :features org-wiki
+  )
 </pre>
 </div>
 </div>
@@ -672,11 +672,11 @@ Copy the package to the desired location.
 
 <pre class="src src-sh">mkdir -p ~/.emacs.d/packages/ 
 
-<span class="org-builtin">cd</span> ~/.emacs.d/packages/ 
+cd ~/.emacs.d/packages/ 
 
 git clone  https://github.com/caiorss/org-wiki
 
-mkdir -p ~/org/wiki    <span class="org-comment-delimiter"># </span><span class="org-comment">Make wiki location.</span>
+mkdir -p ~/org/wiki    # Make wiki location.
 </pre>
 </div>
 </div>
@@ -701,7 +701,7 @@ Add to init file ~/.emacs.d/init.el or ~/.emacs
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">require</span> '<span class="org-constant">org-wiki</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(require 'org-wiki)
 </pre>
 </div>
 
@@ -711,7 +711,7 @@ Path to wiki location
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-wiki-location <span class="org-string">"~/org/wiki"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(setq org-wiki-location "~/org/wiki")
 </pre>
 </div>
 
@@ -721,7 +721,7 @@ or in Windows it could be:
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-wiki-location <span class="org-string">"e:/projects/org-wiki-test.emacs"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(setq org-wiki-location "e:/projects/org-wiki-test.emacs")
 </pre>
 </div>
 
@@ -734,7 +734,7 @@ this path is not in $PATH variable it is necessary to set the variable
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-wiki-emacs-path <span class="org-string">"c:/Users/arch/opt/emacs/bin/runemacs.exe"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(setq org-wiki-emacs-path "c:/Users/arch/opt/emacs/bin/runemacs.exe")
 </pre>
 </div>
 
@@ -750,7 +750,7 @@ The menu can be installed permanently by adding the init file:
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>org-wiki-make-menu<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(org-wiki-make-menu)
 </pre>
 </div>
 </div>
@@ -1275,7 +1275,7 @@ variable org-wiki-clip-jar-path like this in the init file:
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-wiki-clip-jar-path <span class="org-string">"~/bin/opt/Clip.jar"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(setq org-wiki-clip-jar-path "~/bin/opt/Clip.jar")
 </pre>
 </div>
 
@@ -1379,7 +1379,7 @@ You might want shortcuts for frequent commands:
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-h</span> #'org-wiki-helm<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(defalias 'w-h #'org-wiki-helm)
 </pre>
 </div>
 
@@ -1390,7 +1390,7 @@ You might want shortcuts for frequent commands:
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-s</span> #'org-wiki-switch<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(defalias 'w-s #'org-wiki-switch)
 </pre>
 </div>
 
@@ -1401,7 +1401,7 @@ You might want shortcuts for frequent commands:
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-hf</span>  #'org-wiki-helm-frame<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(defalias 'w-hf  #'org-wiki-helm-frame)
 </pre>
 </div>
 
@@ -1412,7 +1412,7 @@ You might want shortcuts for frequent commands:
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-hr</span> #'org-wiki-helm-read-only<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(defalias 'w-hr #'org-wiki-helm-read-only)
 </pre>
 </div>
 
@@ -1423,7 +1423,7 @@ You might want shortcuts for frequent commands:
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-i</span> #'org-wiki-index<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(defalias 'w-i #'org-wiki-index)
 </pre>
 </div>
 
@@ -1435,7 +1435,7 @@ completion. <code>M-x w-in</code>
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-in</span> #'org-wiki-insert<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(defalias 'w-in #'org-wiki-insert)
 </pre>
 </div>
 
@@ -1446,7 +1446,7 @@ completion. <code>M-x w-in</code>
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-ad</span> #'org-wiki-asset-dired<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(defalias 'w-ad #'org-wiki-asset-dired)
 </pre>
 </div>
 
@@ -1457,7 +1457,7 @@ completion. <code>M-x w-in</code>
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">og2h</span> #'org-html-export-to-html<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(defalias 'og2h #'org-html-export-to-html)
 </pre>
 </div>
 
@@ -1468,7 +1468,7 @@ completion. <code>M-x w-in</code>
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defalias</span> '<span class="org-function-name">w-close</span> #'org-wiki-close<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">(defalias 'w-close #'org-wiki-close)
 </pre>
 </div>
 </div>
@@ -1556,8 +1556,8 @@ Javascript code:
 
 <div class="org-src-container">
 
-<pre class="src src-js"><span class="org-keyword">var</span> <span class="org-variable-name">md</span> = <span class="org-string">"[["</span> + document.URL + <span class="org-string">"]["</span> + document.title + <span class="org-string">"]]"</span> ;
-prompt(<span class="org-string">"org-mode :"</span>, md);
+<pre class="src src-js">var md = "[[" + document.URL + "][" + document.title + "]]" ;
+prompt("org-mode :", md);
 </pre>
 </div>
 
@@ -1567,7 +1567,7 @@ Compressed JavaScript code:
 
 <div class="org-src-container">
 
-<pre class="src src-js"><span class="org-function-name">javascript</span>:(<span class="org-keyword">function</span>(){<span class="org-keyword">var</span> <span class="org-variable-name">md</span> = <span class="org-string">"[["</span> + document.URL + <span class="org-string">"]["</span> + document.title + <span class="org-string">"]]"</span> ;prompt(<span class="org-string">"org-mode :"</span>, md);})()
+<pre class="src src-js">javascript:(function(){var md = "[[" + document.URL + "][" + document.title + "]]" ;prompt("org-mode :", md);})()
 </pre>
 </div>
 </div>
@@ -1617,7 +1617,7 @@ Example:
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2016-12-23 sex 05:37</p>
+<p class="date">Created: 2016-12-25 dom 17:39</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
