@@ -1,4 +1,3 @@
-# #+INCLUDE: theme/style.org
 #+TITLE: org-wiki 
 #+INFOJS_OPT: view:t toc:t ltoc:t ftoc:nil mouse:underline button:t path:theme/org-info.js
 #+HTML_HEAD: <link href="theme/style.css" rel="stylesheet"> 
@@ -9,7 +8,7 @@
 #+LANGUAGE: en
 #+OPTIONS:   H:4
 #+KEYWORKDS: org-mode, orgmode, emacs, wiki, desktop, wiki, tools, notes, notebook
-#+STARTUP: overview
+#+STARTUP: showall
 
 * Org-wiki 
 ** Overview 
@@ -42,7 +41,6 @@ Features:
   - Automatic download of attachment files with:
     - =M-x org-wiki-asset-download-insert1= 
     - =M-x org-wiki-asset-download-insert2= 
-
 
 Org-mode already has many features that makes it suitable to create a desktop
 wiki and store knowledge like:
@@ -123,6 +121,16 @@ See video: [[http://i.imgur.com/KqqC7sY.mp4][M-x org-wiki/asset-insert]]
 </video>
 #+END_HTML 
 
+ - (5) - Org-wiki exported to HTML 
+
+
+You can view a sample wiki exported to html here: 
+
+ - [[https://caiorss.github.io/org-wiki/wiki/index.html][Sample org-wiki exported to html]]  
+
+ - This sample wiki is available at  [[https://github.com/caiorss/org-wiki/tree/master/sandbox/wiki][sandbox/wiki]]
+
+ 
 ** Screenshots 
 
  - 1. Command =M-x org-wiki-index= Open the wiki index page (file index.org) 
