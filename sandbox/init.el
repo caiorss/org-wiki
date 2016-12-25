@@ -44,19 +44,22 @@ installs it automaticaly."
 (unless (file-exists-p org-wiki-location)
   (mkdir org-wiki-location))
 
+
 (defun test-sandbox ()
   "Test if the sandbox is working."
   (interactive)
+  (switch-to-buffer "*scratch*")
   (insert (concat "user-emacs-directory = "  user-emacs-directory "\n" ))
   (insert (concat "user-init-file = "        user-init-file "\n" ))
   (insert (concat "package-user-dir = "      package-user-dir "\n" ))
   
   )
 
-(switch-to-buffer "*scratch*")
+;;; Print Sandbox environment variables to check if it works.
 (test-sandbox)
 
-
-
-
 (require 'org-wiki)
+
+;;; Open the sandbox sample wiki 
+(org-wiki-index)
+(org-toggle-inline-images)
