@@ -1,6 +1,13 @@
-#+INCLUDE: theme/style.org
+# #+INCLUDE: theme/style.org
 #+TITLE: org-wiki 
-#+AUTHOR: Caio Rodrigues 
+#+INFOJS_OPT: view:t toc:t ltoc:t ftoc:nil mouse:underline button:t path:theme/org-info.js
+#+HTML_HEAD: <link href="theme/style.css" rel="stylesheet"> 
+#+AUTHOR: 
+#+EMAIL:  
+#+LINK_HOME: /index.html
+#+LINK_UO:   /index.html
+#+LANGUAGE: en
+#+OPTIONS:   H:4
 #+KEYWORKDS: org-mode, orgmode, emacs, wiki, desktop, wiki, tools, notes, notebook
 #+STARTUP: overview
 
