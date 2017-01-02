@@ -1,7 +1,8 @@
 #!/usr/bin/env sh
 
 # INIT_FILE=$USER_DIR/init.el
-INIT_FILE=$(pwd)/init.el
+export INITFILE=$(pwd)/init.el
+echo "The init file is = "$INIT_FILE
 
 PACKAGE_DIR=$USER_DIR/elpa
     
