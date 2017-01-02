@@ -70,6 +70,15 @@ Default value ~/org/wiki."
   :group 'org-wiki
   )
 
+;;; Path to init file like init.el used by function org-wiki-html-export
+;; The user can set for a more lightweight file in order to speed up the
+;; exporting speed.
+;;
+(defcustom org-wiki-user-init-file (concat (file-name-as-directory user-emacs-directory) "init.el")
+  "Path to init.el file used for asynchronous export."
+  :type 'file
+  :group 'org-wiki
+  )
 
 (defcustom org-wiki-server-port "8000"
   "Default port to server org-wiki static files server."
@@ -705,7 +714,7 @@ Note: This function doesn't freeze Emacs since it starts another Emacs process."
   (compile (mapconcat 'identity
                       `(,org-wiki-emacs-path
                         "--batch"
-                        "-l" ,user-init-file
+                        "-l" ,org-wiki-user-init-file
                         "-f" "org-wiki-export-html-sync"
                         "--kill"
                         )
