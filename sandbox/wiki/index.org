@@ -2,8 +2,7 @@
 #+TITLE: This is the index 
 #+STARTUP: showall
 
-#+CAPTION: scala logo
-
+#+CAPTION: scala logo - A scalable Language.
 [[file:index/scala%20logo.png]]
 
 * Index 

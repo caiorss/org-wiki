@@ -53,13 +53,13 @@ clean:
 
 sandbox-run:
 	@echo "Running sandbox"
-	cd ./sandbox && ./sandbox.sh run
+	cd ./sandbox && sh sandbox.sh run
 
 sandbox-reload:
 	@echo "Cleaning sandbox"
 	rm -rf ./sandbox/elpa	
 	@echo "Running sandbox"
-	cd ./sandbox && ./sandbox.sh run
+	cd ./sandbox && sh sandbox.sh run
 
 sandbox-clean:
 	@echo "Cleaning sandbox"

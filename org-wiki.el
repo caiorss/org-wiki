@@ -5,9 +5,9 @@
 ;; Author: Caio Rodrigues       <caiorss DOT rodrigues AT gmail DOT com>
 ;; Maintainer: Caio Rordrigues  <caiorss DOT rodrigues AT gmail DOT com>
 ;; Keywords: org-mode, wiki, notes, notebook
-;; Version: 2.8
+;; Version: 2.9
 ;; URL: https://www.github.com/caiorss/org-wiki'
-;; Package-Requires: ((helm-core "2.0") (org "8") (cl-lib "0.5"))
+;; Package-Requires: ((helm-core "2.0") (org "9") (cl-lib "0.5"))
 
 
 ;; This is free and unencumbered software released into the public domain.
@@ -70,6 +70,15 @@ Default value ~/org/wiki."
   :group 'org-wiki
   )
 
+;;; Path to init file like init.el used by function org-wiki-html-export
+;; The user can set for a more lightweight file in order to speed up the
+;; exporting speed.
+;;
+(defcustom org-wiki-user-init-file (concat (file-name-as-directory user-emacs-directory) "init.el")
+  "Path to init.el file used for asynchronous export."
+  :type 'file
+  :group 'org-wiki
+  )
 
 (defcustom org-wiki-server-port "8000"
   "Default port to server org-wiki static files server."
@@ -682,6 +691,33 @@ to cancel the download."
      (org-wiki--assets-make-dir page)
      (dired (org-wiki--assets-get-dir page)))))
 
+
+(defun org-wiki-export-with (org-exporter)
+  "Export all pages to a given format. See full doc.
+ORG-EXPORTER is a function that exports an org-mode page to a specific format like html.
+It can be for instance: 
+
+- org-html-publish-to-thml 
+- org-latex-publish-to-pdf
+- org-latex-publish-to-latex
+
+WARN: This is a synchronous function and can freeze Emacs. Emacs will freeze while 
+the exporting doesn't finish. Type C-g to abort the execution."
+  (interactive)
+  (let ((org-html-htmlize-output-type 'css)
+        (org-html-htmlize-font-prefix "org-")
+        )
+    (org-publish
+     `("html"
+       :base-directory       ,org-wiki-location
+       :base-extension        "org"
+       :publishing-directory  ,org-wiki-location
+       :publishing-function   ,org-exporter
+       )
+     t
+     )))
+
+
 (defun org-wiki-export-html-sync ()
   "Export all pages to html in synchronous mode."
   (interactive)
@@ -705,7 +741,7 @@ Note: This function doesn't freeze Emacs since it starts another Emacs process."
   (compile (mapconcat 'identity
                       `(,org-wiki-emacs-path
                         "--batch"
-                        "-l" ,user-init-file
+                        "-l" ,org-wiki-user-init-file
                         "-f" "org-wiki-export-html-sync"
                         "--kill"
                         )

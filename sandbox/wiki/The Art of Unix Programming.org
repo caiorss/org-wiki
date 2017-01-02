@@ -18,7 +18,6 @@ Related: [[wiki:Linux][Linux]] [[wiki:Bash - Shell - Unix][Bash - Shell - Unix]]
 [[file:The%20Art%20of%20Unix%20Programming/d4499b37-fbf6-476f-812d-63d8ea88241d.png]]
 
 
-
 ** Unix Emulator 
 
 #+CAPTION: An unix emulator
