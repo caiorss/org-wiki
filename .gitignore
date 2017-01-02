@@ -16,3 +16,6 @@
 elpa
 tmp
 /sandbox/network-security.data
+/sandbox/custom.el
+#*
+\\#*
