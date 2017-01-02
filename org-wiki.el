@@ -691,6 +691,33 @@ to cancel the download."
      (org-wiki--assets-make-dir page)
      (dired (org-wiki--assets-get-dir page)))))
 
+
+(defun org-wiki-export-with (org-exporter)
+  "Export all pages to a given format. See full doc.
+ORG-EXPORTER is a function that exports an org-mode page to a specific format like html.
+It can be for instance: 
+
+- org-html-publish-to-thml 
+- org-latex-publish-to-pdf
+- org-latex-publish-to-latex
+
+WARN: This is a synchronous function and can freeze Emacs. Emacs will freeze while 
+the exporting doesn't finish. Type C-g to abort the execution."
+  (interactive)
+  (let ((org-html-htmlize-output-type 'css)
+        (org-html-htmlize-font-prefix "org-")
+        )
+    (org-publish
+     `("html"
+       :base-directory       ,org-wiki-location
+       :base-extension        "org"
+       :publishing-directory  ,org-wiki-location
+       :publishing-function   ,org-exporter
+       )
+     t
+     )))
+
+
 (defun org-wiki-export-html-sync ()
   "Export all pages to html in synchronous mode."
   (interactive)
