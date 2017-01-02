@@ -1,4 +1,17 @@
 #+INCLUDE: theme/style.org
 #+TITLE: Elisp 
+#+STARTUP: showall
 
 wiki:index - [[wiki:index][index]]
+
+* Emacs Lisp Programming 
+
+#+BEGIN_SRC emacs-lisp 
+(defun insert-file-name ()
+   "Insert file name at point."
+    (interactive)
+    (insert (buffer-file-name)))
+#+END_SRC
+
+
+ - See also: [[https://github.com/caiorss/Emacs-Elisp-Programming][Tutorial about programming Elisp and Emacs text editor customization.]]
