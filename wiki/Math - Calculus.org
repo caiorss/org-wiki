@@ -1,6 +1,7 @@
 #+TITLE: Math - Calculus
 #+DESCRIPTION: 
 #+KEYWORDS:
+#+STARTUP: showall 
 
 Related:   
 
@@ -9,6 +10,12 @@ Related:
 * Math Calculus 
 
 This formula is visible with: M-x org-toggle-latex-fragments
+
+#+BEGIN_SRC latex
+\begin{equation}
+x = \frac{\sqrt(\alpha + 1000 \beta )}{100 * \alpha + \zeta}
+\end{equation}
+#+END_SRC
 
 \begin{equation}
 x = \frac{\sqrt(\alpha + 1000 \beta )}{100 * \alpha + \zeta}
