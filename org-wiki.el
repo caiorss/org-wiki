@@ -109,19 +109,7 @@ Default value ~/org/wiki."
   "Concat directory path (BASE) and a relative path (RELPATH)."
   (concat (file-name-as-directory base) relpath))
 
-(defun org-wiki--unique (xs)
-  "Remove repeated elements from a list XS.
-Example:
-> (org-wiki--unique '(x y a b 21 21 10 21 x y a ))
-  (x y a b 21 10)"
-  (let
-    ((result nil))
 
-    (dolist (x xs)
-      (if (not (member x result))
-          (push x result)
-        ))
-    (reverse result)))
 
 (defun org-wiki--get-buffers ()
   "Return all org-wiki page buffers (.org) files in `org-wiki-location`."
@@ -394,7 +382,7 @@ points to the file <org wiki location>/Blueprint/box1.dwg."
   "Open a helm menu to select the wiki page and invokes the CALLBACK function."
   (helm :sources `((
                       (name . "Wiki Pages")
-                      (candidates . ,(org-wiki--unique (org-wiki--page-list)))
+                      (candidates . ,(delete-dups (org-wiki--page-list)))
                       (action . ,callback)
                       ))))
 
@@ -617,7 +605,7 @@ to cancel the download."
     (helm :sources `((
                       (name . "Wiki Pages")
 
-                      (candidates . ,(org-wiki--unique (org-wiki--page-list)))
+                      (candidates . ,(delete-dups (org-wiki--page-list)))
 
                       (action . org-wiki--open-page)
                       ))))
