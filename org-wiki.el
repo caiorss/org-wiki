@@ -964,9 +964,9 @@ Note: This command requires Python3 installed."
                          )))
 
 (defun org-wiki-website ()
-  "Open org-wiki development Website."
+  "Open org-wiki github repository."
   (interactive)
-  (browse-url "http://www.caiorss.github.io/org-wiki"))
+  (browse-url "http://www.github.com/caiorss/org-wiki"))
 
 (defun org-wiki-header ()
   "Insert a header at the top of the file."
