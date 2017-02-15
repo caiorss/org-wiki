@@ -577,10 +577,10 @@ to cancel the download."
 (defun org-wiki-helm-frame ()
   "Browser the wiki files using helm and opens it in a new frame."
   (interactive)
-
   (org-wiki--helm-selection  (lambda (act)
-                              (with-selected-frame (make-frame)
-                                (org-wiki--open-page act)
+                               (with-selected-frame (make-frame)
+                                 (set-frame-name (concat "Org-wiki: " act))
+                                 (org-wiki--open-page act)
                                 ))))
 
 
