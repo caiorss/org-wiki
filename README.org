@@ -8,7 +8,7 @@
 #+LANGUAGE: en
 #+OPTIONS:   H:4
 #+KEYWORKDS: org-mode, orgmode, emacs, wiki, desktop, wiki, tools, notes, notebook
-#+STARTUP: showall
+#+STARTUP: contents 
 
 * Org-wiki 
 ** Overview 
@@ -130,7 +130,6 @@ You can view a sample wiki exported to html here:
 
  - This sample wiki is available at  [[https://github.com/caiorss/org-wiki/tree/master/sandbox/wiki][sandbox/wiki]]
 
- 
 ** Screenshots 
 
  - 1. Command =M-x org-wiki-index= Open the wiki index page (file index.org) 
@@ -497,6 +496,23 @@ access the static web site by entering the URL:
 
  - =M-x org-wiki-search= - Search all wiki page that contains
    a pattern. (string or regex pattern).
+
+ - =M-x org-wiki-find-dired= - Show all files in all org-wiki subdirectories.
+
+#+CAPTION: Screenshot of command M-x org-wiki-find-dired
+[[file:images/org-wiki-find-dired.png][file:images/org-wiki-find-dired.png]]
+
+ - =M-x org-wiki-desc= - Show all org-wiki pages with description. 
+
+#+CAPTION: Screenshot of command M-x org-wiki-desc
+[[file:images/org-wiki-desc.png][file:images/org-wiki-desc.png]]
+
+ 
+ - =M-x org-wiki-keywords= - Display all org-wiki keywords and related
+   org-wiki page files. 
+ 
+#+CAPTION: Screenshot of command M-x org-wiki-keywords
+[[file:images/org-wiki-keywords.png][file:images/org-wiki-keywords.png]]
 
 *** Paste Image
 **** Overview 
