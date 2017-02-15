@@ -946,6 +946,24 @@ Note: This command requires Python3 installed."
   (interactive)
   (org-wiki-rgrep "^#+DESCRIPTION:"))
 
+(defun org-wiki-find-dired ()
+  "Show all org-wiki files in all subdirectories of org-wiki-location."
+  (interactive)
+  (find-dired org-wiki-location
+              (mapconcat #'identity
+                         '(
+                           "-not -path '*/.git*'"         ;; Exclude .git Directory 
+                           "-and -not -name '.#*'"        ;; Exclude temporary files starting with #
+                           "-and -not -name '#*'"
+                           "-and -not -name '*#'"
+                           "-and -not -name '*~' "        ;; Exclude ending with ~ (tilde)
+                           "-and -not -name '*.html' "    ;; Exclude html files 
+                           )
+                         
+                         " "
+                         )))
+
+
 
 (defun org-wiki-header ()
   "Insert a header at the top of the file."
