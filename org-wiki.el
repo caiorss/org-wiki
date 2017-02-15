@@ -963,7 +963,10 @@ Note: This command requires Python3 installed."
                          " "
                          )))
 
-
+(defun org-wiki-website ()
+  "Open org-wiki development Website."
+  (interactive)
+  (browse-url "http://www.caiorss.github.io/org-wiki"))
 
 (defun org-wiki-header ()
   "Insert a header at the top of the file."
@@ -990,7 +993,6 @@ Related:
   "Create a command panel for org-wiki."
   (interactive)
   (let ((buf (get-buffer-create "*org-wiki-panel*")))
-
     (switch-to-buffer buf)
     (kill-region (point-min) (point-max))
     (org-wiki-panel-minor-mode)
