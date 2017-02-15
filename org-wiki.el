@@ -5,7 +5,7 @@
 ;; Author: Caio Rodrigues       <caiorss DOT rodrigues AT gmail DOT com>
 ;; Maintainer: Caio Rordrigues  <caiorss DOT rodrigues AT gmail DOT com>
 ;; Keywords: org-mode, wiki, notes, notebook
-;; Version: 2.9
+;; Version: 3.0
 ;; URL: https://www.github.com/caiorss/org-wiki'
 ;; Package-Requires: ((helm-core "2.0") (org "9") (cl-lib "0.5"))
 
@@ -109,19 +109,7 @@ Default value ~/org/wiki."
   "Concat directory path (BASE) and a relative path (RELPATH)."
   (concat (file-name-as-directory base) relpath))
 
-(defun org-wiki--unique (xs)
-  "Remove repeated elements from a list XS.
-Example:
-> (org-wiki--unique '(x y a b 21 21 10 21 x y a ))
-  (x y a b 21 10)"
-  (let
-    ((result nil))
 
-    (dolist (x xs)
-      (if (not (member x result))
-          (push x result)
-        ))
-    (reverse result)))
 
 (defun org-wiki--get-buffers ()
   "Return all org-wiki page buffers (.org) files in `org-wiki-location`."
@@ -394,7 +382,7 @@ points to the file <org wiki location>/Blueprint/box1.dwg."
   "Open a helm menu to select the wiki page and invokes the CALLBACK function."
   (helm :sources `((
                       (name . "Wiki Pages")
-                      (candidates . ,(org-wiki--unique (org-wiki--page-list)))
+                      (candidates . ,(delete-dups (org-wiki--page-list)))
                       (action . ,callback)
                       ))))
 
@@ -589,10 +577,10 @@ to cancel the download."
 (defun org-wiki-helm-frame ()
   "Browser the wiki files using helm and opens it in a new frame."
   (interactive)
-
   (org-wiki--helm-selection  (lambda (act)
-                              (with-selected-frame (make-frame)
-                                (org-wiki--open-page act)
+                               (with-selected-frame (make-frame)
+                                 (set-frame-name (concat "Org-wiki: " act))
+                                 (org-wiki--open-page act)
                                 ))))
 
 
@@ -617,7 +605,7 @@ to cancel the download."
     (helm :sources `((
                       (name . "Wiki Pages")
 
-                      (candidates . ,(org-wiki--unique (org-wiki--page-list)))
+                      (candidates . ,(delete-dups (org-wiki--page-list)))
 
                       (action . org-wiki--open-page)
                       ))))
@@ -942,6 +930,44 @@ Note: This command requires Python3 installed."
 )
 
 
+
+(defun org-wiki-rgrep (pattern)
+  "Search org-wiki with a regex pattern."
+  (interactive "sSearch: ")
+  (rgrep pattern "*.org" org-wiki-location nil))
+
+(defun org-wiki-keywords ()
+  "Display all org-wiki files with '#+KEYWORDS:' field."
+  (interactive)
+  (org-wiki-rgrep "^#+KEYWORDS:"))
+
+(defun org-wiki-desc ()
+  "Search all org-wiki files with '#+DESCRIPTION:' field."
+  (interactive)
+  (org-wiki-rgrep "^#+DESCRIPTION:"))
+
+(defun org-wiki-find-dired ()
+  "Show all org-wiki files in all subdirectories of org-wiki-location."
+  (interactive)
+  (find-dired org-wiki-location
+              (mapconcat #'identity
+                         '(
+                           "-not -path '*/.git*'"         ;; Exclude .git Directory 
+                           "-and -not -name '.#*'"        ;; Exclude temporary files starting with #
+                           "-and -not -name '#*'"
+                           "-and -not -name '*#'"
+                           "-and -not -name '*~' "        ;; Exclude ending with ~ (tilde)
+                           "-and -not -name '*.html' "    ;; Exclude html files 
+                           )
+                         
+                         " "
+                         )))
+
+(defun org-wiki-website ()
+  "Open org-wiki github repository."
+  (interactive)
+  (browse-url "http://www.github.com/caiorss/org-wiki"))
+
 (defun org-wiki-header ()
   "Insert a header at the top of the file."
   (interactive)
@@ -957,15 +983,16 @@ Note: This command requires Python3 installed."
 Related:
 
 [[wiki:index][Index]]")
-               (file-name-base (buffer-file-name))
-                     ))))
+               (file-name-base (buffer-file-name))))))
+
+
+
 
 
 (defun org-wiki-panel ()
   "Create a command panel for org-wiki."
   (interactive)
   (let ((buf (get-buffer-create "*org-wiki-panel*")))
-
     (switch-to-buffer buf)
     (kill-region (point-min) (point-max))
     (org-wiki-panel-minor-mode)
@@ -1009,7 +1036,6 @@ Toggle
 "
      ))
   (read-only-mode))
-
 
 (provide 'org-wiki)
 ;;; org-wiki.el ends here

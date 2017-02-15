@@ -1,4 +1,6 @@
 #+TITLE: Development Notes
+#+STARTUP: contents 
+
 
 * Development Notes
 ** TODO Tasklist 
