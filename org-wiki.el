@@ -998,6 +998,11 @@ Toggle
      ))
   (read-only-mode))
 
+(defun org-wiki-rgrep (pattern)
+  "Search org-wiki with a regex pattern."
+  (interactive "sSearch: ")
+  (rgrep pattern "*.org" org-wiki-location nil))
+
 
 (provide 'org-wiki)
 ;;; org-wiki.el ends here
