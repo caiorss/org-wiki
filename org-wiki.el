@@ -930,6 +930,23 @@ Note: This command requires Python3 installed."
 )
 
 
+
+(defun org-wiki-rgrep (pattern)
+  "Search org-wiki with a regex pattern."
+  (interactive "sSearch: ")
+  (rgrep pattern "*.org" org-wiki-location nil))
+
+(defun org-wiki-keywords ()
+  "Display all org-wiki files with '#+KEYWORDS:' field."
+  (interactive)
+  (org-wiki-rgrep "^#+KEYWORDS:"))
+
+(defun org-wiki-titles ()
+  "Search all org-wiki files with a given keyword."
+  (interactive)
+  (org-wiki-rgrep "^#+DESCRIPTION:"))
+
+
 (defun org-wiki-header ()
   "Insert a header at the top of the file."
   (interactive)
@@ -997,21 +1014,6 @@ Toggle
 "
      ))
   (read-only-mode))
-
-(defun org-wiki-rgrep (pattern)
-  "Search org-wiki with a regex pattern."
-  (interactive "sSearch: ")
-  (rgrep pattern "*.org" org-wiki-location nil))
-
-(defun org-wiki-keywords ()
-  "Display all org-wiki files with '#+KEYWORDS:' field."
-  (interactive)
-  (org-wiki-rgrep "^#+KEYWORDS:"))
-
-(defun org-wiki-titles ()
-  "Search all org-wiki files with a given keyword."
-  (interactive)
-  (org-wiki-rgrep "^#+DESCRIPTION:"))
 
 (provide 'org-wiki)
 ;;; org-wiki.el ends here
