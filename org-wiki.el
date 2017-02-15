@@ -941,8 +941,8 @@ Note: This command requires Python3 installed."
   (interactive)
   (org-wiki-rgrep "^#+KEYWORDS:"))
 
-(defun org-wiki-titles ()
-  "Search all org-wiki files with a given keyword."
+(defun org-wiki-desc ()
+  "Search all org-wiki files with '#+DESCRIPTION:' field."
   (interactive)
   (org-wiki-rgrep "^#+DESCRIPTION:"))
 
