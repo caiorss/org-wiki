@@ -1008,6 +1008,10 @@ Toggle
   (interactive)
   (org-wiki-rgrep "^#+KEYWORDS:"))
 
+(defun org-wiki-titles ()
+  "Search all org-wiki files with a given keyword."
+  (interactive)
+  (org-wiki-rgrep "^#+DESCRIPTION:"))
 
 (provide 'org-wiki)
 ;;; org-wiki.el ends here
