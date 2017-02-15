@@ -1003,6 +1003,11 @@ Toggle
   (interactive "sSearch: ")
   (rgrep pattern "*.org" org-wiki-location nil))
 
+(defun org-wiki-keywords ()
+  "Display all org-wiki files with '#+KEYWORDS:' field."
+  (interactive)
+  (org-wiki-rgrep "^#+KEYWORDS:"))
+
 
 (provide 'org-wiki)
 ;;; org-wiki.el ends here
