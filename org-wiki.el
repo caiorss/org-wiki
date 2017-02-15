@@ -962,8 +962,10 @@ Note: This command requires Python3 installed."
 Related:
 
 [[wiki:index][Index]]")
-               (file-name-base (buffer-file-name))
-                     ))))
+               (file-name-base (buffer-file-name))))))
+
+
+
 
 
 (defun org-wiki-panel ()
