@@ -323,11 +323,11 @@ This function is operating system independent."
                           "xdg-open" (expand-file-name filename))))
 
     ;; Mac OSX - (Not tested )
-    (darwing        (start-process
-                     "proc"
-                     nil
-                     ;; Command
-                     "open" (concat  (expand-file-name filename))))
+    (darwin        (start-process
+                    "proc"
+                    nil
+                    ;; Command
+                    "open" (concat  (expand-file-name filename))))
 
     ;; Windows 7, 8, 10 - Kernel NT
     (windows-nt   (start-process
