@@ -536,10 +536,10 @@ Example: Linux/LinuxManual.pdf"
    (org-wiki--asset-helm-selection
     pagename
     (lambda (file)
-      (insert (format "file:%s/%s"
-                      pagename
-                      file
-                      ))))))
+      (insert (org-make-link-string (concat "file:"
+                                            (file-name-as-directory pagename)
+                                            file
+                                            )))))))
 
 (defun org-wiki-asset-download-insert1 ()
   "Download a file from a URL in the clibpoard and inserts a link wiki-asset-sys:.
