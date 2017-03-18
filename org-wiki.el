@@ -71,6 +71,22 @@ You can toggle read-only mode with M-x read-only-mode or C-x C-q."
   :group 'org-wiki
   )
 
+;;; =======  Python Webserver Settings =========== ;;
+
+(defcustom org-wiki-server-port "8000"
+  "Default port to server org-wiki static files server."
+  :type  'string
+  :group 'org-wiki
+  )
+
+(defcustom org-wiki-server-host "0.0.0.0"
+  "Default address that the server listens to."
+  :type  'string
+  :group 'org-wiki
+  )
+
+;; ======== Async export settings ================ ;;
+
 (defcustom org-wiki-emacs-path "emacs"
   "Path to Emacs executable. Default value 'emacs'."
   :type 'file
@@ -87,18 +103,8 @@ You can toggle read-only mode with M-x read-only-mode or C-x C-q."
   :group 'org-wiki
   )
 
-(defcustom org-wiki-server-port "8000"
-  "Default port to server org-wiki static files server."
-  :type  'string
-  :group 'org-wiki
-  )
 
-(defcustom org-wiki-server-host "0.0.0.0"
-  "Default address that the server listens to."
-  :type  'string
-  :group 'org-wiki
-  )
-
+;; ====== Optional Clip.jar image pasting app =========== ;;
 
 (defcustom org-wiki-clip-jar-path "~/bin/Clip.jar"
   "Path to Clip.jar utility to paste images from clipboard."
@@ -107,6 +113,10 @@ You can toggle read-only mode with M-x read-only-mode or C-x C-q."
   )
 
 
+
+
+;;; Default index page (index.org) accessed with M-x org-wiki-index
+;;
 (defvar org-wiki-index-file-basename "index")
 
 ;; ------- Internal functions ------------ ;;
