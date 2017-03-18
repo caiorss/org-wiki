@@ -319,7 +319,11 @@ It will open the file <wiki path>/Python/example1.py related to the page Python.
 
 (defun org-wiki-xdg-open (filename)
   "Open a file FILENAME with default system application.
-This function is operating system independent."
+This function is operating system independent.
+
+Running in Linux or BSD invokes the script xdg-open
+Running in Windows invokes  cmd.exe
+Running in Mac OSX invokes open"
   (cl-case system-type
 
     ;;; Linux
