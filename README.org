@@ -243,22 +243,22 @@ or in Windows it could be:
 
 If the custom variable =org-wiki-default-read-only= is set to true (t)
 org-wiki pages are opened in read-only mode. The default value of this
-variable is nil (false). It is useful to accidentally changes an
-org-wiki page.
+variable is nil (false). It is useful to avoid unintentionally change
+an org-wiki page.
 
 The read-only mode can be toggled with =M-x toggle-read-only= or C-x C-q.
 
  - Open org-wiki pages in read-only mode. 
 
 #+BEGIN_SRC elisp 
-(setq org-wiki-default-read-only t)
+(setq org-wiki-default-read-only t)  
 #+END_SRC
 
 
  - Open org-wiki pages in non read-only mode. 
 
 #+BEGIN_SRC elisp 
-(setq org-wiki-default-read-only nil)
+(setq org-wiki-default-read-only nil)  ;; Default value
 #+END_SRC
 
 **** Server settings 
