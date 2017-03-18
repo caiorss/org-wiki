@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>org-wiki</title>
-<!-- 2017-01-02 seg 15:13 -->
+<!-- 2017-03-17 sex 23:00 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -230,7 +230,15 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#sec-1-5-2">1.5.2. Make org-wiki directory</a></li>
-<li><a href="#sec-1-5-3">1.5.3. Configuration</a></li>
+<li><a href="#sec-1-5-3">1.5.3. Configuration</a>
+<ul>
+<li><a href="#sec-1-5-3-1">1.5.3.1. Load org-wiki</a></li>
+<li><a href="#sec-1-5-3-2">1.5.3.2. Path to Wiki location</a></li>
+<li><a href="#sec-1-5-3-3">1.5.3.3. Open org-wiki pages in read-only</a></li>
+<li><a href="#sec-1-5-3-4">1.5.3.4. Server settings</a></li>
+<li><a href="#sec-1-5-3-5">1.5.3.5. Export Settings</a></li>
+</ul>
+</li>
 <li><a href="#sec-1-5-4">1.5.4. Start the wiki</a></li>
 </ul>
 </li>
@@ -548,7 +556,6 @@ You can view a sample wiki exported to html here:
 </div>
 </div>
 
-
 <div id="outline-container-sec-1-4" class="outline-3">
 <h3 id="sec-1-4"><span class="section-number-3">1.4</span> Screenshots</h3>
 <div class="outline-text-3" id="text-1-4">
@@ -713,6 +720,9 @@ mkdir -p ~/org/wiki    # Make wiki location.
 <div id="outline-container-sec-1-5-3" class="outline-4">
 <h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> Configuration</h4>
 <div class="outline-text-4" id="text-1-5-3">
+</div><div id="outline-container-sec-1-5-3-1" class="outline-5">
+<h5 id="sec-1-5-3-1"><span class="section-number-5">1.5.3.1</span> Load org-wiki</h5>
+<div class="outline-text-5" id="text-1-5-3-1">
 <p>
 Add to init file ~/.emacs.d/init.el or ~/.emacs 
 </p>
@@ -723,8 +733,19 @@ Add to init file ~/.emacs.d/init.el or ~/.emacs
 </pre>
 </div>
 
+
 <p>
-Path to wiki location 
+Org-wiki can configured programatically by setting the org-wiki custom
+varibles or with <code>M-x customize-group org-wiki</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-3-2" class="outline-5">
+<h5 id="sec-1-5-3-2"><span class="section-number-5">1.5.3.2</span> Path to Wiki location</h5>
+<div class="outline-text-5" id="text-1-5-3-2">
+<p>
+Path where all org-wiki pages (*.org files) are stored. 
 </p>
 
 <div class="org-src-container">
@@ -742,7 +763,91 @@ or in Windows it could be:
 <pre class="src src-elisp">(setq org-wiki-location "e:/projects/org-wiki-test.emacs")
 </pre>
 </div>
+</div>
+</div>
 
+<div id="outline-container-sec-1-5-3-3" class="outline-5">
+<h5 id="sec-1-5-3-3"><span class="section-number-5">1.5.3.3</span> Open org-wiki pages in read-only</h5>
+<div class="outline-text-5" id="text-1-5-3-3">
+<p>
+If the custom variable <code>org-wiki-default-read-only</code> is set to true (t)
+org-wiki pages are opened in read-only mode. The default value of this
+variable is nil (false). It is useful to accidentally changes an
+org-wiki page.
+</p>
+
+<p>
+The read-only mode can be toggled with <code>M-x toggle-read-only</code> or C-x C-q.
+</p>
+
+<ul class="org-ul">
+<li>Open org-wiki pages in read-only mode. 
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp">(setq org-wiki-default-read-only t)
+</pre>
+</div>
+
+
+<ul class="org-ul">
+<li>Open org-wiki pages in non read-only mode. 
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp">(setq org-wiki-default-read-only nil)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-3-4" class="outline-5">
+<h5 id="sec-1-5-3-4"><span class="section-number-5">1.5.3.4</span> Server settings</h5>
+<div class="outline-text-5" id="text-1-5-3-4">
+<p>
+Org-wiki can serve the pages exported to html with python help. 
+</p>
+
+<p>
+The variable <span class="underline">org-wiki-server-port</span> (default value 8000) sets the
+default port that Python web server will listen to.
+</p>
+
+<p>
+It can be set with:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp">(setq org-wiki-server-port "8000") ;; 8000 - default value
+</pre>
+</div>
+
+<p>
+The variable <span class="underline">org-wiki-server-host</span> (default value 0.0.0.0 - all
+hosts) sets the host that the Python server will listen.
+</p>
+
+<p>
+It can be set with:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp">(setq org-wiki-server-host "0.0.0.0")   ;; Listen all hosts (default value)
+(setq org-wiki-server-host "127.0.0.1") ;; Listen only localhost
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-3-5" class="outline-5">
+<h5 id="sec-1-5-3-5"><span class="section-number-5">1.5.3.5</span> Export Settings</h5>
+<div class="outline-text-5" id="text-1-5-3-5">
 <p>
 In order to the html export work the path to emacs executable
 directory must be in the $PATH variable. In some OS like Windows where
@@ -770,6 +875,7 @@ The menu can be installed permanently by adding the init file:
 
 <pre class="src src-elisp">(org-wiki-make-menu)
 </pre>
+</div>
 </div>
 </div>
 </div>
@@ -1266,7 +1372,43 @@ command reminders.
 <li><code>M-x org-wiki-search</code> - Search all wiki page that contains
 a pattern. (string or regex pattern).
 </li>
+
+<li><code>M-x org-wiki-find-dired</code> - Show all files in all org-wiki subdirectories.
+</li>
 </ul>
+
+
+<div class="figure">
+<p><a href="images/org-wiki-find-dired.png"><img src="images/org-wiki-find-dired.png" alt="org-wiki-find-dired.png" /></a>
+</p>
+<p><span class="figure-number">Figure 13:</span> Screenshot of command M-x org-wiki-find-dired</p>
+</div>
+
+<ul class="org-ul">
+<li><code>M-x org-wiki-desc</code> - Show all org-wiki pages with description. 
+</li>
+</ul>
+
+
+<div class="figure">
+<p><a href="images/org-wiki-desc.png"><img src="images/org-wiki-desc.png" alt="org-wiki-desc.png" /></a>
+</p>
+<p><span class="figure-number">Figure 14:</span> Screenshot of command M-x org-wiki-desc</p>
+</div>
+
+
+<ul class="org-ul">
+<li><code>M-x org-wiki-keywords</code> - Display all org-wiki keywords and related
+org-wiki page files. 
+</li>
+</ul>
+
+
+<div class="figure">
+<p><a href="images/org-wiki-keywords.png"><img src="images/org-wiki-keywords.png" alt="org-wiki-keywords.png" /></a>
+</p>
+<p><span class="figure-number">Figure 15:</span> Screenshot of command M-x org-wiki-keywords</p>
+</div>
 </div>
 </div>
 
@@ -1635,7 +1777,7 @@ Example:
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-01-02 seg 15:13</p>
+<p class="date">Created: 2017-03-17 sex 23:00</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
