@@ -11,7 +11,7 @@ install:
 
 html: $(html)
 
-$(html):
+$(html): README.org
 	emacs README.org --batch -q -f org-html-export-to-html --kill
 	mv README.html index.html
 	cp index.html dist/index.html

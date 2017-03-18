@@ -64,6 +64,29 @@ Default value ~/org/wiki."
   :group 'org-wiki
   )
 
+(defcustom org-wiki-default-read-only nil
+  "If this variable is true all org-wiki pages will open as read-only by default.
+You can toggle read-only mode with M-x read-only-mode or C-x C-q."
+  :type  'boolean
+  :group 'org-wiki
+  )
+
+;;; =======  Python Webserver Settings =========== ;;
+
+(defcustom org-wiki-server-port "8000"
+  "Default port to server org-wiki static files server."
+  :type  'string
+  :group 'org-wiki
+  )
+
+(defcustom org-wiki-server-host "0.0.0.0"
+  "Default address that the server listens to."
+  :type  'string
+  :group 'org-wiki
+  )
+
+;; ======== Async export settings ================ ;;
+
 (defcustom org-wiki-emacs-path "emacs"
   "Path to Emacs executable. Default value 'emacs'."
   :type 'file
@@ -80,18 +103,8 @@ Default value ~/org/wiki."
   :group 'org-wiki
   )
 
-(defcustom org-wiki-server-port "8000"
-  "Default port to server org-wiki static files server."
-  :type  'string
-  :group 'org-wiki
-  )
 
-(defcustom org-wiki-server-host "0.0.0.0"
-  "Default address that the server listens to."
-  :type  'string
-  :group 'org-wiki
-  )
-
+;; ====== Optional Clip.jar image pasting app =========== ;;
 
 (defcustom org-wiki-clip-jar-path "~/bin/Clip.jar"
   "Path to Clip.jar utility to paste images from clipboard."
@@ -100,6 +113,10 @@ Default value ~/org/wiki."
   )
 
 
+
+
+;;; Default index page (index.org) accessed with M-x org-wiki-index
+;;
 (defvar org-wiki-index-file-basename "index")
 
 ;; ------- Internal functions ------------ ;;
@@ -284,8 +301,10 @@ Example: if PAGENAME is Linux it will return [[wiki:Linux][Linux]]"
 Example:  (org-wiki/open-page \"Linux\")
 Will open the the wiki file Linux.org in
 `org-wiki-location`"
-  (find-file  (org-wiki--page->file pagename))
-  (org-wiki--assets-make-dir pagename))
+  (if org-wiki-default-read-only
+      (find-file-read-only (org-wiki--page->file pagename))
+      (find-file  (org-wiki--page->file pagename)))
+  (org-wiki--assets-make-dir pagename)) 
 
 
 (defun org-wiki--assets-get-file (pagename filename)
@@ -302,7 +321,11 @@ It will open the file <wiki path>/Python/example1.py related to the page Python.
 
 (defun org-wiki-xdg-open (filename)
   "Open a file FILENAME with default system application.
-This function is operating system independent."
+This function is operating system independent.
+
+Running in Linux or BSD invokes the script xdg-open
+Running in Windows invokes  cmd.exe
+Running in Mac OSX invokes open"
   (cl-case system-type
 
     ;;; Linux
