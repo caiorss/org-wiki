@@ -213,6 +213,7 @@ mkdir -p ~/org/wiki    # Make wiki location.
  - =M-x make-directory ~/org-wiki=
 
 *** Configuration
+**** Load org-wiki 
 
 Add to init file ~/.emacs.d/init.el or ~/.emacs 
 
@@ -220,7 +221,13 @@ Add to init file ~/.emacs.d/init.el or ~/.emacs
 (require 'org-wiki)
 #+END_SRC
 
-Path to wiki location 
+
+Org-wiki can configured programatically by setting the org-wiki custom
+varibles or with =M-x customize-group org-wiki=.
+
+**** Path to Wiki location 
+
+Path where all org-wiki pages (*.org files) are stored. 
 
 #+BEGIN_SRC elisp 
 (setq org-wiki-location "~/org/wiki")
@@ -231,6 +238,53 @@ or in Windows it could be:
 #+BEGIN_SRC elisp 
 (setq org-wiki-location "e:/projects/org-wiki-test.emacs")
 #+END_SRC
+
+**** Open org-wiki pages in read-only 
+
+If the custom variable =org-wiki-default-read-only= is set to true (t)
+org-wiki pages are opened in read-only mode. The default value of this
+variable is nil (false). It is useful to accidentally changes an
+org-wiki page.
+
+The read-only mode can be toggled with =M-x toggle-read-only= or C-x C-q.
+
+ - Open org-wiki pages in read-only mode. 
+
+#+BEGIN_SRC elisp 
+(setq org-wiki-default-read-only t)
+#+END_SRC
+
+
+ - Open org-wiki pages in non read-only mode. 
+
+#+BEGIN_SRC elisp 
+(setq org-wiki-default-read-only nil)
+#+END_SRC
+
+**** Server settings 
+
+Org-wiki can serve the pages exported to html with python help. 
+
+The variable _org-wiki-server-port_ (default value 8000) sets the
+default port that Python web server will listen to.
+
+It can be set with:
+
+#+BEGIN_SRC elisp 
+(setq org-wiki-server-port "8000") ;; 8000 - default value 
+#+END_SRC
+
+The variable _org-wiki-server-host_ (default value 0.0.0.0 - all
+hosts) sets the host that the Python server will listen.
+
+It can be set with:
+
+#+BEGIN_SRC elisp
+(setq org-wiki-server-host "0.0.0.0")   ;; Listen all hosts (default value)
+(setq org-wiki-server-host "127.0.0.1") ;; Listen only localhost 
+#+END_SRC
+
+**** Export Settings
 
 In order to the html export work the path to emacs executable
 directory must be in the $PATH variable. In some OS like Windows where
