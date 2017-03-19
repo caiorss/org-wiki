@@ -8,7 +8,7 @@
 #+LANGUAGE: en
 #+OPTIONS:   H:4
 #+KEYWORKDS: org-mode, orgmode, emacs, wiki, desktop, wiki, tools, notes, notebook
-#+STARTUP: contents 
+#+STARTUP: showall
 
 * Org-wiki 
 ** Overview 
@@ -314,7 +314,15 @@ The menu can be installed permanently by adding the init file:
 
  - References to existing pages can be inserted with =M-x org-wiki-insert=.
 
+** Command Summary 
 ** Commands
+*** Help 
+
+ - =M-x org-wiki-help= Show all org-wiki commands and its description. 
+
+ - =M-x org-wiki-website= Open org-wiki project website in the default
+   web browser.
+
 *** Open the index page
 **** M-x org-wiki-index
 
@@ -325,7 +333,6 @@ The menu can be installed permanently by adding the init file:
 **** M-x org-wiki-index-frame
 
   - =M-x org-wiki-index-frame= - Open the wiki index page in a new frame.
-
 *** Browse pages
 **** M-x org-wiki-helm
 
@@ -354,7 +361,6 @@ The menu can be installed permanently by adding the init file:
 
    - =M-x org-wiki-close= - Close all wiki pages, kill all *.or buffers
      belonging to wiki directory.
-
 *** Insert Hyperlink to wiki pages or asset files
 **** M-x org-wiki-link 
 
@@ -398,7 +404,6 @@ Related:
   - =M-x org-wiki-asset-insert= - Insert a asset file at point
     providing a heml menu to select the file. It inserts a link of
     format ~wiki-asset-sys:CurrentPage;AssetFilename.pdf~.
-
 *** Asset files / Attachments
 **** M-x org-wiki-assets-helm
 
@@ -486,7 +491,6 @@ Example:
 #+BEGIN_SRC 
 file:Linux/htop_1.jpg
 #+END_SRC
-
 *** Open wiki directory
 **** M-x org-wiki-dired 
 
@@ -626,10 +630,25 @@ Example:
 #+CAPTION: 
 file:Linux/fba53c12-3f23-4728-9f52-a26a3d285d7c.png
 #+END_SRC  
+*** Alias Commands 
 
-*** Help 
+ - =M-x org-wiki-nav= - Navigate through org-mode headings. Alias to
+   helm-org-in-buffer-headings.
 
- - =M-x org-wiki-help= Show all package commands and its description. 
+ 
+ - =M-x org-wiki-occur= - Alias to helm-occur. 
+
+
+ - =M-x org-wiki-toggle-images= - Toggle images. Alias to M-x org-toggle-inline-images.
+
+
+ - =M-x org-wiki-toggle-link= - Toggle link display. Alias to M-x
+   org-toggle-link-display. 
+
+
+ - =M-x org-wiki-latex= - Display latex formulas. Alias to M-x
+   org-preview-latex-fragment. It requires latex installed.
+
 ** Suggestions
 *** Shortcuts 
 
