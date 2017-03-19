@@ -1060,5 +1060,35 @@ Toggle
      ))
   (read-only-mode))
 
+
+
+;; ============ Command Alias ================= ;;
+
+
+(defun org-wiki-nav ()
+  "Navigate through org-mode headings. Alias to helm-org-in-buffer-headings."
+  (interactive)
+  (helm-org-in-buffer-headings))
+
+(defun org-wiki-occur ()
+  "Search current buffer with helm-occur. Alias to helm-occur."
+  (interactive)
+  (helm-occur))
+
+(defun org-wiki-toggle-images ()
+  "Toggle inline images. Alias to M-x org-toggle-inline-images."
+  (interactive)
+  (org-toggle-inline-images))
+
+(defun org-wiki-toggle-link ()
+  "Toggle link display. Alias to M-x org-toggle-link-display"
+  (interactive)
+  (org-toggle-link-display))
+
+(defun org-wiki-latex ()
+  "Display latex formulas. Alias to M-x org-preview-latex-fragment"
+  (interactive)
+  (org-preview-latex-fragment))
+
 (provide 'org-wiki)
 ;;; org-wiki.el ends here
