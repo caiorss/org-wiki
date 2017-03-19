@@ -314,7 +314,73 @@ The menu can be installed permanently by adding the init file:
 
  - References to existing pages can be inserted with =M-x org-wiki-insert=.
 
-** Command Summary 
+** Commands Summary 
+
+| M-x Command                     | Description                                                                                   |
+|---------------------------------+-----------------------------------------------------------------------------------------------|
+| *Help*                          |                                                                                               |
+|---------------------------------+-----------------------------------------------------------------------------------------------|
+|                                 |                                                                                               |
+| org-wiki-help                   | Show all org-wiki commands.                                                                   |
+| org-wiki-website                | Open org-wiki default website.                                                                |
+|                                 |                                                                                               |
+| *Navigation*                    |                                                                                               |
+|---------------------------------+-----------------------------------------------------------------------------------------------|
+| org-wiki-index                  | Go to the index page or index.org                                                             |
+| org-wiki-index-frame            | Open org-wiki index page in a new frame.                                                      |
+|                                 |                                                                                               |
+| org-wiki-helm                   | Open a org-wiki page                                                                          |
+| org-wiki-helm-frame             | Open a org-wiki page in a new frame                                                           |
+| org-wiki-helm-read-only         | Open a org-wiki page in read-only mode                                                        |
+|                                 |                                                                                               |
+| org-wiki-switch                 | Switch between org-wiki buffers                                                               |
+|                                 |                                                                                               |
+| *Close Command*                 |                                                                                               |
+|---------------------------------+-----------------------------------------------------------------------------------------------|
+| org-wiki-close                  | Close and save all org-wiki pages (buffers).                                                  |
+|                                 |                                                                                               |
+| *Insert Commands*               |                                                                                               |
+|---------------------------------+-----------------------------------------------------------------------------------------------|
+| org-wiki-link                   | Insert a link at point to a new org-wiki page. Click or follow the link to edit the new page. |
+| org-wiki-insert                 | Insert a link at point to an existing org-wiki page.                                          |
+| org-wiki-header                 | Insert at the top of an org-wiki buffer an org-mode header template.                          |
+|                                 |                                                                                               |
+| org-wiki-asset-insert-file      | Insert link to asset/attachment file at point.                                                |
+|                                 |                                                                                               |
+| org-wiki-asset-insert           | Insert a link to asset/attachment file at point. When the user clicks,                        |
+|                                 | it opens with default system application. It is useful to open pdfs,                          |
+|                                 | spreadsheets and so on.                                                                       |
+|                                 |                                                                                               |
+| org-wiki-asset-download-insert1 | Download a file and insert a link to it at point. Similar to org-wiki-asset-insert            |
+|                                 |                                                                                               |
+| org-wiki-asset-download-insert2 | Download a file and insert a link to it at point. Similar to org-wiki-asset-insert-file       |
+|                                 |                                                                                               |
+| *Directory*                     |                                                                                               |
+|---------------------------------+-----------------------------------------------------------------------------------------------|
+| org-wiki-dired                  | Open org-wiki-location or org-wiki storage directory in Emacs showing only *.org files.       |
+| org-wiki-open                   | Open org-wiki-location with default system file manager.                                      |
+| org-wiki-dired-all              | OPen org-wiki-location showing all files.                                                     |
+|                                 |                                                                                               |
+| *Alias Command*                 |                                                                                               |
+|---------------------------------+-----------------------------------------------------------------------------------------------|
+| org-wiki-nav                    | Alias to helm-org-in-buffer-headings                                                          |
+| org-wiki-occur                  | Alias to helm-occur                                                                           |
+| org-wiki-toggle-images          | Toggle images display. Alias to org-toggle-inline-images                                      |
+| org-wiki-toggle-link            | Toggle link display. Alias to M-x org-toggle-link-display.                                    |
+| org-wiki-latex                  | Display latex formulas. Alias to org-preview-latex-fragment. Requires latex installed.        |
+|                                 |                                                                                               |
+|                                 |                                                                                               |
+| *Misc*                          |                                                                                               |
+|---------------------------------+-----------------------------------------------------------------------------------------------|
+| org-wiki-panel                  | A panel like magit-status panel.                                                              |
+| org-wiki-server-toggle          | Toggle Python web server.                                                                     |
+| org-wiki-make-menu              | Install an org-wiki menu.                                                                     |
+|                                 |                                                                                               |
+|                                 |                                                                                               |
+
+Not. complete.
+
+
 ** Commands
 *** Help 
 
