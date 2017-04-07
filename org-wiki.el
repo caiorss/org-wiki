@@ -301,11 +301,22 @@ Example: if PAGENAME is Linux it will return [[wiki:Linux][Linux]]"
 Example:  (org-wiki--open-page \"Linux\")
 Will open the the wiki file Linux.org in
 `org-wiki-location`"
-  (if org-wiki-default-read-only
-      (progn  (find-file  (org-wiki--page->file pagename))
-              (read-only-mode 1))
-      (find-file  (org-wiki--page->file pagename)))
-  (org-wiki--assets-make-dir pagename)) 
+  (let ((org-wiki-file (org-wiki--page->file pagename)))
+    (if (not (file-exists-p org-wiki-file))
+        ;; Action executed if file doesn't exist.
+        (progn (find-file  org-wiki-file)
+               (org-wiki-header)
+               (org-wiki--assets-make-dir pagename))
+
+      ;; Action executed if file exists.
+      (if org-wiki-default-read-only
+          ;; open file in read-only mode. 
+          (progn  (find-file  org-wiki-file)
+                  (read-only-mode 1))
+          ;; open file in writable mode. 
+          (find-file  org-wiki-file))
+        
+        ))) 
 
 
 (defun org-wiki--assets-get-file (pagename filename)
