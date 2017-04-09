@@ -827,29 +827,67 @@ Note: This function doesn't freeze Emacs since it starts another Emacs process."
        ["Toggle Link display \nM-x org-toggle-link-display"      (org-toggle-link-display)]
       ))))
 
+
+;;
+;; Despite this function was implemented as a interface to 
+;; Python3 simple http server, it can be refactored to work
+;; with another more powerful http server such as Nginx.
+;;
 (defun org-wiki-server-toggle ()
   "Start/stop org-wiki http server. It requires Python3.
 Note: This command requires Python3 installed."
   (interactive)
-  (let ((pname  "org-wiki-server")
+  (let (
+        ;; Process name 
+        (pname  "org-wiki-server")
+        ;; Buffer name - Display process output (stdout)
         (bname   "*org-wiki-server*")
+        ;; Set current directory to org-wiki repository.
         (default-directory org-wiki-location))
+
+ 
     (if (not (get-buffer bname))
-        (progn  (start-process pname
-                               bname
-                               "python3"
-                               "-m"
-                               "http.server"
-                               "--bind"
-                               org-wiki-server-host
-                               org-wiki-server-port)
-                (message "Server started")
-                (switch-to-buffer "*org-wiki-server*")
+        
+        (progn
+
+          (sit-for 0.1)
+          (switch-to-buffer bname)
+
+          
+          (save-excursion ;; Save cursor position
+            
+           (insert "Server started ...\n\n")                               
+           (message "\nServer started ...\n")
+
+           ;; Show user Machine Network Interfaces IP addresses. 
+           (cl-case system-type
+                                        ;;; Linux
+             (gnu/linux       (insert (shell-command-to-string "ifconfig")))
+                                        ;;; Free BSD OS
+             (gnu/kfreebsd    (insert (shell-command-to-string "ifconfig")))
+                                        ;; Mac OSX - (Not tested )
+             (darwin          (insert (shell-command-to-string "ifconfig")))
+                                        ;; Windows 7, 8, 10 - Kernel NT
+             (windows-nt      (insert (shell-command-to-string "ipconfig"))))          )
+          
+          (start-process pname
+                         bname
+                         "python3"
+                         "-m"
+                         "http.server"
+                         "--bind"
+                         org-wiki-server-host
+                         org-wiki-server-port)                                                               
+    
+                
                 (when (y-or-n-p "Open server in browser ?")
-                      (browse-url (format "http://localhost:%s" org-wiki-server-port))))
+                  (browse-url (format "http://localhost:%s" org-wiki-server-port))))
+      
         (progn  (switch-to-buffer bname)
                 (kill-process (get-process pname))
-                (message "Server stopped.")))))
+                (message "Server stopped.")
+
+                ))))
 
 
 
