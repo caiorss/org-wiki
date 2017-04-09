@@ -1110,6 +1110,39 @@ Toggle
      ))
   (read-only-mode))
 
+;; =========== Copy Path Commands ============= ;;
+
+
+(defun org-wiki-copy-location ()
+  "Copy org-wiki location path to clipboard."
+  (interactive)
+  (let ((msg (expand-file-name org-wiki-location)))
+   (with-temp-buffer
+     (insert msg)
+     (message (format "Copied to clipboard: %s" msg))
+     (clipboard-kill-region (point-min) (point-max)))))
+
+
+(defun org-wiki-copy-index-html ()
+  "Copy org-wiki html index page to clipboard."
+  (interactive)
+  (let ((msg (expand-file-name (concat (file-name-as-directory org-wiki-location)
+                                       "index.html"  ))))
+   (with-temp-buffer
+     (insert msg)
+     (message (format "Copied to clipboard: %s" msg))
+     (clipboard-kill-region (point-min) (point-max)))))
+
+
+(defun org-wiki-copy-asset-path ()
+  "Copy current page's asset directory to clipboard."
+  (interactive)
+  (let ((msg (expand-file-name (concat (file-name-as-directory org-wiki-location)
+                                       (file-name-base (buffer-file-name))))))
+   (with-temp-buffer
+     (insert msg)
+     (message (format "Copied to clipboard: %s" msg))
+     (clipboard-kill-region (point-min) (point-max)))))
 
 
 ;; ============ Command Alias ================= ;;
