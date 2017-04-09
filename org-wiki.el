@@ -357,7 +357,7 @@ Running in Mac OSX invokes open"
                            ;; Command
                           "xdg-open" (expand-file-name filename))))
 
-    ;; Mac OSX - (Not tested )
+    ;; Mac OSX - Tested. Ok.
     (darwin        (start-process
                     "proc"
                     nil
