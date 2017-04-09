@@ -1123,6 +1123,17 @@ Toggle
      (clipboard-kill-region (point-min) (point-max)))))
 
 
+(defun org-wiki-copy-index-html ()
+  "Copy org-wiki html index page to clipboard."
+  (interactive)
+  (let ((msg (expand-file-name (concat (file-name-as-directory org-wiki-location)
+                                       "index.html"  ))))
+   (with-temp-buffer
+     (insert msg)
+     (message (format "Copied to clipboard: %s" msg))
+     (clipboard-kill-region (point-min) (point-max)))))
+
+
 
 ;; ============ Command Alias ================= ;;
 
