@@ -1110,6 +1110,18 @@ Toggle
      ))
   (read-only-mode))
 
+;; =========== Copy Path Commands ============= ;;
+
+
+(defun org-wiki-copy-location ()
+  "Copy org-wiki location path to clipboard."
+  (interactive)
+  (let ((msg (expand-file-name org-wiki-location)))
+   (with-temp-buffer
+     (insert msg)
+     (message (format "Copied to clipboard: %s" msg))
+     (clipboard-kill-region (point-min) (point-max)))))
+
 
 
 ;; ============ Command Alias ================= ;;
