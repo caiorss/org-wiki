@@ -1,8 +1,6 @@
 #+TITLE: org-wiki 
 #+INFOJS_OPT: view:t toc:t ltoc:t ftoc:nil mouse:underline button:t path:theme/org-info.js
 #+HTML_HEAD: <link href="theme/style.css" rel="stylesheet"> 
-#+AUTHOR: 
-#+EMAIL:  
 #+LINK_HOME: /index.html
 #+LINK_UO:   /index.html
 #+LANGUAGE: en
@@ -14,13 +12,14 @@
 ** Overview 
 
 Org-wiki is a org-mode extension that provides tools to manage and
-build a _desktop wiki_ where each wiki page is a org-mode file.  
+build [[https://en.wikipedia.org/wiki/Personal_wiki][personal wiki]] or _desktop wiki_ where each wiki page is a
+org-mode file.
 
 It provides a custom protocol ~wiki:keyword~ which creates like. When
 clicked this links creates the wiki file in the wiki directory with
 name ~keyword.org~.
 
-Features: 
+*Features:*
 
   - A wiki system for Emacs.
 
@@ -88,6 +87,43 @@ or
 
 It will open the file =~/wiki-directory/Linux/LearnLinux.pdf= with the
 default system application.
+
+** FAQ
+
+*What is a personal wiki/ desktop wiki?*
+
+It is a digital notebook or a note taking app integrated with
+desktop. Some examples are [[http://zim-wiki.org][Zim Wiki]], [[https://en.wikipedia.org/wiki/Microsoft_OneNote][Microsoft OneNote]] and [[https://en.wikipedia.org/wiki/Tomboy_(software)][Tomboy (software)]].
+
+*What org-wiki is not*
+
+ - It is not a server wiki like [[https://en.wikipedia.org/wiki/MediaWiki][Mediawiki]] (Wikipedia Engine) or
+   [[https://www.dokuwiki.org/dokuwiki][Dokuwiki]]. So it has no administrative panel and user account and so
+   on. Despite it not be a server wiki, it can serve org pages (*.org
+   files) exported html with Python3 help.
+
+*Why org-wiki?*
+
+Server wikis are hard to manage and install for a single user and
+requires installation of a web server like Apache, PHP and a database
+server like MySql or PostgresSQL.
+
+Desktop wikis like org-wiki, Zim, OneNote and Tomboy are easier to
+install and manage than server wikis and has less memory
+requirements.
+
+The problems of many wikis are the lack of a good text editor,
+extensibility and desktop integration. Org-wiki solves that by putting
+the Wiki inside the most awesome text editor: Emacs and everything is
+just one keybinding or one command away. Another advantage is the
+org-mode format and Emacs integration that provides fast editing, fast
+refactoring, headline folding, fast table manipulation, export to many
+formats like html, pdf and so on, Latex equations and literate
+programming in many languages like C, C++, Python, R and so on.
+
+You can see Org-mode Screencasts and reviews here:
+
+ - http://orgmode.org/worg/org-tutorials/org-screencasts/
 
 ** Repository 
 
@@ -163,6 +199,40 @@ Example: The command =M-x org-wiki/search-patern - System.Windows= will search a
 files that contains "System.Windows string".
 
 [[file:images/wiki-search-pattern.png][file:images/wiki-search-pattern.png]]
+** Worflow
+*** Create a page
+
+To create a page do:
+
+ - 1. M-x org-wiki-index - It goes to the Org-wiki index page (index.org).
+
+ - 2. Then run M-x org-wiki-link and a page name like 'CNC - Computer Numerical Control'
+
+It will insert a hyperlink at point like:
+
+#+BEGIN_SRC org
+ [[wiki:CNC%20-%20Computer%20Numerical%20Control][CNC - Computer Numerical Control]]
+#+END_SRC
+
+ - 3. Then click at the link or enter C-x C-o at the link to open it.
+
+
+*** Browse a page
+
+The navigation can be done by running
+
+ - =M-x org-wiki-index=
+
+or
+
+ - =M-x org-wiki-helm= that will show a helm combobox menu where the
+   user view all pages and search a page by typing its name.
+
+or
+
+ - =M-x org-wiki-helm-frame= to open a page in another frame (Emacs
+   terminology for GUI window).
+
 ** Setup 
 *** Install 
 **** Method 1 - Bootstrap installer 
@@ -696,6 +766,17 @@ Example:
 #+CAPTION: 
 file:Linux/fba53c12-3f23-4728-9f52-a26a3d285d7c.png
 #+END_SRC  
+*** Copy Commands
+
+ - =M-x org-wiki-copy-location= -  Copy org-wiki location path to clipboard.
+
+ - =M-x org-wiki-copy-index-html= - Copy path of index page exported
+   to html to clipboard. Example: /<org-wiki-location>/index.html
+
+ - =M-x org-wiki-copy-asset-path= - Copy current page asset/attachment
+   directory path to clipboard. Example: If the current page is Linux,
+   it will copy the '/<org-wiki-location>/Linux/' to clipboard.
+
 *** Alias Commands 
 
  - =M-x org-wiki-nav= - Navigate through org-mode headings. Alias to
