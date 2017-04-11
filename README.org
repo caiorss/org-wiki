@@ -100,7 +100,7 @@ desktop. Some examples are [[http://zim-wiki.org][Zim Wiki]], [[https://en.wikip
  - It is not a server wiki like [[https://en.wikipedia.org/wiki/MediaWiki][Mediawiki]] (Wikipedia Engine) or
    [[https://www.dokuwiki.org/dokuwiki][Dokuwiki]]. So it has no administrative panel and user account and so
    on. Despite it not be a server wiki, it can serve org pages (*.org
-   files) exported html with Python3 help.
+   files) exported html with Python3 web server help in read-only mode.
 
 *Why org-wiki?*
 
