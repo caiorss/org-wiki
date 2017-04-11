@@ -88,6 +88,43 @@ or
 It will open the file =~/wiki-directory/Linux/LearnLinux.pdf= with the
 default system application.
 
+** FAQ
+
+*What is a personal wiki/ desktop wiki?*
+
+It is a digital notebook or a note taking app integrated with
+desktop. Some examples are [[http://zim-wiki.org][Zim Wiki]], [[https://en.wikipedia.org/wiki/Microsoft_OneNote][Microsoft OneNote]] and [[https://en.wikipedia.org/wiki/Tomboy_(software)][Tomboy (software)]].
+
+*What org-wiki is not*
+
+ - It is not a server wiki like [[https://en.wikipedia.org/wiki/MediaWiki][Mediawiki]] (Wikipedia Engine) or
+   [[https://www.dokuwiki.org/dokuwiki][Dokuwiki]]. So it has no administrative panel and user account and so
+   on. Despite it not be a server wiki, it can serve org pages (*.org
+   files) exported html with Python3 help.
+
+*Why org-wiki?*
+
+Server wikis are hard to manage and install for a single user and
+requires installation of a web server like Apache, PHP and a database
+server like MySql or PostgresSQL.
+
+Desktop wikis like org-wiki, Zim, OneNote and Tomboy are easier to
+install and manage than server wikis and has less memory
+requirements.
+
+The problems of many wikis are the lack of a good text editor,
+extensibility and desktop integration. Org-wiki solves that by putting
+the Wiki inside the most awesome text editor: Emacs and everything is
+just one keybinding or one command away. Another advantage is the
+org-mode format and Emacs integration that provides fast editing, fast
+refactoring, headline folding, fast table manipulation, export to many
+formats like html, pdf and so on, Latex equations and literate
+programming in many languages like C, C++, Python, R and so on.
+
+You can see Org-mode Screencasts and reviews here:
+
+ - http://orgmode.org/worg/org-tutorials/org-screencasts/
+
 ** Repository 
 
 | Repository         | https://github.com/caiorss/org-wiki |
