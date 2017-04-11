@@ -766,6 +766,17 @@ Example:
 #+CAPTION: 
 file:Linux/fba53c12-3f23-4728-9f52-a26a3d285d7c.png
 #+END_SRC  
+*** Copy Commands
+
+ - =M-x org-wiki-copy-location= -  Copy org-wiki location path to clipboard.
+
+ - =M-x org-wiki-copy-index-html= - Copy path of index page exported
+   to html to clipboard. Example: /<org-wiki-location>/index.html
+
+ - =M-x org-wiki-copy-asset-path= - Copy current page asset/attachment
+   directory path to clipboard. Example: If the current page is Linux,
+   it will copy the '/<org-wiki-location>/Linux/' to clipboard.
+
 *** Alias Commands 
 
  - =M-x org-wiki-nav= - Navigate through org-mode headings. Alias to
