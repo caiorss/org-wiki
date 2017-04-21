@@ -226,7 +226,7 @@ ELISP> (remove-if-not #'file->org-wiki/page (org-wiki/page-files))
              (string-prefix-p "#" b)
              (string-suffix-p "#" b)
            ))))
-   (directory-files org-wiki-location abspath ".org")))
+   (directory-files org-wiki-location abspath "\\.org$")))
 
 
 (defun org-wiki--page-list ()
