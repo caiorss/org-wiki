@@ -576,6 +576,31 @@ Example: Linux/LinuxManual.pdf"
                                             file
                                             )))))))
 
+(defun org-wiki-asset-create ()
+  "Prompts the user for a file name that doesn't exist yet and insert it at point.
+Unlike the commands `org-wiki-asset-insert` or ` org-wiki-asset-insert-file` this command
+asks the user for a file that doesn't exist yet and inserts a hyperlink to it at point.
+
+It is useful to add links to scripts that will be stored in the
+page directory.
+
+Example: If the user enter this command and is in the page Linux
+and enters scriptDemoQT.py it will insert a link at point like
+this file:Linux/scriptDemoQT.py .
+
+- Page:       <org-wiki-location>/Linux.org
+- Directory:  <org-wiki-location>/Linux/"
+  (interactive)
+  (let ((pagename (file-name-base (buffer-file-name)))
+        (filename (read-string "File: ")))
+    (save-excursion
+      (insert (org-make-link-string (concat "file:"
+                                            (file-name-as-directory pagename)
+                                            filename)
+
+                                    filename )))))
+
+
 (defun org-wiki-asset-download-insert1 ()
   "Download a file from a URL in the clibpoard and inserts a link wiki-asset-sys:.
 Note: This function is synchronous and blocks Emacs. If Emacs is stuck
