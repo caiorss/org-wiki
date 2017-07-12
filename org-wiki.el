@@ -691,8 +691,8 @@ to cancel the download."
   (org-wiki--helm-selection
    (lambda (page) (insert (org-wiki--make-link page)))))
 
-(defun org-wiki-link ()
-  "Insert a wiki link at point. Useful to create new pages."
+(defun org-wiki-create ()
+  "Create a new org-wiki page asking the user its name."
   (interactive)
   (let ((page-name (read-string  "Page: ")))
     (save-excursion (insert (org-make-link-string (concat "wiki:" page-name)
