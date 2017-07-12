@@ -591,6 +591,15 @@ file 'extendingClasses-number1.gst' it will open the file below with Emacs.
   (interactive)
   (org-wiki--asset-helm-selection #'find-file))
 
+(defun org-wiki-asset-find-sys ()
+  "Open a menu to select an asset file of current page and open it with system's app.
+Example: If the current page is 'Smalltalk programming' and the
+user select the file 'numerical-methods-in-smalltalk.pdf' it will
+be opened with the default system's application like Foxit PDF or
+Okular reader."
+  (interactive)
+  (org-wiki--asset-helm-selection #'org-wiki-xdg-open))
+
 (defun org-wiki-asset-create ()
   "Prompts the user for a file name that doesn't exist yet and insert it at point.
 Unlike the commands `org-wiki-asset-insert` or ` org-wiki-asset-insert-file` this command
