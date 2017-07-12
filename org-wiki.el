@@ -583,14 +583,26 @@ Example:  [[wiki-asset-sys:Linux;LinuxManual.pdf]]"
                  file
                  ))))))
 
+
+(defun org-wiki-asset-insert-block ()
+  "Insert code block with contents of some asset file."
   (interactive)
   (org-wiki--asset-helm-selection
     (lambda (file)
       (save-excursion
-        (insert (org-make-link-string
-                  (concat "file:"
-                          (org-wiki--current-page-asset-file file)
-                          )))))))
+        (insert (concat " - File: " (org-make-link-string (concat "file:" file))))
+        (insert "\n\n")
+        (insert "#+BEGIN_SRC text\n")
+        (insert "  ")
+        (insert (replace-regexp-in-string
+                 "\n"
+                 "\n  "
+                 (with-temp-buffer
+                   (insert-file-contents file)
+                   (buffer-substring-no-properties (point-min) (point-max)))))
+        (insert "\n#+END_SRC")
+        ))))
+
 
 (defun org-wiki-asset-find-file ()
   "Open a menu to select an asset file of current page and open it with Emacs.
