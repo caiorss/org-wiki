@@ -266,28 +266,22 @@ Example: '(\"Linux\" \"BSD\" \"Bash\"  \"Binary_Files\")"
 
 (defun org-wiki--assets-make-dir (pagename)
   "Create the asset directory of a wiki page (PAGENAME) if it doesn't exist.
-
 Example: (org-wiki--assets-make-dir \"Bash\")
 
 It will crate the directory ~/wiki-location/Bash/
 corresponding to the file ~/wiki-location/Bash.org
 if it doesn't exist yet."
   (let ((assets-dir (org-wiki--assets-get-dir pagename)))
-
     (if (not (file-exists-p assets-dir))
-        (make-directory assets-dir t)
-      )))
+        (make-directory assets-dir t))))
 
 
 (defun org-wiki--assets-buffer-make-dir ()
   "Create asset directory of current buffer page if it doesn't exit."
-
   (if (org-wiki--buffer-file-in-wiki-p)
-
       (progn
         (org-wiki--assets-make-dir
-         (file-name-base (buffer-file-name)))
-        )
+         (file-name-base (buffer-file-name))))
     (message "Error: Not in a wiki page.")))
 
 
@@ -566,11 +560,8 @@ point: 'Unix/Manual.pdf'."
 It inserts a link of type wiki-asset-sys:<Wiki-page>;<Asset-File>
 Example:  [[wiki-asset-sys:Linux;LinuxManual.pdf]]"
   (interactive)
-
   (org-wiki--asset-helm-selection
-
    (file-name-base (buffer-file-name))
-
    (lambda (f)
      (insert (format "[[wiki-asset-sys:%s;%s][%s]]"
                      (file-name-base (buffer-file-name))
