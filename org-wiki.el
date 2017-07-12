@@ -5,7 +5,7 @@
 ;; Author: Caio Rodrigues       <caiorss DOT rodrigues AT gmail DOT com>
 ;; Maintainer: Caio Rordrigues  <caiorss DOT rodrigues AT gmail DOT com>
 ;; Keywords: org-mode, wiki, notes, notebook
-;; Version: 3.2
+;; Version: 4.0
 ;; URL: https://www.github.com/caiorss/org-wiki'
 ;; Package-Requires: ((helm-core "2.0") (org "9") (cl-lib "0.5"))
 
