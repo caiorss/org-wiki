@@ -439,10 +439,10 @@ points to the file <org wiki location>/Blueprint/box1.dwg."
   (directory-files (org-wiki--assets-get-dir pagename)))
 
 
-(defun org-wiki--asset-helm-selection (pagename callback)
+(defun org-wiki--asset-helm-selection (callback)
   "Higher order function to deal with page assets.
 
-org-wiki-asset-helm-selection (PAGENAME CALLBACK)
+org-wiki-asset-helm-selection (CALLBACK)
 
 This function opens a helm menu to select a wiki page and then
 passes the result of selection to a callback function that takes
@@ -451,15 +451,15 @@ a asset file as argument.
 Example: If the user selects the file freebsdref1.pdf it inserts the
 file name at current point.
 
-> (org-wiki--asset-helm-selection \"Linux\" (lambda (file) (insert file)))
+> (org-wiki--asset-helm-selection (lambda (file) (insert file)))
   freebsdref1.pdf"
-
   (helm :sources `((
                       (name . "Wiki Pages")
-
-                      (candidates . ,(org-wiki--asset-page-files pagename))
-
-                      (action . ,callback)
+                      (candidates . ,(org-wiki--asset-page-files
+                                      (org-wiki--current-page)))
+                      (action .  (lambda (file)
+                                   (,callback (org-wiki--current-page-asset-file file))
+                                   ))
                       ))))
 
 
