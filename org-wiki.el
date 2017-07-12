@@ -574,15 +574,18 @@ Example:  [[wiki-asset-sys:Linux;LinuxManual.pdf]]"
 Insert an asset file of current page at point providing a Helm completion.
 Example: Linux/LinuxManual.pdf"
   (interactive)
-
-  (let ((pagename (file-name-base (buffer-file-name))))
-   (org-wiki--asset-helm-selection
-    pagename
+  (org-wiki--asset-helm-selection
     (lambda (file)
-      (insert (org-make-link-string (concat "file:"
-                                            (file-name-as-directory pagename)
-                                            file
-                                            )))))))
+      (save-excursion
+        (insert (org-make-link-string
+                  (concat "file:"
+                          (org-wiki--current-page-asset-file file)
+                          )))))))
+
+(defun org-wiki-asset-find-file ()
+  "Show a helm-menu where the user can select the asset file to be opened in Emacs."
+  (interactive)
+  (org-wiki--asset-helm-selection #'find-file))
 
 (defun org-wiki-asset-create ()
   "Prompts the user for a file name that doesn't exist yet and insert it at point.
