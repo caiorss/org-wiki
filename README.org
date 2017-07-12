@@ -450,7 +450,6 @@ The menu can be installed permanently by adding the init file:
 
 Not. complete.
 
-
 ** Commands
 *** Help 
 
@@ -880,7 +879,13 @@ files.
 
 *** Bookmarklets 
 
-If you don't kwnow what is a bookmarklet see: [[https://www.youtube.com/watch?v=K_A3Y3eqnzE][Creating a Simple Bookmarklet - YouTube]]
+Bookmarklets are small pieces of Javascript used for browser
+automation and as an ad-hoc browsers extensions, encoded as hyperlinks
+that can be stored in the web browser's bookmark toolbar.
+
+If you don't kwnow what is a bookmarklet see:
+
+ - [[https://www.youtube.com/watch?v=K_A3Y3eqnzE][Creating a Simple Bookmarklet - YouTube]]
 
 Note: The hyperlink of bookmarklet is only visible on the  [[https://caiorss.github.io/org-wiki][html documentation.]] 
 
@@ -910,6 +915,14 @@ Compressed JavaScript code:
 #+BEGIN_SRC js 
 javascript:(function(){var md = "[[" + document.URL + "][" + document.title + "]]" ;prompt("org-mode :", md);})()
 #+END_SRC
+
+More bookmarklets and cheat sheet available at: 
+
+ - https://github.com/caiorss/bookmarklet-maker  
+ 
+and 
+ 
+ - https://caiorss.github.io/bookmarklet-maker/
 
 *** Modify it
 
