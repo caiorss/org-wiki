@@ -296,8 +296,7 @@ Example: if PAGENAME is Linux it will return [[wiki:Linux][Linux]]"
   (format "[[wiki:%s][%s]]" pagename pagename))
 
 (defun org-wiki--open-page (pagename)
-  "Opens a org-wiki page (PAGENAME) by name.
-
+  "Open or create new a org-wiki page (PAGENAME) by name.
 Example:  (org-wiki--open-page \"Linux\")
 Will open the the wiki file Linux.org in
 `org-wiki-location`"
@@ -305,7 +304,11 @@ Will open the the wiki file Linux.org in
     (if (not (file-exists-p org-wiki-file))
         ;; Action executed if file doesn't exist.
         (progn (find-file  org-wiki-file)
+               ;; Insert header at top of page
                (org-wiki-header)
+               ;; Save current page buffer
+               (save-buffer)
+               ;; Create assets directory
                (org-wiki--assets-make-dir pagename))
 
       ;; Action executed if file exists.
@@ -315,7 +318,6 @@ Will open the the wiki file Linux.org in
                   (read-only-mode 1))
           ;; open file in writable mode. 
           (find-file  org-wiki-file))
-        
         ))) 
 
 
