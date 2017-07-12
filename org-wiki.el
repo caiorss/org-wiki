@@ -581,7 +581,13 @@ Example: Linux/LinuxManual.pdf"
                           )))))))
 
 (defun org-wiki-asset-find-file ()
-  "Show a helm-menu where the user can select the asset file to be opened in Emacs."
+  "Open a menu to select an asset file of current page and open it with Emacs.
+Note: see 'org-wiki-asset-find-sys'
+
+Example: If the current page is 'Smalltalk programming' and the user select the
+file 'extendingClasses-number1.gst' it will open the file below with Emacs.
+
+ - Smalltalk programming/'extendingClasses-number1.gst"
   (interactive)
   (org-wiki--asset-helm-selection #'find-file))
 
