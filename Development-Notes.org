@@ -90,3 +90,163 @@
 
 
 
+* Functions and Variables Documentation 
+** Variables 
+*** org-wiki-location - Org-wiki storage directory 
+
+ - org-wiki-location - Contains the org-wiki-storage directory. This
+   variable can be set by the user. 
+
+Example: 
+
+#+BEGIN_SRC elisp 
+ELISP> org-wiki-location
+"~/Documents/wiki"
+ELISP> 
+#+END_SRC
+
+** Functions 
+*** Name transformation 
+**** org-wiki--page-list  - Get all org-wiki pages
+
+ -  org-wiki--page-list()
+
+Show all org-wiki-pages. Example: 
+
+#+BEGIN_SRC elisp 
+  ELISP> (org-wiki--page-list)
+
+  ("Accounting" "Bash_Script" "Binary_Files_and_Econding" "Bookmark2"
+   "Bookmarks" "Brazil_Income_Tax" "Business" "C_and_Cplus"
+   "CalculosTrabalhistas" "Carros_Automoveis" "CatRepelent" "Cint_Root"
+   ...)
+#+END_SRC
+**** org-wiki--page->file - Convert page name to file 
+
+ -  org-wiki--page->file (pagename)
+
+Transforms a wiki page name into the corresponding file name.
+
+Example: 
+
+#+BEGIN_SRC elisp 
+ELISP> (org-wiki--page->file "Smalltalk programming")
+"~/Documents/wiki/Smalltalk programming.org"
+ELISP> 
+#+END_SRC
+**** org-wiki--file->page - Convert file to page name
+
+ - org-wiki--file->page (filename)
+
+Transforms the org-wiki file name into the corresponding page name.
+
+#+BEGIN_SRC elisp 
+ELISP> (org-wiki--file->page (org-wiki--page->file "Smalltalk programming"))
+"Smalltalk programming"
+ELISP> 
+#+END_SRC
+
+*** Current Page 
+**** org-wiki--current-page - Get the page name of current org-wiki buffer
+
+ - org-wiki--current-page()
+
+Example: 
+
+#+BEGIN_SRC elisp 
+ELISP> (buffer-file-name)
+"/home/archbox/Documents/wiki/Smalltalk programming.org"
+ELISP> 
+
+ELISP> (org-wiki--current-page)
+"Smalltalk programming"
+ELISP> 
+#+END_SRC
+
+**** org-wiki--current-page-asset-file - Get path to current page's asset file. 
+
+Example: 
+
+#+BEGIN_SRC elisp 
+ELISP> (current-buffer)
+#<buffer Smalltalk programming.org>
+
+ELISP> (org-wiki--current-page)
+"Smalltalk programming"
+ELISP> 
+
+ELISP> (buffer-file-name)
+"/home/archbox/Documents/wiki/Smalltalk programming.org"
+
+ELISP> (org-wiki--current-page-asset-file "numerical-methods-in-smalltalk.pdf")
+"Smalltalk programming/numerical-methods-in-smalltalk.pdf"
+ELISP> 
+#+END_SRC
+
+*** Asset files / Attachment files 
+**** org-wiki--assets-get-dir - Get page's asset directory 
+
+ -  org-wiki--assets-get-dir (pagename)
+
+Example: Get the Linux page's (file: Linux.org) asset directory. 
+
+#+BEGIN_SRC elisp 
+ELISP> (org-wiki--assets-get-dir "Linux")
+"~/Documents/wiki/Linux"
+ELISP> 
+#+END_SRC
+
+Example: Open this directory: 
+
+#+BEGIN_SRC elisp
+ELISP> (dired  (org-wiki--assets-get-dir "Linux"))
+#+END_SRC
+**** org-wiki--asset-page-files - Get all asset files belonging to a page. 
+
+Example:
+
+#+BEGIN_SRC elisp 
+
+ELISP> (org-wiki--current-page)
+"Smalltalk programming"
+
+ELISP> (buffer-file-name)
+"/home/archbox/Documents/wiki/Smalltalk programming.org"
+ELISP> 
+
+ELISP> (org-wiki--asset-page-files "Smalltalk programming")
+("." ".." "extendingClasses-number1.gst" "gst.im" "numerical-methods-in-smalltalk.pdf" "smalltak1.st")
+
+#+END_SRC
+
+**** org-wiki--current-page-asset-dir - Get curren page's asset directory 
+
+Example: 
+
+#+BEGIN_SRC elisp 
+ELISP> org-wiki-location 
+"~/Documents/wiki"
+ELISP> 
+
+ELISP> (buffer-file-name)
+"/home/archbox/Documents/wiki/Smalltalk programming.org"
+
+ELISP> (org-wiki--current-page)
+"Smalltalk programming"
+
+ELISP> (org-wiki--current-page-asset-dir)
+"~/Documents/wiki/Smalltalk programming"
+#+END_SRC
+
+
+*** Non categorized 
+**** org-wiki-xdg-open - Open a file with default system app.
+
+ - org-wiki-xdg-open (filename)
+
+Example: It will open the file manual.pdf with whatever PDF viewer is
+installed in the system such as Adobe Acrobat Reader or Foxit Reader.
+
+#+BEGIN_SRC elisp 
+ELISP> (org-wiki-xdg-open "Linux/manual.pdf")
+#+END_SRC
