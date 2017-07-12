@@ -185,6 +185,11 @@ ELISP> (org-wiki--page->file \"Linux\")
           ".org"
           ))
 
+(defun org-wiki--current-page ()
+  "Get current org-wiki page's name bound to current buffer."
+  (interactive)
+  (org-wiki--file->page (buffer-file-name)))
+
 (defun org-wiki--buffer-file-in-wiki-p ()
   "Return true if current buffer file name is inside wiki directory."
   (file-exists-p
