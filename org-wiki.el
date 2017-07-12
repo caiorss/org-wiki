@@ -203,7 +203,6 @@ ELISP>"
 (defun org-wiki--buffer-file-in-wiki-p ()
   "Return true if current buffer file name is inside wiki directory."
   (file-exists-p
-
    (org-wiki--concat-path
     org-wiki-location
     (file-name-nondirectory (buffer-file-name)))))
@@ -380,8 +379,7 @@ Running in Mac OSX invokes open"
                    "proc"
                    nil
                    ;; Command
-                   "cmd"  "/C"  "start" "" (expand-file-name filename)
-		     	    )
+                   "cmd"  "/C"  "start" "" (expand-file-name filename))
 
        ))) ;; End of org-wiki/xdg-open
 
