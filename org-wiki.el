@@ -573,9 +573,16 @@ Example:  [[wiki-asset-sys:Linux;LinuxManual.pdf]]"
                      )))))
 
 (defun org-wiki-asset-insert-file ()
-  "Insert link file:<page>/<file> to asset file of current page at point.
-Insert an asset file of current page at point providing a Helm completion.
-Example: Linux/LinuxManual.pdf"
+  "Insert link file:<page>/<file> to asset file of current page at point."
+  (interactive)
+  (org-wiki--asset-helm-selection
+    (lambda (file)
+      (save-excursion
+        (insert (org-make-link-string
+                 (concat "file:" file)
+                 file
+                 ))))))
+
   (interactive)
   (org-wiki--asset-helm-selection
     (lambda (file)
