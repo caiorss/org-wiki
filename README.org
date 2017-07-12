@@ -204,9 +204,11 @@ files that contains "System.Windows string".
 
 To create a page do:
 
- - 1. M-x org-wiki-index - It goes to the Org-wiki index page (index.org).
+ - 1. M-x org-wiki-index - It goes to the Org-wiki index page
+   (index.org).
 
- - 2. Then run M-x org-wiki-link and a page name like 'CNC - Computer Numerical Control'
+ - 2. Then run M-x org-wiki-create and a page name like 'CNC -
+   Computer Numerical Control'
 
 It will insert a hyperlink at point like:
 
@@ -215,7 +217,6 @@ It will insert a hyperlink at point like:
 #+END_SRC
 
  - 3. Then click at the link or enter C-x C-o at the link to open it.
-
 
 *** Browse a page
 
@@ -411,7 +412,7 @@ The menu can be installed permanently by adding the init file:
 |                                 |                                                                                               |
 | *Insert Commands*               |                                                                                               |
 |---------------------------------+-----------------------------------------------------------------------------------------------|
-| org-wiki-link                   | Insert a link at point to a new org-wiki page. Click or follow the link to edit the new page. |
+| org-wiki-create                 | Insert a link at point to a new org-wiki page. Click or follow the link to edit the new page. |
 | org-wiki-insert                 | Insert a link at point to an existing org-wiki page.                                          |
 | org-wiki-header                 | Insert at the top of an org-wiki buffer an org-mode header template.                          |
 |                                 |                                                                                               |
@@ -468,7 +469,7 @@ Not. complete.
 **** M-x org-wiki-index-frame
 
   - =M-x org-wiki-index-frame= - Open the wiki index page in a new frame.
-*** Browse pages
+*** pages
 **** M-x org-wiki-helm
 
    - =M-x org-wiki-helm= - Open a helm menu to switch or open a wiki page.
@@ -550,6 +551,18 @@ Related:
   - =M-x org-wiki-assets-open= - Open asset directory of current page
     with system's default file manager. 
 
+**** M-x org-wiki-asset-create
+
+Prompts the user for a file name that doesn't exist yet and insert it
+at point.  Unlike the commands `org-wiki-asset-insert` or `
+org-wiki-asset-insert-file` this command asks the user for a file that
+doesn't exist yet and inserts a hyperlink to it at point. 
+
+Example: If the user enter this command and he is in the page Linux
+and types scriptDemoQT.py it will insert a link at point like this
+file:Linux/scriptDemoQT.py that doesn't exist yet. The user can then
+open the link and edit the file.
+
 **** M-x org-wiki-asset-insert 
 
   - =M-x org-wiki-asset-insert= - Insert a link to asset file of current
@@ -575,6 +588,65 @@ Example: Inserts a link such as:
 #+BEGIN_SRC 
 file:Linux/Manual.pdf 
 #+END_SRC
+**** M-x org-wiki-asset-insert-block
+
+Insert code block with contents of some asset file as an org-mode
+block: 
+
+Example: 
+
+If the current page is 'Smalltalk programming' it the user select the
+file 'extendingClasses-number1.gst' it will insert a code block with
+the file contents and a hyperlink to it at point.
+
+#+BEGIN_SRC org 
+
+   - File: [[file:Smalltalk%20programming/extendingClasses-number1.gst][file:Smalltalk programming/extendingClasses-number1.gst]]
+
+  ,#+BEGIN_SRC text
+    Number extend [
+            inv [ 1.0 / ^self
+            ]
+    
+            neg [ - ^self
+            ] 
+    ]
+  ,#+END_SRC
+#+END_SRC
+
+It would insert a content like this: 
+
+ - File: [[file:Smalltalk%20programming/extendingClasses-number1.gst][file:Smalltalk programming/extendingClasses-number1.gst]]
+
+#+BEGIN_SRC text
+  Number extend [
+          inv [ 1.0 / ^self
+          ]
+  
+          neg [ - ^self
+          ] 
+  ]
+#+END_SRC
+
+**** M-x org-wiki-asset-find-file
+
+It will open a helm menu containing the assets files of current
+page. It will open the selected file with Emacs.
+
+Example: If the current page is 'Smalltalk programming' and the user select the
+file 'extendingClasses-number1.gst' it will open the file below with Emacs.
+
+ - Smalltalk programming/'extendingClasses-number1.gst
+
+**** M-x org-wiki-asset-find-sys
+
+Open a menu to select an asset file of current page and open it with
+system's app.
+
+Example: If the current page is 'Smalltalk programming' and the
+user select the file 'numerical-methods-in-smalltalk.pdf' it will
+be opened with the default system's application like Foxit PDF or
+Okular reader.
 
 **** M-x org-wiki-asset-download-insert1
   
