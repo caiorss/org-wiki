@@ -620,14 +620,13 @@ this file:Linux/scriptDemoQT.py .
 - Page:       <org-wiki-location>/Linux.org
 - Directory:  <org-wiki-location>/Linux/"
   (interactive)
-  (let ((pagename (file-name-base (buffer-file-name)))
-        (filename (read-string "File: ")))
+  (let ((filename (read-string "File: ")))
     (save-excursion
-      (insert (org-make-link-string (concat "file:"
-                                            (file-name-as-directory pagename)
-                                            filename)
-
-                                    filename )))))
+      (insert (org-make-link-string
+               (concat "file:"
+                       (org-wiki--current-page-asset-file filename))
+               filename
+               )))))
 
 
 (defun org-wiki-asset-download-insert1 ()
