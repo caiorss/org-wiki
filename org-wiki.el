@@ -565,12 +565,11 @@ It inserts a link of type wiki-asset-sys:<Wiki-page>;<Asset-File>
 Example:  [[wiki-asset-sys:Linux;LinuxManual.pdf]]"
   (interactive)
   (org-wiki--asset-helm-selection
-   (file-name-base (buffer-file-name))
-   (lambda (f)
+   (lambda (file)
      (insert (format "[[wiki-asset-sys:%s;%s][%s]]"
-                     (file-name-base (buffer-file-name))
-                     f
-                     (read-string "Description: " f)
+                     (file-name-base (org-wiki--current-page-asset-dir))
+                     (file-name-nondirectory file)
+                     (read-string "Description: " (file-name-nondirectory file))
                      )))))
 
 (defun org-wiki-asset-insert-file ()
