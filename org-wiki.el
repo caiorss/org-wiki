@@ -185,10 +185,30 @@ ELISP> (org-wiki--page->file \"Linux\")
           ".org"
           ))
 
+(defun org-wiki--current-page ()
+  "Get current org-wiki page's name bound to current buffer."
+  (interactive)
+  (org-wiki--file->page (buffer-file-name)))
+
+(defun org-wiki--current-page-asset-dir ()
+  "Get current org-wiki page's asset directory"
+  (interactive)
+  (concat (file-name-as-directory org-wiki-location)
+          (file-name-base (buffer-file-name))))
+
+(defun org-wiki--current-page-asset-file (filename)
+  "Get current page's asset file path given its name.
+Example: If the current page is 'Smalltalk programming'
+
+ELISP> (org-wiki--current-page-asset-file \"manual.pdf\")
+\"Smalltalk programming/manual.pdf\"
+ELISP>"
+  (concat (file-name-as-directory (file-name-base (buffer-file-name)))
+          filename))
+
 (defun org-wiki--buffer-file-in-wiki-p ()
   "Return true if current buffer file name is inside wiki directory."
   (file-exists-p
-
    (org-wiki--concat-path
     org-wiki-location
     (file-name-nondirectory (buffer-file-name)))))
@@ -251,28 +271,22 @@ Example: '(\"Linux\" \"BSD\" \"Bash\"  \"Binary_Files\")"
 
 (defun org-wiki--assets-make-dir (pagename)
   "Create the asset directory of a wiki page (PAGENAME) if it doesn't exist.
-
 Example: (org-wiki--assets-make-dir \"Bash\")
 
 It will crate the directory ~/wiki-location/Bash/
 corresponding to the file ~/wiki-location/Bash.org
 if it doesn't exist yet."
   (let ((assets-dir (org-wiki--assets-get-dir pagename)))
-
     (if (not (file-exists-p assets-dir))
-        (make-directory assets-dir t)
-      )))
+        (make-directory assets-dir t))))
 
 
 (defun org-wiki--assets-buffer-make-dir ()
   "Create asset directory of current buffer page if it doesn't exit."
-
   (if (org-wiki--buffer-file-in-wiki-p)
-
       (progn
         (org-wiki--assets-make-dir
-         (file-name-base (buffer-file-name)))
-        )
+         (file-name-base (buffer-file-name))))
     (message "Error: Not in a wiki page.")))
 
 
@@ -371,8 +385,7 @@ Running in Mac OSX invokes open"
                    "proc"
                    nil
                    ;; Command
-                   "cmd"  "/C"  "start" "" (expand-file-name filename)
-		     	    )
+                   "cmd"  "/C"  "start" "" (expand-file-name filename))
 
        ))) ;; End of org-wiki/xdg-open
 
@@ -430,10 +443,10 @@ points to the file <org wiki location>/Blueprint/box1.dwg."
   (directory-files (org-wiki--assets-get-dir pagename)))
 
 
-(defun org-wiki--asset-helm-selection (pagename callback)
+(defun org-wiki--asset-helm-selection (callback)
   "Higher order function to deal with page assets.
 
-org-wiki-asset-helm-selection (PAGENAME CALLBACK)
+org-wiki-asset-helm-selection (CALLBACK)
 
 This function opens a helm menu to select a wiki page and then
 passes the result of selection to a callback function that takes
@@ -442,15 +455,15 @@ a asset file as argument.
 Example: If the user selects the file freebsdref1.pdf it inserts the
 file name at current point.
 
-> (org-wiki--asset-helm-selection \"Linux\" (lambda (file) (insert file)))
+> (org-wiki--asset-helm-selection (lambda (file) (insert file)))
   freebsdref1.pdf"
-
   (helm :sources `((
                       (name . "Wiki Pages")
-
-                      (candidates . ,(org-wiki--asset-page-files pagename))
-
-                      (action . ,callback)
+                      (candidates . ,(org-wiki--asset-page-files
+                                      (org-wiki--current-page)))
+                      (action .  (lambda (file)
+                                   (,callback (org-wiki--current-page-asset-file file))
+                                   ))
                       ))))
 
 
@@ -551,16 +564,12 @@ point: 'Unix/Manual.pdf'."
 It inserts a link of type wiki-asset-sys:<Wiki-page>;<Asset-File>
 Example:  [[wiki-asset-sys:Linux;LinuxManual.pdf]]"
   (interactive)
-
   (org-wiki--asset-helm-selection
-
-   (file-name-base (buffer-file-name))
-
-   (lambda (f)
+   (lambda (file)
      (insert (format "[[wiki-asset-sys:%s;%s][%s]]"
-                     (file-name-base (buffer-file-name))
-                     f
-                     (read-string "Description: " f)
+                     (file-name-base (org-wiki--current-page-asset-dir))
+                     (file-name-nondirectory file)
+                     (read-string "Description: " (file-name-nondirectory file))
                      )))))
 
 (defun org-wiki-asset-insert-file ()
@@ -568,15 +577,33 @@ Example:  [[wiki-asset-sys:Linux;LinuxManual.pdf]]"
 Insert an asset file of current page at point providing a Helm completion.
 Example: Linux/LinuxManual.pdf"
   (interactive)
-
-  (let ((pagename (file-name-base (buffer-file-name))))
-   (org-wiki--asset-helm-selection
-    pagename
+  (org-wiki--asset-helm-selection
     (lambda (file)
-      (insert (org-make-link-string (concat "file:"
-                                            (file-name-as-directory pagename)
-                                            file
-                                            )))))))
+      (save-excursion
+        (insert (org-make-link-string
+                  (concat "file:"
+                          (org-wiki--current-page-asset-file file)
+                          )))))))
+
+(defun org-wiki-asset-find-file ()
+  "Open a menu to select an asset file of current page and open it with Emacs.
+Note: see 'org-wiki-asset-find-sys'
+
+Example: If the current page is 'Smalltalk programming' and the user select the
+file 'extendingClasses-number1.gst' it will open the file below with Emacs.
+
+ - Smalltalk programming/'extendingClasses-number1.gst"
+  (interactive)
+  (org-wiki--asset-helm-selection #'find-file))
+
+(defun org-wiki-asset-find-sys ()
+  "Open a menu to select an asset file of current page and open it with system's app.
+Example: If the current page is 'Smalltalk programming' and the
+user select the file 'numerical-methods-in-smalltalk.pdf' it will
+be opened with the default system's application like Foxit PDF or
+Okular reader."
+  (interactive)
+  (org-wiki--asset-helm-selection #'org-wiki-xdg-open))
 
 (defun org-wiki-asset-create ()
   "Prompts the user for a file name that doesn't exist yet and insert it at point.
@@ -593,14 +620,13 @@ this file:Linux/scriptDemoQT.py .
 - Page:       <org-wiki-location>/Linux.org
 - Directory:  <org-wiki-location>/Linux/"
   (interactive)
-  (let ((pagename (file-name-base (buffer-file-name)))
-        (filename (read-string "File: ")))
+  (let ((filename (read-string "File: ")))
     (save-excursion
-      (insert (org-make-link-string (concat "file:"
-                                            (file-name-as-directory pagename)
-                                            filename)
-
-                                    filename )))))
+      (insert (org-make-link-string
+               (concat "file:"
+                       (org-wiki--current-page-asset-file filename))
+               filename
+               )))))
 
 
 (defun org-wiki-asset-download-insert1 ()
