@@ -190,6 +190,12 @@ ELISP> (org-wiki--page->file \"Linux\")
   (interactive)
   (org-wiki--file->page (buffer-file-name)))
 
+(defun org-wiki--current-page-asset-dir ()
+  "Get current org-wiki page's asset directory"
+  (interactive)
+  (concat (file-name-as-directory org-wiki-location)
+          (file-name-base (buffer-file-name))))
+
 (defun org-wiki--current-page-asset-file (filename)
   "Get current page's asset file path given its name.
 Example: If the current page is 'Smalltalk programming'
