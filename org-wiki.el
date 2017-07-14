@@ -587,6 +587,21 @@ Emacs like source codes. It will insert a link like this
                  ))))))
 
 
+(defun org-wiki-asset-insert-image ()
+  "Insert link file:<page>/<file> to images asset file at point.
+This command is similar to org-wiki-asset-insert-file but it inserts a link
+in this way: [[file:Linux/logo.png][file:Linux/logo.png/]]."
+  (interactive)
+  (org-wiki--asset-helm-selection
+    (lambda (file)
+      (save-excursion
+        (insert (org-make-link-string
+                 (concat "file:" file)
+                 (concat "file:" file)
+                 ))))))
+
+
+
 (defun org-wiki-asset-insert-block ()
   "Insert code block with contents of some asset file."
   (interactive)
