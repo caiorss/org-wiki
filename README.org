@@ -387,67 +387,69 @@ The menu can be installed permanently by adding the init file:
 
 ** Commands Summary 
 
-| M-x Command                     | Description                                                                                   |
-|---------------------------------+-----------------------------------------------------------------------------------------------|
-| *Help*                          |                                                                                               |
-|---------------------------------+-----------------------------------------------------------------------------------------------|
-|                                 |                                                                                               |
-| org-wiki-help                   | Show all org-wiki commands.                                                                   |
-| org-wiki-website                | Open org-wiki default website.                                                                |
-|                                 |                                                                                               |
-| *Navigation*                    |                                                                                               |
-|---------------------------------+-----------------------------------------------------------------------------------------------|
-| org-wiki-index                  | Go to the index page or index.org                                                             |
-| org-wiki-index-frame            | Open org-wiki index page in a new frame.                                                      |
-|                                 |                                                                                               |
-| org-wiki-helm                   | Open a org-wiki page                                                                          |
-| org-wiki-helm-frame             | Open a org-wiki page in a new frame                                                           |
-| org-wiki-helm-read-only         | Open a org-wiki page in read-only mode                                                        |
-|                                 |                                                                                               |
-| org-wiki-switch                 | Switch between org-wiki buffers                                                               |
-|                                 |                                                                                               |
-| *Close Command*                 |                                                                                               |
-|---------------------------------+-----------------------------------------------------------------------------------------------|
-| org-wiki-close                  | Close and save all org-wiki pages (buffers).                                                  |
-|                                 |                                                                                               |
-| *Insert Commands*               |                                                                                               |
-|---------------------------------+-----------------------------------------------------------------------------------------------|
-| org-wiki-create                 | Insert a link at point to a new org-wiki page. Click or follow the link to edit the new page. |
-| org-wiki-insert                 | Insert a link at point to an existing org-wiki page.                                          |
-| org-wiki-header                 | Insert at the top of an org-wiki buffer an org-mode header template.                          |
-|                                 |                                                                                               |
-| org-wiki-asset-insert-file      | Insert link to asset/attachment file at point.                                                |
-|                                 |                                                                                               |
-| org-wiki-asset-insert           | Insert a link to asset/attachment file at point. When the user clicks,                        |
-|                                 | it opens with default system application. It is useful to open pdfs,                          |
-|                                 | spreadsheets and so on.                                                                       |
-|                                 |                                                                                               |
-| org-wiki-asset-download-insert1 | Download a file and insert a link to it at point. Similar to org-wiki-asset-insert            |
-|                                 |                                                                                               |
-| org-wiki-asset-download-insert2 | Download a file and insert a link to it at point. Similar to org-wiki-asset-insert-file       |
-|                                 |                                                                                               |
-| *Directory*                     |                                                                                               |
-|---------------------------------+-----------------------------------------------------------------------------------------------|
-| org-wiki-dired                  | Open org-wiki-location or org-wiki storage directory in Emacs showing only *.org files.       |
-| org-wiki-open                   | Open org-wiki-location with default system file manager.                                      |
-| org-wiki-dired-all              | OPen org-wiki-location showing all files.                                                     |
-|                                 |                                                                                               |
-| *Alias Command*                 |                                                                                               |
-|---------------------------------+-----------------------------------------------------------------------------------------------|
-| org-wiki-nav                    | Alias to helm-org-in-buffer-headings                                                          |
-| org-wiki-occur                  | Alias to helm-occur                                                                           |
-| org-wiki-toggle-images          | Toggle images display. Alias to org-toggle-inline-images                                      |
-| org-wiki-toggle-link            | Toggle link display. Alias to M-x org-toggle-link-display.                                    |
-| org-wiki-latex                  | Display latex formulas. Alias to org-preview-latex-fragment. Requires latex installed.        |
-|                                 |                                                                                               |
-|                                 |                                                                                               |
-| *Misc*                          |                                                                                               |
-|---------------------------------+-----------------------------------------------------------------------------------------------|
-| org-wiki-panel                  | A panel like magit-status panel.                                                              |
-| org-wiki-server-toggle          | Toggle Python web server.                                                                     |
-| org-wiki-make-menu              | Install an org-wiki menu.                                                                     |
-|                                 |                                                                                               |
-|                                 |                                                                                               |
+| M-x Command                     | Description                                                                                       |
+|---------------------------------+---------------------------------------------------------------------------------------------------|
+| *Help*                          |                                                                                                   |
+|---------------------------------+---------------------------------------------------------------------------------------------------|
+|                                 |                                                                                                   |
+| org-wiki-help                   | Show all org-wiki commands.                                                                       |
+| org-wiki-website                | Open org-wiki default website.                                                                    |
+|                                 |                                                                                                   |
+| *Navigation*                    |                                                                                                   |
+|---------------------------------+---------------------------------------------------------------------------------------------------|
+| org-wiki-index                  | Go to the index page or index.org                                                                 |
+| org-wiki-index-frame            | Open org-wiki index page in a new frame.                                                          |
+|                                 |                                                                                                   |
+| org-wiki-helm                   | Open a org-wiki page                                                                              |
+| org-wiki-helm-frame             | Open a org-wiki page in a new frame                                                               |
+| org-wiki-helm-read-only         | Open a org-wiki page in read-only mode                                                            |
+|                                 |                                                                                                   |
+| org-wiki-switch                 | Switch between org-wiki buffers                                                                   |
+|                                 |                                                                                                   |
+| *Close Command*                 |                                                                                                   |
+|---------------------------------+---------------------------------------------------------------------------------------------------|
+| org-wiki-close                  | Close and save all org-wiki pages (buffers).                                                      |
+|                                 |                                                                                                   |
+| *Insert Commands*               |                                                                                                   |
+|---------------------------------+---------------------------------------------------------------------------------------------------|
+| org-wiki-create                 | Insert a link at point to a new org-wiki page. Click or follow the link to edit the new page.     |
+| org-wiki-insert                 | Insert a link at point to an existing org-wiki page.                                              |
+| org-wiki-header                 | Insert at the top of an org-wiki buffer an org-mode header template.                              |
+|                                 |                                                                                                   |
+| org-wiki-asset-insert-file      | Insert link to asset/attachment file that can be opened with Emacs at point such as source codes. |
+|                                 |                                                                                                   |
+| org-wiki-asset-insert-image     | Insert link to image file at point.                                                               |
+|                                 |                                                                                                   |
+| org-wiki-asset-insert           | Insert a link to asset/attachment file at point. When the user clicks,                            |
+|                                 | it opens with default system application. It is useful to open pdfs,                              |
+|                                 | spreadsheets and so on.                                                                           |
+|                                 |                                                                                                   |
+| org-wiki-asset-download-insert1 | Download a file and insert a link to it at point. Similar to org-wiki-asset-insert                |
+|                                 |                                                                                                   |
+| org-wiki-asset-download-insert2 | Download a file and insert a link to it at point. Similar to org-wiki-asset-insert-file           |
+|                                 |                                                                                                   |
+| *Directory*                     |                                                                                                   |
+|---------------------------------+---------------------------------------------------------------------------------------------------|
+| org-wiki-dired                  | Open org-wiki-location or org-wiki storage directory in Emacs showing only *.org files.           |
+| org-wiki-open                   | Open org-wiki-location with default system file manager.                                          |
+| org-wiki-dired-all              | OPen org-wiki-location showing all files.                                                         |
+|                                 |                                                                                                   |
+| *Alias Command*                 |                                                                                                   |
+|---------------------------------+---------------------------------------------------------------------------------------------------|
+| org-wiki-nav                    | Alias to helm-org-in-buffer-headings                                                              |
+| org-wiki-occur                  | Alias to helm-occur                                                                               |
+| org-wiki-toggle-images          | Toggle images display. Alias to org-toggle-inline-images                                          |
+| org-wiki-toggle-link            | Toggle link display. Alias to M-x org-toggle-link-display.                                        |
+| org-wiki-latex                  | Display latex formulas. Alias to org-preview-latex-fragment. Requires latex installed.            |
+|                                 |                                                                                                   |
+|                                 |                                                                                                   |
+| *Misc*                          |                                                                                                   |
+|---------------------------------+---------------------------------------------------------------------------------------------------|
+| org-wiki-panel                  | A panel like magit-status panel.                                                                  |
+| org-wiki-server-toggle          | Toggle Python web server.                                                                         |
+| org-wiki-make-menu              | Install an org-wiki menu.                                                                         |
+|                                 |                                                                                                   |
+|                                 |                                                                                                   |
 
 Not. complete.
 
@@ -541,17 +543,22 @@ Related:
     providing a heml menu to select the file. It inserts a link of
     format ~wiki-asset-sys:CurrentPage;AssetFilename.pdf~.
 *** Asset files / Attachments
-**** M-x org-wiki-assets-helm
+**** Commands to open page's asset directory 
+***** M-x org-wiki-assets-dired 
 
-  - =M-x org-wiki-assets-helm= - Select a wiki page and open its
-    assets directory.
+Open page's asset directory in Emacs dired mode.
+***** M-x org-wiki-assets-open  
 
-**** M-x org-wiki-assets-open  
+   - =M-x org-wiki-assets-open= - Open asset directory of current page
+     with system's default file manager. 
 
-  - =M-x org-wiki-assets-open= - Open asset directory of current page
-    with system's default file manager. 
+***** M-x org-wiki-assets-helm
 
-**** M-x org-wiki-asset-create
+   - =M-x org-wiki-assets-helm= - Select a wiki page and open its
+     assets directory.
+
+**** Commands to insert hyperlink to files 
+***** M-x org-wiki-asset-create
 
 Prompts the user for a file name that doesn't exist yet and insert it
 at point.  Unlike the commands `org-wiki-asset-insert` or `
@@ -563,7 +570,7 @@ and types scriptDemoQT.py it will insert a link at point like this
 file:Linux/scriptDemoQT.py that doesn't exist yet. The user can then
 open the link and edit the file.
 
-**** M-x org-wiki-asset-insert 
+***** M-x org-wiki-asset-insert 
 
   - =M-x org-wiki-asset-insert= - Insert a link to asset file of current
     page at current cursor position. This link when clicked opens with
@@ -577,18 +584,43 @@ Manual.pdf.
 [[wiki-asset-sys:Linux;Manual.pdf][Manual.pdf]]
 #+END_SRC
 
-**** M-x org-wiki-asset-insert-file
+***** M-x org-wiki-asset-insert-file
 
-  - =M-x org-wiki-asset-insert-file= - Insert a link to an asset file of
-    current page at current cursor position. This is an ordinary
-    org-mode link.
+  - =M-x org-wiki-asset-insert-file= - Insert a link to an asset file
+    that can be opened with Emacs at cursor position. This is an
+    ordinary org-mode link. 
 
-Example: Inserts a link such as:
+Use this file for files supposed to be opened with Emacs such as
+Python, bash scripts or source codes.
 
-#+BEGIN_SRC 
-file:Linux/Manual.pdf 
+Note: Don't use this command to insert images, 
+use =M-x org-wiki-insert-image= instead of this.
+
+Example: If the current page is Python and user selects the file
+pyscript.py it will insert a hyperlink at point as this.
+
+#+BEGIN_SRC  org
+ [[file:python/pyscript.py][pyscript.py]]
 #+END_SRC
-**** M-x org-wiki-asset-insert-block
+
+It will be rendenred as this: 
+
+ - [[file:python/pyscript.py][pyscript.py]]
+
+***** M-x org-wiki-asset-insert-image
+
+  - =M-x org-wiki-asset-insert-file= - Insert a link to an image file
+    at point. 
+
+Example: If the current page is Python and the user selects the file
+QTScreenshot.png it will insert a hyperlink to this file that will be
+rendered as an image when current page is exported to html.
+
+#+BEGIN_SRC org
+ [[file:python/QTScreenshot.png][file:python/QTScreenshot.png]]
+#+END_SRC
+
+***** M-x org-wiki-asset-insert-block
 
 Insert code block with contents of some asset file as an org-mode
 block: 
@@ -628,7 +660,8 @@ It would insert a content like this:
   ]
 #+END_SRC
 
-**** M-x org-wiki-asset-find-file
+**** Commands to open files directly 
+***** M-x org-wiki-asset-find-file
 
 It will open a helm menu containing the assets files of current
 page. It will open the selected file with Emacs.
@@ -638,7 +671,7 @@ file 'extendingClasses-number1.gst' it will open the file below with Emacs.
 
  - Smalltalk programming/'extendingClasses-number1.gst
 
-**** M-x org-wiki-asset-find-sys
+***** M-x org-wiki-asset-find-sys
 
 Open a menu to select an asset file of current page and open it with
 system's app.
@@ -648,7 +681,8 @@ user select the file 'numerical-methods-in-smalltalk.pdf' it will
 be opened with the default system's application like Foxit PDF or
 Okular reader.
 
-**** M-x org-wiki-asset-download-insert1
+**** Commands to Download Files 
+***** M-x org-wiki-asset-download-insert1
   
   - =M-x org-wiki-asset-download-insert1= - Ask the user the url to
     download a file suggesting the url stored in the clipboard and
@@ -679,7 +713,7 @@ Note: This command is synchronous and it can hang Emacs, therefore
 downloading heavy files can freeze Emacs. If it happesn type C-g to
 cancel the current download.
 
-**** M-x org-wiki-asset-download-insert2
+***** M-x org-wiki-asset-download-insert2
  
  - =M-x org-wiki-asset-download-insert2= - Similar to =M-x
    org-wiki-asset-download-insert1=, however it inserts a hyperlink of
