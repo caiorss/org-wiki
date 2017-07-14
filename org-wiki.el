@@ -573,14 +573,17 @@ Example:  [[wiki-asset-sys:Linux;LinuxManual.pdf]]"
                      )))))
 
 (defun org-wiki-asset-insert-file ()
-  "Insert link file:<page>/<file> to asset file of current page at point."
+  "Insert link file:<page>/<file> to asset file of current page at point.
+Use this command to insert link to files that can be opened with
+Emacs like source codes. It will insert a link like this
+- [[file:Python/GpsScript.py][GpsScript.py]]."
   (interactive)
   (org-wiki--asset-helm-selection
     (lambda (file)
       (save-excursion
         (insert (org-make-link-string
                  (concat "file:" file)
-                 file
+                 (file-name-base file)
                  ))))))
 
 
