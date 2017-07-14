@@ -583,7 +583,7 @@ Emacs like source codes. It will insert a link like this
       (save-excursion
         (insert (org-make-link-string
                  (concat "file:" file)
-                 (file-name-base file)
+                 (file-name-nondirectory file)
                  ))))))
 
 
