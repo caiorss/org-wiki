@@ -105,6 +105,11 @@ You can toggle read-only mode with M-x read-only-mode or C-x C-q."
 
 
 ;; ====== Optional Clip.jar image pasting app =========== ;;
+(defcustom org-wiki-backup-location nil
+  "Path to backup directory."
+  :type 'directory
+  :group 'org-wiki
+  )
 
 (defcustom org-wiki-clip-jar-path "~/bin/Clip.jar"
   "Path to Clip.jar utility to paste images from clipboard."
