@@ -234,8 +234,8 @@ or
  - =M-x org-wiki-helm-frame= to open a page in another frame (Emacs
    terminology for GUI window).
 
-** Setup 
-*** Install 
+** Install 
+*** Installation Methods  
 **** Method 1 - Bootstrap installer 
 
 Evaluate this code in the scratch buffer that will install all
@@ -251,6 +251,7 @@ with =M-x eval-buffer=.
 	(kill-whole-line)
 	(package-install-from-buffer)))
 #+END_SRC
+
 
 **** Method 2 - El-get 
 
@@ -269,7 +270,6 @@ with =M-x eval-buffer=. It is assumed that [[https://github.com/dimitri/el-get][
 
 Copy the package to the desired location. 
 
-
 #+BEGIN_SRC sh 
 mkdir -p ~/.emacs.d/packages/ 
 
@@ -279,12 +279,12 @@ git clone  https://github.com/caiorss/org-wiki
 
 mkdir -p ~/org/wiki    # Make wiki location. 
 #+END_SRC
-*** Make org-wiki directory 
+*** Configuration
+**** Basic settings 
+
+Make org-wiki directory 
 
  - =M-x make-directory ~/org-wiki=
-
-*** Configuration
-**** Load org-wiki 
 
 Add to init file ~/.emacs.d/init.el or ~/.emacs 
 
@@ -442,6 +442,10 @@ The menu can be installed permanently by adding the init file:
 | org-wiki-toggle-link            | Toggle link display. Alias to M-x org-toggle-link-display.                                        |
 | org-wiki-latex                  | Display latex formulas. Alias to org-preview-latex-fragment. Requires latex installed.            |
 |                                 |                                                                                                   |
+|                                 |                                                                                                   |
+| *Backup Command*                |                                                                                                   |
+| org-wiki-backup-make            | Create new zip file backup of all org-wiki files.                                                 |
+| org-wiki-backup-dir             | Open backup directory.                                                                            |
 |                                 |                                                                                                   |
 | *Misc*                          |                                                                                                   |
 |---------------------------------+---------------------------------------------------------------------------------------------------|
@@ -881,6 +885,36 @@ file:Linux/fba53c12-3f23-4728-9f52-a26a3d285d7c.png
  - =M-x org-wiki-copy-asset-path= - Copy current page asset/attachment
    directory path to clipboard. Example: If the current page is Linux,
    it will copy the '/<org-wiki-location>/Linux/' to clipboard.
+
+*** Backup Commands 
+**** Backup Settings 
+
+Org-wiki can create backups of org-wiki snapshots stored in zip files
+that can be useful to avoid losses or revert to a previous state.
+
+Set the org-wiki-backup directory. The variable
+org-wiki-backup-location is initially set to nil.
+
+If the backup directory doesn't exist yet, it is created whenever the
+user runs any backup command. 
+
+Note: It is assumed that the =$ zip= command line application is the
+$PATH variable. 
+
+#+BEGIN_SRC elisp 
+  (setq org-wiki-backup-location "~/Documents/org-wiki-backup")
+#+END_SRC
+
+*** M-x org-wiki-backup-make 
+
+To create a backup run =M-x org-wiki-backup-make= it will create a
+file =org-wiki-<YEAR>-<MONTH>-<DAY>.zip=, such as
+=org-wiki-2017-08-10.zip=, in the directory org-wiki-backup-location.
+
+*** M-x org-wiki-backup-dir 
+
+To open the backup directory run M-x =org-wiki-backup-dir.=
+
 
 *** Alias Commands 
 

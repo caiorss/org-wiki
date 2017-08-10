@@ -5,7 +5,7 @@
 ;; Author: Caio Rodrigues       <caiorss DOT rodrigues AT gmail DOT com>
 ;; Maintainer: Caio Rordrigues  <caiorss DOT rodrigues AT gmail DOT com>
 ;; Keywords: org-mode, wiki, notes, notebook
-;; Version: 4.0
+;; Version: 4.1
 ;; URL: https://www.github.com/caiorss/org-wiki'
 ;; Package-Requires: ((helm-core "2.0") (org "9") (cl-lib "0.5"))
 
@@ -105,13 +105,18 @@ You can toggle read-only mode with M-x read-only-mode or C-x C-q."
 
 
 ;; ====== Optional Clip.jar image pasting app =========== ;;
+(defcustom org-wiki-backup-location nil
+  "Path to backup directory."
+  :type 'directory
+  :group 'org-wiki
+  )
 
+;; Optional Clip.jar image pasting app
 (defcustom org-wiki-clip-jar-path "~/bin/Clip.jar"
   "Path to Clip.jar utility to paste images from clipboard."
   :type 'file
   :group 'org-wiki 
   )
-
 
 
 
@@ -949,7 +954,7 @@ Note: This command requires Python3 installed."
            (insert "Server started ...\n\n")                               
            (message "\nServer started ...\n")
 
-           ;; Show user Machine Network Interfaces IP addresses. 
+           ;; Show machine network cards' IP addresses.
            (cl-case system-type
                                         ;;; Linux
              (gnu/linux       (insert (shell-command-to-string "ifconfig")))
@@ -1234,6 +1239,53 @@ Toggle
      (message (format "Copied to clipboard: %s" msg))
      (clipboard-kill-region (point-min) (point-max)))))
 
+
+;; ============ Backup Commands =============== ;;
+
+
+(defun org-wiki-backup-make ()
+  "Make a org-wiki backup."
+  (interactive)
+  (let* ((zipfile            (concat "org-wiki-" (format-time-string "%Y-%m-%d") ".zip"))
+         (destfile           (concat (file-name-directory org-wiki-backup-location) zipfile))
+         (default-directory  org-wiki-location))
+    (switch-to-buffer "*org-wiki-backup*")
+
+    ;; Crate org-wiki backup location directory if doesn't exist.
+    (if (not (file-exists-p org-wiki-backup-location))
+        (make-directory org-wiki-backup-location t))
+
+    (if (file-exists-p destfile) (delete-file destfile))
+    (if (file-exists-p zipfile)  (delete-file zipfile))
+
+    ;; Clear buffer removing all lines
+    (delete-region (point-min) (point-max))
+    (set-process-sentinel
+     (start-process
+      "org-wiki-backup" ;; Process name
+      "*org-wiki-backup*" ;; Buffer where output is displayed.
+      ;; Shell command
+      "zip" "-r" "-9" zipfile ".")
+     (lexical-let ((zipfile  zipfile)
+                   (destfile destfile))
+       (lambda (process state)
+         (when (equal (process-exit-status process) 0)
+           (switch-to-buffer "*org-wiki-backup*")
+           (rename-file zipfile org-wiki-backup-location t)
+           (message "Backup done. Ok.")
+           (insert  "\nBackup done. Ok. Run M-x org-wiki-backup-dir to open backup directory.")
+            ))))))
+
+(defun org-wiki-backup-dir ()
+    "Open org-wiki backup directory in dired mode."
+    (interactive)
+    ;; Create org-wiki backup location directory if doesn't exist.
+    (if (not (file-exists-p org-wiki-backup-location))
+        (make-directory org-wiki-backup-location t))
+    ;; Open backup location
+    (dired org-wiki-backup-location)
+    ;; Update buffer
+    (revert-buffer))
 
 ;; ============ Command Alias ================= ;;
 
