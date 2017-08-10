@@ -111,14 +111,19 @@ You can toggle read-only mode with M-x read-only-mode or C-x C-q."
   :group 'org-wiki
   )
 
+;; Optional Clip.jar image pasting app
 (defcustom org-wiki-clip-jar-path "~/bin/Clip.jar"
   "Path to Clip.jar utility to paste images from clipboard."
   :type 'file
   :group 'org-wiki 
   )
 
-
-
+(defvar org-wiki-exclude-extensions
+  '(".exe" ".zip" ".tar" ".tar.gz" ".gz" ".dll" ".tgz" ".png" ".tiff"
+    ".gif" ".jpg" ".jpeg" ".pdf" ".hi"
+    ".man" ".o" ".elc" ".pyc" ".class" ".bin" ".jar"
+    ".mp3" ".mp4" ".ogg" "~"
+    ))
 
 ;;; Default index page (index.org) accessed with M-x org-wiki-index
 ;;
@@ -954,7 +959,7 @@ Note: This command requires Python3 installed."
            (insert "Server started ...\n\n")                               
            (message "\nServer started ...\n")
 
-           ;; Show user Machine Network Interfaces IP addresses. 
+           ;; Show machine network cards' IP addresses.
            (cl-case system-type
                                         ;;; Linux
              (gnu/linux       (insert (shell-command-to-string "ifconfig")))
