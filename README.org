@@ -898,6 +898,9 @@ org-wiki-backup-location is initially set to nil.
 If the backup directory doesn't exist yet, it is created whenever the
 user runs any backup command. 
 
+Note: It is assumed that the =$ zip= command line application is the
+$PATH variable. 
+
 #+BEGIN_SRC elisp 
   (setq org-wiki-backup-location "~/Documents/org-wiki-backup")
 #+END_SRC
