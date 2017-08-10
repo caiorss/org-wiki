@@ -1245,6 +1245,42 @@ Toggle
      (clipboard-kill-region (point-min) (point-max)))))
 
 
+;; ============ Backup Commands =============== ;;
+
+
+(defun org-wiki-backup-make ()
+  "Make a org-wiki backup."
+  (interactive)
+  (let* ((zipfile            (concat "org-wiki-" (format-time-string "%Y-%m-%d") ".zip"))
+         (destfile           (concat (file-name-directory org-wiki-backup-location) zipfile))
+         (default-directory  org-wiki-location))
+    (switch-to-buffer "*org-wiki-backup*")
+
+    ;; Crate org-wiki backup location directory if doesn't exist.
+    (if (not (file-exists-p org-wiki-backup-location))
+        (make-directory org-wiki-backup-location t))
+
+    (if (file-exists-p destfile) (delete-file destfile))
+    (if (file-exists-p zipfile)  (delete-file zipfile))
+
+    ;; Clear buffer removing all lines
+    (delete-region (point-min) (point-max))
+    (set-process-sentinel
+     (start-process
+      "org-wiki-backup" ;; Process name
+      "*org-wiki-backup*" ;; Buffer where output is displayed.
+      ;; Shell command
+      "zip" "-r" "-9" zipfile ".")
+     (lexical-let ((zipfile  zipfile)
+                   (destfile destfile))
+       (lambda (process state)
+         (when (equal (process-exit-status process) 0)
+           (switch-to-buffer "*org-wiki-backup*")
+           (rename-file zipfile org-wiki-backup-location t)
+           (message "Backup done. Ok.")
+           (insert  "\nBackup done. Ok. Run M-x org-wiki-backup-dir to open backup directory.")
+            ))))))
+
 ;; ============ Command Alias ================= ;;
 
 
