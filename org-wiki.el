@@ -5,7 +5,7 @@
 ;; Author: Caio Rodrigues       <caiorss DOT rodrigues AT gmail DOT com>
 ;; Maintainer: Caio Rordrigues  <caiorss DOT rodrigues AT gmail DOT com>
 ;; Keywords: org-mode, wiki, notes, notebook
-;; Version: 4.0
+;; Version: 4.1
 ;; URL: https://www.github.com/caiorss/org-wiki'
 ;; Package-Requires: ((helm-core "2.0") (org "9") (cl-lib "0.5"))
 
@@ -118,12 +118,7 @@ You can toggle read-only mode with M-x read-only-mode or C-x C-q."
   :group 'org-wiki 
   )
 
-(defvar org-wiki-exclude-extensions
-  '(".exe" ".zip" ".tar" ".tar.gz" ".gz" ".dll" ".tgz" ".png" ".tiff"
-    ".gif" ".jpg" ".jpeg" ".pdf" ".hi"
-    ".man" ".o" ".elc" ".pyc" ".class" ".bin" ".jar"
-    ".mp3" ".mp4" ".ogg" "~"
-    ))
+
 
 ;;; Default index page (index.org) accessed with M-x org-wiki-index
 ;;
