@@ -1281,6 +1281,17 @@ Toggle
            (insert  "\nBackup done. Ok. Run M-x org-wiki-backup-dir to open backup directory.")
             ))))))
 
+(defun org-wiki-backup-dir ()
+    "Open org-wiki backup directory in dired mode."
+    (interactive)
+    ;; Create org-wiki backup location directory if doesn't exist.
+    (if (not (file-exists-p org-wiki-backup-location))
+        (make-directory org-wiki-backup-location t))
+    ;; Open backup location
+    (dired org-wiki-backup-location)
+    ;; Update buffer
+    (revert-buffer))
+
 ;; ============ Command Alias ================= ;;
 
 
