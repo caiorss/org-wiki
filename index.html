@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>org-wiki</title>
-<!-- 2017-07-14 sex 02:41 -->
+<!-- 2017-08-10 qui 14:42 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Caio Rodrigues Soares Silva" />
@@ -228,26 +228,25 @@ for the JavaScript code in this tag.
 <li><a href="#sec-1-6-2">1.6.2. Browse a page</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-7">1.7. Setup</a>
+<li><a href="#sec-1-7">1.7. Install</a>
 <ul>
-<li><a href="#sec-1-7-1">1.7.1. Install</a>
+<li><a href="#sec-1-7-1">1.7.1. Installation Methods</a>
 <ul>
 <li><a href="#sec-1-7-1-1">1.7.1.1. Method 1 - Bootstrap installer</a></li>
 <li><a href="#sec-1-7-1-2">1.7.1.2. Method 2 - El-get</a></li>
 <li><a href="#sec-1-7-1-3">1.7.1.3. Method 3 - Manual installation</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-7-2">1.7.2. Make org-wiki directory</a></li>
-<li><a href="#sec-1-7-3">1.7.3. Configuration</a>
+<li><a href="#sec-1-7-2">1.7.2. Configuration</a>
 <ul>
-<li><a href="#sec-1-7-3-1">1.7.3.1. Load org-wiki</a></li>
-<li><a href="#sec-1-7-3-2">1.7.3.2. Path to Wiki location</a></li>
-<li><a href="#sec-1-7-3-3">1.7.3.3. Open org-wiki pages in read-only</a></li>
-<li><a href="#sec-1-7-3-4">1.7.3.4. Server settings</a></li>
-<li><a href="#sec-1-7-3-5">1.7.3.5. Export Settings</a></li>
+<li><a href="#sec-1-7-2-1">1.7.2.1. Basic settings</a></li>
+<li><a href="#sec-1-7-2-2">1.7.2.2. Path to Wiki location</a></li>
+<li><a href="#sec-1-7-2-3">1.7.2.3. Open org-wiki pages in read-only</a></li>
+<li><a href="#sec-1-7-2-4">1.7.2.4. Server settings</a></li>
+<li><a href="#sec-1-7-2-5">1.7.2.5. Export Settings</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-7-4">1.7.4. Start the wiki</a></li>
+<li><a href="#sec-1-7-3">1.7.3. Start the wiki</a></li>
 </ul>
 </li>
 <li><a href="#sec-1-8">1.8. Commands Summary</a></li>
@@ -310,7 +309,14 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#sec-1-9-13">1.9.13. Copy Commands</a></li>
-<li><a href="#sec-1-9-14">1.9.14. Alias Commands</a></li>
+<li><a href="#sec-1-9-14">1.9.14. Backup Commands</a>
+<ul>
+<li><a href="#sec-1-9-14-1">1.9.14.1. Backup Settings</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-9-15">1.9.15. M-x org-wiki-backup-make</a></li>
+<li><a href="#sec-1-9-16">1.9.16. M-x org-wiki-backup-dir</a></li>
+<li><a href="#sec-1-9-17">1.9.17. Alias Commands</a></li>
 </ul>
 </li>
 <li><a href="#sec-1-10">1.10. Suggestions</a>
@@ -781,10 +787,10 @@ terminology for GUI window).
 </div>
 
 <div id="outline-container-sec-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Setup</h3>
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Install</h3>
 <div class="outline-text-3" id="text-1-7">
 </div><div id="outline-container-sec-1-7-1" class="outline-4">
-<h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> Install</h4>
+<h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> Installation Methods</h4>
 <div class="outline-text-4" id="text-1-7-1">
 </div><div id="outline-container-sec-1-7-1-1" class="outline-5">
 <h5 id="sec-1-7-1-1"><span class="section-number-5">1.7.1.1</span> Method 1 - Bootstrap installer</h5>
@@ -808,6 +814,7 @@ with <code>M-x eval-buffer</code>.
 </div>
 </div>
 </div>
+
 
 <div id="outline-container-sec-1-7-1-2" class="outline-5">
 <h5 id="sec-1-7-1-2"><span class="section-number-5">1.7.1.2</span> Method 2 - El-get</h5>
@@ -836,7 +843,6 @@ with <code>M-x eval-buffer</code>. It is assumed that <a href="https://github.co
 Copy the package to the desired location. 
 </p>
 
-
 <div class="org-src-container">
 
 <pre class="src src-sh">mkdir -p ~/.emacs.d/packages/ 
@@ -852,21 +858,20 @@ mkdir -p ~/org/wiki    <span class="org-comment-delimiter"># </span><span class=
 </div>
 </div>
 <div id="outline-container-sec-1-7-2" class="outline-4">
-<h4 id="sec-1-7-2"><span class="section-number-4">1.7.2</span> Make org-wiki directory</h4>
+<h4 id="sec-1-7-2"><span class="section-number-4">1.7.2</span> Configuration</h4>
 <div class="outline-text-4" id="text-1-7-2">
+</div><div id="outline-container-sec-1-7-2-1" class="outline-5">
+<h5 id="sec-1-7-2-1"><span class="section-number-5">1.7.2.1</span> Basic settings</h5>
+<div class="outline-text-5" id="text-1-7-2-1">
+<p>
+Make org-wiki directory 
+</p>
+
 <ul class="org-ul">
 <li><code>M-x make-directory ~/org-wiki</code>
 </li>
 </ul>
-</div>
-</div>
 
-<div id="outline-container-sec-1-7-3" class="outline-4">
-<h4 id="sec-1-7-3"><span class="section-number-4">1.7.3</span> Configuration</h4>
-<div class="outline-text-4" id="text-1-7-3">
-</div><div id="outline-container-sec-1-7-3-1" class="outline-5">
-<h5 id="sec-1-7-3-1"><span class="section-number-5">1.7.3.1</span> Load org-wiki</h5>
-<div class="outline-text-5" id="text-1-7-3-1">
 <p>
 Add to init file ~/.emacs.d/init.el or ~/.emacs 
 </p>
@@ -885,9 +890,9 @@ varibles or with <code>M-x customize-group org-wiki</code>.
 </div>
 </div>
 
-<div id="outline-container-sec-1-7-3-2" class="outline-5">
-<h5 id="sec-1-7-3-2"><span class="section-number-5">1.7.3.2</span> Path to Wiki location</h5>
-<div class="outline-text-5" id="text-1-7-3-2">
+<div id="outline-container-sec-1-7-2-2" class="outline-5">
+<h5 id="sec-1-7-2-2"><span class="section-number-5">1.7.2.2</span> Path to Wiki location</h5>
+<div class="outline-text-5" id="text-1-7-2-2">
 <p>
 Path where all org-wiki pages (*.org files) are stored. 
 </p>
@@ -910,9 +915,9 @@ or in Windows it could be:
 </div>
 </div>
 
-<div id="outline-container-sec-1-7-3-3" class="outline-5">
-<h5 id="sec-1-7-3-3"><span class="section-number-5">1.7.3.3</span> Open org-wiki pages in read-only</h5>
-<div class="outline-text-5" id="text-1-7-3-3">
+<div id="outline-container-sec-1-7-2-3" class="outline-5">
+<h5 id="sec-1-7-2-3"><span class="section-number-5">1.7.2.3</span> Open org-wiki pages in read-only</h5>
+<div class="outline-text-5" id="text-1-7-2-3">
 <p>
 If the custom variable <code>org-wiki-default-read-only</code> is set to true (t)
 org-wiki pages are opened in read-only mode. The default value of this
@@ -949,9 +954,9 @@ The read-only mode can be toggled with <code>M-x toggle-read-only</code> or C-x 
 </div>
 </div>
 
-<div id="outline-container-sec-1-7-3-4" class="outline-5">
-<h5 id="sec-1-7-3-4"><span class="section-number-5">1.7.3.4</span> Server settings</h5>
-<div class="outline-text-5" id="text-1-7-3-4">
+<div id="outline-container-sec-1-7-2-4" class="outline-5">
+<h5 id="sec-1-7-2-4"><span class="section-number-5">1.7.2.4</span> Server settings</h5>
+<div class="outline-text-5" id="text-1-7-2-4">
 <p>
 Org-wiki can serve the pages exported to html with python help. 
 </p>
@@ -989,9 +994,9 @@ It can be set with:
 </div>
 </div>
 
-<div id="outline-container-sec-1-7-3-5" class="outline-5">
-<h5 id="sec-1-7-3-5"><span class="section-number-5">1.7.3.5</span> Export Settings</h5>
-<div class="outline-text-5" id="text-1-7-3-5">
+<div id="outline-container-sec-1-7-2-5" class="outline-5">
+<h5 id="sec-1-7-2-5"><span class="section-number-5">1.7.2.5</span> Export Settings</h5>
+<div class="outline-text-5" id="text-1-7-2-5">
 <p>
 In order to the html export work the path to emacs executable
 directory must be in the $PATH variable. In some OS like Windows where
@@ -1024,9 +1029,9 @@ The menu can be installed permanently by adding the init file:
 </div>
 </div>
 
-<div id="outline-container-sec-1-7-4" class="outline-4">
-<h4 id="sec-1-7-4"><span class="section-number-4">1.7.4</span> Start the wiki</h4>
-<div class="outline-text-4" id="text-1-7-4">
+<div id="outline-container-sec-1-7-3" class="outline-4">
+<h4 id="sec-1-7-3"><span class="section-number-4">1.7.3</span> Start the wiki</h4>
+<div class="outline-text-4" id="text-1-7-3">
 <ul class="org-ul">
 <li>M-x org-wiki-index to go to index.org
 </li>
@@ -1299,6 +1304,26 @@ wiki word and inserts at point a hyperlink to the wiki page.
 <tr>
 <td class="left">&#xa0;</td>
 <td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left"><b>Backup Command</b></td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">org-wiki-backup-make</td>
+<td class="left">Create new zip file backup of all org-wiki files.</td>
+</tr>
+
+<tr>
+<td class="left">org-wiki-backup-dir</td>
+<td class="left">Open backup directory.</td>
 </tr>
 
 <tr>
@@ -2146,8 +2171,64 @@ it will copy the '<i>&lt;org-wiki-location&gt;/Linux</i>' to clipboard.
 </div>
 
 <div id="outline-container-sec-1-9-14" class="outline-4">
-<h4 id="sec-1-9-14"><span class="section-number-4">1.9.14</span> Alias Commands</h4>
+<h4 id="sec-1-9-14"><span class="section-number-4">1.9.14</span> Backup Commands</h4>
 <div class="outline-text-4" id="text-1-9-14">
+</div><div id="outline-container-sec-1-9-14-1" class="outline-5">
+<h5 id="sec-1-9-14-1"><span class="section-number-5">1.9.14.1</span> Backup Settings</h5>
+<div class="outline-text-5" id="text-1-9-14-1">
+<p>
+Org-wiki can create backups of org-wiki snapshots stored in zip files
+that can be useful to avoid losses or revert to a previous state.
+</p>
+
+<p>
+Set the org-wiki-backup directory. The variable
+org-wiki-backup-location is initially set to nil.
+</p>
+
+<p>
+If the backup directory doesn't exist yet, it is created whenever the
+user runs any backup command. 
+</p>
+
+<p>
+Note: It is assumed that the <code>$ zip</code> command line application is the
+$PATH variable. 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-wiki-backup-location <span class="org-string">"~/Documents/org-wiki-backup"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-9-15" class="outline-4">
+<h4 id="sec-1-9-15"><span class="section-number-4">1.9.15</span> M-x org-wiki-backup-make</h4>
+<div class="outline-text-4" id="text-1-9-15">
+<p>
+To create a backup run <code>M-x org-wiki-backup-make</code> it will create a
+file <code>org-wiki-&lt;YEAR&gt;-&lt;MONTH&gt;-&lt;DAY&gt;.zip</code>, such as
+<code>org-wiki-2017-08-10.zip</code>, in the directory org-wiki-backup-location.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-9-16" class="outline-4">
+<h4 id="sec-1-9-16"><span class="section-number-4">1.9.16</span> M-x org-wiki-backup-dir</h4>
+<div class="outline-text-4" id="text-1-9-16">
+<p>
+To open the backup directory run M-x <code>org-wiki-backup-dir.</code>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1-9-17" class="outline-4">
+<h4 id="sec-1-9-17"><span class="section-number-4">1.9.17</span> Alias Commands</h4>
+<div class="outline-text-4" id="text-1-9-17">
 <ul class="org-ul">
 <li><code>M-x org-wiki-nav</code> - Navigate through org-mode headings. Alias to
 helm-org-in-buffer-headings.
@@ -2468,7 +2549,7 @@ Example:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Caio Rodrigues Soares Silva</p>
-<p class="date">Created: 2017-07-14 sex 02:41</p>
+<p class="date">Created: 2017-08-10 qui 14:42</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
