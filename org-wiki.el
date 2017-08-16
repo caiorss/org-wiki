@@ -124,6 +124,14 @@ You can toggle read-only mode with M-x read-only-mode or C-x C-q."
 ;;
 (defvar org-wiki-index-file-basename "index")
 
+
+;;; Additional publishing options
+(defcustom org-wiki-publish-plist '()
+  "Additional options passed to `org-publish'."
+  :type 'plist
+  :group 'org-wiki)
+
+
 ;; ------- Internal functions ------------ ;;
 ;; @SECTION: Internal functionsq
 ;;
@@ -810,6 +818,18 @@ to cancel the download."
      (dired (org-wiki--assets-get-dir page)))))
 
 
+(defun org-wiki-make-org-publish-plist (org-exporter)
+  "Prepare plist for use with `org-publish'."
+  (let ((plist-base
+         `("html"
+           :base-directory        ,org-wiki-location
+           :base-extension        "org"
+           :publishing-directory  ,org-wiki-location
+           :publishing-function   ,org-exporter)))
+    (setcdr plist-base
+            (org-combine-plists (cdr plist-base) org-wiki-publish-plist))
+    plist-base))
+
 (defun org-wiki-export-with (org-exporter)
   "Export all pages to a given format. See full doc.
 ORG-EXPORTER is a function that exports an org-mode page to a specific format like html.
@@ -824,16 +844,9 @@ the exporting doesn't finish. Type C-g to abort the execution."
   (interactive)
   (let ((org-html-htmlize-output-type 'css)
         (org-html-htmlize-font-prefix "org-")
+        (pub-plist (org-wiki-make-org-publish-plist org-exporter))
         )
-    (org-publish
-     `("html"
-       :base-directory       ,org-wiki-location
-       :base-extension        "org"
-       :publishing-directory  ,org-wiki-location
-       :publishing-function   ,org-exporter
-       )
-     t
-     )))
+    (org-publish pub-plist t)))
 
 
 (defun org-wiki-export-html-sync ()
@@ -841,16 +854,9 @@ the exporting doesn't finish. Type C-g to abort the execution."
   (interactive)
   (let ((org-html-htmlize-output-type 'css)
         (org-html-htmlize-font-prefix "org-")
+        (pub-plist (org-wiki-make-org-publish-plist 'org-html-publish-to-html))
         )
-    (org-publish
-     `("html"
-       :base-directory       ,org-wiki-location
-       :base-extension        "org"
-       :publishing-directory  ,org-wiki-location
-       :publishing-function    org-html-publish-to-html
-       )
-     t
-     )))
+    (org-publish pub-plist t)))
 
 (defun org-wiki-export-html ()
   "Export all pages to html.
