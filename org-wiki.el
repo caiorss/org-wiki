@@ -765,6 +765,17 @@ to cancel the download."
   (message "All wiki files closed. Ok."))
 
 
+(defun org-wiki-close-image ()
+  "Close all image/picture buffers which files are in org-wiki directory."
+  (interactive)
+  (mapc (lambda (b)
+          (with-current-buffer b
+            (when (and (org-wiki--is-buffer-in b)
+                       (equal major-mode 'image-mode))
+              (kill-this-buffer))))        
+        (buffer-list))
+  (message "All wiki images closed. Ok."))
+
 (defun org-wiki-insert ()
   "Insert a Wiki link at point for a existing page."
   (interactive)
