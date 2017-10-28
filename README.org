@@ -1,12 +1,12 @@
 #+TITLE: org-wiki 
-#+INFOJS_OPT: view:t toc:t ltoc:t ftoc:nil mouse:underline button:t path:theme/org-info.js
-#+HTML_HEAD: <link href="theme/style.css" rel="stylesheet"> 
-#+LINK_HOME: /index.html
-#+LINK_UO:   /index.html
 #+LANGUAGE: en
 #+OPTIONS:   H:4
 #+KEYWORKDS: org-mode, orgmode, emacs, wiki, desktop, wiki, tools, notes, notebook
-#+STARTUP: showall
+#+STARTUP: content 
+
+#+HTML_HEAD: <link href="theme/org-nav-theme.css" rel="stylesheet"> 
+#+HTML_HEAD: <script src="theme/org-nav-theme.js"></script>
+
 
 * Org-wiki 
 ** Overview 
@@ -408,7 +408,8 @@ The menu can be installed permanently by adding the init file:
 |                                 |                                                                                                   |
 | *Close Command*                 |                                                                                                   |
 |---------------------------------+---------------------------------------------------------------------------------------------------|
-| org-wiki-close                  | Close and save all org-wiki pages (buffers).                                                      |
+| org-wiki-close                  | Close all buffers with files in org-wiki-location directory and save the editable buffers.        |
+| org-wiki-close-images           | Close all org-wiki image buffers.                                                                 |
 |                                 |                                                                                                   |
 | *Insert Commands*               |                                                                                                   |
 |---------------------------------+---------------------------------------------------------------------------------------------------|
@@ -503,6 +504,11 @@ Not. complete.
 
    - =M-x org-wiki-close= - Close all wiki pages, kill all *.or buffers
      belonging to wiki directory.
+
+**** M-x org-wiki-close-image 
+
+ - Close all org-wiki image/picture buffers. 
+
 *** Insert Hyperlink to wiki pages or asset files
 **** M-x org-wiki-link 
 
@@ -757,44 +763,6 @@ file:Linux/htop_1.jpg
 
  - =M-x org-wiki-index-html= - Open the index page exported to html in
    the web browser.  
-*** Web Server 
-
- - =M-x org-wiki-server-toggle=  Start/stop static http server at
-   org-wiki directory. 
-
-This command actually runs =python -m  http.server --bind <host> <port>= 
-at the org-wiki directory. So it requires Python installed and
-available in the $PATH variable. 
-
-Default value: 
-
- - host: 0.0.0.0 
- - port: 8000 
-
-To see your current local IP address type =M-x ifconfig=. You can
-access the static web site by entering the URL:
-
- - ~http://<your local ip address>:8000~
-
-
- - For instance:  http://192.168.1.10:8000.
-*** Panel - org-wiki-panel
-
- - =M-x org-wiki-panel= - This command provides a command panel that
-   can execute actions just typing few keys like magit or dired
-   buffer.
-
-[[file:images/7d1dba05-89ff-4f0f-9406-087e65a304e7.png][file:images/7d1dba05-89ff-4f0f-9406-087e65a304e7.png]]
-
-*** Menu 
-
- - =M-x org-wiki-make-menu= Shows a menu with org-wiki functions and
-   command reminders.
-
-[[file:images/org-wiki-menu1.png][file:images/org-wiki-menu1.png]] 
-
-[[file:images/org-wiki-menu2.png][file:images/org-wiki-menu2.png]]
-
 *** Search
 
  - =M-x org-wiki-search= - Search all wiki page that contains
@@ -816,9 +784,84 @@ access the static web site by entering the URL:
  
 #+CAPTION: Screenshot of command M-x org-wiki-keywords
 [[file:images/org-wiki-keywords.png][file:images/org-wiki-keywords.png]]
+*** Copy Commands
 
-*** Paste Image
-**** Overview 
+ - =M-x org-wiki-copy-location= -  Copy org-wiki location path to clipboard.
+
+ - =M-x org-wiki-copy-index-html= - Copy path of index page exported
+   to html to clipboard. Example: /<org-wiki-location>/index.html
+
+ - =M-x org-wiki-copy-asset-path= - Copy current page asset/attachment
+   directory path to clipboard. Example: If the current page is Linux,
+   it will copy the '/<org-wiki-location>/Linux/' to clipboard.
+
+*** M-x org-wiki-backup-make 
+
+To create a backup run =M-x org-wiki-backup-make= it will create a
+file =org-wiki-<YEAR>-<MONTH>-<DAY>.zip=, such as
+=org-wiki-2017-08-10.zip=, in the directory org-wiki-backup-location.
+
+*** M-x org-wiki-backup-dir 
+
+To open the backup directory run M-x =org-wiki-backup-dir.=
+*** Utilities 
+**** Web Server 
+
+ - =M-x org-wiki-server-toggle=  Start/stop static http server at
+   org-wiki directory. 
+
+This command actually runs =python -m  http.server --bind <host> <port>= 
+at the org-wiki directory. So it requires Python installed and
+available in the $PATH variable. 
+
+Default value: 
+
+ - host: 0.0.0.0 
+ - port: 8000 
+
+To see your current local IP address type =M-x ifconfig=. You can
+access the static web site by entering the URL:
+
+ - ~http://<your local ip address>:8000~
+
+
+ - For instance:  http://192.168.1.10:8000.
+**** Panel - org-wiki-panel
+
+ - =M-x org-wiki-panel= - This command provides a command panel that
+   can execute actions just typing few keys like magit or dired
+   buffer.
+
+[[file:images/7d1dba05-89ff-4f0f-9406-087e65a304e7.png][file:images/7d1dba05-89ff-4f0f-9406-087e65a304e7.png]]
+
+**** Menu 
+
+ - =M-x org-wiki-make-menu= Shows a menu with org-wiki functions and
+   command reminders.
+
+[[file:images/org-wiki-menu1.png][file:images/org-wiki-menu1.png]] 
+
+[[file:images/org-wiki-menu2.png][file:images/org-wiki-menu2.png]]
+**** Backup Commands 
+***** Backup Settings 
+
+Org-wiki can create backups of org-wiki snapshots stored in zip files
+that can be useful to avoid losses or revert to a previous state.
+
+Set the org-wiki-backup directory. The variable
+org-wiki-backup-location is initially set to nil.
+
+If the backup directory doesn't exist yet, it is created whenever the
+user runs any backup command. 
+
+Note: It is assumed that the =$ zip= command line application is the
+$PATH variable. 
+
+#+BEGIN_SRC elisp 
+  (setq org-wiki-backup-location "~/Documents/org-wiki-backup")
+#+END_SRC
+**** Paste Image
+***** Overview 
 
 This command requires the utility  [[https://github.com/caiorss/clip.jar][clip.jar]] and Java runtime to be available
 at the $PATH variable.  
@@ -840,7 +883,7 @@ mkdir  ~/bin && cd ~/bin
 curl -O -L https://github.com/caiorss/clip.jar/blob/build/Clip.jar
 #+END_SRC
 
-**** M-x org-wiki-paste-image 
+***** M-x org-wiki-paste-image 
 
  - =M-x org-wiki-paste-image= Ask the user for the image file name and
    writes the image from clipboard to the file. 
@@ -860,7 +903,7 @@ Example:
 file:Linux/Unix.png
 #+END_SRC  
 
-**** M-x org-wiki-paste-image-uuid 
+***** M-x org-wiki-paste-image-uuid 
 
  - =M-x org-wiki-paste-image-uuid= Paste an image from clipboard with
    automatically generated name (uuid). 
@@ -875,46 +918,6 @@ Example:
 #+CAPTION: 
 file:Linux/fba53c12-3f23-4728-9f52-a26a3d285d7c.png
 #+END_SRC  
-*** Copy Commands
-
- - =M-x org-wiki-copy-location= -  Copy org-wiki location path to clipboard.
-
- - =M-x org-wiki-copy-index-html= - Copy path of index page exported
-   to html to clipboard. Example: /<org-wiki-location>/index.html
-
- - =M-x org-wiki-copy-asset-path= - Copy current page asset/attachment
-   directory path to clipboard. Example: If the current page is Linux,
-   it will copy the '/<org-wiki-location>/Linux/' to clipboard.
-
-*** Backup Commands 
-**** Backup Settings 
-
-Org-wiki can create backups of org-wiki snapshots stored in zip files
-that can be useful to avoid losses or revert to a previous state.
-
-Set the org-wiki-backup directory. The variable
-org-wiki-backup-location is initially set to nil.
-
-If the backup directory doesn't exist yet, it is created whenever the
-user runs any backup command. 
-
-Note: It is assumed that the =$ zip= command line application is the
-$PATH variable. 
-
-#+BEGIN_SRC elisp 
-  (setq org-wiki-backup-location "~/Documents/org-wiki-backup")
-#+END_SRC
-
-*** M-x org-wiki-backup-make 
-
-To create a backup run =M-x org-wiki-backup-make= it will create a
-file =org-wiki-<YEAR>-<MONTH>-<DAY>.zip=, such as
-=org-wiki-2017-08-10.zip=, in the directory org-wiki-backup-location.
-
-*** M-x org-wiki-backup-dir 
-
-To open the backup directory run M-x =org-wiki-backup-dir.=
-
 
 *** Alias Commands 
 
