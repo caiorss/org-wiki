@@ -1,0 +1,2 @@
+#+HTML_HEAD: <link href="theme/org-nav-theme.css" rel="stylesheet"> 
+#+HTML_HEAD: <script src="theme/org-nav-theme.js"></script>
