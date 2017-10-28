@@ -1189,23 +1189,24 @@ Note: This command requires Python3 installed."
 (defun org-wiki-header ()
   "Insert a header at the top of the file."
   (interactive)
+  ;; Save current cursor location and restore it
+  ;; after completion of block insider save-excursion.
   (save-excursion
-     (goto-char (point-min))
-     (insert (format
-              (string-trim "
-#+TITLE: %s
-#+DESCRIPTION:
-#+KEYWORDS:
-#+STARTUP:  overview
-
-Related:
-
-[[wiki:index][Index]]")
-               (file-name-base (buffer-file-name))))))
-
-
-
-
+    (let*
+        ;; replace '%n' by page title
+        ((text1 (replace-regexp-in-string
+                 "%n"
+                 (file-name-base (buffer-file-name))
+                 org-wiki-template))
+         ;; Replace %d by current date in the format %Y-%m-%d
+         (text2 (replace-regexp-in-string
+                 "%d"
+                 (format-time-string "%Y-%m-%d")
+                 text1
+                 )))
+      ;; Got to top of file
+      (goto-char (point-min))
+      (insert text2))))
 
 (defun org-wiki-panel ()
   "Create a command panel for org-wiki."
