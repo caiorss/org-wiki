@@ -749,16 +749,19 @@ to cancel the download."
                       (action . org-wiki--open-page)
                       ))))
 
-
 (defun org-wiki-close ()
   "Close all opened wiki pages buffer and save them."
   (interactive)
   (mapc (lambda (b)
           (with-current-buffer b
-                (save-buffer)
-                (kill-this-buffer)
-                ))
-          (org-wiki--get-buffers))
+            (when (org-wiki--is-buffer-in b)
+              ;; save the buffer if it is bound to a file
+              ;; and it is not read-only
+              (when (and (buffer-file-name b)
+                         (not buffer-read-only))
+                (save-buffer))
+              (kill-this-buffer))))
+        (buffer-list))
   (message "All wiki files closed. Ok."))
 
 
