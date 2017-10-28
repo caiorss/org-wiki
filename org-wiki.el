@@ -52,6 +52,8 @@
 (require 'easymenu)
 (require 'subr-x)     ;; Provides string trim functions.
 
+;; ****************** U S E R - S E T T I N G S ************************ ;;
+
 (defgroup org-wiki nil
   "Org-wiki Settings"
   :group 'tools
@@ -133,6 +135,10 @@ You can toggle read-only mode with M-x read-only-mode or C-x C-q."
 
 
 ;; ------- Internal functions ------------ ;;
+
+;; ********************** I N T E R N A L - F U N C T I O N S ************************* ;;
+;;
+
 ;; @SECTION: Internal functionsq
 ;;
 (defun org-wiki--concat-path (base relpath)
@@ -525,7 +531,7 @@ point: 'Unix/Manual.pdf'."
     (funcall callback pagename output-file)))
 
 
-;; ================= User Commands ================= ;;;
+;;************** U S E R -  M-X - C O M M A N D S ********************* ;;;
 ;;
 ;; @SECTION: User commands
 
