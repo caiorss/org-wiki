@@ -2,7 +2,7 @@
 #+LANGUAGE: en
 #+OPTIONS:   H:4
 #+KEYWORKDS: org-mode, orgmode, emacs, wiki, desktop, wiki, tools, notes, notebook
-#+STARTUP: content 
+#+STARTUP: contents
 
 #+HTML_HEAD: <link href="theme/org-nav-theme.css" rel="stylesheet"> 
 #+HTML_HEAD: <script src="theme/org-nav-theme.js"></script>
@@ -19,6 +19,11 @@ It provides a custom protocol ~wiki:keyword~ which creates like. When
 clicked this links creates the wiki file in the wiki directory with
 name ~keyword.org~.
 
+
+| Repository         | https://github.com/caiorss/org-wiki |
+| Html documentation | https://caiorss.github.io/org-wiki/ |
+|                    |                                     |
+ 
 *Features:*
 
   - A wiki system for Emacs.
@@ -125,12 +130,6 @@ You can see Org-mode Screencasts and reviews here:
 
  - http://orgmode.org/worg/org-tutorials/org-screencasts/
 
-** Repository 
-
-| Repository         | https://github.com/caiorss/org-wiki |
-| Html documentation | https://caiorss.github.io/org-wiki/ |
-|                    |                                     |
- 
 ** Demos 
 
  - (1) Browsing Index: M-x org-wiki/index
@@ -199,7 +198,7 @@ Example: The command =M-x org-wiki/search-patern - System.Windows= will search a
 files that contains "System.Windows string".
 
 [[file:images/wiki-search-pattern.png][file:images/wiki-search-pattern.png]]
-** Worflow
+** Workflow
 *** Create a page
 
 To create a page do:
@@ -251,7 +250,6 @@ with =M-x eval-buffer=.
 	(kill-whole-line)
 	(package-install-from-buffer)))
 #+END_SRC
-
 
 **** Method 2 - El-get 
 
@@ -374,6 +372,54 @@ The menu can be installed permanently by adding the init file:
 
 #+BEGIN_SRC elisp 
 (org-wiki-make-menu)
+#+END_SRC
+
+**** Template 
+
+The user can set the org-wiki template used to create org-wiki files
+by changing the custom variable with 
+
+ - =M-x customize-variable org-wiki-template=
+
+The default template is: 
+
+#+BEGIN_SRC org
+  ,#+TITLE: %n
+  ,#+DESCRIPTION:
+  ,#+KEYWORDS:
+  ,#+STARTUP:  content
+
+
+  - [[wiki:index][Index]]
+
+  - Related: 
+
+  ,* %n
+#+END_SRC
+
+where: 
+
+ - %n is replaced by the page name 
+ - %d is replaced by current date in the format year-month-day  
+
+This variable can also be set programatically with: 
+
+#+BEGIN_SRC elisp 
+  (setq org-wiki-template
+        (string-trim
+  "
+  ,#+TITLE: %n
+  ,#+DESCRIPTION:
+  ,#+KEYWORDS:
+  ,#+STARTUP:  content
+  ,#+DATE: %d
+
+  - [[wiki:index][Index]]
+
+  - Related: 
+
+  ,* %n
+  "))
 #+END_SRC
 
 *** Start the wiki 
