@@ -2,11 +2,48 @@
 #+TITLE: This is the index 
 #+STARTUP: showall
 
+
+* Index 
+** Programming 
+
+- [[wiki:Elisp][Elisp]]
+
+- [[wiki:Python][Python]]
+
+- [[wiki:Bash%20-%20Shell%20-%20Unix][Bash - Shell - Unix]]
+
+- [[wiki:Linux][Linux]]
+
+- [[wiki:The%20Art%20of%20Unix%20Programming][The Art of Unix Programming]]
+
+** Electronics 
+
+- [[wiki:Lisp%20Machines][Lisp Machines]]
+
+- [[wiki:Avionics][Avionics]]
+
+- [[wiki:Circuit%20Boards][Circuit Boards]]
+
+** Math Calculus 
+
+- [[wiki:Math%20-%20Calculus][Math - Calculus]]
+
+** Misc 
+
+- [[wiki:Quotes][Quotes]]
+ 
+** Images 
+
+
+
+#+CAPTION: Org-mode Logo
+[[file:index/fc0e0018-5a55-4f71-9c84-3d01a1cd46e4.png]]
+
 #+CAPTION: scala logo - A scalable Language.
 [[file:index/scala%20logo.png]]
 
-* Index 
-** Org-mode helpful command 
+** Tables 
+
 
 | Description                  | Command                       |   |
 |------------------------------+-------------------------------+---|
@@ -16,30 +53,34 @@
 
 
 
-#+CAPTION: Org-mode Logo
-[[file:index/fc0e0018-5a55-4f71-9c84-3d01a1cd46e4.png]]
+** Lorem Ipsum 
 
+Lorem ipsum dolor sit amet, idque albucius eum te, est at summo falli
+dictas. Nam iuvaret ancillae delicatissimi ex, diam stet aperiam est
+an. Ut est illum consulatu, ius nisl virtute te. Cum mundi efficiantur
+id, his agam senserit cu, eu graeci quodsi feugait nam. Ex pri homero
+sententiae argumentum, in eum solet labore utamur, accusam praesent
+laboramus eam cu. Quas insolens eu has, et vix repudiandae
+voluptatibus.
 
+Ius soleat accumsan accommodare ne, ad dico nulla nam, regione
+splendide persequeris in est. Pri ad dico iuvaret scriptorem. Ad duo
+facilisis aliquando theophrastus, cum ea blandit maluisset. Sea te
+dolore omittam, eu mea quas equidem gloriatur, id case assum commune
+sed. Sonet soleat praesent his ad.
 
-** Programming 
+Eum eu aliquip virtute, ius nisl singulis explicari ut. Cum graece
+oporteat in. Duo minimum accumsan cu. No enim melius comprehensam
+per. Doctus persius sit at. Vel nemore docendi nominavi cu.
 
- - [[wiki:Elisp][Elisp]]
+Ne nec amet repudiare elaboraret. Qui id alii malis commune, tamquam
+impedit pericula ius ex. Pro eu minim mazim. Eu ius impedit
+quaerendum, eum ea iudico aliquam.
 
- - [[wiki:Python][Python]]
-
- - [[wiki:Bash%20-%20Shell%20-%20Unix][Bash - Shell - Unix]]
-
- - [[wiki:Linux][Linux]]
-
- - [[wiki:The%20Art%20of%20Unix%20Programming][The Art of Unix Programming]]
-
- - [[wiki:Lisp%20Machines][Lisp Machines]]
-
- - [[wiki:Avionics][Avionics]]
-
- - [[wiki:Circuit%20Boards][Circuit Boards]]
-
- - [[wiki:Math%20-%20Calculus][Math - Calculus]]
-
- - 
- 
+Per cu illum dolor, ad sed nisl insolens. Reque delenit eu mea, mel ex
+modo saepe singulis, vim quodsi accommodare te. Cum ut placerat
+invidunt, petentium iudicabit ad nam. Iusto deserunt hendrerit per te,
+sit in atqui labore. Eum autem quidam te, no his quod putent
+consectetuer. Eum porro sanctus propriae eu, tempor suscipiantur in
+nec, mel aeque tollit contentiones ut. Malis error soleat sed te, mea
+nemore intellegat theophrastus no.

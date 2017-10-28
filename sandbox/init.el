@@ -75,3 +75,22 @@ installs it automaticaly."
 
 (org-wiki-index)
 (org-toggle-inline-images)
+
+
+;;;------- Short Command Alias for fast navigation ----------.;;;
+
+(defalias 'og2h      #'org-html-export-to-html)
+(defalias 'w-i       #'org-wiki-index)
+(defalias 'w-s       #'org-wiki-switch)
+(defalias 'w-h       #'org-wiki-helm)
+(defalias 'w-in       #'org-wiki-insert)
+(defalias 'w-hf      #'org-wiki-helm-frame)
+(defalias 'w-hr      #'org-wiki-helm-read-only)
+(defalias 'w-ho      #'org-wiki-html-page)
+(defalias 'w-hu      #'org-wiki-html-page2)
+(defalias 'w-close   #'org-wiki-close)
+(defalias 'w-html    #'org-wiki-html)
+(defalias 'w-hf      #'org-wiki-helm-frame)
+
+(defalias 'h-c       #'helm-occur)
+(defalias 'h-t       #'helm-org-in-buffer-headings)

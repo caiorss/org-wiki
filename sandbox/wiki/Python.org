@@ -1,5 +1,7 @@
+#+INCLUDE: theme/style.org
 #+TITLE: Python 
 #+DESCRIPTION: Python programming
+#+STARTUP: content 
 
 [[wiki:index][index]]
 

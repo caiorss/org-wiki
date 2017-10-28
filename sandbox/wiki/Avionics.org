@@ -1,7 +1,8 @@
+#+INLUDE: theme/style.org 
 #+TITLE: Avionics
 #+DESCRIPTION:
 #+KEYWORDS:
-#+STARTUP:  overview
+#+STARTUP:  content 
 
 Related:
 

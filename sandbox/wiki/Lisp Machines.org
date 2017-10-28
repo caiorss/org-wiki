@@ -1,5 +1,6 @@
 #+INCLUDE: theme/style.org
 #+TITLE: Lisp Machines 
+#+STARTUP: content 
 
 [[wiki:index][index]]
 
