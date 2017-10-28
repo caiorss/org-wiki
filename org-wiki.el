@@ -134,7 +134,23 @@ You can toggle read-only mode with M-x read-only-mode or C-x C-q."
   :group 'org-wiki)
 
 
-;; ------- Internal functions ------------ ;;
+(defcustom org-wiki-template
+  (concat "#+TITLE: %n\n"
+          "#+DESCRIPTION:\n"
+          "#+KEYWORDS:\n"
+          "#+STARTUP:  content\n"
+          "\n\n"
+          "- [[wiki:index][Index]]\n\n"
+          "- Related: \n\n"
+          "* %n\n"
+          )
+  "Default template used to create org-wiki pages/files.
+- %n - is replaced by the page name.
+- %d - is replaced by current date in the format year-month-day."
+
+  :type 'string
+  :group 'org-wiki
+  )
 
 ;; ********************** I N T E R N A L - F U N C T I O N S ************************* ;;
 ;;
