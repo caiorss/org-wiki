@@ -200,7 +200,6 @@ ELISP> (org-wiki--page->file \"Linux\")
 
 (defun org-wiki--current-page ()
   "Get current org-wiki page's name bound to current buffer."
-  (interactive)
   (org-wiki--file->page (buffer-file-name)))
 
 (defun org-wiki--current-page-asset-dir ()
