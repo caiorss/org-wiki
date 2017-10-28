@@ -52,6 +52,8 @@
 (require 'easymenu)
 (require 'subr-x)     ;; Provides string trim functions.
 
+;; ****************** U S E R - S E T T I N G S ************************ ;;
+
 (defgroup org-wiki nil
   "Org-wiki Settings"
   :group 'tools
@@ -132,7 +134,27 @@ You can toggle read-only mode with M-x read-only-mode or C-x C-q."
   :group 'org-wiki)
 
 
-;; ------- Internal functions ------------ ;;
+(defcustom org-wiki-template
+  (concat "#+TITLE: %n\n"
+          "#+DESCRIPTION:\n"
+          "#+KEYWORDS:\n"
+          "#+STARTUP:  content\n"
+          "\n\n"
+          "- [[wiki:index][Index]]\n\n"
+          "- Related: \n\n"
+          "* %n\n"
+          )
+  "Default template used to create org-wiki pages/files.
+- %n - is replaced by the page name.
+- %d - is replaced by current date in the format year-month-day."
+
+  :type 'string
+  :group 'org-wiki
+  )
+
+;; ********************** I N T E R N A L - F U N C T I O N S ************************* ;;
+;;
+
 ;; @SECTION: Internal functionsq
 ;;
 (defun org-wiki--concat-path (base relpath)
@@ -525,7 +547,7 @@ point: 'Unix/Manual.pdf'."
     (funcall callback pagename output-file)))
 
 
-;; ================= User Commands ================= ;;;
+;;************** U S E R -  M-X - C O M M A N D S ********************* ;;;
 ;;
 ;; @SECTION: User commands
 
@@ -1167,23 +1189,24 @@ Note: This command requires Python3 installed."
 (defun org-wiki-header ()
   "Insert a header at the top of the file."
   (interactive)
+  ;; Save current cursor location and restore it
+  ;; after completion of block insider save-excursion.
   (save-excursion
-     (goto-char (point-min))
-     (insert (format
-              (string-trim "
-#+TITLE: %s
-#+DESCRIPTION:
-#+KEYWORDS:
-#+STARTUP:  overview
-
-Related:
-
-[[wiki:index][Index]]")
-               (file-name-base (buffer-file-name))))))
-
-
-
-
+    (let*
+        ;; replace '%n' by page title
+        ((text1 (replace-regexp-in-string
+                 "%n"
+                 (file-name-base (buffer-file-name))
+                 org-wiki-template))
+         ;; Replace %d by current date in the format %Y-%m-%d
+         (text2 (replace-regexp-in-string
+                 "%d"
+                 (format-time-string "%Y-%m-%d")
+                 text1
+                 )))
+      ;; Got to top of file
+      (goto-char (point-min))
+      (insert text2))))
 
 (defun org-wiki-panel ()
   "Create a command panel for org-wiki."
