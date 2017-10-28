@@ -1,6 +1,8 @@
 #+INCLUDE: theme/style.org
 #+TITLE: The Art of Unix Programming 
 #+DESCRIPTION: Everything about UNIX 
+#+STARTUP: content 
+
 
 [[wiki:index][index]]
 
@@ -16,7 +18,6 @@ Related: [[wiki:Linux][Linux]] [[wiki:Bash - Shell - Unix][Bash - Shell - Unix]]
 
 #+CAPTION: The heros, the pioneers and their legacy.
 [[file:The%20Art%20of%20Unix%20Programming/d4499b37-fbf6-476f-812d-63d8ea88241d.png]]
-
 
 ** Unix Emulator 
 

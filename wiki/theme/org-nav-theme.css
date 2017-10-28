@@ -1,0 +1,295 @@
+/**
+    - Author: Caio Rodrigues Soares Silva
+
+    - Public Domain CSS Style for org-mode.
+
+    - Description: CSS for long-org mode documents exported to html with long table of contents.
+                   This style creates a scrollable table of contents at the left side.
+
+   ----------------------------------------------------------------------------------------
+*/
+
+
+/** Variables */
+
+:root {
+
+    /** Table of contents settings */
+    --toc-width:   25%;        
+    --toc-bgcolor:  lightcyan;
+
+    
+    /** Content lenght */
+    --main-width: 90%;
+
+    --header-color:  #1572AE;
+
+
+    --max-image-width: 600px;
+    
+    --max-text-width: 90%;  /* Max paragraph length and text in bullet lists. */
+}
+
+
+
+h1 {
+    text-align: center;
+}
+
+h1, ul#tabs, h2, h3, h4, h5 {
+    font-family: "Trebuchet MS",Verdana,sans-serif;
+}
+
+h3, h4, h5, h6 {
+    color: #1572AE;
+}
+
+
+/** Hyperlink General Styles */
+a {
+    color: #007bb8;
+    cursor: pointer;
+    text-decoration: none;
+    -webkit-transition: none 86ms ease-out;
+    transition: none 86ms ease-out;
+}
+
+a {
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+
+body {
+    font:           16px/1.385 arial,helvetica,clean,sans-serif;
+    text-rendering: optimizeLegibility;
+
+    /* margin-left:  50%; */
+    float:            right;
+    /* position:         relative; */
+    width:            var(--main-width);
+    padding-left:     35%;
+    /* overflow-x:       scroll; */
+    background-color: rgba(255,255,255,1.0);
+    /* z-index:          9999; */
+}
+
+
+#table-of-contents {
+    background-color: rgba(229,229,229,1.0);
+    /* border-color: #CCCCCC #BBBBBB #888888; */
+    /* background-image: linear-gradient(to bottom, #7b0105 0%, #b8282c 100%); */
+    
+    color: var(--header-color);    
+    width: var(--toc-width);
+    height: 100%;
+    float: left;
+    position: fixed;
+    top:   50px;
+    bottom: 0;
+    left: 0;
+    /* background-color: rgba(125, 125, 125, 0.29); */
+    overflow-y: scroll;
+    display: block;
+    z-index: 9999;
+
+    /** Initially hide navigation bar*/
+    display: none;  
+}
+
+
+#table-of-contents ul {
+    padding-left: 0px;
+    padding-top:  5px;
+    padding-bottom: 10px;
+    list-style-type:     none;
+    list-style-position: inside;
+}
+
+#table-of-contents li {
+    padding-left: 10px;
+    padding-top:  15px;
+    font-size: 10pt;
+}
+
+#table-of-contents  a {
+    /* color:          rgba(0,0,0,1); */
+    font-weight:    700;
+    color:          #364149;
+    position:       relative;
+    text-overflow:  ellipsis;
+}
+
+#table-of-contents a:hover {
+    color:            rgba(51,102,204,1.0);
+    text-decoration:  underline;
+}
+
+
+/* ======== Paragraph formatting =================== */
+
+p {
+    text-indent: 25px;
+    text-align:  justify;
+    line-height: 1.5;
+    width:       var(--max-text-width);
+
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-font-smoothing: antialiased !important;
+    text-rendering: optimizelegibility !important;
+    letter-spacing: .03em;
+
+    font-family: 'Merriweather', Georgia, 'Times New Roman', Times, serif;
+}
+
+/* ======== Image ================================== */
+
+img{
+    width:     100%;
+    max-width: var(--max-image-width);
+}
+
+/* ======== Table ================================== */
+
+table {
+	border-collapse: collapse;
+	border-spacing:  0;
+    width:           90%;
+    margin-top:      20px;
+    margin-bottom:   20px;
+}
+
+th {
+    /* padding-top: 30px; */
+    font-weight: bold;
+    background-color: #cccccc;
+    /* text-align: justified; */
+}
+
+th.left {
+    text-align: left;
+}
+
+td,th {
+	padding: 0;
+    /* width: 100%; */
+}
+
+/**========= Blockquote and citations ============ */
+
+blockquote {
+    font-family: Georgia, serif;
+    font-style: italic;
+    line-height: 1.45;
+    color: #383838;
+    /* text-align: center; */
+
+    margin: 0.25em 0;
+
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+
+    /* margin: 1.5em 10px; */
+    padding: 0.25em 40px;
+    width: 80%;
+
+    /* padding: 0.5em 10px; */
+    quotes: "\201C""\201D""\2018""\2019";
+}
+
+blockquote:before {
+  color:           #ccc;
+  content:         open-quote;
+  font-size:       4em;
+  line-height:     0.1em;
+  margin-right:    0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote p {
+  display: inline;
+}
+
+/* ======= Code block style ======================= */
+
+
+code {
+    background-color: #dbdfe0;
+    border: 1px solid #DEDEDE;
+    /* color: #444444; */
+    font-family: monospace;
+    font-size:  10pt;
+    margin: 0px 1px;
+    padding: 0px 2px;
+    overflow-x: scroll;
+}
+
+/* ======== Code block Syntax Highlight ======================= */
+
+
+pre {
+    font-family: "Operator Mono SSm A", "Operator Mono SSm B", 'Source Code Pro', Menlo, Consolas, Monaco, monospace;
+    /* font-family: monospace,monospace; */
+    font-size: 10pt;
+
+	/* background-color:#292929; */
+    background:#fff;
+
+    /* background: #333;    */
+
+    display: block;
+
+	/* color:#fff; */
+    /* color:#555; */
+
+    padding:2em 28px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+	width:95%;
+	/* float:right; */
+	/* clear:right; */
+    line-height: 25.6px;
+    border-radius: 16px;
+    border: 1px solid #777;
+	box-sizing:border-box;
+	/* text-shadow:0px 1px 2px rgba(0,0,0,0.4) */
+
+    overflow-x: scroll;
+}
+
+
+pre span.org-builtin                     {color:#006FE0;font-weight:bold;}
+pre span.org-string                      {color:#008000;}
+pre span.org-keyword                     {color:#0000FF;}
+pre span.org-variable-name               {color:#BA36A5;}
+pre span.org-function-name               {color:#006699;}
+pre span.org-type                        {color:#6434A3;}
+pre span.org-preprocessor                {color:#808080;font-weight:bold;}
+pre span.org-constant                    {color:#D0372D;}
+pre span.org-comment-delimiter           {color:#8D8D84;}
+pre span.org-comment                     {color:darkgreen;font-style:italic}
+pre span.org-outshine-level-1            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-2            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-3            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-4            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-5            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-6            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-7            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-8            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-9            {color:#8D8D84;font-style:italic}
+pre span.org-rainbow-delimiters-depth-1  {color:#707183;}
+pre span.org-rainbow-delimiters-depth-2  {color:#7388d6;}
+pre span.org-rainbow-delimiters-depth-3  {color:#909183;}
+pre span.org-rainbow-delimiters-depth-4  {color:#709870;}
+pre span.org-rainbow-delimiters-depth-5  {color:#907373;}
+pre span.org-rainbow-delimiters-depth-6  {color:#6276ba;}
+pre span.org-rainbow-delimiters-depth-7  {color:#858580;}
+pre span.org-rainbow-delimiters-depth-8  {color:#80a880;}
+pre span.org-rainbow-delimiters-depth-9  {color:#887070;}
+pre span.org-sh-quoted-exec              {color:#FF1493;}
+
+pre {
+    filter: invert(80%);
+}

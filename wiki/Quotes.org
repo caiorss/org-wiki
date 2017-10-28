@@ -1,0 +1,43 @@
+#+INCLUDE: theme/style.org
+#+TITLE: Quotes
+#+DESCRIPTION:
+#+KEYWORDS:
+#+STARTUP:  overview
+
+Related:
+
+[[wiki:index][Index]]
+
+* Quotes 
+** Unix 
+
+#+BEGIN_QUOTE
+This is the Unix philosophy: Write programs that do one thing and do
+it well. Write programs to work together. Write programs to handle
+text streams, because that is a universal interface.
+
+-- Doug  McIlroy  
+#+END_QUOTE
+
+** DSL 
+
+#+BEGIN_QUOTE
+A domain-specific language (DSL) is a programming language or
+executable specification language that offers, through appropriate
+notations and abstractions, expressive power focused on, and usually
+restricted to, a particular problem domain.
+
+(van Deursen et al., 2000)
+
+#+END_QUOTE
+** Functional Programming 
+
+#+BEGIN_QUOTE
+One of the distinguishing features of functional programming is the
+widespread use of combinators to construct programs. A combinator is a
+function which builds program fragments from program fragments; in a
+sense the programmer using combinators constructs much of the desired
+program automatically, rather that writing every detail by hand.
+
+ - John Hughes - [[http://www.cse.chalmers.se/~rjmh/Papers/arrows.pdf][Generalizing Monads to Arrows]] 
+#+END_QUOTE
