@@ -295,6 +295,15 @@ if it doesn't exist yet."
     (message "Error: Not in a wiki page.")))
 
 
+(defun org-wiki--is-buffer-in (b)
+  "Check if buffer is an org-wiki buffer.
+It returns true (non nil) if buffer directory is a subdirectory of
+org-wiki-location."
+  (string-prefix-p
+   (expand-file-name org-wiki-location)
+   (expand-file-name (with-current-buffer b
+                       default-directory))))
+
 ;;=============== Org-mode custom protocol ===============;;
 ;;
 ;; @SECTION: Protocol
