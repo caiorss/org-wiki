@@ -1375,9 +1375,17 @@ Toggle
                         (lambda (p)
                           (cons (concat (car p) " = " (cdr p))
                                 (cdr p)))
-                        org-wiki-symbol-list
+                        org-wiki--symbol-list
                         ))
         (action . insert))))
+
+(defun org-wiki-insert-block ()
+  "Insert org-mode blocks  such as Latex equation, code block, quotes, tables and etc."
+  (interactive)
+  (helm :sources
+        `((name . "Org-mode code block")
+          (candidates . ,org-wiki-template-blocks)
+          (action . insert))))
 
 ;; Variable containing useful math, physics, currencies and greek letters used by function
 ;; org-wiki-insert-symbol 
@@ -1506,6 +1514,27 @@ Toggle
        ("Currency Bitcoin" . "₿")
        ("Currency Indian Rupee" . "₹")             
        ))
+
+
+(setq org-wiki-template-blocks
+      '(
+        ("General code block" . "#+BEGIN_SRC \n\n#+END_SRC")
+        ("Latex equation"     . "\\begin{equation} \n\n\\end{equation}")
+        ("Latex equation with name"     . "#+NAME: eqn:myequation \n\\begin{equation} \n2x + x^2\n\\end{equation}")
+        ("Table" . "|  |  |  |\n|--|--|--|\n|  |  |  |\n|  |  |  | \n")
+        ("Quote"              .  "#+BEGIN_QUOTE \n\n#+END_QUOTE")
+        ("Verse"              .  "#+BEGIN_VERSE \n\n#+END_VERSE")
+        ("Example"            .  "#+BEGIN_EXAMPLE \n\n#+END_EXAMPLE")
+        ("HTML"               .  "#+BEGIN_HTML \n\n#+END_HTML")
+        ("Python code block"  . "#+BEGIN_SRC python \n\n#+END_SRC")
+        ("Ruby code block"    . "#+BEGIN_SRC ruby \n\n#+END_SRC")
+        ("JavaScript block"   . "#+BEGIN_SRC js \n\n#+END_SRC")
+        ("R code block"       . "#+BEGIN_SRC R \n\n#+END_SRC")
+        ("Elisp code block"   . "#+BEGIN_SRC elisp \n\n#+END_SRC")
+        ("C++ code block"     . "#+BEGIN_SRC cpp \n\n#+END_SRC")
+        ("Scala code block"     . "#+BEGIN_SRC scala \n\n#+END_SRC")       
+        ))
+
 
 (provide 'org-wiki)
 ;;; org-wiki.el ends here
