@@ -1366,5 +1366,146 @@ Toggle
   (interactive)
   (org-preview-latex-fragment))
 
+(defun org-wiki-insert-symbol ()
+  "Insert symbols from math, physics, Greek letters and others."
+  (interactive)
+  (helm :sources
+      `((name . "General math and misc symbols")
+        (candidates . ,(mapcar
+                        (lambda (p)
+                          (cons (concat (car p) " = " (cdr p))
+                                (cdr p)))
+                        org-wiki-symbol-list
+                        ))
+        (action . insert))))
+
+;; Variable containing useful math, physics, currencies and greek letters used by function
+;; org-wiki-insert-symbol 
+(setq org-wiki-symbol-list
+     '(
+       ("alpha" .  "α")
+       ("beta" .  "β")
+       ("gamma" ."γ")
+       ("Gamma" ."Γ")
+       ("delta" . "δ")
+       ("Delta" . "Δ")
+       ("episilon" ."ε") 
+       ("zeta" ."ζ")
+       ("eta" ."η")
+       ("theta" ."θ")
+       ("Theta" ."Θ")
+       ("iota" ."ι")
+       ("kappa" ."κ")
+       ("lambda" ."λ")
+       ("mu" ."μ")
+       ("nu" ."ν")
+       ("pi" ."π")
+       ("Pi" ."Π")
+       ("rho" ."")
+       ("sigma" ."σ")
+       ("Sigma" ."Σ")
+       ("tau" ."τ")
+       ("upsilon" ."υ")
+       ("phi" ."φ")
+       ("Phi" ."Φ")
+       ("psi" ."Ψ")
+       ("omega" ."ω")
+       ("Omega" ."Ω")       
+
+       ("Multiplication sign" . "×")
+       ("Multiplication dot (sdot)" . "⋅")
+       ("Division sign" . "÷")
+       
+      ;;; Mathematical Symbols for calculus
+       ("Square root sqrt" . "√")
+       ("Cubic root cbrt" . "∛")
+       ("Fourth root" . "∜")       
+        
+       ("Infinity" . "∞")
+       ("summation" . "Σ")
+       ("product - big PI" . "Π")
+       ("nabla" . "∇")
+       ("integral" ."∫")
+       ("double integral" . "∬")
+       ("triple integral" . "∭")
+       ("minus or equal +-" . "±")
+       ("approximately equal ~=" . "≈")
+       ("Partial derivate" . "∂")
+       ("tensor-prod" . "⊗")
+       ("Direct sum or Exclusive or" . "⊕")
+       ("Gradient, nabla" ."∇")
+       
+       ("Laplace transform" . "ℒ")
+       ("Fourier transform" . "ℱ")
+       
+       ;; Symbols for set algebra 
+       ("Empty set" . "∅")
+       ("Set membership" . "∈")
+       ("Universal quantifier" . "∀")
+       ("Existential quantifier" . "∃")
+       ("If only if, triple bar" . "≡")
+
+       ("Logic - Logical NOT" . "¬")
+       ("Logic - Logical AND" . "∧")
+       ("Logic - Logical OR" . "∨")
+       
+       
+       ("Real numbers" . "ℝ")  
+       
+       ;; Misc Symbols
+       ("Per mile" . "‰")
+       ("Per basis points" . "‱")
+       ("Degree" . "°")
+       ("Fahrenheit" . "℉")
+       ("Celsius" . "℃")
+       ("Angstrom" . "Å")
+       ("Electromotive force e.m.f" . "ℰ")
+       ("Sign - Sound recording symbol" . "Ⓟ")
+       ("Sign - Registered Copyright" . "®")
+       ("Sign - Copyright" . "©")
+       ("Left arrow" . "←")
+       ("Right arrow" . "→")
+       ("Down arrow" . "↓")
+       ("Up arrow" . "↑")
+       ("Black big star" . "★")
+       ("With big star" . "☆")
+       ("Pentagram" . "⛤")
+
+       ;; Geometry
+       ("Geometry - angle" . "∠")
+       ("Geometry - measured angle" . "∡")
+       ("Geometry - Spherical angle" . "∢")
+       ("Geometry - Perpendicular to" . "⟂")
+       ("Geometry - right angle" . "∟")
+       
+      ;; Health and safety
+       ("WARN Skull and crossbones" . "☠")
+       ("WARN Radioactive" . "☢")
+       ("WARN Biohazard" . "☣")
+       ("WARN Warning sign" . "⚠")
+       ("WARN High voltage" . "⚡")
+       
+      ;; Fractions
+       ("Fraction one-quarter" . "¼")
+       ("Fraction one-half" . "½")
+       ("Fraction one-third" . "⅓")
+       ("Fraction two-thirds" . "⅔")
+       ("Fraction one-fifth" . "⅕")
+       ("Fraction three-quarters" . "¾")
+       ("Fraction one-seventh" . "⅐")
+       ("Fraction one-ninth"  . "⅑")
+
+       ;; Currencies
+       ("Currency Dollar" . "$")
+       ("Currency GPB Sterling pounds" . "£")
+       ("Currency Euro" . "€")
+       ("Currency Yen, Yuan, Reminbi (China)" . "¥")
+       ("Currency Won" . "₩")
+       ("Currency Russian Ruble" . "₽")       
+       ("Currency Lira" . "₤")
+       ("Currency Bitcoin" . "₿")
+       ("Currency Indian Rupee" . "₹")             
+       ))
+
 (provide 'org-wiki)
 ;;; org-wiki.el ends here
