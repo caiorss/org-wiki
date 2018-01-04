@@ -1,0 +1,18 @@
+* Changelog 
+*** version 4.2 
+*** version 5.0 - 
+
+ - Rename command org-wiki-insert to org-wiki-insert-link
+ - Rename command org-wiki-create to org-wiki-insert-new
+ - Replace org-wiki-make-page with org-wiki-new 
+ - Create command org-wiki-new
+ - Create command org-wiki-switch-root
+ - Remove custom variable org-wiki-location. 
+ - Add custom variable  org-wiki-location-list to support multiple
+   root directories.
+ - Add command org-wiki-insert-symbol to insert symbols such as α, ∫,
+   Δx, Ω, ¾ ...
+ - Add command org-wiki-insert-block 
+
+
+
