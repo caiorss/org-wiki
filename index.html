@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>org-wiki</title>
-<!-- 2017-10-28 Sat 15:28 -->
+<!-- 2018-01-04 Thu 15:23 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Caio Rodrigues Soares Silva" />
@@ -152,8 +152,10 @@ for the JavaScript code in this tag.
 <li><a href="#sec-1-4">1.4. Screenshots</a></li>
 <li><a href="#sec-1-5">1.5. Workflow</a>
 <ul>
-<li><a href="#sec-1-5-1">1.5.1. Create a page</a></li>
-<li><a href="#sec-1-5-2">1.5.2. Browse a page</a></li>
+<li><a href="#sec-1-5-1">1.5.1. Switching wiki</a></li>
+<li><a href="#sec-1-5-2">1.5.2. Create a page - way 1</a></li>
+<li><a href="#sec-1-5-3">1.5.3. Create a page - way 2</a></li>
+<li><a href="#sec-1-5-4">1.5.4. Browse a page</a></li>
 </ul>
 </li>
 <li><a href="#sec-1-6">1.6. Install</a>
@@ -168,11 +170,12 @@ for the JavaScript code in this tag.
 <li><a href="#sec-1-6-2">1.6.2. Configuration</a>
 <ul>
 <li><a href="#sec-1-6-2-1">1.6.2.1. Basic settings</a></li>
-<li><a href="#sec-1-6-2-2">1.6.2.2. Path to Wiki location</a></li>
+<li><a href="#sec-1-6-2-2">1.6.2.2. Paths to Wiki locations</a></li>
 <li><a href="#sec-1-6-2-3">1.6.2.3. Open org-wiki pages in read-only</a></li>
-<li><a href="#sec-1-6-2-4">1.6.2.4. Server settings</a></li>
-<li><a href="#sec-1-6-2-5">1.6.2.5. Export Settings</a></li>
-<li><a href="#sec-1-6-2-6">1.6.2.6. Template</a></li>
+<li><a href="#sec-1-6-2-4">1.6.2.4. Close all wiki pages when switching wiki</a></li>
+<li><a href="#sec-1-6-2-5">1.6.2.5. Server settings</a></li>
+<li><a href="#sec-1-6-2-6">1.6.2.6. Export Settings</a></li>
+<li><a href="#sec-1-6-2-7">1.6.2.7. Template</a></li>
 </ul>
 </li>
 <li><a href="#sec-1-6-3">1.6.3. Start the wiki</a></li>
@@ -188,7 +191,7 @@ for the JavaScript code in this tag.
 <li><a href="#sec-1-8-2-2">1.8.2.2. M-x org-wiki-index-frame</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-8-3">1.8.3. pages</a>
+<li><a href="#sec-1-8-3">1.8.3. Pages</a>
 <ul>
 <li><a href="#sec-1-8-3-1">1.8.3.1. M-x org-wiki-helm</a></li>
 <li><a href="#sec-1-8-3-2">1.8.3.2. M-x org-wiki-switch</a></li>
@@ -201,10 +204,9 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#sec-1-8-4">1.8.4. Insert Hyperlink to wiki pages or asset files</a>
 <ul>
-<li><a href="#sec-1-8-4-1">1.8.4.1. M-x org-wiki-link</a></li>
-<li><a href="#sec-1-8-4-2">1.8.4.2. M-x org-wiki-insert</a></li>
-<li><a href="#sec-1-8-4-3">1.8.4.3. M-x org-wiki-header</a></li>
-<li><a href="#sec-1-8-4-4">1.8.4.4. M-x org-wiki-asset-insert</a></li>
+<li><a href="#sec-1-8-4-1">1.8.4.1. M-x org-wiki-insert-link</a></li>
+<li><a href="#sec-1-8-4-2">1.8.4.2. M-x org-wiki-header</a></li>
+<li><a href="#sec-1-8-4-3">1.8.4.3. M-x org-wiki-asset-insert</a></li>
 </ul>
 </li>
 <li><a href="#sec-1-8-5">1.8.5. Asset files / Attachments</a>
@@ -233,11 +235,13 @@ for the JavaScript code in this tag.
 <li><a href="#sec-1-8-11">1.8.11. M-x org-wiki-backup-dir</a></li>
 <li><a href="#sec-1-8-12">1.8.12. Utilities</a>
 <ul>
-<li><a href="#sec-1-8-12-1">1.8.12.1. Web Server</a></li>
-<li><a href="#sec-1-8-12-2">1.8.12.2. Panel - org-wiki-panel</a></li>
-<li><a href="#sec-1-8-12-3">1.8.12.3. Menu</a></li>
-<li><a href="#sec-1-8-12-4">1.8.12.4. Backup Commands</a></li>
-<li><a href="#sec-1-8-12-5">1.8.12.5. Paste Image</a></li>
+<li><a href="#sec-1-8-12-1">1.8.12.1. Insert greek letters, math, physics and currency symbols</a></li>
+<li><a href="#sec-1-8-12-2">1.8.12.2. Insert org-mode code blocks, tables, quotes and etc.</a></li>
+<li><a href="#sec-1-8-12-3">1.8.12.3. Web Server</a></li>
+<li><a href="#sec-1-8-12-4">1.8.12.4. Panel - org-wiki-panel</a></li>
+<li><a href="#sec-1-8-12-5">1.8.12.5. Menu</a></li>
+<li><a href="#sec-1-8-12-6">1.8.12.6. Backup Commands</a></li>
+<li><a href="#sec-1-8-12-7">1.8.12.7. Paste Image</a></li>
 </ul>
 </li>
 <li><a href="#sec-1-8-13">1.8.13. Alias Commands</a></li>
@@ -249,7 +253,13 @@ for the JavaScript code in this tag.
 <li><a href="#sec-1-9-2">1.9.2. Helm commands</a></li>
 <li><a href="#sec-1-9-3">1.9.3. Screenshot tools</a></li>
 <li><a href="#sec-1-9-4">1.9.4. Bookmarklets</a></li>
-<li><a href="#sec-1-9-5">1.9.5. Modify it</a></li>
+<li><a href="#sec-1-9-5">1.9.5. Use the best tool of the job</a>
+<ul>
+<li><a href="#sec-1-9-5-1">1.9.5.1. Store, organize, and index documents, citations and etc.</a></li>
+<li><a href="#sec-1-9-5-2">1.9.5.2. Write very formal thesis, paper, books, manuals and etc &#x2026;</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-9-6">1.9.6. Modify it</a></li>
 </ul>
 </li>
 <li><a href="#sec-1-10">1.10. TODOLIST</a></li>
@@ -639,8 +649,23 @@ files that contains "System.Windows string".
 <h3 id="sec-1-5"><span class="section-number-3">1.5</span> Workflow</h3>
 <div class="outline-text-3" id="text-1-5">
 </div><div id="outline-container-sec-1-5-1" class="outline-4">
-<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> Create a page</h4>
+<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> Switching wiki</h4>
 <div class="outline-text-4" id="text-1-5-1">
+<p>
+Now org wiki supports multiple wikis or root directories, but only
+one wiki can be used at a time. So, to switch wiki type:
+</p>
+
+<ul class="org-ul">
+<li><code>M-x org-wiki-switch-root</code>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-2" class="outline-4">
+<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> Create a page - way 1</h4>
+<div class="outline-text-4" id="text-1-5-2">
 <p>
 To create a page do:
 </p>
@@ -650,8 +675,7 @@ To create a page do:
 (index.org).
 </li>
 
-<li>2. Then run M-x org-wiki-create and a page name like 'CNC -
-Computer Numerical Control'
+<li>2. Then run <code>M-x org-wiki-insert-new</code> and a page name like 'CNC - Computer Numerical Control'
 </li>
 </ul>
 
@@ -672,15 +696,33 @@ It will insert a hyperlink at point like:
 </div>
 </div>
 
-<div id="outline-container-sec-1-5-2" class="outline-4">
-<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> Browse a page</h4>
-<div class="outline-text-4" id="text-1-5-2">
+<div id="outline-container-sec-1-5-3" class="outline-4">
+<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> Create a page - way 2</h4>
+<div class="outline-text-4" id="text-1-5-3">
+<p>
+Run <code>M-x org-wiki-new</code> and enter the page name, for instance 'Unix System Calls',
+it will create the file 'Unix System Calls.org' in the root directory
+and open it for editing.
+</p>
+
+<p>
+The advantage of creating a page using 'way 1' is that it inserts a
+link to the new created page before opening it, therefore making
+easier to categorize and navigate the pages.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-4" class="outline-4">
+<h4 id="sec-1-5-4"><span class="section-number-4">1.5.4</span> Browse a page</h4>
+<div class="outline-text-4" id="text-1-5-4">
 <p>
 The navigation can be done by running
 </p>
 
 <ul class="org-ul">
-<li><code>M-x org-wiki-index</code>
+<li><code>M-x org-wiki-index</code> It will open the index page which contains
+hyperlinks to other wiki pages.
 </li>
 </ul>
 
@@ -811,25 +853,65 @@ varibles or with <code>M-x customize-group org-wiki</code>.
 </div>
 
 <div id="outline-container-sec-1-6-2-2" class="outline-5">
-<h5 id="sec-1-6-2-2"><span class="section-number-5">1.6.2.2</span> Path to Wiki location</h5>
+<h5 id="sec-1-6-2-2"><span class="section-number-5">1.6.2.2</span> Paths to Wiki locations</h5>
 <div class="outline-text-5" id="text-1-6-2-2">
 <p>
-Path where all org-wiki pages (*.org files) are stored. 
+This new version supports multiples org-wiki directories or multiple
+wikis in different directories, but only one wiki can be used at a
+time. The current wiki directory can be selected by using te command 
+<code>M-x org-wiki-switch-root</code>.
+</p>
+
+<p>
+Paths where all org-wiki pages (*.org files) are stored. 
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-wiki-location <span class="org-string">"~/org/wiki"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-comment-delimiter">;;</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">(setq org-wiki-location "~/org/wiki")</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-wiki-location-list
+      '<span class="org-rainbow-delimiters-depth-2">(</span>
+        <span class="org-string">"~/Documents/wiki"</span>    <span class="org-comment-delimiter">;; </span><span class="org-comment">First wiki (root directory) is the default. </span>
+        <span class="org-string">"~/Documents/wiki2 "</span>
+        <span class="org-string">"~/Documents/wiki3"</span>
+        <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Initialize first org-wiki-directory or default org-wiki </span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-wiki-location <span class="org-rainbow-delimiters-depth-2">(</span>car org-wiki-location-list<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <p>
-or in Windows it could be: 
+The default value of this variable is 
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-wiki-location <span class="org-string">"e:/projects/org-wiki-test.emacs"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp">'<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">"~/org/wiki"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+In Windows it can be: 
+</p>
+
+<ul class="org-ul">
+<li>Note: backward slash in path \, must be escaped as <br  />
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">(setq org-wiki-location "e:/projects/org-wiki-test.emacs")</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-wiki-location-list
+      '<span class="org-rainbow-delimiters-depth-2">(</span>
+        <span class="org-string">"C:\\Users\\john\\Documents\\wiki-main"</span>    <span class="org-comment-delimiter">;; </span><span class="org-comment">First wiki is the default. </span>
+        <span class="org-string">"F:/storage/wiki2"</span>
+        <span class="org-string">"G:\\Documents\\wiki3"</span>
+        <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -841,8 +923,8 @@ or in Windows it could be:
 <p>
 If the custom variable <code>org-wiki-default-read-only</code> is set to true (t)
 org-wiki pages are opened in read-only mode. The default value of this
-variable is nil (false). It is useful to avoid unintentionally change
-an org-wiki page.
+variable is nil (false). It is useful to avoid unintended and
+accidental changings an org-wiki page.
 </p>
 
 <p>
@@ -875,8 +957,40 @@ The read-only mode can be toggled with <code>M-x toggle-read-only</code> or C-x 
 </div>
 
 <div id="outline-container-sec-1-6-2-4" class="outline-5">
-<h5 id="sec-1-6-2-4"><span class="section-number-5">1.6.2.4</span> Server settings</h5>
+<h5 id="sec-1-6-2-4"><span class="section-number-5">1.6.2.4</span> Close all wiki pages when switching wiki</h5>
 <div class="outline-text-5" id="text-1-6-2-4">
+<p>
+If the custom variable <code>org-wiki-close-root-switch</code> (default value
+true, t) is set to true, it will close all org-wiki pages of the
+current wiki (root path) before switching to another org-wiki
+location.
+</p>
+
+<p>
+Enable: 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-wiki-close-root-switch t<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Disable 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-wiki-close-root-switch nil<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-6-2-5" class="outline-5">
+<h5 id="sec-1-6-2-5"><span class="section-number-5">1.6.2.5</span> Server settings</h5>
+<div class="outline-text-5" id="text-1-6-2-5">
 <p>
 Org-wiki can serve the pages exported to html with python help. 
 </p>
@@ -914,9 +1028,9 @@ It can be set with:
 </div>
 </div>
 
-<div id="outline-container-sec-1-6-2-5" class="outline-5">
-<h5 id="sec-1-6-2-5"><span class="section-number-5">1.6.2.5</span> Export Settings</h5>
-<div class="outline-text-5" id="text-1-6-2-5">
+<div id="outline-container-sec-1-6-2-6" class="outline-5">
+<h5 id="sec-1-6-2-6"><span class="section-number-5">1.6.2.6</span> Export Settings</h5>
+<div class="outline-text-5" id="text-1-6-2-6">
 <p>
 In order to the html export work the path to emacs executable
 directory must be in the $PATH variable. In some OS like Windows where
@@ -948,9 +1062,9 @@ The menu can be installed permanently by adding the init file:
 </div>
 </div>
 
-<div id="outline-container-sec-1-6-2-6" class="outline-5">
-<h5 id="sec-1-6-2-6"><span class="section-number-5">1.6.2.6</span> Template</h5>
-<div class="outline-text-5" id="text-1-6-2-6">
+<div id="outline-container-sec-1-6-2-7" class="outline-5">
+<h5 id="sec-1-6-2-7"><span class="section-number-5">1.6.2.7</span> Template</h5>
+<div class="outline-text-5" id="text-1-6-2-7">
 <p>
 The user can set the org-wiki template used to create org-wiki files
 by changing the custom variable with 
@@ -1088,6 +1202,11 @@ wiki word and inserts at point a hyperlink to the wiki page.
 </tbody>
 <tbody>
 <tr>
+<td class="left">org-wiki-switch-root</td>
+<td class="left">Switch between multiple org wikis listed in the variable 'org-wiki-location-list'</td>
+</tr>
+
+<tr>
 <td class="left">org-wiki-index</td>
 <td class="left">Go to the index page or index.org</td>
 </tr>
@@ -1095,6 +1214,11 @@ wiki word and inserts at point a hyperlink to the wiki page.
 <tr>
 <td class="left">org-wiki-index-frame</td>
 <td class="left">Open org-wiki index page in a new frame.</td>
+</tr>
+
+<tr>
+<td class="left">org-wiki-switch</td>
+<td class="left">Switch between org-wiki buffers or already opened pages</td>
 </tr>
 
 <tr>
@@ -1120,11 +1244,6 @@ wiki word and inserts at point a hyperlink to the wiki page.
 <tr>
 <td class="left">&#xa0;</td>
 <td class="left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="left">org-wiki-switch</td>
-<td class="left">Switch between org-wiki buffers</td>
 </tr>
 
 <tr>
@@ -1165,7 +1284,7 @@ wiki word and inserts at point a hyperlink to the wiki page.
 </tr>
 
 <tr>
-<td class="left">org-wiki-insert</td>
+<td class="left">org-wiki-insert-link</td>
 <td class="left">Insert a link at point to an existing org-wiki page.</td>
 </tr>
 
@@ -1232,6 +1351,21 @@ wiki word and inserts at point a hyperlink to the wiki page.
 <tr>
 <td class="left">org-wiki-asset-download-insert2</td>
 <td class="left">Download a file and insert a link to it at point. Similar to org-wiki-asset-insert-file</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">org-wiki-insert-symbol</td>
+<td class="left">Insert Greek letters, math and physics symbols such as α, γ, Δ, Σ, ∞, ℉</td>
+</tr>
+
+<tr>
+<td class="left">org-wiki-insert-block</td>
+<td class="left">Insert quote block, source code code block, latex equation block and so on.</td>
 </tr>
 
 <tr>
@@ -1408,7 +1542,7 @@ doesn't exist it will be created.
 </div>
 </div>
 <div id="outline-container-sec-1-8-3" class="outline-4">
-<h4 id="sec-1-8-3"><span class="section-number-4">1.8.3</span> pages</h4>
+<h4 id="sec-1-8-3"><span class="section-number-4">1.8.3</span> Pages</h4>
 <div class="outline-text-4" id="text-1-8-3">
 </div><div id="outline-container-sec-1-8-3-1" class="outline-5">
 <h5 id="sec-1-8-3-1"><span class="section-number-5">1.8.3.1</span> M-x org-wiki-helm</h5>
@@ -1489,10 +1623,10 @@ belonging to wiki directory.
 <h4 id="sec-1-8-4"><span class="section-number-4">1.8.4</span> Insert Hyperlink to wiki pages or asset files</h4>
 <div class="outline-text-4" id="text-1-8-4">
 </div><div id="outline-container-sec-1-8-4-1" class="outline-5">
-<h5 id="sec-1-8-4-1"><span class="section-number-5">1.8.4.1</span> M-x org-wiki-link</h5>
+<h5 id="sec-1-8-4-1"><span class="section-number-5">1.8.4.1</span> M-x org-wiki-insert-link</h5>
 <div class="outline-text-5" id="text-1-8-4-1">
 <ul class="org-ul">
-<li>M-x org-wiki-link - Asks the user for the wiki page name and
+<li><code>M-x org-wiki-insert-link</code> - Asks the user for the wiki page name and
 inserts the hyperlink at point. It is useful to create new pages
 fast without write the full syntax like <code>[[wiki:page title] [page title]</code>
 </li>
@@ -1522,19 +1656,8 @@ And will create the hyperlink to this page.
 </div>
 
 <div id="outline-container-sec-1-8-4-2" class="outline-5">
-<h5 id="sec-1-8-4-2"><span class="section-number-5">1.8.4.2</span> M-x org-wiki-insert</h5>
+<h5 id="sec-1-8-4-2"><span class="section-number-5">1.8.4.2</span> M-x org-wiki-header</h5>
 <div class="outline-text-5" id="text-1-8-4-2">
-<ul class="org-ul">
-<li><code>M-x org-wiki-insert</code> - Inserts a org-mode link at current point
-to a Wiki page selected through a helm-menu.
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-sec-1-8-4-3" class="outline-5">
-<h5 id="sec-1-8-4-3"><span class="section-number-5">1.8.4.3</span> M-x org-wiki-header</h5>
-<div class="outline-text-5" id="text-1-8-4-3">
 <ul class="org-ul">
 <li>=M-x org-wiki-header. It inserts at top of the wiki page the template:
 </li>
@@ -1555,9 +1678,9 @@ Related:
 </div>
 </div>
 
-<div id="outline-container-sec-1-8-4-4" class="outline-5">
-<h5 id="sec-1-8-4-4"><span class="section-number-5">1.8.4.4</span> M-x org-wiki-asset-insert</h5>
-<div class="outline-text-5" id="text-1-8-4-4">
+<div id="outline-container-sec-1-8-4-3" class="outline-5">
+<h5 id="sec-1-8-4-3"><span class="section-number-5">1.8.4.3</span> M-x org-wiki-asset-insert</h5>
+<div class="outline-text-5" id="text-1-8-4-3">
 <ul class="org-ul">
 <li><code>M-x org-wiki-asset-insert</code> - Insert a asset file at point
 providing a heml menu to select the file. It inserts a link of
@@ -2015,8 +2138,115 @@ To open the backup directory run M-x <code>org-wiki-backup-dir.</code>
 <h4 id="sec-1-8-12"><span class="section-number-4">1.8.12</span> Utilities</h4>
 <div class="outline-text-4" id="text-1-8-12">
 </div><div id="outline-container-sec-1-8-12-1" class="outline-5">
-<h5 id="sec-1-8-12-1"><span class="section-number-5">1.8.12.1</span> Web Server</h5>
+<h5 id="sec-1-8-12-1"><span class="section-number-5">1.8.12.1</span> Insert greek letters, math, physics and currency symbols</h5>
 <div class="outline-text-5" id="text-1-8-12-1">
+<p>
+The command <code>M-x org-wiki-insert-symbol</code> allows inserting Greek
+letters, math and physics symbols by providing a helm menu where the
+user can select or type the name of the symbol to insert it at current
+point. It can be used to quickly type equations and formulas and can
+be pasted in email, forums, source code and etc.
+</p>
+
+
+<div class="figure">
+<p><a href="images/org-wiki-insert-symbol.png"><img src="images/org-wiki-insert-symbol.png" alt="org-wiki-insert-symbol.png" /></a>
+</p>
+</div>
+
+<p>
+Examples of symbols of provided: 
+</p>
+
+<ul class="org-ul">
+<li>α (alpha), β (beta), Σ (upper case sigma), σ (sigma)
+</li>
+
+<li>π = 3.1415 -&gt; Circle Area = π.r^2 
+</li>
+
+<li>∂f/∂x + ∂f/∂y + ∂f/∂z = 0 
+</li>
+
+<li>∛27 = 3.0, √100 = 10.0
+</li>
+
+<li>200.00 £ GBP, 3000.00 ¥ (Yuan, aka Reminbi)
+</li>
+
+<li>Fractions ¼, ⅓, ⅑
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-8-12-2" class="outline-5">
+<h5 id="sec-1-8-12-2"><span class="section-number-5">1.8.12.2</span> Insert org-mode code blocks, tables, quotes and etc.</h5>
+<div class="outline-text-5" id="text-1-8-12-2">
+<p>
+This command makes easier to insert common org-mode code templates for
+code blocks, quote blocks, latex equations, table, example blocks and
+so on. 
+</p>
+
+<ul class="org-ul">
+<li><code>$ M-x org-wiki-insert-block</code>
+</li>
+</ul>
+
+
+<div class="figure">
+<p><a href="images/org-wiki-insert-block.png"><img src="images/org-wiki-insert-block.png" alt="org-wiki-insert-block.png" /></a>
+</p>
+</div>
+
+<p>
+Example: 
+</p>
+
+<p>
+If the user select the template <span class="underline">equation</span> it will insert at current
+point a block for latex equations:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-latex-and-related">\begin{equation} </span>
+<span class="org-org-latex-and-related">\end{equation}</span>
+</pre>
+</div>
+
+<p>
+If the user select the template <span class="underline">table</span>, it will insert a table with 2
+rows and 3 columns.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-table">|   |   |   |</span>
+<span class="org-org-table">|---+---+---|</span>
+<span class="org-org-table">|   |   |   |</span>
+<span class="org-org-table">|   |   |   |</span>
+</pre>
+</div>
+
+<p>
+If the user select the template Python code block, it will insert:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-block-begin-line">#+BEGIN_SRC python </span>
+<span class="org-org-block-background">
+</span><span class="org-org-block-end-line">#+END_SRC</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-8-12-3" class="outline-5">
+<h5 id="sec-1-8-12-3"><span class="section-number-5">1.8.12.3</span> Web Server</h5>
+<div class="outline-text-5" id="text-1-8-12-3">
 <ul class="org-ul">
 <li><code>M-x org-wiki-server-toggle</code>  Start/stop static http server at
 org-wiki directory. 
@@ -2057,9 +2287,9 @@ access the static web site by entering the URL:
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-1-8-12-2" class="outline-5">
-<h5 id="sec-1-8-12-2"><span class="section-number-5">1.8.12.2</span> Panel - org-wiki-panel</h5>
-<div class="outline-text-5" id="text-1-8-12-2">
+<div id="outline-container-sec-1-8-12-4" class="outline-5">
+<h5 id="sec-1-8-12-4"><span class="section-number-5">1.8.12.4</span> Panel - org-wiki-panel</h5>
+<div class="outline-text-5" id="text-1-8-12-4">
 <ul class="org-ul">
 <li><code>M-x org-wiki-panel</code> - This command provides a command panel that
 can execute actions just typing few keys like magit or dired
@@ -2075,9 +2305,9 @@ buffer.
 </div>
 </div>
 
-<div id="outline-container-sec-1-8-12-3" class="outline-5">
-<h5 id="sec-1-8-12-3"><span class="section-number-5">1.8.12.3</span> Menu</h5>
-<div class="outline-text-5" id="text-1-8-12-3">
+<div id="outline-container-sec-1-8-12-5" class="outline-5">
+<h5 id="sec-1-8-12-5"><span class="section-number-5">1.8.12.5</span> Menu</h5>
+<div class="outline-text-5" id="text-1-8-12-5">
 <ul class="org-ul">
 <li><code>M-x org-wiki-make-menu</code> Shows a menu with org-wiki functions and
 command reminders.
@@ -2097,10 +2327,10 @@ command reminders.
 </div>
 </div>
 </div>
-<div id="outline-container-sec-1-8-12-4" class="outline-5">
-<h5 id="sec-1-8-12-4"><span class="section-number-5">1.8.12.4</span> Backup Commands</h5>
-<div class="outline-text-5" id="text-1-8-12-4">
-</div><ol class="org-ol"><li><a id="sec-1-8-12-4-1" name="sec-1-8-12-4-1"></a>Backup Settings<br  /><div class="outline-text-6" id="text-1-8-12-4-1">
+<div id="outline-container-sec-1-8-12-6" class="outline-5">
+<h5 id="sec-1-8-12-6"><span class="section-number-5">1.8.12.6</span> Backup Commands</h5>
+<div class="outline-text-5" id="text-1-8-12-6">
+</div><ol class="org-ol"><li><a id="sec-1-8-12-6-1" name="sec-1-8-12-6-1"></a>Backup Settings<br  /><div class="outline-text-6" id="text-1-8-12-6-1">
 <p>
 Org-wiki can create backups of org-wiki snapshots stored in zip files
 that can be useful to avoid losses or revert to a previous state.
@@ -2129,10 +2359,10 @@ $PATH variable.
 </div>
 </li></ol>
 </div>
-<div id="outline-container-sec-1-8-12-5" class="outline-5">
-<h5 id="sec-1-8-12-5"><span class="section-number-5">1.8.12.5</span> Paste Image</h5>
-<div class="outline-text-5" id="text-1-8-12-5">
-</div><ol class="org-ol"><li><a id="sec-1-8-12-5-1" name="sec-1-8-12-5-1"></a>Overview<br  /><div class="outline-text-6" id="text-1-8-12-5-1">
+<div id="outline-container-sec-1-8-12-7" class="outline-5">
+<h5 id="sec-1-8-12-7"><span class="section-number-5">1.8.12.7</span> Paste Image</h5>
+<div class="outline-text-5" id="text-1-8-12-7">
+</div><ol class="org-ol"><li><a id="sec-1-8-12-7-1" name="sec-1-8-12-7-1"></a>Overview<br  /><div class="outline-text-6" id="text-1-8-12-7-1">
 <p>
 This command requires the utility  <a href="https://github.com/caiorss/clip.jar">clip.jar</a> and Java runtime to be available
 at the $PATH variable.  
@@ -2165,7 +2395,7 @@ curl -O -L https://github.com/caiorss/clip.jar/blob/build/Clip.jar
 </div>
 </li>
 
-<li><a id="sec-1-8-12-5-2" name="sec-1-8-12-5-2"></a>M-x org-wiki-paste-image<br  /><div class="outline-text-6" id="text-1-8-12-5-2">
+<li><a id="sec-1-8-12-7-2" name="sec-1-8-12-7-2"></a>M-x org-wiki-paste-image<br  /><div class="outline-text-6" id="text-1-8-12-7-2">
 <ul class="org-ul">
 <li><code>M-x org-wiki-paste-image</code> Ask the user for the image file name and
 writes the image from clipboard to the file. 
@@ -2197,7 +2427,7 @@ file:Linux/Unix.png
 </div>
 </li>
 
-<li><a id="sec-1-8-12-5-3" name="sec-1-8-12-5-3"></a>M-x org-wiki-paste-image-uuid<br  /><div class="outline-text-6" id="text-1-8-12-5-3">
+<li><a id="sec-1-8-12-7-3" name="sec-1-8-12-7-3"></a>M-x org-wiki-paste-image-uuid<br  /><div class="outline-text-6" id="text-1-8-12-7-3">
 <ul class="org-ul">
 <li><code>M-x org-wiki-paste-image-uuid</code> Paste an image from clipboard with
 automatically generated name (uuid). 
@@ -2223,7 +2453,6 @@ file:Linux/fba53c12-3f23-4728-9f52-a26a3d285d7c.png
 </li></ol>
 </div>
 </div>
-
 <div id="outline-container-sec-1-8-13" class="outline-4">
 <h4 id="sec-1-8-13"><span class="section-number-4">1.8.13</span> Alias Commands</h4>
 <div class="outline-text-4" id="text-1-8-13">
@@ -2503,8 +2732,45 @@ and
 </div>
 
 <div id="outline-container-sec-1-9-5" class="outline-4">
-<h4 id="sec-1-9-5"><span class="section-number-4">1.9.5</span> Modify it</h4>
+<h4 id="sec-1-9-5"><span class="section-number-4">1.9.5</span> Use the best tool of the job</h4>
 <div class="outline-text-4" id="text-1-9-5">
+</div><div id="outline-container-sec-1-9-5-1" class="outline-5">
+<h5 id="sec-1-9-5-1"><span class="section-number-5">1.9.5.1</span> Store, organize, and index documents, citations and etc.</h5>
+<div class="outline-text-5" id="text-1-9-5-1">
+<p>
+Those who need to store and index a large amount of any type of files
+and documents will be better served with Zotero.
+</p>
+
+<ul class="org-ul">
+<li><a href="https://www.zotero.org/">https://www.zotero.org/</a> 
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1-9-5-2" class="outline-5">
+<h5 id="sec-1-9-5-2"><span class="section-number-5">1.9.5.2</span> Write very formal thesis, paper, books, manuals and etc &#x2026;</h5>
+<div class="outline-text-5" id="text-1-9-5-2">
+<p>
+For this case one of the best tool is the open source software Lyx
+that allows creating latex documents in a graphical way, in a similar
+fashion to Microsoft Word and other word processors. It also has an
+equation editor. 
+</p>
+
+<ul class="org-ul">
+<li><a href="https://www.lyx.org/">https://www.lyx.org/</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-9-6" class="outline-4">
+<h4 id="sec-1-9-6"><span class="section-number-4">1.9.6</span> Modify it</h4>
+<div class="outline-text-4" id="text-1-9-6">
 <p>
 You can change the commands or explore it using the command. 
 <code>M-x find-function &lt;command-name&gt;</code> to open the file at the point where
@@ -2547,7 +2813,7 @@ Example:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Caio Rodrigues Soares Silva</p>
-<p class="date">Created: 2017-10-28 Sat 15:28</p>
+<p class="date">Created: 2018-01-04 Thu 15:23</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
