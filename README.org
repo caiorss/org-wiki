@@ -475,6 +475,9 @@ This variable can also be set programatically with:
 |                                 |                                                                                                   |
 | org-wiki-asset-download-insert2 | Download a file and insert a link to it at point. Similar to org-wiki-asset-insert-file           |
 |                                 |                                                                                                   |
+| org-wiki-insert-symbol          | Insert Greek letters, math and physics symbols such as α, γ, Δ, Σ, ∞, ℉                           |
+| org-wiki-insert-block           | Insert quote block, source code code block, latex equation block and so on.                       |
+|                                 |                                                                                                   |
 | *Directory*                     |                                                                                                   |
 |---------------------------------+---------------------------------------------------------------------------------------------------|
 | org-wiki-dired                  | Open org-wiki-location or org-wiki storage directory in Emacs showing only *.org files.           |
