@@ -848,6 +848,10 @@ to cancel the download."
                                                   page-name
                                                   )))))
 
+(defun org-wiki-new ()
+  "Create a new wiki page and open it without inserting a link."
+  (interactive)
+  (org-wiki--open-page (read-string "Page Name: ")))
 
 (defun org-wiki-html-page ()
   "Open the current wiki page in the browser.  It is created if it doesn't exist yet."
