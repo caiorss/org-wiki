@@ -199,15 +199,14 @@ files that contains "System.Windows string".
 
 [[file:images/wiki-search-pattern.png][file:images/wiki-search-pattern.png]]
 ** Workflow
-*** Create a page
+*** Create a page - way 1
 
 To create a page do:
 
  - 1. M-x org-wiki-index - It goes to the Org-wiki index page
    (index.org).
 
- - 2. Then run M-x org-wiki-create and a page name like 'CNC -
-   Computer Numerical Control'
+ - 2. Then run =M-x org-wiki-insert-new= and a page name like 'CNC - Computer Numerical Control'
 
 It will insert a hyperlink at point like:
 
@@ -217,11 +216,22 @@ It will insert a hyperlink at point like:
 
  - 3. Then click at the link or enter C-x C-o at the link to open it.
 
+*** Create a page - way 2
+
+Run =M-x org-wiki-new= and enter the page name, for instance 'Unix System Calls',
+it will create the file 'Unix System Calls.org' in the root directory
+and open it for editing.
+
+The advantage of creating a page using 'way 1' is that it inserts a
+link to the new created page before opening it, therefore making
+easier to categorize and navigate the pages.
+
 *** Browse a page
 
 The navigation can be done by running
 
- - =M-x org-wiki-index=
+ - =M-x org-wiki-index= It will open the index page which contains
+   hyperlinks to other wiki pages.
 
 or
 
