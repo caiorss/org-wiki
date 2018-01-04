@@ -834,7 +834,7 @@ to cancel the download."
         (buffer-list))
   (message "All wiki images closed. Ok."))
 
-(defun org-wiki-insert ()
+(defun org-wiki-insert-link ()
   "Insert a Wiki link at point for a existing page."
   (interactive)
   (org-wiki--helm-selection
