@@ -45,7 +45,9 @@ installs it automaticaly."
 (unless (package-installed-p 'org-wiki)
   (package-install-file "../org-wiki.el"))
 
-(setq org-wiki-location (getenv "ORG_WIKI_LOCATION"))
+(setq org-wiki-location-list (list
+                              (getenv "ORG_WIKI_LOCATION")
+                              ))
 
 
 (unless (file-exists-p org-wiki-location)
