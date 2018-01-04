@@ -1007,18 +1007,11 @@ Note: This command requires Python3 installed."
         (bname   "*org-wiki-server*")
         ;; Set current directory to org-wiki repository.
         (default-directory org-wiki-location))
-
- 
     (if (not (get-buffer bname))
-        
         (progn
-
           (sit-for 0.1)
           (switch-to-buffer bname)
-
-          
           (save-excursion ;; Save cursor position
-            
            (insert "Server started ...\n\n")                               
            (message "\nServer started ...\n")
 
@@ -1031,8 +1024,7 @@ Note: This command requires Python3 installed."
                                         ;; Mac OSX - (Not tested )
              (darwin          (insert (shell-command-to-string "ifconfig")))
                                         ;; Windows 7, 8, 10 - Kernel NT
-             (windows-nt      (insert (shell-command-to-string "ipconfig"))))          )
-          
+             (windows-nt      (insert (shell-command-to-string "ipconfig")))))          
           (start-process pname
                          bname
                          "python3"
@@ -1041,18 +1033,12 @@ Note: This command requires Python3 installed."
                          "--bind"
                          org-wiki-server-host
                          org-wiki-server-port)                                                               
-    
-                
-                (when (y-or-n-p "Open server in browser ?")
-                  (browse-url (format "http://localhost:%s" org-wiki-server-port))))
-      
+          (when (y-or-n-p "Open server in browser ?")
+            (browse-url (format "http://localhost:%s" org-wiki-server-port))))      
         (progn  (switch-to-buffer bname)
                 (kill-process (get-process pname))
                 (message "Server stopped.")
-
                 ))))
-
-
 
 (defun org-wiki-paste-image ()  
   "Paste a image asking the user for the file name."
