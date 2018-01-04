@@ -1,13 +1,13 @@
 ;;; org-wiki.el --- Desktop wiki extension for org-mode  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2016  Caio Rodrigues Soares Silva
+;; Public Domain Software - Do whatever you want, use at will.
 
 ;; Author: Caio Rodrigues       <caiorss DOT rodrigues AT gmail DOT com>
 ;; Maintainer: Caio Rordrigues  <caiorss DOT rodrigues AT gmail DOT com>
 ;; Keywords: org-mode, wiki, notes, notebook
-;; Version: 4.2
+;; Version: 5.0
 ;; URL: https://www.github.com/caiorss/org-wiki'
-;; Package-Requires: ((helm-core "2.0") (org "9") (cl-lib "0.5"))
+;; Package-Requires: ((helm-core "2.0") (cl-lib "0.5"))
 
 
 ;; This is free and unencumbered software released into the public domain.
@@ -59,12 +59,13 @@
   :group 'tools
   )
 
-(defcustom org-wiki-location "~/org/wiki"
-  "Org-wiki directory where all wiki pages files *.org are stored.
-Default value ~/org/wiki."
-  :type 'directory
+(defcustom org-wiki-location-list '("~/org/wiki")
+  "List of org-wiki root directories"
+  :type  '(repeat directory)
   :group 'org-wiki
   )
+
+(defvar org-wiki-location nil)
 
 (defcustom org-wiki-default-read-only nil
   "If this variable is true all org-wiki pages will open as read-only by default.
@@ -72,6 +73,15 @@ You can toggle read-only mode with M-x read-only-mode or C-x C-q."
   :type  'boolean
   :group 'org-wiki
   )
+
+(defcustom org-wiki-close-root-switch t
+  "If this variable is true, all org-wiki pages are closed when root directory is switched.
+   (Default value: true)"
+  :type  'boolean
+  :group 'org-wiki
+  )
+
+
 
 ;;; =======  Python Webserver Settings =========== ;;
 
@@ -161,10 +171,15 @@ You can toggle read-only mode with M-x read-only-mode or C-x C-q."
   "Concat directory path (BASE) and a relative path (RELPATH)."
   (concat (file-name-as-directory base) relpath))
 
-
+;; Initialize org-wiki-location variable if not set yet.
+;;
+(defun org-wiki--start-location ()
+  (if (not org-wiki-location)
+      (setq org-wiki-location (car org-wiki-location-list))))
 
 (defun org-wiki--get-buffers ()
   "Return all org-wiki page buffers (.org) files in `org-wiki-location`."
+ (org-wiki--start-location) 
  (cl-remove-if-not (lambda (p)
                  (let* ((fp (buffer-file-name p))
                         (fpath (if fp (expand-file-name fp) nil))
@@ -270,7 +285,7 @@ Example:
 
 ELISP> (remove-if-not #'file->org-wiki/page (org-wiki/page-files))
   (\"Abreviations_Slangs.wiki.org\" \"Android.wiki.org\" \"Bash_Script.wiki.org\")"
-
+  (org-wiki--start-location)
   (cl-remove-if-not
    (lambda (s)
      (let ((b (file-name-base s)))
@@ -464,9 +479,16 @@ points to the file <org wiki location>/Blueprint/box1.dwg."
 ;;; Custom Protocols
 (add-hook 'org-mode-hook
           (lambda ()
+            ;; Hyperlinks to other org-wiki pages
+            ;;
+            ;; wiki:<page-name> or [[wiki:<page-name>][<page-name>]]
             (org-add-link-type  "wiki"
                                 #'org-wiki--open-page
                                 #'org-wiki--org-link )
+            ;; Hyperlinks to asset files that are opened with system
+            ;; applications such as spreadsheets.
+            ;;
+            ;; wiki-asset-sys:<
             (org-add-link-type  "wiki-asset-sys"
                                 #'org-wiki--protocol-open-assets-with-sys
                                 #'org-wiki--asset-link)))
@@ -556,6 +578,25 @@ point: 'Unix/Manual.pdf'."
   (interactive)
   (command-apropos "org-wiki-"))
 
+(defun org-wiki-switch-root ()
+  "Switch org-wiki root directory"
+  (interactive)
+  (helm :sources
+        `((name . "Org-wiki root dir")
+          (candidates . ,(mapcar (lambda (p)
+                                   (cons (format "%s - %s" (file-name-nondirectory p) p) p))
+                                 (mapcar #'string-trim org-wiki-location-list)))
+          (action . (lambda (p)
+                      ;; If custom variable is set to true, then close all org-wiki pages of current
+                      ;; org-wiki root directory
+                      (if org-wiki-close-root-switch (org-wiki-close))
+                      ;; set new org-wiki location
+                      (setq org-wiki-location p)
+                      ;; Go to index page
+                      (org-wiki-index)
+                      ;; Inform user about new directory
+                      (message (format "Org-wiki root dir set to: %s" p))
+                      )))))
 
 (defun org-wiki-index ()
   "Open the index page: <org-wiki-location>/index.org.
@@ -589,11 +630,6 @@ point: 'Unix/Manual.pdf'."
   (interactive)
   (dired (org-wiki--concat-path org-wiki-location "*.org"))
   (dired-hide-details-mode))
-
-(defun org-wiki-make-page ()
-  "Create a new wiki page."
-  (interactive)
-  (find-file (org-wiki--page->file (read-string "Page Name: "))))
 
 (defun org-wiki-asset-dired ()
   "Open the asset directory of current wiki page."
@@ -805,20 +841,24 @@ to cancel the download."
         (buffer-list))
   (message "All wiki images closed. Ok."))
 
-(defun org-wiki-insert ()
+(defun org-wiki-insert-link ()
   "Insert a Wiki link at point for a existing page."
   (interactive)
   (org-wiki--helm-selection
    (lambda (page) (insert (org-wiki--make-link page)))))
 
-(defun org-wiki-create ()
-  "Create a new org-wiki page asking the user its name."
+(defun org-wiki-insert-new ()
+  "Create a new org-wiki and insert a link to it at point."
   (interactive)
   (let ((page-name (read-string  "Page: ")))
     (save-excursion (insert (org-make-link-string (concat "wiki:" page-name)
                                                   page-name
                                                   )))))
 
+(defun org-wiki-new ()
+  "Create a new wiki page and open it without inserting a link."
+  (interactive)
+  (org-wiki--open-page (read-string "Page Name: ")))
 
 (defun org-wiki-html-page ()
   "Open the current wiki page in the browser.  It is created if it doesn't exist yet."
@@ -989,18 +1029,11 @@ Note: This command requires Python3 installed."
         (bname   "*org-wiki-server*")
         ;; Set current directory to org-wiki repository.
         (default-directory org-wiki-location))
-
- 
     (if (not (get-buffer bname))
-        
         (progn
-
           (sit-for 0.1)
           (switch-to-buffer bname)
-
-          
           (save-excursion ;; Save cursor position
-            
            (insert "Server started ...\n\n")                               
            (message "\nServer started ...\n")
 
@@ -1013,8 +1046,7 @@ Note: This command requires Python3 installed."
                                         ;; Mac OSX - (Not tested )
              (darwin          (insert (shell-command-to-string "ifconfig")))
                                         ;; Windows 7, 8, 10 - Kernel NT
-             (windows-nt      (insert (shell-command-to-string "ipconfig"))))          )
-          
+             (windows-nt      (insert (shell-command-to-string "ipconfig")))))          
           (start-process pname
                          bname
                          "python3"
@@ -1023,31 +1055,21 @@ Note: This command requires Python3 installed."
                          "--bind"
                          org-wiki-server-host
                          org-wiki-server-port)                                                               
-    
-                
-                (when (y-or-n-p "Open server in browser ?")
-                  (browse-url (format "http://localhost:%s" org-wiki-server-port))))
-      
+          (when (y-or-n-p "Open server in browser ?")
+            (browse-url (format "http://localhost:%s" org-wiki-server-port))))      
         (progn  (switch-to-buffer bname)
                 (kill-process (get-process pname))
                 (message "Server stopped.")
-
                 ))))
-
-
 
 (defun org-wiki-paste-image ()  
   "Paste a image asking the user for the file name."
   (interactive)
-
-
   (let* ((dir   (file-name-as-directory
                    (file-name-base
                     (buffer-file-name))))
            (image-name (read-string "Image name: " )))
-      
     (org-wiki--assets-make-dir dir)
-
     (insert "#+CAPTION: ")
     (save-excursion
       (insert image-name)

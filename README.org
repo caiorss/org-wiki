@@ -199,15 +199,21 @@ files that contains "System.Windows string".
 
 [[file:images/wiki-search-pattern.png][file:images/wiki-search-pattern.png]]
 ** Workflow
-*** Create a page
+*** Switching wiki 
+
+Now org wiki supports multiple wikis or root directories, but only
+one wiki can be used at a time. So, to switch wiki type:
+
+ - =M-x org-wiki-switch-root=
+ 
+*** Create a page - way 1
 
 To create a page do:
 
  - 1. M-x org-wiki-index - It goes to the Org-wiki index page
    (index.org).
 
- - 2. Then run M-x org-wiki-create and a page name like 'CNC -
-   Computer Numerical Control'
+ - 2. Then run =M-x org-wiki-insert-new= and a page name like 'CNC - Computer Numerical Control'
 
 It will insert a hyperlink at point like:
 
@@ -217,11 +223,22 @@ It will insert a hyperlink at point like:
 
  - 3. Then click at the link or enter C-x C-o at the link to open it.
 
+*** Create a page - way 2
+
+Run =M-x org-wiki-new= and enter the page name, for instance 'Unix System Calls',
+it will create the file 'Unix System Calls.org' in the root directory
+and open it for editing.
+
+The advantage of creating a page using 'way 1' is that it inserts a
+link to the new created page before opening it, therefore making
+easier to categorize and navigate the pages.
+
 *** Browse a page
 
 The navigation can be done by running
 
- - =M-x org-wiki-index=
+ - =M-x org-wiki-index= It will open the index page which contains
+   hyperlinks to other wiki pages.
 
 or
 
@@ -294,26 +311,57 @@ Add to init file ~/.emacs.d/init.el or ~/.emacs
 Org-wiki can configured programatically by setting the org-wiki custom
 varibles or with =M-x customize-group org-wiki=.
 
-**** Path to Wiki location 
+**** Paths to Wiki locations 
 
-Path where all org-wiki pages (*.org files) are stored. 
+This new version supports multiples org-wiki directories or multiple
+wikis in different directories, but only one wiki can be used at a
+time. The current wiki directory can be selected by using te command 
+=M-x org-wiki-switch-root=.
+
+Paths where all org-wiki pages (*.org files) are stored. 
 
 #+BEGIN_SRC elisp 
-(setq org-wiki-location "~/org/wiki")
+;;
+;; (setq org-wiki-location "~/org/wiki")
+
+(setq org-wiki-location-list
+      '(
+        "~/Documents/wiki"    ;; First wiki (root directory) is the default. 
+        "~/Documents/wiki2 "
+        "~/Documents/wiki3"
+        ))
+
+;; Initialize first org-wiki-directory or default org-wiki 
+(setq org-wiki-location (car org-wiki-location-list))
 #+END_SRC
 
-or in Windows it could be: 
+The default value of this variable is 
 
 #+BEGIN_SRC elisp 
-(setq org-wiki-location "e:/projects/org-wiki-test.emacs")
+'("~/org/wiki")
+#+END_SRC
+
+In Windows it can be: 
+
+ - Note: backward slash in path \, must be escaped as \\
+
+#+BEGIN_SRC elisp 
+;; (setq org-wiki-location "e:/projects/org-wiki-test.emacs")
+
+(setq org-wiki-location-list
+      '(
+        "C:\\Users\\john\\Documents\\wiki-main"    ;; First wiki is the default. 
+        "F:/storage/wiki2"
+        "G:\\Documents\\wiki3"
+        ))
 #+END_SRC
 
 **** Open org-wiki pages in read-only 
 
 If the custom variable =org-wiki-default-read-only= is set to true (t)
 org-wiki pages are opened in read-only mode. The default value of this
-variable is nil (false). It is useful to avoid unintentionally change
-an org-wiki page.
+variable is nil (false). It is useful to avoid unintended and
+accidental changings an org-wiki page.
 
 The read-only mode can be toggled with =M-x toggle-read-only= or C-x C-q.
 
@@ -328,6 +376,25 @@ The read-only mode can be toggled with =M-x toggle-read-only= or C-x C-q.
 
 #+BEGIN_SRC elisp 
 (setq org-wiki-default-read-only nil)  ;; Default value
+#+END_SRC
+
+**** Close all wiki pages when switching wiki 
+
+If the custom variable =org-wiki-close-root-switch= (default value
+true, t) is set to true, it will close all org-wiki pages of the
+current wiki (root path) before switching to another org-wiki
+location.
+
+Enable: 
+
+#+BEGIN_SRC elisp 
+(setq org-wiki-close-root-switch t)
+#+END_SRC
+
+Disable 
+
+#+BEGIN_SRC elisp 
+(setq org-wiki-close-root-switch nil)
 #+END_SRC
 
 **** Server settings 
@@ -443,14 +510,15 @@ This variable can also be set programatically with:
 |                                 |                                                                                                   |
 | *Navigation*                    |                                                                                                   |
 |---------------------------------+---------------------------------------------------------------------------------------------------|
+| org-wiki-switch-root            | Switch between multiple org wikis listed in the variable 'org-wiki-location-list'                 |
 | org-wiki-index                  | Go to the index page or index.org                                                                 |
 | org-wiki-index-frame            | Open org-wiki index page in a new frame.                                                          |
+| org-wiki-switch                 | Switch between org-wiki buffers or already opened pages                                           |
 |                                 |                                                                                                   |
 | org-wiki-helm                   | Open a org-wiki page                                                                              |
 | org-wiki-helm-frame             | Open a org-wiki page in a new frame                                                               |
 | org-wiki-helm-read-only         | Open a org-wiki page in read-only mode                                                            |
 |                                 |                                                                                                   |
-| org-wiki-switch                 | Switch between org-wiki buffers                                                                   |
 |                                 |                                                                                                   |
 | *Close Command*                 |                                                                                                   |
 |---------------------------------+---------------------------------------------------------------------------------------------------|
@@ -460,7 +528,7 @@ This variable can also be set programatically with:
 | *Insert Commands*               |                                                                                                   |
 |---------------------------------+---------------------------------------------------------------------------------------------------|
 | org-wiki-create                 | Insert a link at point to a new org-wiki page. Click or follow the link to edit the new page.     |
-| org-wiki-insert                 | Insert a link at point to an existing org-wiki page.                                              |
+| org-wiki-insert-link            | Insert a link at point to an existing org-wiki page.                                              |
 | org-wiki-header                 | Insert at the top of an org-wiki buffer an org-mode header template.                              |
 |                                 |                                                                                                   |
 | org-wiki-asset-insert-file      | Insert link to asset/attachment file that can be opened with Emacs at point such as source codes. |
@@ -525,7 +593,7 @@ Not. complete.
 **** M-x org-wiki-index-frame
 
   - =M-x org-wiki-index-frame= - Open the wiki index page in a new frame.
-*** pages
+*** Pages
 **** M-x org-wiki-helm
 
    - =M-x org-wiki-helm= - Open a helm menu to switch or open a wiki page.
@@ -559,9 +627,9 @@ Not. complete.
  - Close all org-wiki image/picture buffers. 
 
 *** Insert Hyperlink to wiki pages or asset files
-**** M-x org-wiki-link 
+**** M-x org-wiki-insert-link
 
- - M-x org-wiki-link - Asks the user for the wiki page name and
+ - =M-x org-wiki-insert-link= - Asks the user for the wiki page name and
    inserts the hyperlink at point. It is useful to create new pages
    fast without write the full syntax like ~[[wiki:page title] [page title]~
  
@@ -575,11 +643,6 @@ Example:
 #+END_SRC
 
 And will create the hyperlink to this page.
-
-**** M-x org-wiki-insert 
-
-  - =M-x org-wiki-insert= - Inserts a org-mode link at current point
-    to a Wiki page selected through a helm-menu.
 
 **** M-x org-wiki-header 
 
