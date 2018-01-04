@@ -1375,7 +1375,7 @@ Toggle
                         (lambda (p)
                           (cons (concat (car p) " = " (cdr p))
                                 (cdr p)))
-                        org-wiki--symbol-list
+                        org-wiki-symbol-list
                         ))
         (action . insert))))
 
