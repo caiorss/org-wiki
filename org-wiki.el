@@ -479,9 +479,16 @@ points to the file <org wiki location>/Blueprint/box1.dwg."
 ;;; Custom Protocols
 (add-hook 'org-mode-hook
           (lambda ()
+            ;; Hyperlinks to other org-wiki pages
+            ;;
+            ;; wiki:<page-name> or [[wiki:<page-name>][<page-name>]]
             (org-add-link-type  "wiki"
                                 #'org-wiki--open-page
                                 #'org-wiki--org-link )
+            ;; Hyperlinks to asset files that are opened with system
+            ;; applications such as spreadsheets.
+            ;;
+            ;; wiki-asset-sys:<
             (org-add-link-type  "wiki-asset-sys"
                                 #'org-wiki--protocol-open-assets-with-sys
                                 #'org-wiki--asset-link)))
