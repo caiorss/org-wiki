@@ -79,6 +79,15 @@ You can toggle read-only mode with M-x read-only-mode or C-x C-q."
   :group 'org-wiki
   )
 
+(defcustom org-wiki-close-root-switch t
+  "If this variable is true, all org-wiki pages are closed when root directory is switched.
+   (Default value: true)"
+  :type  'boolean
+  :group 'org-wiki
+  )
+
+
+
 ;;; =======  Python Webserver Settings =========== ;;
 
 (defcustom org-wiki-server-port "8000"
