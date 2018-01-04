@@ -580,7 +580,14 @@ point: 'Unix/Manual.pdf'."
                                    (cons (format "%s - %s" (file-name-nondirectory p) p) p))
                                  (mapcar #'string-trim org-wiki-location-list)))
           (action . (lambda (p)
+                      ;; If custom variable is set to true, then close all org-wiki pages of current
+                      ;; org-wiki root directory
+                      (if org-wiki-close-root-switch (org-wiki-close))
+                      ;; set new org-wiki location
                       (setq org-wiki-location p)
+                      ;; Go to index page
+                      (org-wiki-index)
+                      ;; Inform user about new directory
                       (message (format "Org-wiki root dir set to: %s" p))
                       )))))
 
