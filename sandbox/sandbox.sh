@@ -19,7 +19,7 @@ echo "PACKAGE_DIR = "$PACKAGE_DIR
 
 case $1 in
     run)
-        emacs -Q -l init.el 
+        emacs --debug-init -Q -l init.el 
     ;;
     clean)
         rm -rf elpa/*

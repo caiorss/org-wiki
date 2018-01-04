@@ -63,4 +63,4 @@ sandbox-reload:
 
 sandbox-clean:
 	@echo "Cleaning sandbox"
-	rm -rf ./sandbox/elpa
+	rm -v -rf  ./sandbox/elpa

@@ -28,6 +28,8 @@
 
 (package-initialize)
 
+;;; (package-refresh-contents)
+
 (defun packages-require (&rest packs)
   "Install and load a package. If the package is not available
 installs it automaticaly."
@@ -46,12 +48,14 @@ installs it automaticaly."
   (package-install-file "../org-wiki.el"))
 
 (setq org-wiki-location-list (list
-                              (getenv "ORG_WIKI_LOCATION")
+                               ;; "wiki"
+                               (getenv "ORG_WIKI_LOCATION")
                               ))
 
+(setq org-wiki-location (car org-wiki-location-list))
 
-(unless (file-exists-p org-wiki-location)
-  (mkdir org-wiki-location))
+;; (unless (file-exists-p org-wiki-location)
+;;   (mkdir org-wiki-location))
 
 (packages-require  'htmlize)
 
