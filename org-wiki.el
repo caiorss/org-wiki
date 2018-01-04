@@ -59,18 +59,13 @@
   :group 'tools
   )
 
-(defcustom org-wiki-location "~/org/wiki"
-  "Org-wiki directory where all wiki pages files *.org are stored.
-Default value ~/org/wiki."
-  :type 'directory
-  :group 'org-wiki
-  )
-
 (defcustom org-wiki-location-list '("~/org/wiki")
   "List of org-wiki root directories"
   :type  '(repeat directory)
   :group 'org-wiki
   )
+
+(setq org-wiki-location nil)
 
 (defcustom org-wiki-default-read-only nil
   "If this variable is true all org-wiki pages will open as read-only by default.
