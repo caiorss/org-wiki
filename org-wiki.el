@@ -65,7 +65,7 @@
   :group 'org-wiki
   )
 
-(setq org-wiki-location nil)
+(defvar org-wiki-location nil)
 
 (defcustom org-wiki-default-read-only nil
   "If this variable is true all org-wiki pages will open as read-only by default.
