@@ -1043,15 +1043,11 @@ Note: This command requires Python3 installed."
 (defun org-wiki-paste-image ()  
   "Paste a image asking the user for the file name."
   (interactive)
-
-
   (let* ((dir   (file-name-as-directory
                    (file-name-base
                     (buffer-file-name))))
            (image-name (read-string "Image name: " )))
-      
     (org-wiki--assets-make-dir dir)
-
     (insert "#+CAPTION: ")
     (save-excursion
       (insert image-name)
