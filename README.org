@@ -851,6 +851,69 @@ file =org-wiki-<YEAR>-<MONTH>-<DAY>.zip=, such as
 
 To open the backup directory run M-x =org-wiki-backup-dir.=
 *** Utilities 
+**** Insert greek letters, math, physics and currency symbols
+
+The command =M-x org-wiki-insert-symbol= allows inserting Greek
+letters, math and physics symbols by providing a helm menu where the
+user can select or type the name of the symbol to insert it at current
+point. It can be used to quickly type equations and formulas and can
+be pasted in email, forums, source code and etc.
+
+[[file:images/org-wiki-insert-symbol.png][file:images/org-wiki-insert-symbol.png]]
+
+Examples of symbols of provided: 
+
+ + α (alpha), β (beta), Σ (upper case sigma), σ (sigma)
+
+ + π = 3.1415 -> Circle Area = π.r^2 
+
+ + ∂f/∂x + ∂f/∂y + ∂f/∂z = 0 
+
+ + ∛27 = 3.0, √100 = 10.0
+
+ + 200.00 £ GBP, 3000.00 ¥ (Yuan, aka Reminbi)
+
+ + Fractions ¼, ⅓, ⅑
+
+**** Insert org-mode code blocks, tables, quotes and etc.
+
+This command makes easier to insert common org-mode code templates for
+code blocks, quote blocks, latex equations, table, example blocks and
+so on. 
+
+ - =$ M-x org-wiki-insert-block=
+
+[[file:images/org-wiki-insert-block.png][file:images/org-wiki-insert-block.png]]
+
+Example: 
+
+If the user select the template _equation_ it will insert at current
+point a block for latex equations:
+
+#+BEGIN_SRC org
+\begin{equation} 
+\end{equation}
+#+END_SRC
+
+If the user select the template _table_, it will insert a table with 2
+rows and 3 columns.
+
+#+BEGIN_SRC org 
+  |   |   |   |
+  |---+---+---|
+  |   |   |   |
+  |   |   |   |
+
+#+END_SRC
+
+If the user select the template Python code block, it will insert:
+
+#+BEGIN_SRC org
+  ,#+BEGIN_SRC python 
+
+  ,#+END_SRC
+#+END_SRC
+
 **** Web Server 
 
  - =M-x org-wiki-server-toggle=  Start/stop static http server at
@@ -964,7 +1027,6 @@ Example:
 #+CAPTION: 
 file:Linux/fba53c12-3f23-4728-9f52-a26a3d285d7c.png
 #+END_SRC  
-
 *** Alias Commands 
 
  - =M-x org-wiki-nav= - Navigate through org-mode headings. Alias to
@@ -1112,6 +1174,24 @@ More bookmarklets and cheat sheet available at:
 and 
  
  - https://caiorss.github.io/bookmarklet-maker/
+
+*** Use the best tool of the job
+**** Store, organize, and index documents, citations and etc.
+
+Those who need to store and index a large amount of any type of files
+and documents will be better served with Zotero.
+
+ - https://www.zotero.org/ 
+
+
+**** Write very formal thesis, paper, books, manuals and etc ...
+
+For this case one of the best tool is the open source software Lyx
+that allows creating latex documents in a graphical way, in a similar
+fashion to Microsoft Word and other word processors. It also has an
+equation editor. 
+
+ - https://www.lyx.org/
 
 *** Modify it
 

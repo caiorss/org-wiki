@@ -1366,5 +1366,175 @@ Toggle
   (interactive)
   (org-preview-latex-fragment))
 
+(defun org-wiki-insert-symbol ()
+  "Insert symbols from math, physics, Greek letters and others."
+  (interactive)
+  (helm :sources
+      `((name . "General math and misc symbols")
+        (candidates . ,(mapcar
+                        (lambda (p)
+                          (cons (concat (car p) " = " (cdr p))
+                                (cdr p)))
+                        org-wiki-symbol-list
+                        ))
+        (action . insert))))
+
+(defun org-wiki-insert-block ()
+  "Insert org-mode blocks  such as Latex equation, code block, quotes, tables and etc."
+  (interactive)
+  (helm :sources
+        `((name . "Org-mode code block")
+          (candidates . ,org-wiki-template-blocks)
+          (action . insert))))
+
+;; Variable containing useful math, physics, currencies and greek letters used by function
+;; org-wiki-insert-symbol 
+(setq org-wiki-symbol-list
+     '(
+       ("alpha" .  "α")
+       ("beta" .  "β")
+       ("gamma" ."γ")
+       ("Gamma" ."Γ")
+       ("delta" . "δ")
+       ("Delta" . "Δ")
+       ("episilon" ."ε") 
+       ("zeta" ."ζ")
+       ("eta" ."η")
+       ("theta" ."θ")
+       ("Theta" ."Θ")
+       ("iota" ."ι")
+       ("kappa" ."κ")
+       ("lambda" ."λ")
+       ("mu" ."μ")
+       ("nu" ."ν")
+       ("pi" ."π")
+       ("Pi" ."Π")
+       ("rho" ."")
+       ("sigma" ."σ")
+       ("Sigma" ."Σ")
+       ("tau" ."τ")
+       ("upsilon" ."υ")
+       ("phi" ."φ")
+       ("Phi" ."Φ")
+       ("psi" ."Ψ")
+       ("omega" ."ω")
+       ("Omega" ."Ω")       
+
+       ("Multiplication sign" . "×")
+       ("Multiplication dot (sdot)" . "⋅")
+       ("Division sign" . "÷")
+       
+      ;;; Mathematical Symbols for calculus
+       ("Square root sqrt" . "√")
+       ("Cubic root cbrt" . "∛")
+       ("Fourth root" . "∜")       
+        
+       ("Infinity" . "∞")
+       ("summation" . "Σ")
+       ("product - big PI" . "Π")
+       ("nabla" . "∇")
+       ("integral" ."∫")
+       ("double integral" . "∬")
+       ("triple integral" . "∭")
+       ("minus or equal +-" . "±")
+       ("approximately equal ~=" . "≈")
+       ("Partial derivate" . "∂")
+       ("tensor-prod" . "⊗")
+       ("Direct sum or Exclusive or" . "⊕")
+       ("Gradient, nabla" ."∇")
+       
+       ("Laplace transform" . "ℒ")
+       ("Fourier transform" . "ℱ")
+       
+       ;; Symbols for set algebra 
+       ("Empty set" . "∅")
+       ("Set membership" . "∈")
+       ("Universal quantifier" . "∀")
+       ("Existential quantifier" . "∃")
+       ("If only if, triple bar" . "≡")
+
+       ("Logic - Logical NOT" . "¬")
+       ("Logic - Logical AND" . "∧")
+       ("Logic - Logical OR" . "∨")
+       
+       
+       ("Real numbers" . "ℝ")  
+       
+       ;; Misc Symbols
+       ("Per mile" . "‰")
+       ("Per basis points" . "‱")
+       ("Degree" . "°")
+       ("Fahrenheit" . "℉")
+       ("Celsius" . "℃")
+       ("Angstrom" . "Å")
+       ("Electromotive force e.m.f" . "ℰ")
+       ("Sign - Sound recording symbol" . "Ⓟ")
+       ("Sign - Registered Copyright" . "®")
+       ("Sign - Copyright" . "©")
+       ("Left arrow" . "←")
+       ("Right arrow" . "→")
+       ("Down arrow" . "↓")
+       ("Up arrow" . "↑")
+       ("Black big star" . "★")
+       ("With big star" . "☆")
+       ("Pentagram" . "⛤")
+
+       ;; Geometry
+       ("Geometry - angle" . "∠")
+       ("Geometry - measured angle" . "∡")
+       ("Geometry - Spherical angle" . "∢")
+       ("Geometry - Perpendicular to" . "⟂")
+       ("Geometry - right angle" . "∟")
+       
+      ;; Health and safety
+       ("WARN Skull and crossbones" . "☠")
+       ("WARN Radioactive" . "☢")
+       ("WARN Biohazard" . "☣")
+       ("WARN Warning sign" . "⚠")
+       ("WARN High voltage" . "⚡")
+       
+      ;; Fractions
+       ("Fraction one-quarter" . "¼")
+       ("Fraction one-half" . "½")
+       ("Fraction one-third" . "⅓")
+       ("Fraction two-thirds" . "⅔")
+       ("Fraction one-fifth" . "⅕")
+       ("Fraction three-quarters" . "¾")
+       ("Fraction one-seventh" . "⅐")
+       ("Fraction one-ninth"  . "⅑")
+
+       ;; Currencies
+       ("Currency Dollar" . "$")
+       ("Currency GPB Sterling pounds" . "£")
+       ("Currency Euro" . "€")
+       ("Currency Yen, Yuan, Reminbi (China)" . "¥")
+       ("Currency Won" . "₩")
+       ("Currency Russian Ruble" . "₽")       
+       ("Currency Lira" . "₤")
+       ("Currency Bitcoin" . "₿")
+       ("Currency Indian Rupee" . "₹")             
+       ))
+
+
+(setq org-wiki-template-blocks
+      '(
+        ("General code block" . "#+BEGIN_SRC \n\n#+END_SRC")
+        ("Latex equation"     . "\\begin{equation} \n\n\\end{equation}")
+        ("Latex equation with name"     . "#+NAME: eqn:myequation \n\\begin{equation} \n2x + x^2\n\\end{equation}")
+        ("Table" . "|  |  |  |\n|--|--|--|\n|  |  |  |\n|  |  |  | \n")
+        ("Quote"              .  "#+BEGIN_QUOTE \n\n#+END_QUOTE")
+        ("Verse"              .  "#+BEGIN_VERSE \n\n#+END_VERSE")
+        ("Example"            .  "#+BEGIN_EXAMPLE \n\n#+END_EXAMPLE")
+        ("HTML"               .  "#+BEGIN_HTML \n\n#+END_HTML")
+        ("Python code block"  . "#+BEGIN_SRC python \n\n#+END_SRC")
+        ("Ruby code block"    . "#+BEGIN_SRC ruby \n\n#+END_SRC")
+        ("JavaScript block"   . "#+BEGIN_SRC js \n\n#+END_SRC")
+        ("R code block"       . "#+BEGIN_SRC R \n\n#+END_SRC")
+        ("Elisp code block"   . "#+BEGIN_SRC elisp \n\n#+END_SRC")
+        ("C++ code block"     . "#+BEGIN_SRC cpp \n\n#+END_SRC")
+        ("Scala code block"     . "#+BEGIN_SRC scala \n\n#+END_SRC")       
+        ))
+
+
 (provide 'org-wiki)
 ;;; org-wiki.el ends here
