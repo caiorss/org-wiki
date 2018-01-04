@@ -199,6 +199,13 @@ files that contains "System.Windows string".
 
 [[file:images/wiki-search-pattern.png][file:images/wiki-search-pattern.png]]
 ** Workflow
+*** Switching wiki 
+
+Now org wiki supports multiple wikis or root directories, but only
+one wiki can be used at a time. So, to switch wiki type:
+
+ - =M-x org-wiki-switch-root=
+ 
 *** Create a page - way 1
 
 To create a page do:
@@ -500,14 +507,15 @@ This variable can also be set programatically with:
 |                                 |                                                                                                   |
 | *Navigation*                    |                                                                                                   |
 |---------------------------------+---------------------------------------------------------------------------------------------------|
+| org-wiki-switch-root            | Switch between multiple org wikis listed in the variable 'org-wiki-location-list'                 |
 | org-wiki-index                  | Go to the index page or index.org                                                                 |
 | org-wiki-index-frame            | Open org-wiki index page in a new frame.                                                          |
+| org-wiki-switch                 | Switch between org-wiki buffers or already opened pages                                           |
 |                                 |                                                                                                   |
 | org-wiki-helm                   | Open a org-wiki page                                                                              |
 | org-wiki-helm-frame             | Open a org-wiki page in a new frame                                                               |
 | org-wiki-helm-read-only         | Open a org-wiki page in read-only mode                                                            |
 |                                 |                                                                                                   |
-| org-wiki-switch                 | Switch between org-wiki buffers                                                                   |
 |                                 |                                                                                                   |
 | *Close Command*                 |                                                                                                   |
 |---------------------------------+---------------------------------------------------------------------------------------------------|
@@ -517,7 +525,7 @@ This variable can also be set programatically with:
 | *Insert Commands*               |                                                                                                   |
 |---------------------------------+---------------------------------------------------------------------------------------------------|
 | org-wiki-create                 | Insert a link at point to a new org-wiki page. Click or follow the link to edit the new page.     |
-| org-wiki-insert-link                 | Insert a link at point to an existing org-wiki page.                                              |
+| org-wiki-insert-link            | Insert a link at point to an existing org-wiki page.                                              |
 | org-wiki-header                 | Insert at the top of an org-wiki buffer an org-mode header template.                              |
 |                                 |                                                                                                   |
 | org-wiki-asset-insert-file      | Insert link to asset/attachment file that can be opened with Emacs at point such as source codes. |
@@ -582,7 +590,7 @@ Not. complete.
 **** M-x org-wiki-index-frame
 
   - =M-x org-wiki-index-frame= - Open the wiki index page in a new frame.
-*** pages
+*** Pages
 **** M-x org-wiki-helm
 
    - =M-x org-wiki-helm= - Open a helm menu to switch or open a wiki page.
