@@ -171,10 +171,15 @@ You can toggle read-only mode with M-x read-only-mode or C-x C-q."
   "Concat directory path (BASE) and a relative path (RELPATH)."
   (concat (file-name-as-directory base) relpath))
 
-
+;; Initialize org-wiki-location variable if not set yet.
+;;
+(defun org-wiki--start-location ()
+  (if (not org-wiki-location)
+      (setq org-wiki-location (car org-wiki-location-list))))
 
 (defun org-wiki--get-buffers ()
   "Return all org-wiki page buffers (.org) files in `org-wiki-location`."
+ (org-wiki--start-location) 
  (cl-remove-if-not (lambda (p)
                  (let* ((fp (buffer-file-name p))
                         (fpath (if fp (expand-file-name fp) nil))
@@ -280,7 +285,7 @@ Example:
 
 ELISP> (remove-if-not #'file->org-wiki/page (org-wiki/page-files))
   (\"Abreviations_Slangs.wiki.org\" \"Android.wiki.org\" \"Bash_Script.wiki.org\")"
-
+  (org-wiki--start-location)
   (cl-remove-if-not
    (lambda (s)
      (let ((b (file-name-base s)))
