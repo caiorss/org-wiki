@@ -1,6 +1,6 @@
 ;;; org-wiki.el --- Desktop wiki extension for org-mode  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2016  Caio Rodrigues Soares Silva
+;; Public Domain Software - Do whatever you want, use at will.
 
 ;; Author: Caio Rodrigues       <caiorss DOT rodrigues AT gmail DOT com>
 ;; Maintainer: Caio Rordrigues  <caiorss DOT rodrigues AT gmail DOT com>
