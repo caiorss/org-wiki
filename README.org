@@ -321,15 +321,18 @@ time. The current wiki directory can be selected by using te command
 Paths where all org-wiki pages (*.org files) are stored. 
 
 #+BEGIN_SRC elisp 
-;; It is no longer valid. 
+;;
 ;; (setq org-wiki-location "~/org/wiki")
 
 (setq org-wiki-location-list
       '(
-        "~/Documents/wiki"    ;; First wiki is the default. 
+        "~/Documents/wiki"    ;; First wiki (root directory) is the default. 
         "~/Documents/wiki2 "
         "~/Documents/wiki3"
         ))
+
+;; Initialize first org-wiki-directory or default org-wiki 
+(setq org-wiki-location (car org-wiki-location-list))
 #+END_SRC
 
 The default value of this variable is 
