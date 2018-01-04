@@ -624,11 +624,6 @@ point: 'Unix/Manual.pdf'."
   (dired (org-wiki--concat-path org-wiki-location "*.org"))
   (dired-hide-details-mode))
 
-(defun org-wiki-make-page ()
-  "Create a new wiki page."
-  (interactive)
-  (find-file (org-wiki--page->file (read-string "Page Name: "))))
-
 (defun org-wiki-asset-dired ()
   "Open the asset directory of current wiki page."
   (interactive)
