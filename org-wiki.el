@@ -562,6 +562,18 @@ point: 'Unix/Manual.pdf'."
   (interactive)
   (command-apropos "org-wiki-"))
 
+(defun org-wiki-switch-root ()
+  "Switch org-wiki root directory"
+  (interactive)
+  (helm :sources
+        `((name . "Org-wiki root dir")
+          (candidates . ,(mapcar (lambda (p)
+                                   (cons (format "%s - %s" (file-name-nondirectory p) p) p))
+                                 (mapcar #'string-trim org-wiki-location-list)))
+          (action . (lambda (p)
+                      (setq org-wiki-location p)
+                      (message (format "Org-wiki root dir set to: %s" p))
+                      )))))
 
 (defun org-wiki-index ()
   "Open the index page: <org-wiki-location>/index.org.
