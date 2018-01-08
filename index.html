@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>org-wiki</title>
-<!-- 2018-01-04 Thu 15:23 -->
+<!-- 2018-01-08 Mon 12:37 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Caio Rodrigues Soares Silva" />
@@ -181,7 +181,7 @@ for the JavaScript code in this tag.
 <li><a href="#sec-1-6-3">1.6.3. Start the wiki</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-7">1.7. Commands Summary</a></li>
+<li><a href="#sec-1-7">1.7. Command Summary</a></li>
 <li><a href="#sec-1-8">1.8. Commands</a>
 <ul>
 <li><a href="#sec-1-8-1">1.8.1. Help</a></li>
@@ -237,11 +237,12 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#sec-1-8-12-1">1.8.12.1. Insert greek letters, math, physics and currency symbols</a></li>
 <li><a href="#sec-1-8-12-2">1.8.12.2. Insert org-mode code blocks, tables, quotes and etc.</a></li>
-<li><a href="#sec-1-8-12-3">1.8.12.3. Web Server</a></li>
-<li><a href="#sec-1-8-12-4">1.8.12.4. Panel - org-wiki-panel</a></li>
-<li><a href="#sec-1-8-12-5">1.8.12.5. Menu</a></li>
-<li><a href="#sec-1-8-12-6">1.8.12.6. Backup Commands</a></li>
-<li><a href="#sec-1-8-12-7">1.8.12.7. Paste Image</a></li>
+<li><a href="#sec-1-8-12-3">1.8.12.3. Insert math formula, latex template, equations, greek letters and etc.</a></li>
+<li><a href="#sec-1-8-12-4">1.8.12.4. Web Server</a></li>
+<li><a href="#sec-1-8-12-5">1.8.12.5. Panel - org-wiki-panel</a></li>
+<li><a href="#sec-1-8-12-6">1.8.12.6. Menu</a></li>
+<li><a href="#sec-1-8-12-7">1.8.12.7. Backup Commands</a></li>
+<li><a href="#sec-1-8-12-8">1.8.12.8. Paste Image</a></li>
 </ul>
 </li>
 <li><a href="#sec-1-8-13">1.8.13. Alias Commands</a></li>
@@ -400,9 +401,9 @@ Example:
 
 <pre class="src src-org">    <span class="org-org-link"><a href="wiki:Linux">wiki:Linux</a></span> 
 or 
-    <span class="org-org-link"><a href="wiki:Linux">wiki:Linux</a></span>
+    <span class="org-org-link"><a href="wiki:Linux">[[</a><a href="wiki:Linux">wiki:Linux</a><a href="wiki:Linux">]]</a></span>
 or
-    <span class="org-org-link"><a href="wiki:Linux">Linux</a></span>
+    <span class="org-org-link"><a href="wiki:Linux">[[wiki:Linux][</a><a href="wiki:Linux">Linux</a><a href="wiki:Linux">]]</a></span>
 </pre>
 </div>
 
@@ -419,9 +420,9 @@ Example:
 
 <pre class="src src-org">     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">wiki-asset-sys:Linux;LearnLinux.pdf</a></span>
 or 
-     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">wiki-asset-sys:Linux;LearnLinux.pdf</a></span>
+     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">[[</a><a href="wiki-asset-sys:Linux;LearnLinux.pdf">wiki-asset-sys:Linux;LearnLinux.pdf</a><a href="wiki-asset-sys:Linux;LearnLinux.pdf">]]</a></span>
 or
-     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">Book Learn Linux.pdf</a></span>
+     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">[[wiki-asset-sys:Linux;LearnLinux.pdf][</a><a href="wiki-asset-sys:Linux;LearnLinux.pdf">Book Learn Linux.pdf</a><a href="wiki-asset-sys:Linux;LearnLinux.pdf">]]</a></span>
 </pre>
 </div>
 
@@ -685,7 +686,7 @@ It will insert a hyperlink at point like:
 
 <div class="org-src-container">
 
-<pre class="src src-org"><span class="org-org-link"><a href="wiki:CNC%20-%20Computer%20Numerical%20Control">CNC - Computer Numerical Control</a></span>
+<pre class="src src-org"><span class="org-org-link"><a href="wiki:CNC%20-%20Computer%20Numerical%20Control">[[wiki:CNC%20-%20Computer%20Numerical%20Control][</a><a href="wiki:CNC%20-%20Computer%20Numerical%20Control">CNC - Computer Numerical Control</a><a href="wiki:CNC%20-%20Computer%20Numerical%20Control">]]</a></span>
 </pre>
 </div>
 
@@ -1087,7 +1088,7 @@ The default template is:
 <span class="org-org-meta-line">#+STARTUP:  content</span>
 
 
-- <span class="org-org-link"><a href="wiki:index">Index</a></span>
+- <span class="org-org-link"><a href="wiki:index">[[wiki:index][</a><a href="wiki:index">Index</a><a href="wiki:index">]]</a></span>
 
 - Related: 
 
@@ -1152,7 +1153,7 @@ wiki word and inserts at point a hyperlink to the wiki page.
 </div>
 
 <div id="outline-container-sec-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Commands Summary</h3>
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Command Summary</h3>
 <div class="outline-text-3" id="text-1-7">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1279,7 +1280,7 @@ wiki word and inserts at point a hyperlink to the wiki page.
 </tbody>
 <tbody>
 <tr>
-<td class="left">org-wiki-create</td>
+<td class="left">org-wiki-insert-new</td>
 <td class="left">Insert a link at point to a new org-wiki page. Click or follow the link to edit the new page.</td>
 </tr>
 
@@ -1366,6 +1367,11 @@ wiki word and inserts at point a hyperlink to the wiki page.
 <tr>
 <td class="left">org-wiki-insert-block</td>
 <td class="left">Insert quote block, source code code block, latex equation block and so on.</td>
+</tr>
+
+<tr>
+<td class="left">org-wiki-insert-latex</td>
+<td class="left">Insert latex templates, formulas, Greek letters and math symbols.</td>
 </tr>
 
 <tr>
@@ -1494,7 +1500,7 @@ wiki word and inserts at point a hyperlink to the wiki page.
 </table>
 
 <p>
-Not. complete.
+Not complete yet.
 </p>
 </div>
 </div>
@@ -1786,7 +1792,7 @@ pyscript.py it will insert a hyperlink at point as this.
 
 <div class="org-src-container">
 
-<pre class="src src-org"><span class="org-org-link"><a href="file:python/pyscript.py">pyscript.py</a></span>
+<pre class="src src-org"><span class="org-org-link"><a href="file:python/pyscript.py">[[file:python/pyscript.py][</a><a href="file:python/pyscript.py">pyscript.py</a><a href="file:python/pyscript.py">]]</a></span>
 </pre>
 </div>
 
@@ -1816,7 +1822,7 @@ rendered as an image when current page is exported to html.
 
 <div class="org-src-container">
 
-<pre class="src src-org"><span class="org-org-link"><a href="file:python/QTScreenshot.png">file:python/QTScreenshot.png</a></span>
+<pre class="src src-org"><span class="org-org-link"><a href="file:python/QTScreenshot.png">[[file:python/QTScreenshot.png][</a><a href="file:python/QTScreenshot.png">file:python/QTScreenshot.png</a><a href="file:python/QTScreenshot.png">]]</a></span>
 </pre>
 </div>
 </div>
@@ -1840,7 +1846,7 @@ the file contents and a hyperlink to it at point.
 
 <div class="org-src-container">
 
-<pre class="src src-org"> - File: <span class="org-org-link"><a href="file:Smalltalk%20programming/extendingClasses-number1.gst">file:Smalltalk programming/extendingClasses-number1.gst</a></span>
+<pre class="src src-org"> - File: <span class="org-org-link"><a href="file:Smalltalk%20programming/extendingClasses-number1.gst">[[file:Smalltalk%20programming/extendingClasses-number1.gst][</a><a href="file:Smalltalk%20programming/extendingClasses-number1.gst">file:Smalltalk programming/extendingClasses-number1.gst</a><a href="file:Smalltalk%20programming/extendingClasses-number1.gst">]]</a></span>
 
 <span class="org-org-block-begin-line">#+BEGIN_SRC text</span>
 <span class="org-org-block-background">  Number extend [
@@ -2245,8 +2251,35 @@ If the user select the template Python code block, it will insert:
 </div>
 
 <div id="outline-container-sec-1-8-12-3" class="outline-5">
-<h5 id="sec-1-8-12-3"><span class="section-number-5">1.8.12.3</span> Web Server</h5>
+<h5 id="sec-1-8-12-3"><span class="section-number-5">1.8.12.3</span> Insert math formula, latex template, equations, greek letters and etc.</h5>
 <div class="outline-text-5" id="text-1-8-12-3">
+<p>
+The command <code>M-x org-wiki-insert-latex</code> allows writing Latex formulas,
+Greek letters and math symbolls quickly. It provides a helm menu where
+the user can type, search and insert Latex formulas at point. 
+</p>
+
+<p>
+Example: 
+</p>
+
+
+<div class="figure">
+<p><a href="images/org-wiki-insert-latex1.png"><img src="images/org-wiki-insert-latex1.png" alt="org-wiki-insert-latex1.png" /></a>
+</p>
+</div>
+
+
+<div class="figure">
+<p><a href="images/org-wiki-insert-latex2.png"><img src="images/org-wiki-insert-latex2.png" alt="org-wiki-insert-latex2.png" /></a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-8-12-4" class="outline-5">
+<h5 id="sec-1-8-12-4"><span class="section-number-5">1.8.12.4</span> Web Server</h5>
+<div class="outline-text-5" id="text-1-8-12-4">
 <ul class="org-ul">
 <li><code>M-x org-wiki-server-toggle</code>  Start/stop static http server at
 org-wiki directory. 
@@ -2287,9 +2320,9 @@ access the static web site by entering the URL:
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-1-8-12-4" class="outline-5">
-<h5 id="sec-1-8-12-4"><span class="section-number-5">1.8.12.4</span> Panel - org-wiki-panel</h5>
-<div class="outline-text-5" id="text-1-8-12-4">
+<div id="outline-container-sec-1-8-12-5" class="outline-5">
+<h5 id="sec-1-8-12-5"><span class="section-number-5">1.8.12.5</span> Panel - org-wiki-panel</h5>
+<div class="outline-text-5" id="text-1-8-12-5">
 <ul class="org-ul">
 <li><code>M-x org-wiki-panel</code> - This command provides a command panel that
 can execute actions just typing few keys like magit or dired
@@ -2305,9 +2338,9 @@ buffer.
 </div>
 </div>
 
-<div id="outline-container-sec-1-8-12-5" class="outline-5">
-<h5 id="sec-1-8-12-5"><span class="section-number-5">1.8.12.5</span> Menu</h5>
-<div class="outline-text-5" id="text-1-8-12-5">
+<div id="outline-container-sec-1-8-12-6" class="outline-5">
+<h5 id="sec-1-8-12-6"><span class="section-number-5">1.8.12.6</span> Menu</h5>
+<div class="outline-text-5" id="text-1-8-12-6">
 <ul class="org-ul">
 <li><code>M-x org-wiki-make-menu</code> Shows a menu with org-wiki functions and
 command reminders.
@@ -2327,10 +2360,10 @@ command reminders.
 </div>
 </div>
 </div>
-<div id="outline-container-sec-1-8-12-6" class="outline-5">
-<h5 id="sec-1-8-12-6"><span class="section-number-5">1.8.12.6</span> Backup Commands</h5>
-<div class="outline-text-5" id="text-1-8-12-6">
-</div><ol class="org-ol"><li><a id="sec-1-8-12-6-1" name="sec-1-8-12-6-1"></a>Backup Settings<br  /><div class="outline-text-6" id="text-1-8-12-6-1">
+<div id="outline-container-sec-1-8-12-7" class="outline-5">
+<h5 id="sec-1-8-12-7"><span class="section-number-5">1.8.12.7</span> Backup Commands</h5>
+<div class="outline-text-5" id="text-1-8-12-7">
+</div><ol class="org-ol"><li><a id="sec-1-8-12-7-1" name="sec-1-8-12-7-1"></a>Backup Settings<br  /><div class="outline-text-6" id="text-1-8-12-7-1">
 <p>
 Org-wiki can create backups of org-wiki snapshots stored in zip files
 that can be useful to avoid losses or revert to a previous state.
@@ -2359,10 +2392,10 @@ $PATH variable.
 </div>
 </li></ol>
 </div>
-<div id="outline-container-sec-1-8-12-7" class="outline-5">
-<h5 id="sec-1-8-12-7"><span class="section-number-5">1.8.12.7</span> Paste Image</h5>
-<div class="outline-text-5" id="text-1-8-12-7">
-</div><ol class="org-ol"><li><a id="sec-1-8-12-7-1" name="sec-1-8-12-7-1"></a>Overview<br  /><div class="outline-text-6" id="text-1-8-12-7-1">
+<div id="outline-container-sec-1-8-12-8" class="outline-5">
+<h5 id="sec-1-8-12-8"><span class="section-number-5">1.8.12.8</span> Paste Image</h5>
+<div class="outline-text-5" id="text-1-8-12-8">
+</div><ol class="org-ol"><li><a id="sec-1-8-12-8-1" name="sec-1-8-12-8-1"></a>Overview<br  /><div class="outline-text-6" id="text-1-8-12-8-1">
 <p>
 This command requires the utility  <a href="https://github.com/caiorss/clip.jar">clip.jar</a> and Java runtime to be available
 at the $PATH variable.  
@@ -2395,7 +2428,7 @@ curl -O -L https://github.com/caiorss/clip.jar/blob/build/Clip.jar
 </div>
 </li>
 
-<li><a id="sec-1-8-12-7-2" name="sec-1-8-12-7-2"></a>M-x org-wiki-paste-image<br  /><div class="outline-text-6" id="text-1-8-12-7-2">
+<li><a id="sec-1-8-12-8-2" name="sec-1-8-12-8-2"></a>M-x org-wiki-paste-image<br  /><div class="outline-text-6" id="text-1-8-12-8-2">
 <ul class="org-ul">
 <li><code>M-x org-wiki-paste-image</code> Ask the user for the image file name and
 writes the image from clipboard to the file. 
@@ -2427,7 +2460,7 @@ file:Linux/Unix.png
 </div>
 </li>
 
-<li><a id="sec-1-8-12-7-3" name="sec-1-8-12-7-3"></a>M-x org-wiki-paste-image-uuid<br  /><div class="outline-text-6" id="text-1-8-12-7-3">
+<li><a id="sec-1-8-12-8-3" name="sec-1-8-12-8-3"></a>M-x org-wiki-paste-image-uuid<br  /><div class="outline-text-6" id="text-1-8-12-8-3">
 <ul class="org-ul">
 <li><code>M-x org-wiki-paste-image-uuid</code> Paste an image from clipboard with
 automatically generated name (uuid). 
@@ -2813,7 +2846,7 @@ Example:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Caio Rodrigues Soares Silva</p>
-<p class="date">Created: 2018-01-04 Thu 15:23</p>
+<p class="date">Created: 2018-01-08 Mon 12:37</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
