@@ -498,7 +498,7 @@ This variable can also be set programatically with:
 
  - References to existing pages can be inserted with =M-x org-wiki-insert=.
 
-** Commands Summary 
+** Command Summary 
 
 | M-x Command                     | Description                                                                                       |
 |---------------------------------+---------------------------------------------------------------------------------------------------|
@@ -527,7 +527,7 @@ This variable can also be set programatically with:
 |                                 |                                                                                                   |
 | *Insert Commands*               |                                                                                                   |
 |---------------------------------+---------------------------------------------------------------------------------------------------|
-| org-wiki-create                 | Insert a link at point to a new org-wiki page. Click or follow the link to edit the new page.     |
+| org-wiki-insert-new             | Insert a link at point to a new org-wiki page. Click or follow the link to edit the new page.     |
 | org-wiki-insert-link            | Insert a link at point to an existing org-wiki page.                                              |
 | org-wiki-header                 | Insert at the top of an org-wiki buffer an org-mode header template.                              |
 |                                 |                                                                                                   |
@@ -545,6 +545,7 @@ This variable can also be set programatically with:
 |                                 |                                                                                                   |
 | org-wiki-insert-symbol          | Insert Greek letters, math and physics symbols such as α, γ, Δ, Σ, ∞, ℉                           |
 | org-wiki-insert-block           | Insert quote block, source code code block, latex equation block and so on.                       |
+| org-wiki-insert-latex           | Insert latex templates, formulas, Greek letters and math symbols.                                 |
 |                                 |                                                                                                   |
 | *Directory*                     |                                                                                                   |
 |---------------------------------+---------------------------------------------------------------------------------------------------|
@@ -573,7 +574,7 @@ This variable can also be set programatically with:
 |                                 |                                                                                                   |
 |                                 |                                                                                                   |
 
-Not. complete.
+Not complete yet.
 
 ** Commands
 *** Help 
@@ -979,6 +980,18 @@ If the user select the template Python code block, it will insert:
 
   ,#+END_SRC
 #+END_SRC
+
+**** Insert math formula, latex template, equations, greek letters and etc.
+
+The command =M-x org-wiki-insert-latex= allows writing Latex formulas,
+Greek letters and math symbolls quickly. It provides a helm menu where
+the user can type, search and insert Latex formulas at point. 
+
+Example: 
+
+[[file:images/org-wiki-insert-latex1.png][file:images/org-wiki-insert-latex1.png]]
+
+[[file:images/org-wiki-insert-latex2.png][file:images/org-wiki-insert-latex2.png]]
 
 **** Web Server 
 
