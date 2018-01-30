@@ -1576,6 +1576,7 @@ Toggle
         ("Formula Fraction num/den - ½" . "\\frac{num}{den}")
         ("Formula Summation - Σ from a to b"    . "\\sum_{a}^{b}")
         ("Formula Product - Π from a to b" . "\\prod_{a}^{b}")
+        ("Formula Binomial coefficient (n k) = n! / ((n -k)! x k!) " . "{n \\choose k}")
        
         ("Calculus Limit lim(x -> ∞) f(x)" . "\\lim_{x \\to \\infty} f(x)")
         ("Calculus Integral  - ∫ from a to b"  . "\\int_{a}^{b}")
