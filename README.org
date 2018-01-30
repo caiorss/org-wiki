@@ -1125,7 +1125,7 @@ file:Linux/fba53c12-3f23-4728-9f52-a26a3d285d7c.png
  - =M-x org-wiki-latex= - Display latex formulas. Alias to M-x
    org-preview-latex-fragment. It requires latex installed.
 
-** Suggestions
+** Tips and tricks 
 *** Shortcuts 
 
 You might want shortcuts for frequent commands: 
@@ -1185,15 +1185,20 @@ You might want shortcuts for frequent commands:
 (defalias 'w-close #'org-wiki-close)
 #+END_SRC
 
-*** Helm commands
+*** Equation Rendering in Web browsers 
 
-Some Helm commands are very handy to navigate and search org-mode
-files.
+ + TL;DR
+   - Formulas are displayed faster in Firefox.
+   - Mathml is the best Mathjax formula rendering.
 
- - M-x helm-org-in-buffer-headings - To filter the headings of
-   org-files.
+[[https://www.mathjax.org/][MathJax]] Latex rendering is slow in Chrome browser and in its
+open-source relative Chromium browser. An alternative way to render
+formulas faster is set MathJax to use [[https://en.wikipedia.org/wiki/MathML][mathml]] rendering, but it is not
+well supported by all browsers such as Chrome e Internet Explorer.
+Google has also dropped mathml supoort in new versions of the browser. 
 
- - M-x helm-occur - Occur-like command with helm interface.
+So, until now, the best browser for fast displaying formulas and
+equations is Firefox.
 
 *** Screenshot tools 
 
