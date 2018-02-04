@@ -13,6 +13,9 @@
  - Add command org-wiki-insert-symbol to insert symbols such as α, ∫,
    Δx, Ω, ¾ ...
  - Add command org-wiki-insert-block 
-
+*** version 5.1 
+ - Fix bugs in the function org-wiki-insert-latex. 
+ - Add new latex templates in the command org-wiki-insert-latex. 
+ - Add new tips and tricks. 
 
 
