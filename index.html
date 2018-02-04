@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>org-wiki</title>
-<!-- 2018-01-08 Mon 12:37 -->
+<!-- 2018-02-03 Sat 23:54 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Caio Rodrigues Soares Silva" />
@@ -147,123 +147,124 @@ for the JavaScript code in this tag.
 <li><a href="#sec-1">1. Org-wiki</a>
 <ul>
 <li><a href="#sec-1-1">1.1. Overview</a></li>
-<li><a href="#sec-1-2">1.2. FAQ</a></li>
-<li><a href="#sec-1-3">1.3. Demos</a></li>
-<li><a href="#sec-1-4">1.4. Screenshots</a></li>
-<li><a href="#sec-1-5">1.5. Workflow</a>
+<li><a href="#sec-1-2">1.2. Acknowledgments</a></li>
+<li><a href="#sec-1-3">1.3. FAQ</a></li>
+<li><a href="#sec-1-4">1.4. Demos</a></li>
+<li><a href="#sec-1-5">1.5. Screenshots</a></li>
+<li><a href="#sec-1-6">1.6. Workflow</a>
 <ul>
-<li><a href="#sec-1-5-1">1.5.1. Switching wiki</a></li>
-<li><a href="#sec-1-5-2">1.5.2. Create a page - way 1</a></li>
-<li><a href="#sec-1-5-3">1.5.3. Create a page - way 2</a></li>
-<li><a href="#sec-1-5-4">1.5.4. Browse a page</a></li>
+<li><a href="#sec-1-6-1">1.6.1. Switching wiki</a></li>
+<li><a href="#sec-1-6-2">1.6.2. Create a page - way 1</a></li>
+<li><a href="#sec-1-6-3">1.6.3. Create a page - way 2</a></li>
+<li><a href="#sec-1-6-4">1.6.4. Browse a page</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-6">1.6. Install</a>
+<li><a href="#sec-1-7">1.7. Install</a>
 <ul>
-<li><a href="#sec-1-6-1">1.6.1. Installation Methods</a>
+<li><a href="#sec-1-7-1">1.7.1. Installation Methods</a>
 <ul>
-<li><a href="#sec-1-6-1-1">1.6.1.1. Method 1 - Bootstrap installer</a></li>
-<li><a href="#sec-1-6-1-2">1.6.1.2. Method 2 - El-get</a></li>
-<li><a href="#sec-1-6-1-3">1.6.1.3. Method 3 - Manual installation</a></li>
+<li><a href="#sec-1-7-1-1">1.7.1.1. Method 1 - Bootstrap installer</a></li>
+<li><a href="#sec-1-7-1-2">1.7.1.2. Method 2 - El-get</a></li>
+<li><a href="#sec-1-7-1-3">1.7.1.3. Method 3 - Manual installation</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-6-2">1.6.2. Configuration</a>
+<li><a href="#sec-1-7-2">1.7.2. Configuration</a>
 <ul>
-<li><a href="#sec-1-6-2-1">1.6.2.1. Basic settings</a></li>
-<li><a href="#sec-1-6-2-2">1.6.2.2. Paths to Wiki locations</a></li>
-<li><a href="#sec-1-6-2-3">1.6.2.3. Open org-wiki pages in read-only</a></li>
-<li><a href="#sec-1-6-2-4">1.6.2.4. Close all wiki pages when switching wiki</a></li>
-<li><a href="#sec-1-6-2-5">1.6.2.5. Server settings</a></li>
-<li><a href="#sec-1-6-2-6">1.6.2.6. Export Settings</a></li>
-<li><a href="#sec-1-6-2-7">1.6.2.7. Template</a></li>
+<li><a href="#sec-1-7-2-1">1.7.2.1. Basic settings</a></li>
+<li><a href="#sec-1-7-2-2">1.7.2.2. Paths to Wiki locations</a></li>
+<li><a href="#sec-1-7-2-3">1.7.2.3. Open org-wiki pages in read-only</a></li>
+<li><a href="#sec-1-7-2-4">1.7.2.4. Close all wiki pages when switching wiki</a></li>
+<li><a href="#sec-1-7-2-5">1.7.2.5. Server settings</a></li>
+<li><a href="#sec-1-7-2-6">1.7.2.6. Export Settings</a></li>
+<li><a href="#sec-1-7-2-7">1.7.2.7. Template</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-6-3">1.6.3. Start the wiki</a></li>
+<li><a href="#sec-1-7-3">1.7.3. Start the wiki</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-7">1.7. Command Summary</a></li>
-<li><a href="#sec-1-8">1.8. Commands</a>
+<li><a href="#sec-1-8">1.8. Command Summary</a></li>
+<li><a href="#sec-1-9">1.9. Commands</a>
 <ul>
-<li><a href="#sec-1-8-1">1.8.1. Help</a></li>
-<li><a href="#sec-1-8-2">1.8.2. Open the index page</a>
+<li><a href="#sec-1-9-1">1.9.1. Help</a></li>
+<li><a href="#sec-1-9-2">1.9.2. Open the index page</a>
 <ul>
-<li><a href="#sec-1-8-2-1">1.8.2.1. M-x org-wiki-index</a></li>
-<li><a href="#sec-1-8-2-2">1.8.2.2. M-x org-wiki-index-frame</a></li>
+<li><a href="#sec-1-9-2-1">1.9.2.1. M-x org-wiki-index</a></li>
+<li><a href="#sec-1-9-2-2">1.9.2.2. M-x org-wiki-index-frame</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-8-3">1.8.3. Pages</a>
+<li><a href="#sec-1-9-3">1.9.3. Pages</a>
 <ul>
-<li><a href="#sec-1-8-3-1">1.8.3.1. M-x org-wiki-helm</a></li>
-<li><a href="#sec-1-8-3-2">1.8.3.2. M-x org-wiki-switch</a></li>
-<li><a href="#sec-1-8-3-3">1.8.3.3. M-x org-wiki-helm-frame</a></li>
-<li><a href="#sec-1-8-3-4">1.8.3.4. M-x org-wiki-helm-read-only</a></li>
-<li><a href="#sec-1-8-3-5">1.8.3.5. M-x org-wiki-make-page</a></li>
-<li><a href="#sec-1-8-3-6">1.8.3.6. M-x org-wiki-close</a></li>
-<li><a href="#sec-1-8-3-7">1.8.3.7. M-x org-wiki-close-image</a></li>
+<li><a href="#sec-1-9-3-1">1.9.3.1. M-x org-wiki-helm</a></li>
+<li><a href="#sec-1-9-3-2">1.9.3.2. M-x org-wiki-switch</a></li>
+<li><a href="#sec-1-9-3-3">1.9.3.3. M-x org-wiki-helm-frame</a></li>
+<li><a href="#sec-1-9-3-4">1.9.3.4. M-x org-wiki-helm-read-only</a></li>
+<li><a href="#sec-1-9-3-5">1.9.3.5. M-x org-wiki-make-page</a></li>
+<li><a href="#sec-1-9-3-6">1.9.3.6. M-x org-wiki-close</a></li>
+<li><a href="#sec-1-9-3-7">1.9.3.7. M-x org-wiki-close-image</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-8-4">1.8.4. Insert Hyperlink to wiki pages or asset files</a>
+<li><a href="#sec-1-9-4">1.9.4. Insert Hyperlink to wiki pages or asset files</a>
 <ul>
-<li><a href="#sec-1-8-4-1">1.8.4.1. M-x org-wiki-insert-link</a></li>
-<li><a href="#sec-1-8-4-2">1.8.4.2. M-x org-wiki-header</a></li>
-<li><a href="#sec-1-8-4-3">1.8.4.3. M-x org-wiki-asset-insert</a></li>
+<li><a href="#sec-1-9-4-1">1.9.4.1. M-x org-wiki-insert-link</a></li>
+<li><a href="#sec-1-9-4-2">1.9.4.2. M-x org-wiki-header</a></li>
+<li><a href="#sec-1-9-4-3">1.9.4.3. M-x org-wiki-asset-insert</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-8-5">1.8.5. Asset files / Attachments</a>
+<li><a href="#sec-1-9-5">1.9.5. Asset files / Attachments</a>
 <ul>
-<li><a href="#sec-1-8-5-1">1.8.5.1. Commands to open page's asset directory</a></li>
-<li><a href="#sec-1-8-5-2">1.8.5.2. Commands to insert hyperlink to files</a></li>
-<li><a href="#sec-1-8-5-3">1.8.5.3. Commands to open files directly</a></li>
-<li><a href="#sec-1-8-5-4">1.8.5.4. Commands to Download Files</a></li>
+<li><a href="#sec-1-9-5-1">1.9.5.1. Commands to open page's asset directory</a></li>
+<li><a href="#sec-1-9-5-2">1.9.5.2. Commands to insert hyperlink to files</a></li>
+<li><a href="#sec-1-9-5-3">1.9.5.3. Commands to open files directly</a></li>
+<li><a href="#sec-1-9-5-4">1.9.5.4. Commands to Download Files</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-8-6">1.8.6. Open wiki directory</a>
+<li><a href="#sec-1-9-6">1.9.6. Open wiki directory</a>
 <ul>
-<li><a href="#sec-1-8-6-1">1.8.6.1. M-x org-wiki-dired</a></li>
-<li><a href="#sec-1-8-6-2">1.8.6.2. M-x org-wiki-dired-all</a></li>
+<li><a href="#sec-1-9-6-1">1.9.6.1. M-x org-wiki-dired</a></li>
+<li><a href="#sec-1-9-6-2">1.9.6.2. M-x org-wiki-dired-all</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-8-7">1.8.7. Export all pages to html</a>
+<li><a href="#sec-1-9-7">1.9.7. Export all pages to html</a>
 <ul>
-<li><a href="#sec-1-8-7-1">1.8.7.1. M-x org-wiki-export-html</a></li>
-<li><a href="#sec-1-8-7-2">1.8.7.2. M-x org-wiki-index-html</a></li>
+<li><a href="#sec-1-9-7-1">1.9.7.1. M-x org-wiki-export-html</a></li>
+<li><a href="#sec-1-9-7-2">1.9.7.2. M-x org-wiki-index-html</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-8-8">1.8.8. Search</a></li>
-<li><a href="#sec-1-8-9">1.8.9. Copy Commands</a></li>
-<li><a href="#sec-1-8-10">1.8.10. M-x org-wiki-backup-make</a></li>
-<li><a href="#sec-1-8-11">1.8.11. M-x org-wiki-backup-dir</a></li>
-<li><a href="#sec-1-8-12">1.8.12. Utilities</a>
+<li><a href="#sec-1-9-8">1.9.8. Search</a></li>
+<li><a href="#sec-1-9-9">1.9.9. Copy Commands</a></li>
+<li><a href="#sec-1-9-10">1.9.10. M-x org-wiki-backup-make</a></li>
+<li><a href="#sec-1-9-11">1.9.11. M-x org-wiki-backup-dir</a></li>
+<li><a href="#sec-1-9-12">1.9.12. Utilities</a>
 <ul>
-<li><a href="#sec-1-8-12-1">1.8.12.1. Insert greek letters, math, physics and currency symbols</a></li>
-<li><a href="#sec-1-8-12-2">1.8.12.2. Insert org-mode code blocks, tables, quotes and etc.</a></li>
-<li><a href="#sec-1-8-12-3">1.8.12.3. Insert math formula, latex template, equations, greek letters and etc.</a></li>
-<li><a href="#sec-1-8-12-4">1.8.12.4. Web Server</a></li>
-<li><a href="#sec-1-8-12-5">1.8.12.5. Panel - org-wiki-panel</a></li>
-<li><a href="#sec-1-8-12-6">1.8.12.6. Menu</a></li>
-<li><a href="#sec-1-8-12-7">1.8.12.7. Backup Commands</a></li>
-<li><a href="#sec-1-8-12-8">1.8.12.8. Paste Image</a></li>
+<li><a href="#sec-1-9-12-1">1.9.12.1. Insert greek letters, math, physics and currency symbols</a></li>
+<li><a href="#sec-1-9-12-2">1.9.12.2. Insert org-mode code blocks, tables, quotes and etc.</a></li>
+<li><a href="#sec-1-9-12-3">1.9.12.3. Insert math formula, latex template, equations, greek letters and etc.</a></li>
+<li><a href="#sec-1-9-12-4">1.9.12.4. Web Server</a></li>
+<li><a href="#sec-1-9-12-5">1.9.12.5. Panel - org-wiki-panel</a></li>
+<li><a href="#sec-1-9-12-6">1.9.12.6. Menu</a></li>
+<li><a href="#sec-1-9-12-7">1.9.12.7. Backup Commands</a></li>
+<li><a href="#sec-1-9-12-8">1.9.12.8. Paste Image</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-8-13">1.8.13. Alias Commands</a></li>
+<li><a href="#sec-1-9-13">1.9.13. Alias Commands</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-9">1.9. Suggestions</a>
+<li><a href="#sec-1-10">1.10. Tips and tricks</a>
 <ul>
-<li><a href="#sec-1-9-1">1.9.1. Shortcuts</a></li>
-<li><a href="#sec-1-9-2">1.9.2. Helm commands</a></li>
-<li><a href="#sec-1-9-3">1.9.3. Screenshot tools</a></li>
-<li><a href="#sec-1-9-4">1.9.4. Bookmarklets</a></li>
-<li><a href="#sec-1-9-5">1.9.5. Use the best tool of the job</a>
+<li><a href="#sec-1-10-1">1.10.1. Shortcuts</a></li>
+<li><a href="#sec-1-10-2">1.10.2. Screenshot tools</a></li>
+<li><a href="#sec-1-10-3">1.10.3. Bookmarklets</a></li>
+<li><a href="#sec-1-10-4">1.10.4. Equation Rendering in Web browsers</a></li>
+<li><a href="#sec-1-10-5">1.10.5. Use the best tool of the job</a>
 <ul>
-<li><a href="#sec-1-9-5-1">1.9.5.1. Store, organize, and index documents, citations and etc.</a></li>
-<li><a href="#sec-1-9-5-2">1.9.5.2. Write very formal thesis, paper, books, manuals and etc &#x2026;</a></li>
+<li><a href="#sec-1-10-5-1">1.10.5.1. Store, organize, and index documents, citations and etc.</a></li>
+<li><a href="#sec-1-10-5-2">1.10.5.2. Write very formal thesis, paper, books, manuals and etc &#x2026;</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-9-6">1.9.6. Modify it</a></li>
+<li><a href="#sec-1-10-6">1.10.6. Modify it</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-10">1.10. TODOLIST</a></li>
+<li><a href="#sec-1-11">1.11. TODOLIST</a></li>
 </ul>
 </li>
 </ul>
@@ -401,9 +402,9 @@ Example:
 
 <pre class="src src-org">    <span class="org-org-link"><a href="wiki:Linux">wiki:Linux</a></span> 
 or 
-    <span class="org-org-link"><a href="wiki:Linux">[[</a><a href="wiki:Linux">wiki:Linux</a><a href="wiki:Linux">]]</a></span>
+    <span class="org-org-link"><a href="wiki:Linux">wiki:Linux</a></span>
 or
-    <span class="org-org-link"><a href="wiki:Linux">[[wiki:Linux][</a><a href="wiki:Linux">Linux</a><a href="wiki:Linux">]]</a></span>
+    <span class="org-org-link"><a href="wiki:Linux">Linux</a></span>
 </pre>
 </div>
 
@@ -420,9 +421,9 @@ Example:
 
 <pre class="src src-org">     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">wiki-asset-sys:Linux;LearnLinux.pdf</a></span>
 or 
-     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">[[</a><a href="wiki-asset-sys:Linux;LearnLinux.pdf">wiki-asset-sys:Linux;LearnLinux.pdf</a><a href="wiki-asset-sys:Linux;LearnLinux.pdf">]]</a></span>
+     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">wiki-asset-sys:Linux;LearnLinux.pdf</a></span>
 or
-     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">[[wiki-asset-sys:Linux;LearnLinux.pdf][</a><a href="wiki-asset-sys:Linux;LearnLinux.pdf">Book Learn Linux.pdf</a><a href="wiki-asset-sys:Linux;LearnLinux.pdf">]]</a></span>
+     <span class="org-org-link"><a href="wiki-asset-sys:Linux;LearnLinux.pdf">Book Learn Linux.pdf</a></span>
 </pre>
 </div>
 
@@ -434,8 +435,18 @@ default system application.
 </div>
 
 <div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> FAQ</h3>
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Acknowledgments</h3>
 <div class="outline-text-3" id="text-1-2">
+<p>
+Thanks everybody who helped this project with bugfixes, suggestions
+and encouragements. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> FAQ</h3>
+<div class="outline-text-3" id="text-1-3">
 <p>
 <b>What is a personal wiki/ desktop wiki?</b>
 </p>
@@ -495,9 +506,9 @@ You can see Org-mode Screencasts and reviews here:
 </div>
 </div>
 
-<div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Demos</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Demos</h3>
+<div class="outline-text-3" id="text-1-4">
 <ul class="org-ul">
 <li>(1) Browsing Index: M-x org-wiki/index
 </li>
@@ -566,9 +577,9 @@ You can view a sample wiki exported to html here:
 </div>
 </div>
 
-<div id="outline-container-sec-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Screenshots</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Screenshots</h3>
+<div class="outline-text-3" id="text-1-5">
 <ul class="org-ul">
 <li>1. Command <code>M-x org-wiki-index</code> Open the wiki index page (file index.org) 
 </li>
@@ -646,12 +657,12 @@ files that contains "System.Windows string".
 </div>
 </div>
 </div>
-<div id="outline-container-sec-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Workflow</h3>
-<div class="outline-text-3" id="text-1-5">
-</div><div id="outline-container-sec-1-5-1" class="outline-4">
-<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> Switching wiki</h4>
-<div class="outline-text-4" id="text-1-5-1">
+<div id="outline-container-sec-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Workflow</h3>
+<div class="outline-text-3" id="text-1-6">
+</div><div id="outline-container-sec-1-6-1" class="outline-4">
+<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> Switching wiki</h4>
+<div class="outline-text-4" id="text-1-6-1">
 <p>
 Now org wiki supports multiple wikis or root directories, but only
 one wiki can be used at a time. So, to switch wiki type:
@@ -664,9 +675,9 @@ one wiki can be used at a time. So, to switch wiki type:
 </div>
 </div>
 
-<div id="outline-container-sec-1-5-2" class="outline-4">
-<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> Create a page - way 1</h4>
-<div class="outline-text-4" id="text-1-5-2">
+<div id="outline-container-sec-1-6-2" class="outline-4">
+<h4 id="sec-1-6-2"><span class="section-number-4">1.6.2</span> Create a page - way 1</h4>
+<div class="outline-text-4" id="text-1-6-2">
 <p>
 To create a page do:
 </p>
@@ -686,7 +697,7 @@ It will insert a hyperlink at point like:
 
 <div class="org-src-container">
 
-<pre class="src src-org"><span class="org-org-link"><a href="wiki:CNC%20-%20Computer%20Numerical%20Control">[[wiki:CNC%20-%20Computer%20Numerical%20Control][</a><a href="wiki:CNC%20-%20Computer%20Numerical%20Control">CNC - Computer Numerical Control</a><a href="wiki:CNC%20-%20Computer%20Numerical%20Control">]]</a></span>
+<pre class="src src-org"><span class="org-org-link"><a href="wiki:CNC%20-%20Computer%20Numerical%20Control">CNC - Computer Numerical Control</a></span>
 </pre>
 </div>
 
@@ -697,9 +708,9 @@ It will insert a hyperlink at point like:
 </div>
 </div>
 
-<div id="outline-container-sec-1-5-3" class="outline-4">
-<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> Create a page - way 2</h4>
-<div class="outline-text-4" id="text-1-5-3">
+<div id="outline-container-sec-1-6-3" class="outline-4">
+<h4 id="sec-1-6-3"><span class="section-number-4">1.6.3</span> Create a page - way 2</h4>
+<div class="outline-text-4" id="text-1-6-3">
 <p>
 Run <code>M-x org-wiki-new</code> and enter the page name, for instance 'Unix System Calls',
 it will create the file 'Unix System Calls.org' in the root directory
@@ -714,9 +725,9 @@ easier to categorize and navigate the pages.
 </div>
 </div>
 
-<div id="outline-container-sec-1-5-4" class="outline-4">
-<h4 id="sec-1-5-4"><span class="section-number-4">1.5.4</span> Browse a page</h4>
-<div class="outline-text-4" id="text-1-5-4">
+<div id="outline-container-sec-1-6-4" class="outline-4">
+<h4 id="sec-1-6-4"><span class="section-number-4">1.6.4</span> Browse a page</h4>
+<div class="outline-text-4" id="text-1-6-4">
 <p>
 The navigation can be done by running
 </p>
@@ -750,15 +761,15 @@ terminology for GUI window).
 </div>
 </div>
 
-<div id="outline-container-sec-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Install</h3>
-<div class="outline-text-3" id="text-1-6">
-</div><div id="outline-container-sec-1-6-1" class="outline-4">
-<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> Installation Methods</h4>
-<div class="outline-text-4" id="text-1-6-1">
-</div><div id="outline-container-sec-1-6-1-1" class="outline-5">
-<h5 id="sec-1-6-1-1"><span class="section-number-5">1.6.1.1</span> Method 1 - Bootstrap installer</h5>
-<div class="outline-text-5" id="text-1-6-1-1">
+<div id="outline-container-sec-1-7" class="outline-3">
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Install</h3>
+<div class="outline-text-3" id="text-1-7">
+</div><div id="outline-container-sec-1-7-1" class="outline-4">
+<h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> Installation Methods</h4>
+<div class="outline-text-4" id="text-1-7-1">
+</div><div id="outline-container-sec-1-7-1-1" class="outline-5">
+<h5 id="sec-1-7-1-1"><span class="section-number-5">1.7.1.1</span> Method 1 - Bootstrap installer</h5>
+<div class="outline-text-5" id="text-1-7-1-1">
 <p>
 Evaluate this code in the scratch buffer that will install all
 dependencies and this package. The scratch buffer can be evaluated
@@ -779,9 +790,9 @@ with <code>M-x eval-buffer</code>.
 </div>
 </div>
 
-<div id="outline-container-sec-1-6-1-2" class="outline-5">
-<h5 id="sec-1-6-1-2"><span class="section-number-5">1.6.1.2</span> Method 2 - El-get</h5>
-<div class="outline-text-5" id="text-1-6-1-2">
+<div id="outline-container-sec-1-7-1-2" class="outline-5">
+<h5 id="sec-1-7-1-2"><span class="section-number-5">1.7.1.2</span> Method 2 - El-get</h5>
+<div class="outline-text-5" id="text-1-7-1-2">
 <p>
 Just copy this piece of code to scratch buffer and eveluate the buffer
 with <code>M-x eval-buffer</code>. It is assumed that <a href="https://github.com/dimitri/el-get">el-get</a> is already installed. 
@@ -799,9 +810,9 @@ with <code>M-x eval-buffer</code>. It is assumed that <a href="https://github.co
 </div>
 </div>
 
-<div id="outline-container-sec-1-6-1-3" class="outline-5">
-<h5 id="sec-1-6-1-3"><span class="section-number-5">1.6.1.3</span> Method 3 - Manual installation</h5>
-<div class="outline-text-5" id="text-1-6-1-3">
+<div id="outline-container-sec-1-7-1-3" class="outline-5">
+<h5 id="sec-1-7-1-3"><span class="section-number-5">1.7.1.3</span> Method 3 - Manual installation</h5>
+<div class="outline-text-5" id="text-1-7-1-3">
 <p>
 Copy the package to the desired location. 
 </p>
@@ -820,12 +831,12 @@ mkdir -p ~/org/wiki    <span class="org-comment-delimiter"># </span><span class=
 </div>
 </div>
 </div>
-<div id="outline-container-sec-1-6-2" class="outline-4">
-<h4 id="sec-1-6-2"><span class="section-number-4">1.6.2</span> Configuration</h4>
-<div class="outline-text-4" id="text-1-6-2">
-</div><div id="outline-container-sec-1-6-2-1" class="outline-5">
-<h5 id="sec-1-6-2-1"><span class="section-number-5">1.6.2.1</span> Basic settings</h5>
-<div class="outline-text-5" id="text-1-6-2-1">
+<div id="outline-container-sec-1-7-2" class="outline-4">
+<h4 id="sec-1-7-2"><span class="section-number-4">1.7.2</span> Configuration</h4>
+<div class="outline-text-4" id="text-1-7-2">
+</div><div id="outline-container-sec-1-7-2-1" class="outline-5">
+<h5 id="sec-1-7-2-1"><span class="section-number-5">1.7.2.1</span> Basic settings</h5>
+<div class="outline-text-5" id="text-1-7-2-1">
 <p>
 Make org-wiki directory 
 </p>
@@ -853,9 +864,9 @@ varibles or with <code>M-x customize-group org-wiki</code>.
 </div>
 </div>
 
-<div id="outline-container-sec-1-6-2-2" class="outline-5">
-<h5 id="sec-1-6-2-2"><span class="section-number-5">1.6.2.2</span> Paths to Wiki locations</h5>
-<div class="outline-text-5" id="text-1-6-2-2">
+<div id="outline-container-sec-1-7-2-2" class="outline-5">
+<h5 id="sec-1-7-2-2"><span class="section-number-5">1.7.2.2</span> Paths to Wiki locations</h5>
+<div class="outline-text-5" id="text-1-7-2-2">
 <p>
 This new version supports multiples org-wiki directories or multiple
 wikis in different directories, but only one wiki can be used at a
@@ -918,9 +929,9 @@ In Windows it can be:
 </div>
 </div>
 
-<div id="outline-container-sec-1-6-2-3" class="outline-5">
-<h5 id="sec-1-6-2-3"><span class="section-number-5">1.6.2.3</span> Open org-wiki pages in read-only</h5>
-<div class="outline-text-5" id="text-1-6-2-3">
+<div id="outline-container-sec-1-7-2-3" class="outline-5">
+<h5 id="sec-1-7-2-3"><span class="section-number-5">1.7.2.3</span> Open org-wiki pages in read-only</h5>
+<div class="outline-text-5" id="text-1-7-2-3">
 <p>
 If the custom variable <code>org-wiki-default-read-only</code> is set to true (t)
 org-wiki pages are opened in read-only mode. The default value of this
@@ -957,9 +968,9 @@ The read-only mode can be toggled with <code>M-x toggle-read-only</code> or C-x 
 </div>
 </div>
 
-<div id="outline-container-sec-1-6-2-4" class="outline-5">
-<h5 id="sec-1-6-2-4"><span class="section-number-5">1.6.2.4</span> Close all wiki pages when switching wiki</h5>
-<div class="outline-text-5" id="text-1-6-2-4">
+<div id="outline-container-sec-1-7-2-4" class="outline-5">
+<h5 id="sec-1-7-2-4"><span class="section-number-5">1.7.2.4</span> Close all wiki pages when switching wiki</h5>
+<div class="outline-text-5" id="text-1-7-2-4">
 <p>
 If the custom variable <code>org-wiki-close-root-switch</code> (default value
 true, t) is set to true, it will close all org-wiki pages of the
@@ -989,9 +1000,9 @@ Disable
 </div>
 </div>
 
-<div id="outline-container-sec-1-6-2-5" class="outline-5">
-<h5 id="sec-1-6-2-5"><span class="section-number-5">1.6.2.5</span> Server settings</h5>
-<div class="outline-text-5" id="text-1-6-2-5">
+<div id="outline-container-sec-1-7-2-5" class="outline-5">
+<h5 id="sec-1-7-2-5"><span class="section-number-5">1.7.2.5</span> Server settings</h5>
+<div class="outline-text-5" id="text-1-7-2-5">
 <p>
 Org-wiki can serve the pages exported to html with python help. 
 </p>
@@ -1029,9 +1040,9 @@ It can be set with:
 </div>
 </div>
 
-<div id="outline-container-sec-1-6-2-6" class="outline-5">
-<h5 id="sec-1-6-2-6"><span class="section-number-5">1.6.2.6</span> Export Settings</h5>
-<div class="outline-text-5" id="text-1-6-2-6">
+<div id="outline-container-sec-1-7-2-6" class="outline-5">
+<h5 id="sec-1-7-2-6"><span class="section-number-5">1.7.2.6</span> Export Settings</h5>
+<div class="outline-text-5" id="text-1-7-2-6">
 <p>
 In order to the html export work the path to emacs executable
 directory must be in the $PATH variable. In some OS like Windows where
@@ -1063,9 +1074,9 @@ The menu can be installed permanently by adding the init file:
 </div>
 </div>
 
-<div id="outline-container-sec-1-6-2-7" class="outline-5">
-<h5 id="sec-1-6-2-7"><span class="section-number-5">1.6.2.7</span> Template</h5>
-<div class="outline-text-5" id="text-1-6-2-7">
+<div id="outline-container-sec-1-7-2-7" class="outline-5">
+<h5 id="sec-1-7-2-7"><span class="section-number-5">1.7.2.7</span> Template</h5>
+<div class="outline-text-5" id="text-1-7-2-7">
 <p>
 The user can set the org-wiki template used to create org-wiki files
 by changing the custom variable with 
@@ -1088,7 +1099,7 @@ The default template is:
 <span class="org-org-meta-line">#+STARTUP:  content</span>
 
 
-- <span class="org-org-link"><a href="wiki:index">[[wiki:index][</a><a href="wiki:index">Index</a><a href="wiki:index">]]</a></span>
+- <span class="org-org-link"><a href="wiki:index">Index</a></span>
 
 - Related: 
 
@@ -1134,9 +1145,9 @@ This variable can also be set programatically with:
 </div>
 </div>
 
-<div id="outline-container-sec-1-6-3" class="outline-4">
-<h4 id="sec-1-6-3"><span class="section-number-4">1.6.3</span> Start the wiki</h4>
-<div class="outline-text-4" id="text-1-6-3">
+<div id="outline-container-sec-1-7-3" class="outline-4">
+<h4 id="sec-1-7-3"><span class="section-number-4">1.7.3</span> Start the wiki</h4>
+<div class="outline-text-4" id="text-1-7-3">
 <ul class="org-ul">
 <li>M-x org-wiki-index to go to index.org
 </li>
@@ -1152,9 +1163,9 @@ wiki word and inserts at point a hyperlink to the wiki page.
 </div>
 </div>
 
-<div id="outline-container-sec-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Command Summary</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-sec-1-8" class="outline-3">
+<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Command Summary</h3>
+<div class="outline-text-3" id="text-1-8">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1505,12 +1516,12 @@ Not complete yet.
 </div>
 </div>
 
-<div id="outline-container-sec-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Commands</h3>
-<div class="outline-text-3" id="text-1-8">
-</div><div id="outline-container-sec-1-8-1" class="outline-4">
-<h4 id="sec-1-8-1"><span class="section-number-4">1.8.1</span> Help</h4>
-<div class="outline-text-4" id="text-1-8-1">
+<div id="outline-container-sec-1-9" class="outline-3">
+<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Commands</h3>
+<div class="outline-text-3" id="text-1-9">
+</div><div id="outline-container-sec-1-9-1" class="outline-4">
+<h4 id="sec-1-9-1"><span class="section-number-4">1.9.1</span> Help</h4>
+<div class="outline-text-4" id="text-1-9-1">
 <ul class="org-ul">
 <li><code>M-x org-wiki-help</code> Show all org-wiki commands and its description. 
 </li>
@@ -1522,12 +1533,12 @@ web browser.
 </div>
 </div>
 
-<div id="outline-container-sec-1-8-2" class="outline-4">
-<h4 id="sec-1-8-2"><span class="section-number-4">1.8.2</span> Open the index page</h4>
-<div class="outline-text-4" id="text-1-8-2">
-</div><div id="outline-container-sec-1-8-2-1" class="outline-5">
-<h5 id="sec-1-8-2-1"><span class="section-number-5">1.8.2.1</span> M-x org-wiki-index</h5>
-<div class="outline-text-5" id="text-1-8-2-1">
+<div id="outline-container-sec-1-9-2" class="outline-4">
+<h4 id="sec-1-9-2"><span class="section-number-4">1.9.2</span> Open the index page</h4>
+<div class="outline-text-4" id="text-1-9-2">
+</div><div id="outline-container-sec-1-9-2-1" class="outline-5">
+<h5 id="sec-1-9-2-1"><span class="section-number-5">1.9.2.1</span> M-x org-wiki-index</h5>
+<div class="outline-text-5" id="text-1-9-2-1">
 <ul class="org-ul">
 <li><code>M-x org-wiki-index</code> - Open the index page. It opens the file
 index.org that is the first default page of the wiki. If the file
@@ -1537,9 +1548,9 @@ doesn't exist it will be created.
 </div>
 </div>
 
-<div id="outline-container-sec-1-8-2-2" class="outline-5">
-<h5 id="sec-1-8-2-2"><span class="section-number-5">1.8.2.2</span> M-x org-wiki-index-frame</h5>
-<div class="outline-text-5" id="text-1-8-2-2">
+<div id="outline-container-sec-1-9-2-2" class="outline-5">
+<h5 id="sec-1-9-2-2"><span class="section-number-5">1.9.2.2</span> M-x org-wiki-index-frame</h5>
+<div class="outline-text-5" id="text-1-9-2-2">
 <ul class="org-ul">
 <li><code>M-x org-wiki-index-frame</code> - Open the wiki index page in a new frame.
 </li>
@@ -1547,12 +1558,12 @@ doesn't exist it will be created.
 </div>
 </div>
 </div>
-<div id="outline-container-sec-1-8-3" class="outline-4">
-<h4 id="sec-1-8-3"><span class="section-number-4">1.8.3</span> Pages</h4>
-<div class="outline-text-4" id="text-1-8-3">
-</div><div id="outline-container-sec-1-8-3-1" class="outline-5">
-<h5 id="sec-1-8-3-1"><span class="section-number-5">1.8.3.1</span> M-x org-wiki-helm</h5>
-<div class="outline-text-5" id="text-1-8-3-1">
+<div id="outline-container-sec-1-9-3" class="outline-4">
+<h4 id="sec-1-9-3"><span class="section-number-4">1.9.3</span> Pages</h4>
+<div class="outline-text-4" id="text-1-9-3">
+</div><div id="outline-container-sec-1-9-3-1" class="outline-5">
+<h5 id="sec-1-9-3-1"><span class="section-number-5">1.9.3.1</span> M-x org-wiki-helm</h5>
+<div class="outline-text-5" id="text-1-9-3-1">
 <ul class="org-ul">
 <li><code>M-x org-wiki-helm</code> - Open a helm menu to switch or open a wiki page.
 </li>
@@ -1560,9 +1571,9 @@ doesn't exist it will be created.
 </div>
 </div>
 
-<div id="outline-container-sec-1-8-3-2" class="outline-5">
-<h5 id="sec-1-8-3-2"><span class="section-number-5">1.8.3.2</span> M-x org-wiki-switch</h5>
-<div class="outline-text-5" id="text-1-8-3-2">
+<div id="outline-container-sec-1-9-3-2" class="outline-5">
+<h5 id="sec-1-9-3-2"><span class="section-number-5">1.9.3.2</span> M-x org-wiki-switch</h5>
+<div class="outline-text-5" id="text-1-9-3-2">
 <ul class="org-ul">
 <li><code>M-x org-wiki-switch</code> - Switch between org-wiki buffers (*.org
 files in org-wiki-location directory) already opened. 
@@ -1571,9 +1582,9 @@ files in org-wiki-location directory) already opened.
 </div>
 </div>
 
-<div id="outline-container-sec-1-8-3-3" class="outline-5">
-<h5 id="sec-1-8-3-3"><span class="section-number-5">1.8.3.3</span> M-x org-wiki-helm-frame</h5>
-<div class="outline-text-5" id="text-1-8-3-3">
+<div id="outline-container-sec-1-9-3-3" class="outline-5">
+<h5 id="sec-1-9-3-3"><span class="section-number-5">1.9.3.3</span> M-x org-wiki-helm-frame</h5>
+<div class="outline-text-5" id="text-1-9-3-3">
 <ul class="org-ul">
 <li><code>M-x org-wiki-helm-frame</code> - Open a wiki page in a new frame. 
 </li>
@@ -1581,9 +1592,9 @@ files in org-wiki-location directory) already opened.
 </div>
 </div>
 
-<div id="outline-container-sec-1-8-3-4" class="outline-5">
-<h5 id="sec-1-8-3-4"><span class="section-number-5">1.8.3.4</span> M-x org-wiki-helm-read-only</h5>
-<div class="outline-text-5" id="text-1-8-3-4">
+<div id="outline-container-sec-1-9-3-4" class="outline-5">
+<h5 id="sec-1-9-3-4"><span class="section-number-5">1.9.3.4</span> M-x org-wiki-helm-read-only</h5>
+<div class="outline-text-5" id="text-1-9-3-4">
 <ul class="org-ul">
 <li><code>M-x org-wiki-helm-read-only</code> - Open a wiki page in read-only
 mode. 
@@ -1592,9 +1603,9 @@ mode.
 </div>
 </div>
 
-<div id="outline-container-sec-1-8-3-5" class="outline-5">
-<h5 id="sec-1-8-3-5"><span class="section-number-5">1.8.3.5</span> M-x org-wiki-make-page</h5>
-<div class="outline-text-5" id="text-1-8-3-5">
+<div id="outline-container-sec-1-9-3-5" class="outline-5">
+<h5 id="sec-1-9-3-5"><span class="section-number-5">1.9.3.5</span> M-x org-wiki-make-page</h5>
+<div class="outline-text-5" id="text-1-9-3-5">
 <ul class="org-ul">
 <li><code>M-x org-wiki-make-page</code> - Creates a new wiki page asking the user
 for the page name.
@@ -1603,9 +1614,9 @@ for the page name.
 </div>
 </div>
 
-<div id="outline-container-sec-1-8-3-6" class="outline-5">
-<h5 id="sec-1-8-3-6"><span class="section-number-5">1.8.3.6</span> M-x org-wiki-close</h5>
-<div class="outline-text-5" id="text-1-8-3-6">
+<div id="outline-container-sec-1-9-3-6" class="outline-5">
+<h5 id="sec-1-9-3-6"><span class="section-number-5">1.9.3.6</span> M-x org-wiki-close</h5>
+<div class="outline-text-5" id="text-1-9-3-6">
 <ul class="org-ul">
 <li><code>M-x org-wiki-close</code> - Close all wiki pages, kill all *.or buffers
 belonging to wiki directory.
@@ -1614,9 +1625,9 @@ belonging to wiki directory.
 </div>
 </div>
 
-<div id="outline-container-sec-1-8-3-7" class="outline-5">
-<h5 id="sec-1-8-3-7"><span class="section-number-5">1.8.3.7</span> M-x org-wiki-close-image</h5>
-<div class="outline-text-5" id="text-1-8-3-7">
+<div id="outline-container-sec-1-9-3-7" class="outline-5">
+<h5 id="sec-1-9-3-7"><span class="section-number-5">1.9.3.7</span> M-x org-wiki-close-image</h5>
+<div class="outline-text-5" id="text-1-9-3-7">
 <ul class="org-ul">
 <li>Close all org-wiki image/picture buffers. 
 </li>
@@ -1625,12 +1636,12 @@ belonging to wiki directory.
 </div>
 </div>
 
-<div id="outline-container-sec-1-8-4" class="outline-4">
-<h4 id="sec-1-8-4"><span class="section-number-4">1.8.4</span> Insert Hyperlink to wiki pages or asset files</h4>
-<div class="outline-text-4" id="text-1-8-4">
-</div><div id="outline-container-sec-1-8-4-1" class="outline-5">
-<h5 id="sec-1-8-4-1"><span class="section-number-5">1.8.4.1</span> M-x org-wiki-insert-link</h5>
-<div class="outline-text-5" id="text-1-8-4-1">
+<div id="outline-container-sec-1-9-4" class="outline-4">
+<h4 id="sec-1-9-4"><span class="section-number-4">1.9.4</span> Insert Hyperlink to wiki pages or asset files</h4>
+<div class="outline-text-4" id="text-1-9-4">
+</div><div id="outline-container-sec-1-9-4-1" class="outline-5">
+<h5 id="sec-1-9-4-1"><span class="section-number-5">1.9.4.1</span> M-x org-wiki-insert-link</h5>
+<div class="outline-text-5" id="text-1-9-4-1">
 <ul class="org-ul">
 <li><code>M-x org-wiki-insert-link</code> - Asks the user for the wiki page name and
 inserts the hyperlink at point. It is useful to create new pages
@@ -1661,9 +1672,9 @@ And will create the hyperlink to this page.
 </div>
 </div>
 
-<div id="outline-container-sec-1-8-4-2" class="outline-5">
-<h5 id="sec-1-8-4-2"><span class="section-number-5">1.8.4.2</span> M-x org-wiki-header</h5>
-<div class="outline-text-5" id="text-1-8-4-2">
+<div id="outline-container-sec-1-9-4-2" class="outline-5">
+<h5 id="sec-1-9-4-2"><span class="section-number-5">1.9.4.2</span> M-x org-wiki-header</h5>
+<div class="outline-text-5" id="text-1-9-4-2">
 <ul class="org-ul">
 <li>=M-x org-wiki-header. It inserts at top of the wiki page the template:
 </li>
@@ -1684,9 +1695,9 @@ Related:
 </div>
 </div>
 
-<div id="outline-container-sec-1-8-4-3" class="outline-5">
-<h5 id="sec-1-8-4-3"><span class="section-number-5">1.8.4.3</span> M-x org-wiki-asset-insert</h5>
-<div class="outline-text-5" id="text-1-8-4-3">
+<div id="outline-container-sec-1-9-4-3" class="outline-5">
+<h5 id="sec-1-9-4-3"><span class="section-number-5">1.9.4.3</span> M-x org-wiki-asset-insert</h5>
+<div class="outline-text-5" id="text-1-9-4-3">
 <ul class="org-ul">
 <li><code>M-x org-wiki-asset-insert</code> - Insert a asset file at point
 providing a heml menu to select the file. It inserts a link of
@@ -1696,19 +1707,19 @@ format <code>wiki-asset-sys:CurrentPage;AssetFilename.pdf</code>.
 </div>
 </div>
 </div>
-<div id="outline-container-sec-1-8-5" class="outline-4">
-<h4 id="sec-1-8-5"><span class="section-number-4">1.8.5</span> Asset files / Attachments</h4>
-<div class="outline-text-4" id="text-1-8-5">
-</div><div id="outline-container-sec-1-8-5-1" class="outline-5">
-<h5 id="sec-1-8-5-1"><span class="section-number-5">1.8.5.1</span> Commands to open page's asset directory</h5>
-<div class="outline-text-5" id="text-1-8-5-1">
-</div><ol class="org-ol"><li><a id="sec-1-8-5-1-1" name="sec-1-8-5-1-1"></a>M-x org-wiki-assets-dired<br  /><div class="outline-text-6" id="text-1-8-5-1-1">
+<div id="outline-container-sec-1-9-5" class="outline-4">
+<h4 id="sec-1-9-5"><span class="section-number-4">1.9.5</span> Asset files / Attachments</h4>
+<div class="outline-text-4" id="text-1-9-5">
+</div><div id="outline-container-sec-1-9-5-1" class="outline-5">
+<h5 id="sec-1-9-5-1"><span class="section-number-5">1.9.5.1</span> Commands to open page's asset directory</h5>
+<div class="outline-text-5" id="text-1-9-5-1">
+</div><ol class="org-ol"><li><a id="sec-1-9-5-1-1" name="sec-1-9-5-1-1"></a>M-x org-wiki-assets-dired<br  /><div class="outline-text-6" id="text-1-9-5-1-1">
 <p>
 Open page's asset directory in Emacs dired mode.
 </p>
 </div>
 </li>
-<li><a id="sec-1-8-5-1-2" name="sec-1-8-5-1-2"></a>M-x org-wiki-assets-open<br  /><div class="outline-text-6" id="text-1-8-5-1-2">
+<li><a id="sec-1-9-5-1-2" name="sec-1-9-5-1-2"></a>M-x org-wiki-assets-open<br  /><div class="outline-text-6" id="text-1-9-5-1-2">
 <ul class="org-ul">
 <li><code>M-x org-wiki-assets-open</code> - Open asset directory of current page
 with system's default file manager. 
@@ -1717,7 +1728,7 @@ with system's default file manager.
 </div>
 </li>
 
-<li><a id="sec-1-8-5-1-3" name="sec-1-8-5-1-3"></a>M-x org-wiki-assets-helm<br  /><div class="outline-text-6" id="text-1-8-5-1-3">
+<li><a id="sec-1-9-5-1-3" name="sec-1-9-5-1-3"></a>M-x org-wiki-assets-helm<br  /><div class="outline-text-6" id="text-1-9-5-1-3">
 <ul class="org-ul">
 <li><code>M-x org-wiki-assets-helm</code> - Select a wiki page and open its
 assets directory.
@@ -1727,10 +1738,10 @@ assets directory.
 </li></ol>
 </div>
 
-<div id="outline-container-sec-1-8-5-2" class="outline-5">
-<h5 id="sec-1-8-5-2"><span class="section-number-5">1.8.5.2</span> Commands to insert hyperlink to files</h5>
-<div class="outline-text-5" id="text-1-8-5-2">
-</div><ol class="org-ol"><li><a id="sec-1-8-5-2-1" name="sec-1-8-5-2-1"></a>M-x org-wiki-asset-create<br  /><div class="outline-text-6" id="text-1-8-5-2-1">
+<div id="outline-container-sec-1-9-5-2" class="outline-5">
+<h5 id="sec-1-9-5-2"><span class="section-number-5">1.9.5.2</span> Commands to insert hyperlink to files</h5>
+<div class="outline-text-5" id="text-1-9-5-2">
+</div><ol class="org-ol"><li><a id="sec-1-9-5-2-1" name="sec-1-9-5-2-1"></a>M-x org-wiki-asset-create<br  /><div class="outline-text-6" id="text-1-9-5-2-1">
 <p>
 Prompts the user for a file name that doesn't exist yet and insert it
 at point.  Unlike the commands `org-wiki-asset-insert` or `
@@ -1747,7 +1758,7 @@ open the link and edit the file.
 </div>
 </li>
 
-<li><a id="sec-1-8-5-2-2" name="sec-1-8-5-2-2"></a>M-x org-wiki-asset-insert<br  /><div class="outline-text-6" id="text-1-8-5-2-2">
+<li><a id="sec-1-9-5-2-2" name="sec-1-9-5-2-2"></a>M-x org-wiki-asset-insert<br  /><div class="outline-text-6" id="text-1-9-5-2-2">
 <ul class="org-ul">
 <li><code>M-x org-wiki-asset-insert</code> - Insert a link to asset file of current
 page at current cursor position. This link when clicked opens with
@@ -1767,7 +1778,7 @@ Manual.pdf.
 </div>
 </li>
 
-<li><a id="sec-1-8-5-2-3" name="sec-1-8-5-2-3"></a>M-x org-wiki-asset-insert-file<br  /><div class="outline-text-6" id="text-1-8-5-2-3">
+<li><a id="sec-1-9-5-2-3" name="sec-1-9-5-2-3"></a>M-x org-wiki-asset-insert-file<br  /><div class="outline-text-6" id="text-1-9-5-2-3">
 <ul class="org-ul">
 <li><code>M-x org-wiki-asset-insert-file</code> - Insert a link to an asset file
 that can be opened with Emacs at cursor position. This is an
@@ -1792,7 +1803,7 @@ pyscript.py it will insert a hyperlink at point as this.
 
 <div class="org-src-container">
 
-<pre class="src src-org"><span class="org-org-link"><a href="file:python/pyscript.py">[[file:python/pyscript.py][</a><a href="file:python/pyscript.py">pyscript.py</a><a href="file:python/pyscript.py">]]</a></span>
+<pre class="src src-org"><span class="org-org-link"><a href="file:python/pyscript.py">pyscript.py</a></span>
 </pre>
 </div>
 
@@ -1807,7 +1818,7 @@ It will be rendenred as this:
 </div>
 </li>
 
-<li><a id="sec-1-8-5-2-4" name="sec-1-8-5-2-4"></a>M-x org-wiki-asset-insert-image<br  /><div class="outline-text-6" id="text-1-8-5-2-4">
+<li><a id="sec-1-9-5-2-4" name="sec-1-9-5-2-4"></a>M-x org-wiki-asset-insert-image<br  /><div class="outline-text-6" id="text-1-9-5-2-4">
 <ul class="org-ul">
 <li><code>M-x org-wiki-asset-insert-file</code> - Insert a link to an image file
 at point. 
@@ -1822,13 +1833,13 @@ rendered as an image when current page is exported to html.
 
 <div class="org-src-container">
 
-<pre class="src src-org"><span class="org-org-link"><a href="file:python/QTScreenshot.png">[[file:python/QTScreenshot.png][</a><a href="file:python/QTScreenshot.png">file:python/QTScreenshot.png</a><a href="file:python/QTScreenshot.png">]]</a></span>
+<pre class="src src-org"><span class="org-org-link"><a href="file:python/QTScreenshot.png">file:python/QTScreenshot.png</a></span>
 </pre>
 </div>
 </div>
 </li>
 
-<li><a id="sec-1-8-5-2-5" name="sec-1-8-5-2-5"></a>M-x org-wiki-asset-insert-block<br  /><div class="outline-text-6" id="text-1-8-5-2-5">
+<li><a id="sec-1-9-5-2-5" name="sec-1-9-5-2-5"></a>M-x org-wiki-asset-insert-block<br  /><div class="outline-text-6" id="text-1-9-5-2-5">
 <p>
 Insert code block with contents of some asset file as an org-mode
 block: 
@@ -1846,7 +1857,7 @@ the file contents and a hyperlink to it at point.
 
 <div class="org-src-container">
 
-<pre class="src src-org"> - File: <span class="org-org-link"><a href="file:Smalltalk%20programming/extendingClasses-number1.gst">[[file:Smalltalk%20programming/extendingClasses-number1.gst][</a><a href="file:Smalltalk%20programming/extendingClasses-number1.gst">file:Smalltalk programming/extendingClasses-number1.gst</a><a href="file:Smalltalk%20programming/extendingClasses-number1.gst">]]</a></span>
+<pre class="src src-org"> - File: <span class="org-org-link"><a href="file:Smalltalk%20programming/extendingClasses-number1.gst">file:Smalltalk programming/extendingClasses-number1.gst</a></span>
 
 <span class="org-org-block-begin-line">#+BEGIN_SRC text</span>
 <span class="org-org-block-background">  Number extend [
@@ -1884,10 +1895,10 @@ It would insert a content like this:
 </li></ol>
 </div>
 
-<div id="outline-container-sec-1-8-5-3" class="outline-5">
-<h5 id="sec-1-8-5-3"><span class="section-number-5">1.8.5.3</span> Commands to open files directly</h5>
-<div class="outline-text-5" id="text-1-8-5-3">
-</div><ol class="org-ol"><li><a id="sec-1-8-5-3-1" name="sec-1-8-5-3-1"></a>M-x org-wiki-asset-find-file<br  /><div class="outline-text-6" id="text-1-8-5-3-1">
+<div id="outline-container-sec-1-9-5-3" class="outline-5">
+<h5 id="sec-1-9-5-3"><span class="section-number-5">1.9.5.3</span> Commands to open files directly</h5>
+<div class="outline-text-5" id="text-1-9-5-3">
+</div><ol class="org-ol"><li><a id="sec-1-9-5-3-1" name="sec-1-9-5-3-1"></a>M-x org-wiki-asset-find-file<br  /><div class="outline-text-6" id="text-1-9-5-3-1">
 <p>
 It will open a helm menu containing the assets files of current
 page. It will open the selected file with Emacs.
@@ -1905,7 +1916,7 @@ file 'extendingClasses-number1.gst' it will open the file below with Emacs.
 </div>
 </li>
 
-<li><a id="sec-1-8-5-3-2" name="sec-1-8-5-3-2"></a>M-x org-wiki-asset-find-sys<br  /><div class="outline-text-6" id="text-1-8-5-3-2">
+<li><a id="sec-1-9-5-3-2" name="sec-1-9-5-3-2"></a>M-x org-wiki-asset-find-sys<br  /><div class="outline-text-6" id="text-1-9-5-3-2">
 <p>
 Open a menu to select an asset file of current page and open it with
 system's app.
@@ -1921,10 +1932,10 @@ Okular reader.
 </li></ol>
 </div>
 
-<div id="outline-container-sec-1-8-5-4" class="outline-5">
-<h5 id="sec-1-8-5-4"><span class="section-number-5">1.8.5.4</span> Commands to Download Files</h5>
-<div class="outline-text-5" id="text-1-8-5-4">
-</div><ol class="org-ol"><li><a id="sec-1-8-5-4-1" name="sec-1-8-5-4-1"></a>M-x org-wiki-asset-download-insert1<br  /><div class="outline-text-6" id="text-1-8-5-4-1">
+<div id="outline-container-sec-1-9-5-4" class="outline-5">
+<h5 id="sec-1-9-5-4"><span class="section-number-5">1.9.5.4</span> Commands to Download Files</h5>
+<div class="outline-text-5" id="text-1-9-5-4">
+</div><ol class="org-ol"><li><a id="sec-1-9-5-4-1" name="sec-1-9-5-4-1"></a>M-x org-wiki-asset-download-insert1<br  /><div class="outline-text-6" id="text-1-9-5-4-1">
 <ul class="org-ul">
 <li><code>M-x org-wiki-asset-download-insert1</code> - Ask the user the url to
 download a file suggesting the url stored in the clipboard and
@@ -1973,7 +1984,7 @@ cancel the current download.
 </div>
 </li>
 
-<li><a id="sec-1-8-5-4-2" name="sec-1-8-5-4-2"></a>M-x org-wiki-asset-download-insert2<br  /><div class="outline-text-6" id="text-1-8-5-4-2">
+<li><a id="sec-1-9-5-4-2" name="sec-1-9-5-4-2"></a>M-x org-wiki-asset-download-insert2<br  /><div class="outline-text-6" id="text-1-9-5-4-2">
 <ul class="org-ul">
 <li><code>M-x org-wiki-asset-download-insert2</code> - Similar to <code>M-x
    org-wiki-asset-download-insert1</code>, however it inserts a hyperlink of
@@ -2005,12 +2016,12 @@ file:Linux/htop_1.jpg
 </li></ol>
 </div>
 </div>
-<div id="outline-container-sec-1-8-6" class="outline-4">
-<h4 id="sec-1-8-6"><span class="section-number-4">1.8.6</span> Open wiki directory</h4>
-<div class="outline-text-4" id="text-1-8-6">
-</div><div id="outline-container-sec-1-8-6-1" class="outline-5">
-<h5 id="sec-1-8-6-1"><span class="section-number-5">1.8.6.1</span> M-x org-wiki-dired</h5>
-<div class="outline-text-5" id="text-1-8-6-1">
+<div id="outline-container-sec-1-9-6" class="outline-4">
+<h4 id="sec-1-9-6"><span class="section-number-4">1.9.6</span> Open wiki directory</h4>
+<div class="outline-text-4" id="text-1-9-6">
+</div><div id="outline-container-sec-1-9-6-1" class="outline-5">
+<h5 id="sec-1-9-6-1"><span class="section-number-5">1.9.6.1</span> M-x org-wiki-dired</h5>
+<div class="outline-text-5" id="text-1-9-6-1">
 <ul class="org-ul">
 <li><code>M-x org-wiki-dired</code> - Open the wiki directory in Emacs
 dired-mode showing only *.org files.
@@ -2019,9 +2030,9 @@ dired-mode showing only *.org files.
 </div>
 </div>
 
-<div id="outline-container-sec-1-8-6-2" class="outline-5">
-<h5 id="sec-1-8-6-2"><span class="section-number-5">1.8.6.2</span> M-x org-wiki-dired-all</h5>
-<div class="outline-text-5" id="text-1-8-6-2">
+<div id="outline-container-sec-1-9-6-2" class="outline-5">
+<h5 id="sec-1-9-6-2"><span class="section-number-5">1.9.6.2</span> M-x org-wiki-dired-all</h5>
+<div class="outline-text-5" id="text-1-9-6-2">
 <ul class="org-ul">
 <li><code>M-x org-wiki-dired-all</code> - Open the wiki directory in Emacs
 showing all files. 
@@ -2030,12 +2041,12 @@ showing all files.
 </div>
 </div>
 </div>
-<div id="outline-container-sec-1-8-7" class="outline-4">
-<h4 id="sec-1-8-7"><span class="section-number-4">1.8.7</span> Export all pages to html</h4>
-<div class="outline-text-4" id="text-1-8-7">
-</div><div id="outline-container-sec-1-8-7-1" class="outline-5">
-<h5 id="sec-1-8-7-1"><span class="section-number-5">1.8.7.1</span> M-x org-wiki-export-html</h5>
-<div class="outline-text-5" id="text-1-8-7-1">
+<div id="outline-container-sec-1-9-7" class="outline-4">
+<h4 id="sec-1-9-7"><span class="section-number-4">1.9.7</span> Export all pages to html</h4>
+<div class="outline-text-4" id="text-1-9-7">
+</div><div id="outline-container-sec-1-9-7-1" class="outline-5">
+<h5 id="sec-1-9-7-1"><span class="section-number-5">1.9.7.1</span> M-x org-wiki-export-html</h5>
+<div class="outline-text-5" id="text-1-9-7-1">
 <ul class="org-ul">
 <li><code>M-x org-wiki-export-html</code> - Exports all wiki pages to html
 asynchronously, it means withoyt block Emacs by starting a new
@@ -2045,9 +2056,9 @@ Emacs process in background.
 </div>
 </div>
 
-<div id="outline-container-sec-1-8-7-2" class="outline-5">
-<h5 id="sec-1-8-7-2"><span class="section-number-5">1.8.7.2</span> M-x org-wiki-index-html</h5>
-<div class="outline-text-5" id="text-1-8-7-2">
+<div id="outline-container-sec-1-9-7-2" class="outline-5">
+<h5 id="sec-1-9-7-2"><span class="section-number-5">1.9.7.2</span> M-x org-wiki-index-html</h5>
+<div class="outline-text-5" id="text-1-9-7-2">
 <ul class="org-ul">
 <li><code>M-x org-wiki-index-html</code> - Open the index page exported to html in
 the web browser.  
@@ -2056,9 +2067,9 @@ the web browser.
 </div>
 </div>
 </div>
-<div id="outline-container-sec-1-8-8" class="outline-4">
-<h4 id="sec-1-8-8"><span class="section-number-4">1.8.8</span> Search</h4>
-<div class="outline-text-4" id="text-1-8-8">
+<div id="outline-container-sec-1-9-8" class="outline-4">
+<h4 id="sec-1-9-8"><span class="section-number-4">1.9.8</span> Search</h4>
+<div class="outline-text-4" id="text-1-9-8">
 <ul class="org-ul">
 <li><code>M-x org-wiki-search</code> - Search all wiki page that contains
 a pattern. (string or regex pattern).
@@ -2102,9 +2113,9 @@ org-wiki page files.
 </div>
 </div>
 </div>
-<div id="outline-container-sec-1-8-9" class="outline-4">
-<h4 id="sec-1-8-9"><span class="section-number-4">1.8.9</span> Copy Commands</h4>
-<div class="outline-text-4" id="text-1-8-9">
+<div id="outline-container-sec-1-9-9" class="outline-4">
+<h4 id="sec-1-9-9"><span class="section-number-4">1.9.9</span> Copy Commands</h4>
+<div class="outline-text-4" id="text-1-9-9">
 <ul class="org-ul">
 <li><code>M-x org-wiki-copy-location</code> -  Copy org-wiki location path to clipboard.
 </li>
@@ -2121,9 +2132,9 @@ it will copy the '<i>&lt;org-wiki-location&gt;/Linux</i>' to clipboard.
 </div>
 </div>
 
-<div id="outline-container-sec-1-8-10" class="outline-4">
-<h4 id="sec-1-8-10"><span class="section-number-4">1.8.10</span> M-x org-wiki-backup-make</h4>
-<div class="outline-text-4" id="text-1-8-10">
+<div id="outline-container-sec-1-9-10" class="outline-4">
+<h4 id="sec-1-9-10"><span class="section-number-4">1.9.10</span> M-x org-wiki-backup-make</h4>
+<div class="outline-text-4" id="text-1-9-10">
 <p>
 To create a backup run <code>M-x org-wiki-backup-make</code> it will create a
 file <code>org-wiki-&lt;YEAR&gt;-&lt;MONTH&gt;-&lt;DAY&gt;.zip</code>, such as
@@ -2132,20 +2143,20 @@ file <code>org-wiki-&lt;YEAR&gt;-&lt;MONTH&gt;-&lt;DAY&gt;.zip</code>, such as
 </div>
 </div>
 
-<div id="outline-container-sec-1-8-11" class="outline-4">
-<h4 id="sec-1-8-11"><span class="section-number-4">1.8.11</span> M-x org-wiki-backup-dir</h4>
-<div class="outline-text-4" id="text-1-8-11">
+<div id="outline-container-sec-1-9-11" class="outline-4">
+<h4 id="sec-1-9-11"><span class="section-number-4">1.9.11</span> M-x org-wiki-backup-dir</h4>
+<div class="outline-text-4" id="text-1-9-11">
 <p>
 To open the backup directory run M-x <code>org-wiki-backup-dir.</code>
 </p>
 </div>
 </div>
-<div id="outline-container-sec-1-8-12" class="outline-4">
-<h4 id="sec-1-8-12"><span class="section-number-4">1.8.12</span> Utilities</h4>
-<div class="outline-text-4" id="text-1-8-12">
-</div><div id="outline-container-sec-1-8-12-1" class="outline-5">
-<h5 id="sec-1-8-12-1"><span class="section-number-5">1.8.12.1</span> Insert greek letters, math, physics and currency symbols</h5>
-<div class="outline-text-5" id="text-1-8-12-1">
+<div id="outline-container-sec-1-9-12" class="outline-4">
+<h4 id="sec-1-9-12"><span class="section-number-4">1.9.12</span> Utilities</h4>
+<div class="outline-text-4" id="text-1-9-12">
+</div><div id="outline-container-sec-1-9-12-1" class="outline-5">
+<h5 id="sec-1-9-12-1"><span class="section-number-5">1.9.12.1</span> Insert greek letters, math, physics and currency symbols</h5>
+<div class="outline-text-5" id="text-1-9-12-1">
 <p>
 The command <code>M-x org-wiki-insert-symbol</code> allows inserting Greek
 letters, math and physics symbols by providing a helm menu where the
@@ -2186,9 +2197,9 @@ Examples of symbols of provided:
 </div>
 </div>
 
-<div id="outline-container-sec-1-8-12-2" class="outline-5">
-<h5 id="sec-1-8-12-2"><span class="section-number-5">1.8.12.2</span> Insert org-mode code blocks, tables, quotes and etc.</h5>
-<div class="outline-text-5" id="text-1-8-12-2">
+<div id="outline-container-sec-1-9-12-2" class="outline-5">
+<h5 id="sec-1-9-12-2"><span class="section-number-5">1.9.12.2</span> Insert org-mode code blocks, tables, quotes and etc.</h5>
+<div class="outline-text-5" id="text-1-9-12-2">
 <p>
 This command makes easier to insert common org-mode code templates for
 code blocks, quote blocks, latex equations, table, example blocks and
@@ -2250,9 +2261,9 @@ If the user select the template Python code block, it will insert:
 </div>
 </div>
 
-<div id="outline-container-sec-1-8-12-3" class="outline-5">
-<h5 id="sec-1-8-12-3"><span class="section-number-5">1.8.12.3</span> Insert math formula, latex template, equations, greek letters and etc.</h5>
-<div class="outline-text-5" id="text-1-8-12-3">
+<div id="outline-container-sec-1-9-12-3" class="outline-5">
+<h5 id="sec-1-9-12-3"><span class="section-number-5">1.9.12.3</span> Insert math formula, latex template, equations, greek letters and etc.</h5>
+<div class="outline-text-5" id="text-1-9-12-3">
 <p>
 The command <code>M-x org-wiki-insert-latex</code> allows writing Latex formulas,
 Greek letters and math symbolls quickly. It provides a helm menu where
@@ -2277,9 +2288,9 @@ Example:
 </div>
 </div>
 
-<div id="outline-container-sec-1-8-12-4" class="outline-5">
-<h5 id="sec-1-8-12-4"><span class="section-number-5">1.8.12.4</span> Web Server</h5>
-<div class="outline-text-5" id="text-1-8-12-4">
+<div id="outline-container-sec-1-9-12-4" class="outline-5">
+<h5 id="sec-1-9-12-4"><span class="section-number-5">1.9.12.4</span> Web Server</h5>
+<div class="outline-text-5" id="text-1-9-12-4">
 <ul class="org-ul">
 <li><code>M-x org-wiki-server-toggle</code>  Start/stop static http server at
 org-wiki directory. 
@@ -2320,9 +2331,9 @@ access the static web site by entering the URL:
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-1-8-12-5" class="outline-5">
-<h5 id="sec-1-8-12-5"><span class="section-number-5">1.8.12.5</span> Panel - org-wiki-panel</h5>
-<div class="outline-text-5" id="text-1-8-12-5">
+<div id="outline-container-sec-1-9-12-5" class="outline-5">
+<h5 id="sec-1-9-12-5"><span class="section-number-5">1.9.12.5</span> Panel - org-wiki-panel</h5>
+<div class="outline-text-5" id="text-1-9-12-5">
 <ul class="org-ul">
 <li><code>M-x org-wiki-panel</code> - This command provides a command panel that
 can execute actions just typing few keys like magit or dired
@@ -2338,9 +2349,9 @@ buffer.
 </div>
 </div>
 
-<div id="outline-container-sec-1-8-12-6" class="outline-5">
-<h5 id="sec-1-8-12-6"><span class="section-number-5">1.8.12.6</span> Menu</h5>
-<div class="outline-text-5" id="text-1-8-12-6">
+<div id="outline-container-sec-1-9-12-6" class="outline-5">
+<h5 id="sec-1-9-12-6"><span class="section-number-5">1.9.12.6</span> Menu</h5>
+<div class="outline-text-5" id="text-1-9-12-6">
 <ul class="org-ul">
 <li><code>M-x org-wiki-make-menu</code> Shows a menu with org-wiki functions and
 command reminders.
@@ -2360,10 +2371,10 @@ command reminders.
 </div>
 </div>
 </div>
-<div id="outline-container-sec-1-8-12-7" class="outline-5">
-<h5 id="sec-1-8-12-7"><span class="section-number-5">1.8.12.7</span> Backup Commands</h5>
-<div class="outline-text-5" id="text-1-8-12-7">
-</div><ol class="org-ol"><li><a id="sec-1-8-12-7-1" name="sec-1-8-12-7-1"></a>Backup Settings<br  /><div class="outline-text-6" id="text-1-8-12-7-1">
+<div id="outline-container-sec-1-9-12-7" class="outline-5">
+<h5 id="sec-1-9-12-7"><span class="section-number-5">1.9.12.7</span> Backup Commands</h5>
+<div class="outline-text-5" id="text-1-9-12-7">
+</div><ol class="org-ol"><li><a id="sec-1-9-12-7-1" name="sec-1-9-12-7-1"></a>Backup Settings<br  /><div class="outline-text-6" id="text-1-9-12-7-1">
 <p>
 Org-wiki can create backups of org-wiki snapshots stored in zip files
 that can be useful to avoid losses or revert to a previous state.
@@ -2392,10 +2403,10 @@ $PATH variable.
 </div>
 </li></ol>
 </div>
-<div id="outline-container-sec-1-8-12-8" class="outline-5">
-<h5 id="sec-1-8-12-8"><span class="section-number-5">1.8.12.8</span> Paste Image</h5>
-<div class="outline-text-5" id="text-1-8-12-8">
-</div><ol class="org-ol"><li><a id="sec-1-8-12-8-1" name="sec-1-8-12-8-1"></a>Overview<br  /><div class="outline-text-6" id="text-1-8-12-8-1">
+<div id="outline-container-sec-1-9-12-8" class="outline-5">
+<h5 id="sec-1-9-12-8"><span class="section-number-5">1.9.12.8</span> Paste Image</h5>
+<div class="outline-text-5" id="text-1-9-12-8">
+</div><ol class="org-ol"><li><a id="sec-1-9-12-8-1" name="sec-1-9-12-8-1"></a>Overview<br  /><div class="outline-text-6" id="text-1-9-12-8-1">
 <p>
 This command requires the utility  <a href="https://github.com/caiorss/clip.jar">clip.jar</a> and Java runtime to be available
 at the $PATH variable.  
@@ -2428,7 +2439,7 @@ curl -O -L https://github.com/caiorss/clip.jar/blob/build/Clip.jar
 </div>
 </li>
 
-<li><a id="sec-1-8-12-8-2" name="sec-1-8-12-8-2"></a>M-x org-wiki-paste-image<br  /><div class="outline-text-6" id="text-1-8-12-8-2">
+<li><a id="sec-1-9-12-8-2" name="sec-1-9-12-8-2"></a>M-x org-wiki-paste-image<br  /><div class="outline-text-6" id="text-1-9-12-8-2">
 <ul class="org-ul">
 <li><code>M-x org-wiki-paste-image</code> Ask the user for the image file name and
 writes the image from clipboard to the file. 
@@ -2460,7 +2471,7 @@ file:Linux/Unix.png
 </div>
 </li>
 
-<li><a id="sec-1-8-12-8-3" name="sec-1-8-12-8-3"></a>M-x org-wiki-paste-image-uuid<br  /><div class="outline-text-6" id="text-1-8-12-8-3">
+<li><a id="sec-1-9-12-8-3" name="sec-1-9-12-8-3"></a>M-x org-wiki-paste-image-uuid<br  /><div class="outline-text-6" id="text-1-9-12-8-3">
 <ul class="org-ul">
 <li><code>M-x org-wiki-paste-image-uuid</code> Paste an image from clipboard with
 automatically generated name (uuid). 
@@ -2486,9 +2497,9 @@ file:Linux/fba53c12-3f23-4728-9f52-a26a3d285d7c.png
 </li></ol>
 </div>
 </div>
-<div id="outline-container-sec-1-8-13" class="outline-4">
-<h4 id="sec-1-8-13"><span class="section-number-4">1.8.13</span> Alias Commands</h4>
-<div class="outline-text-4" id="text-1-8-13">
+<div id="outline-container-sec-1-9-13" class="outline-4">
+<h4 id="sec-1-9-13"><span class="section-number-4">1.9.13</span> Alias Commands</h4>
+<div class="outline-text-4" id="text-1-9-13">
 <ul class="org-ul">
 <li><code>M-x org-wiki-nav</code> - Navigate through org-mode headings. Alias to
 helm-org-in-buffer-headings.
@@ -2524,12 +2535,12 @@ org-preview-latex-fragment. It requires latex installed.
 </div>
 </div>
 
-<div id="outline-container-sec-1-9" class="outline-3">
-<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Suggestions</h3>
-<div class="outline-text-3" id="text-1-9">
-</div><div id="outline-container-sec-1-9-1" class="outline-4">
-<h4 id="sec-1-9-1"><span class="section-number-4">1.9.1</span> Shortcuts</h4>
-<div class="outline-text-4" id="text-1-9-1">
+<div id="outline-container-sec-1-10" class="outline-3">
+<h3 id="sec-1-10"><span class="section-number-3">1.10</span> Tips and tricks</h3>
+<div class="outline-text-3" id="text-1-10">
+</div><div id="outline-container-sec-1-10-1" class="outline-4">
+<h4 id="sec-1-10-1"><span class="section-number-4">1.10.1</span> Shortcuts</h4>
+<div class="outline-text-4" id="text-1-10-1">
 <p>
 You might want shortcuts for frequent commands: 
 </p>
@@ -2636,28 +2647,9 @@ completion. <code>M-x w-in</code>
 </div>
 </div>
 
-<div id="outline-container-sec-1-9-2" class="outline-4">
-<h4 id="sec-1-9-2"><span class="section-number-4">1.9.2</span> Helm commands</h4>
-<div class="outline-text-4" id="text-1-9-2">
-<p>
-Some Helm commands are very handy to navigate and search org-mode
-files.
-</p>
-
-<ul class="org-ul">
-<li>M-x helm-org-in-buffer-headings - To filter the headings of
-org-files.
-</li>
-
-<li>M-x helm-occur - Occur-like command with helm interface.
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-sec-1-9-3" class="outline-4">
-<h4 id="sec-1-9-3"><span class="section-number-4">1.9.3</span> Screenshot tools</h4>
-<div class="outline-text-4" id="text-1-9-3">
+<div id="outline-container-sec-1-10-2" class="outline-4">
+<h4 id="sec-1-10-2"><span class="section-number-4">1.10.2</span> Screenshot tools</h4>
+<div class="outline-text-4" id="text-1-10-2">
 <p>
 <b>Linux</b> 
 </p>
@@ -2681,9 +2673,9 @@ org-files.
 </div>
 </div>
 
-<div id="outline-container-sec-1-9-4" class="outline-4">
-<h4 id="sec-1-9-4"><span class="section-number-4">1.9.4</span> Bookmarklets</h4>
-<div class="outline-text-4" id="text-1-9-4">
+<div id="outline-container-sec-1-10-3" class="outline-4">
+<h4 id="sec-1-10-3"><span class="section-number-4">1.10.3</span> Bookmarklets</h4>
+<div class="outline-text-4" id="text-1-10-3">
 <p>
 Bookmarklets are small pieces of Javascript used for browser
 automation and as an ad-hoc browsers extensions, encoded as hyperlinks
@@ -2764,12 +2756,75 @@ and
 </div>
 </div>
 
-<div id="outline-container-sec-1-9-5" class="outline-4">
-<h4 id="sec-1-9-5"><span class="section-number-4">1.9.5</span> Use the best tool of the job</h4>
-<div class="outline-text-4" id="text-1-9-5">
-</div><div id="outline-container-sec-1-9-5-1" class="outline-5">
-<h5 id="sec-1-9-5-1"><span class="section-number-5">1.9.5.1</span> Store, organize, and index documents, citations and etc.</h5>
-<div class="outline-text-5" id="text-1-9-5-1">
+<div id="outline-container-sec-1-10-4" class="outline-4">
+<h4 id="sec-1-10-4"><span class="section-number-4">1.10.4</span> Equation Rendering in Web browsers</h4>
+<div class="outline-text-4" id="text-1-10-4">
+<ul class="org-ul">
+<li>TL;DR
+<ul class="org-ul">
+<li>Formulas are displayed faster in Firefox.
+</li>
+<li>Mathml is the best Mathjax formula rendering.
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+<a href="https://www.mathjax.org/">MathJax</a> Latex rendering is slow in Chrome browser and in its
+open-source relative Chromium browser. An alternative way to render
+formulas faster is set MathJax to use <a href="https://en.wikipedia.org/wiki/MathML">mathml</a> rendering, but it is not
+well supported by all browsers such as Chrome e Internet Explorer.
+Google has also dropped mathml supoort in new versions of the browser. 
+</p>
+
+<p>
+So, until now, the best browser for fast displaying formulas and
+equations is Firefox.
+</p>
+
+<p>
+Documentation related to Formulas and Latex backend: 
+</p>
+
+<ul class="org-ul">
+<li><a href="https://www.gnu.org/software/emacs/manual/html_node/org/Math-formatting-in-HTML-export.html">Math formatting in HTML export - The Org Manual</a>
+</li>
+</ul>
+
+<p>
+Online Equation Editors 
+</p>
+
+<ul class="org-ul">
+<li><a href="http://www.codecogs.com/eqneditor">http://www.codecogs.com/eqneditor</a>
+</li>
+
+<li><a href="https://www.latex4technics.com/">https://www.latex4technics.com/</a>
+</li>
+
+<li><a href="https://www.mathcha.io/">https://www.mathcha.io/</a>
+</li>
+</ul>
+
+
+<p>
+See also: 
+</p>
+
+<ul class="org-ul">
+<li>CNET - <a href="https://www.cnet.com/news/google-subtracts-mathml-from-chrome-and-anger-multiplies/">Google subtracts MathML from Chrome, and anger multiplies</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-10-5" class="outline-4">
+<h4 id="sec-1-10-5"><span class="section-number-4">1.10.5</span> Use the best tool of the job</h4>
+<div class="outline-text-4" id="text-1-10-5">
+</div><div id="outline-container-sec-1-10-5-1" class="outline-5">
+<h5 id="sec-1-10-5-1"><span class="section-number-5">1.10.5.1</span> Store, organize, and index documents, citations and etc.</h5>
+<div class="outline-text-5" id="text-1-10-5-1">
 <p>
 Those who need to store and index a large amount of any type of files
 and documents will be better served with Zotero.
@@ -2783,9 +2838,9 @@ and documents will be better served with Zotero.
 </div>
 
 
-<div id="outline-container-sec-1-9-5-2" class="outline-5">
-<h5 id="sec-1-9-5-2"><span class="section-number-5">1.9.5.2</span> Write very formal thesis, paper, books, manuals and etc &#x2026;</h5>
-<div class="outline-text-5" id="text-1-9-5-2">
+<div id="outline-container-sec-1-10-5-2" class="outline-5">
+<h5 id="sec-1-10-5-2"><span class="section-number-5">1.10.5.2</span> Write very formal thesis, paper, books, manuals and etc &#x2026;</h5>
+<div class="outline-text-5" id="text-1-10-5-2">
 <p>
 For this case one of the best tool is the open source software Lyx
 that allows creating latex documents in a graphical way, in a similar
@@ -2801,9 +2856,9 @@ equation editor.
 </div>
 </div>
 
-<div id="outline-container-sec-1-9-6" class="outline-4">
-<h4 id="sec-1-9-6"><span class="section-number-4">1.9.6</span> Modify it</h4>
-<div class="outline-text-4" id="text-1-9-6">
+<div id="outline-container-sec-1-10-6" class="outline-4">
+<h4 id="sec-1-10-6"><span class="section-number-4">1.10.6</span> Modify it</h4>
+<div class="outline-text-4" id="text-1-10-6">
 <p>
 You can change the commands or explore it using the command. 
 <code>M-x find-function &lt;command-name&gt;</code> to open the file at the point where
@@ -2825,9 +2880,9 @@ Example:
 </div>
 </div>
 
-<div id="outline-container-sec-1-10" class="outline-3">
-<h3 id="sec-1-10"><span class="section-number-3">1.10</span> TODOLIST</h3>
-<div class="outline-text-3" id="text-1-10">
+<div id="outline-container-sec-1-11" class="outline-3">
+<h3 id="sec-1-11"><span class="section-number-3">1.11</span> TODOLIST</h3>
+<div class="outline-text-3" id="text-1-11">
 <ul class="org-ul">
 <li>- Add command to copy and paste images from clipboard.
 </li>
@@ -2846,7 +2901,7 @@ Example:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Caio Rodrigues Soares Silva</p>
-<p class="date">Created: 2018-01-08 Mon 12:37</p>
+<p class="date">Created: 2018-02-03 Sat 23:54</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
