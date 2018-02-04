@@ -1185,21 +1185,6 @@ You might want shortcuts for frequent commands:
 (defalias 'w-close #'org-wiki-close)
 #+END_SRC
 
-*** Equation Rendering in Web browsers 
-
- + TL;DR
-   - Formulas are displayed faster in Firefox.
-   - Mathml is the best Mathjax formula rendering.
-
-[[https://www.mathjax.org/][MathJax]] Latex rendering is slow in Chrome browser and in its
-open-source relative Chromium browser. An alternative way to render
-formulas faster is set MathJax to use [[https://en.wikipedia.org/wiki/MathML][mathml]] rendering, but it is not
-well supported by all browsers such as Chrome e Internet Explorer.
-Google has also dropped mathml supoort in new versions of the browser. 
-
-So, until now, the best browser for fast displaying formulas and
-equations is Firefox.
-
 *** Screenshot tools 
 
 *Linux* 
@@ -1258,6 +1243,38 @@ More bookmarklets and cheat sheet available at:
 and 
  
  - https://caiorss.github.io/bookmarklet-maker/
+
+*** Equation Rendering in Web browsers
+
+ + TL;DR
+   - Formulas are displayed faster in Firefox.
+   - Mathml is the best Mathjax formula rendering.
+
+[[https://www.mathjax.org/][MathJax]] Latex rendering is slow in Chrome browser and in its
+open-source relative Chromium browser. An alternative way to render
+formulas faster is set MathJax to use [[https://en.wikipedia.org/wiki/MathML][mathml]] rendering, but it is not
+well supported by all browsers such as Chrome e Internet Explorer.
+Google has also dropped mathml supoort in new versions of the browser.
+
+So, until now, the best browser for fast displaying formulas and
+equations is Firefox.
+
+Documentation related to Formulas and Latex backend:
+
+ + [[https://www.gnu.org/software/emacs/manual/html_node/org/Math-formatting-in-HTML-export.html][Math formatting in HTML export - The Org Manual]]
+
+Online Equation Editors
+
+ + http://www.codecogs.com/eqneditor
+
+ + https://www.latex4technics.com/
+
+ + https://www.mathcha.io/
+
+
+See also:
+
+ + CNET - [[https://www.cnet.com/news/google-subtracts-mathml-from-chrome-and-anger-multiplies/][Google subtracts MathML from Chrome, and anger multiplies]]
 
 *** Use the best tool of the job
 **** Store, organize, and index documents, citations and etc.
