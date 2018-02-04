@@ -1388,6 +1388,20 @@ Toggle
   (interactive)
   (org-preview-latex-fragment))
 
+
+(defun org-wiki-insert-latex ()
+  "Insert a latex template at point"
+  (interactive)
+  (helm :sources
+        `((name . "Latex Templates")
+          (candidates . ,(mapcar
+                          (lambda (p)
+                            (cons (concat (car p) " = " (cdr p))
+                                  (cdr p)))
+                          org-wiki-latex-templates
+                          ))
+          (action . insert))))
+
 (defun org-wiki-insert-symbol ()
   "Insert symbols from math, physics, Greek letters and others."
   (interactive)
@@ -1409,22 +1423,12 @@ Toggle
           (candidates . ,org-wiki-template-blocks)
           (action . insert))))
 
-(defun org-wiki-insert-latex ()
-  "Insert a latex template at point"
-  (interactive)
-  (helm :sources
-        `((name . "Latex Templates")
-          (candidates . ,(mapcar
-                          (lambda (p)
-                            (cons (concat (car p) " = " (cdr p))
-                                  (cdr p)))
-                          org-wiki-latex-templates
-                          ))
-          (action . insert))))
+
+;; ========= org-wiki Internal databases  =========== ;;
 
 ;; Variable containing useful math, physics, currencies and greek letters used by function
 ;; org-wiki-insert-symbol 
-(setq org-wiki-symbol-list
+(defvar org-wiki-symbol-list
      '(
        ("alpha" .  "α")
        ("beta" .  "β")
@@ -1550,7 +1554,7 @@ Toggle
        ("Currency Indian Rupee" . "₹")             
        ))
 
-(setq org-wiki-template-blocks
+(defvar org-wiki-template-blocks
       '(
         ("General code block" . "#+BEGIN_SRC \n\n#+END_SRC")
         ("Latex equation"     . "\\begin{equation} \n\n\\end{equation}")
@@ -1570,103 +1574,102 @@ Toggle
         ))
 
 ;; Latex templates used by user command M-x org-wiki-insert-latex 
-(setq org-wiki-latex-templates
-      '(
-        ("Latex equation block " . "\\begin{equation}\n\n\\end{equation}")
-        ("Formula Fraction num/den - ½" . "\\frac{num}{den}")
-        ("Formula Summation - Σ from a to b"    . "\\sum_{a}^{b}")
-        ("Formula Product - Π from a to b" . "\\prod_{a}^{b}")
-        ("Formula Binomial coefficient (n k) = n! / ((n -k)! x k!) " . "{n \\choose k}")
-       
-        ("Calculus Limit lim(x -> ∞) f(x)" . "\\lim_{x \\to \\infty} f(x)")
-        ("Calculus Integral  - ∫ from a to b"  . "\\int_{a}^{b}")
-        ("Calculus Infinity  - ∞" . "\\infty")
-        ("Calculus Gradient, nabla - ∇" . "\\nabla")
-        ("Calculus Derivate of f df/dx" . "\\frac{df}{dx}" )
-        ("Calculus Second Derivate of f d^2f/dx^2" . "\\frac{d^2f}{dx^2}" )
-        ("Calculus Derivate operation d/dx p(x)" . "\\frac{d}{dx} p(x)" )
-        ("Calculus Second Derivate operation d^2/dx^2 p(x)" . "\\frac{d^2}{dx^2} p(x)" )
-        ("Calculus Partial derivate - ∂" . "\\partial")       
-        ("Calculus Partial derivate fraction ∂x/∂t" . "\\frac{\\partial x}{\\partial y}")
-        ("Calculus Second Partial derivate fraction ∂2x/∂t2" . "\\frac{\\partial^2 x}{\\partial y^2}")
+(defvar org-wiki-latex-templates
+  '(
+  ("Latex equation block " . "\\begin{equation}\n\n\\end{equation}")
+  ("Basic Fraction num/den - ½" . "\\frac{num}{den}")
+  ("Basic Summation - Σ from a to b"    . "\\sum_{a}^{b}")
+  ("Basic Product - Π from a to b" . "\\prod_{a}^{b}")
+  ("Basic Binomial coefficient (n k) = n! / ((n -k)! x k!) " . "{n \\choose k}")
+  
+  ("Calculus Limit lim(x -> ∞) f(x)" . "\\lim_{x \\to \\infty} f(x)")
+  ("Calculus Integral  - ∫ from a to b"  . "\\int_{a}^{b}")
+  ("Calculus Infinity  - ∞" . "\\infty")
+  ("Calculus Gradient, nabla - ∇" . "\\nabla")
+  ("Calculus Derivate of f df/dx" . "\\frac{df}{dx}" )
+  ("Calculus Second Derivate of f d^2f/dx^2" . "\\frac{d^2f}{dx^2}" )
+  ("Calculus Derivate operation d/dx p(x)" . "\\frac{d}{dx} p(x)" )
+  ("Calculus Second Derivate operation d^2/dx^2 p(x)" . "\\frac{d^2}{dx^2} p(x)" )
+  ("Calculus Partial derivate - ∂" . "\\partial")       
+  ("Calculus Partial derivate fraction ∂x/∂t" . "\\frac{\\partial x}{\\partial y}")
+  ("Calculus Second Partial derivate fraction ∂2x/∂t2" . "\\frac{\\partial^2 x}{\\partial y^2}")
 
-        ("Operator - Is not equal to <> or /="    . "\\neq")
-        ("Operator - Equivalent or if only if ≡"  . "\\equiv")
-        ("Operator - less or equal <="            . "\\eql")
-        ("Operator - greater or equal >="         . "\\geq")
-        ("Operator - times x"                     . "\\times")
-        ("Operator - div %"                       . "\\div")
-        ("Operator - Approximately ~="            . "\\prox")
-        ("Operator - Proportional to ∝"           . "\\propto")              
-        
-        ("Escape - $"              . "\\textdollar")
-        ("Escape - Underline - _ " . "\\_")
-        ("Escape - Ampersand - &"  . "\\&")
-        ("Escape - percent - %"    . "\\%")
-        ("Escape - tilde ~"        . "\\sim")
-        
-        ("Func - limit" . "\\lim")
-        ("Func - √ square root sqrt" . "\\sqrt{}")
-        ("Func - n√ nth root" . "\\sqrt[n]{}")
+  ("Operator - Is not equal to <> or /="    . "\\neq")
+  ("Operator - Equivalent or if only if ≡"  . "\\equiv")
+  ("Operator - less or equal <="            . "\\eql")
+  ("Operator - greater or equal >="         . "\\geq")
+  ("Operator - times x"                     . "\\times")
+  ("Operator - div %"                       . "\\div")
+  ("Operator - Approximately ~="            . "\\prox")
+  ("Operator - Proportional to ∝"           . "\\propto")              
+  
+  ("Escape - $"              . "\\textdollar")
+  ("Escape - Underline - _ " . "\\_")
+  ("Escape - Ampersand - &"  . "\\&")
+  ("Escape - percent - %"    . "\\%")
+  ("Escape - tilde ~"        . "\\sim")
+  
+  ("Func - limit" . "\\lim")
+  ("Func - √ square root sqrt" . "\\sqrt{}")
+  ("Func - n√ nth root" . "\\sqrt[n]{}")
 
-        ("Enclosing () - Big parenthesis" . "\\left( <expr> \\right)")
-        ("Enclosing \/ - Underbrace" . "\\underbrace{ <expr> }")
-        ("Enclosing /\ - Overbrace" . "\\overbrace{ <expr> }")
-        
-        ("Accent - hat â, î" . "\\hat{}")
-        ("Accent - grave à, ì" . "\\grave{}")
-        ("Accent - bar - stroke over symbol" . "\\bar{}")
-        ("Accent - tilde - ã, ĩ - tilde over symbol" . "\\tilde{}")
-        ("Accent - dot (derivate) symbol" . "\\dot{}")
-        ("Accent - double dot (double derivate) symbol" . "\\ddot{}")
-        ("Accent - arrow over symbol, vector" . "\\vec{}")        
-        
-        ;; Set notation
-        ("Sets - N Set of Natural Numbers" . "\\N")
-        ("Sets - Z Set of Integers" . "\\Z")
-        ("Sets - ℝ Real Numbers" . "\\R")
-        ("Sets - C Complex Numbers" . "\\C")
-        ("Sets - H Quaternions" . "\\H")
-        ("Sets - ∈ Is member of" . "\\in")
-        ("Sets - ∃ Exists" . "\\exists")
-        ("Sets - ∀ forall universal quantifier" . "\\forall")
-        ("Sets - ¬ Logical NOT" . "\\neg")
-        ("Sets - ∨ Logical OR" . "\\lor")
-        ("Sets - ∧ Logical OR" . "\\land")
+  ("Enclosing () - Big parenthesis" . "\\left( <expr> \\right)")
+  ("Enclosing \/ - Underbrace" . "\\underbrace{ <expr> }")
+  ("Enclosing /\ - Overbrace" . "\\overbrace{ <expr> }")
+  
+  ("Accent - hat â, î" . "\\hat{}")
+  ("Accent - grave à, ì" . "\\grave{}")
+  ("Accent - bar - stroke over symbol" . "\\bar{}")
+  ("Accent - tilde - ã, ĩ - tilde over symbol" . "\\tilde{}")
+  ("Accent - dot (derivate) symbol" . "\\dot{}")
+  ("Accent - double dot (double derivate) symbol" . "\\ddot{}")
+  ("Accent - arrow over symbol, vector" . "\\vec{}")        
+  
+  ;; Set notation
+  ("Sets - N Set of Natural Numbers" . "\\N")
+  ("Sets - Z Set of Integers" . "\\Z")
+  ("Sets - ℝ Real Numbers" . "\\R")
+  ("Sets - C Complex Numbers" . "\\C")
+  ("Sets - H Quaternions" . "\\H")
+  ("Sets - ∈ Is member of" . "\\in")
+  ("Sets - ∃ Exists" . "\\exists")
+  ("Sets - ∀ forall universal quantifier" . "\\forall")
+  ("Sets - ¬ Logical NOT" . "\\neg")
+  ("Sets - ∨ Logical OR" . "\\lor")
+  ("Sets - ∧ Logical OR" . "\\land")
 
-        ;; Greek letters
-        ("Greek α - lower alpha" . "\\alpha")
-        ("Greek β - lower beta" . "\\beta")
-        ("Greek σ - lower sigma" . "\\sigma")
-        ("Greek Σ - upper sigma" . "\\Sigma")       
-        ("Greek γ - lower gamma" . "\\gamma")
-        ("Greek Γ - upper gamma" . "\\Gamma")
-        ("Greek δ - lower delta" . "\\delta")
-        ("Greek Δ - upper delta" . "\\Delta")
-        ("Greek λ - lower lambda" . "\\lambda")
-        ("Greek Λ - Upper lambda" . "\\Lambda")
-        ("Greek ε - epsilon"     . "\\vepisilon")
-        ("Greek ε - varepsilon"  . "\\episilon")
-        ("Greek ζ - zeta" . "\\zeta")
-        ("Greek η - eta" . "\\eta")
-        ("Greek μ - mu" . "\\mu")
-        ("Greek ρ - rho" . "\\rho")       
-        ("Greek φ - lower phi" . "\\phi")
-        ("Greek Φ - upper phi" . "\\Phi")       
-        ("Greek ω - lower omega" . "\\omega")        
-        ("Greek Ω - upper omega" . "\\Omega")
-        ("Greek Ψ - psi" . "\\psi")                       
-        ("Greek τ - tau" . "\\tau")
-        ("Greek ι - lower iota" . "\\iota")
-        ("Greek ξ - lower xi" . "\\xi")
-        ("Greek Ξ - upper xi" . "\\xi")        
+  ;; Greek letters
+  ("Greek α - lower alpha" . "\\alpha")
+  ("Greek β - lower beta" . "\\beta")
+  ("Greek σ - lower sigma" . "\\sigma")
+  ("Greek Σ - upper sigma" . "\\Sigma")       
+  ("Greek γ - lower gamma" . "\\gamma")
+  ("Greek Γ - upper gamma" . "\\Gamma")
+  ("Greek δ - lower delta" . "\\delta")
+  ("Greek Δ - upper delta" . "\\Delta")
+  ("Greek λ - lower lambda" . "\\lambda")
+  ("Greek Λ - Upper lambda" . "\\Lambda")
+  ("Greek ε - epsilon"     . "\\vepisilon")
+  ("Greek ε - varepsilon"  . "\\episilon")
+  ("Greek ζ - zeta" . "\\zeta")
+  ("Greek η - eta" . "\\eta")
+  ("Greek μ - mu" . "\\mu")
+  ("Greek ρ - rho" . "\\rho")       
+  ("Greek φ - lower phi" . "\\phi")
+  ("Greek Φ - upper phi" . "\\Phi")       
+  ("Greek ω - lower omega" . "\\omega")        
+  ("Greek Ω - upper omega" . "\\Omega")
+  ("Greek Ψ - psi" . "\\psi")                       
+  ("Greek τ - tau" . "\\tau")
+  ("Greek ι - lower iota" . "\\iota")
+  ("Greek ξ - lower xi" . "\\xi")
+  ("Greek Ξ - upper xi" . "\\xi")        
+  ("Symbol -> Right arrow" . "\\rightarrow")
+  ("Symbol <- Left arrow"  . "\\leftarrow")
+  ("Symbol    Up arrow"    . "\\uparrow")
+  ("Symbol    Down arrow"  . "\\downarrow")  
+  ))
 
-        ("Symbol -> Right arrow" . "\\rightarrow")
-        ("Symbol <- Left arrow"  . "\\leftarrow")
-        ("Symbol    Up arrow"    . "\\uparrow")
-        ("Symbol    Down arrow"  . "\\downarrow")
-        
-        ))
 
 (provide 'org-wiki)
 ;;; org-wiki.el ends here
